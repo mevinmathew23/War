@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="War" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="41g-bh-HY2" userLabel="background">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="backofDeck1" translatesAutoresizingMaskIntoConstraints="NO" id="E0j-69-Ybe" userLabel="firstCard">
+                                <rect key="frame" x="0.0" y="215" width="120" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="326-aR-ZvB"/>
+                                    <constraint firstAttribute="width" constant="120" id="dVE-M0-t4p"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yk4-1h-AeT">
+                                <rect key="frame" x="285" y="0.0" width="31" height="30"/>
+                                <state key="normal" title="Deal"/>
+                                <connections>
+                                    <action selector="playRoundTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pya-Me-biq"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="backofDeck1" translatesAutoresizingMaskIntoConstraints="NO" id="NFt-4o-82Y" userLabel="secondCard">
+                                <rect key="frame" x="0.0" y="215" width="120" height="170"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="2wA-My-lJT"/>
+                                    <constraint firstAttribute="height" constant="170" id="DJ3-Hs-mph"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NFt-4o-82Y" secondAttribute="trailing" constant="50" id="9XT-kb-Vw7"/>
+                            <constraint firstAttribute="bottom" secondItem="41g-bh-HY2" secondAttribute="bottom" id="ILp-KS-dTC"/>
+                            <constraint firstItem="NFt-4o-82Y" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="M47-Ya-GyB"/>
+                            <constraint firstAttribute="trailing" secondItem="NFt-4o-82Y" secondAttribute="trailing" constant="150" id="Vvt-ks-vPH"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yk4-1h-AeT" secondAttribute="bottom" constant="150" id="bkm-K7-ToN"/>
+                            <constraint firstItem="E0j-69-Ybe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="100" id="c6Z-hN-Fta"/>
+                            <constraint firstItem="Yk4-1h-AeT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jLl-fh-x3m"/>
+                            <constraint firstAttribute="trailing" secondItem="41g-bh-HY2" secondAttribute="trailing" id="jOi-PQ-Rcc"/>
+                            <constraint firstItem="41g-bh-HY2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kpp-RR-Yyh"/>
+                            <constraint firstItem="E0j-69-Ybe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="sPK-3M-pAh"/>
+                            <constraint firstItem="41g-bh-HY2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="umW-Sz-QxO"/>
+                            <constraint firstItem="E0j-69-Ybe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="wqh-Pf-P0m"/>
+                            <constraint firstAttribute="bottom" secondItem="Yk4-1h-AeT" secondAttribute="bottom" constant="50" id="wvO-te-WGc"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="c6Z-hN-Fta"/>
+                                <exclude reference="wqh-Pf-P0m"/>
+                                <exclude reference="9XT-kb-Vw7"/>
+                                <exclude reference="Vvt-ks-vPH"/>
+                                <exclude reference="wvO-te-WGc"/>
+                                <exclude reference="bkm-K7-ToN"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="c6Z-hN-Fta"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="Vvt-ks-vPH"/>
+                                <include reference="wvO-te-WGc"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="wqh-Pf-P0m"/>
+                                <include reference="9XT-kb-Vw7"/>
+                                <include reference="bkm-K7-ToN"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="41g-bh-HY2" id="WFd-Kl-ls0"/>
+                        <outlet property="firstCardImageView" destination="E0j-69-Ybe" id="hGz-NE-kwf"/>
+                        <outlet property="playRoundButton" destination="Yk4-1h-AeT" id="ncD-1B-6CF"/>
+                        <outlet property="secondCardImageView" destination="NFt-4o-82Y" id="5S7-aK-TAo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="backgroundImage" width="640" height="366"/>
+        <image name="backofDeck1" width="250" height="350"/>
+    </resources>
+</document>
