@@ -15,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B76FA96B1D230A27001D8F45 /* War Functions.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "War Functions.playground"; sourceTree = "<group>"; };
 		B7C60D311D19B76B00E18A36 /* War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = War.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C60D341D19B76B00E18A36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7C60D361D19B76B00E18A36 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +41,7 @@
 			children = (
 				B7C60D331D19B76B00E18A36 /* War */,
 				B7C60D321D19B76B00E18A36 /* Products */,
+				B76FA96B1D230A27001D8F45 /* War Functions.playground */,
 			);
 			sourceTree = "<group>";
 		};
@@ -288,6 +290,7 @@
 				B7C60D451D19B76B00E18A36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
