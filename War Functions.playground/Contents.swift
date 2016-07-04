@@ -273,7 +273,7 @@ repeat {
         playerOneCardsInPlay.removeAll()
     }
     else {
-        warScenario(warCounterTemp)
+        warScenario(0)
     }
     
     

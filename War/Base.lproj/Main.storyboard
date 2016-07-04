@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -26,6 +27,12 @@
                                     <constraint firstAttribute="height" constant="170" id="326-aR-ZvB"/>
                                     <constraint firstAttribute="width" constant="120" id="dVE-M0-t4p"/>
                                 </constraints>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="326-aR-ZvB"/>
+                                        <include reference="dVE-M0-t4p"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yk4-1h-AeT">
                                 <rect key="frame" x="285" y="0.0" width="31" height="30"/>
@@ -40,57 +47,64 @@
                                     <constraint firstAttribute="width" constant="120" id="2wA-My-lJT"/>
                                     <constraint firstAttribute="height" constant="170" id="DJ3-Hs-mph"/>
                                 </constraints>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="2wA-My-lJT"/>
+                                        <include reference="DJ3-Hs-mph"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="NFt-4o-82Y" secondAttribute="trailing" constant="50" id="9XT-kb-Vw7"/>
+                            <constraint firstItem="Yk4-1h-AeT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3Bm-qY-zQZ"/>
                             <constraint firstAttribute="bottom" secondItem="41g-bh-HY2" secondAttribute="bottom" id="ILp-KS-dTC"/>
-                            <constraint firstItem="NFt-4o-82Y" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="M47-Ya-GyB"/>
-                            <constraint firstAttribute="trailing" secondItem="NFt-4o-82Y" secondAttribute="trailing" constant="150" id="Vvt-ks-vPH"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yk4-1h-AeT" secondAttribute="bottom" constant="150" id="bkm-K7-ToN"/>
-                            <constraint firstItem="E0j-69-Ybe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="100" id="c6Z-hN-Fta"/>
+                            <constraint firstItem="E0j-69-Ybe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WA1-f2-559"/>
+                            <constraint firstItem="NFt-4o-82Y" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="50" id="b5C-pU-On3"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="E0j-69-Ybe" secondAttribute="bottom" constant="50" id="ea3-cw-EYK"/>
                             <constraint firstItem="Yk4-1h-AeT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jLl-fh-x3m"/>
                             <constraint firstAttribute="trailing" secondItem="41g-bh-HY2" secondAttribute="trailing" id="jOi-PQ-Rcc"/>
                             <constraint firstItem="41g-bh-HY2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kpp-RR-Yyh"/>
-                            <constraint firstItem="E0j-69-Ybe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="sPK-3M-pAh"/>
                             <constraint firstItem="41g-bh-HY2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="umW-Sz-QxO"/>
-                            <constraint firstItem="E0j-69-Ybe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="wqh-Pf-P0m"/>
+                            <constraint firstItem="NFt-4o-82Y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wN6-19-bhQ"/>
                             <constraint firstAttribute="bottom" secondItem="Yk4-1h-AeT" secondAttribute="bottom" constant="50" id="wvO-te-WGc"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="c6Z-hN-Fta"/>
-                                <exclude reference="wqh-Pf-P0m"/>
-                                <exclude reference="9XT-kb-Vw7"/>
-                                <exclude reference="Vvt-ks-vPH"/>
+                                <exclude reference="b5C-pU-On3"/>
+                                <exclude reference="wN6-19-bhQ"/>
+                                <exclude reference="WA1-f2-559"/>
+                                <exclude reference="ea3-cw-EYK"/>
+                                <exclude reference="3Bm-qY-zQZ"/>
                                 <exclude reference="wvO-te-WGc"/>
-                                <exclude reference="bkm-K7-ToN"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=compact">
-                            <mask key="constraints">
-                                <include reference="c6Z-hN-Fta"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
                             <mask key="constraints">
-                                <include reference="Vvt-ks-vPH"/>
                                 <include reference="wvO-te-WGc"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
-                                <include reference="wqh-Pf-P0m"/>
-                                <include reference="9XT-kb-Vw7"/>
-                                <include reference="bkm-K7-ToN"/>
+                                <include reference="ILp-KS-dTC"/>
+                                <include reference="jOi-PQ-Rcc"/>
+                                <include reference="kpp-RR-Yyh"/>
+                                <include reference="umW-Sz-QxO"/>
+                                <include reference="b5C-pU-On3"/>
+                                <include reference="wN6-19-bhQ"/>
+                                <include reference="WA1-f2-559"/>
+                                <include reference="ea3-cw-EYK"/>
+                                <include reference="3Bm-qY-zQZ"/>
+                                <include reference="jLl-fh-x3m"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="41g-bh-HY2" id="WFd-Kl-ls0"/>
+                        <outlet property="firstCardConstraint" destination="ea3-cw-EYK" id="gpw-CN-bhD"/>
                         <outlet property="firstCardImageView" destination="E0j-69-Ybe" id="hGz-NE-kwf"/>
                         <outlet property="playRoundButton" destination="Yk4-1h-AeT" id="ncD-1B-6CF"/>
+                        <outlet property="secondCardConstraint" destination="b5C-pU-On3" id="59C-W4-hX8"/>
                         <outlet property="secondCardImageView" destination="NFt-4o-82Y" id="5S7-aK-TAo"/>
                     </connections>
                 </viewController>
