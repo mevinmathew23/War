@@ -11,7 +11,7 @@ import UIKit
 class Card {
     var Value: Int?
     var Name: String?
-    var ShowingBack: Bool = true
+    var ShowingFront: Bool = false
     
     var Back: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
     var Front: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
@@ -80,7 +80,6 @@ class ViewController: UIViewController {
         activeP1.Back.image = playerOneCardsInPlay[0].backImage
         activeP1.Front.image = UIImage(named: String(activeP1.Name!))
         
-        player.addSubview(activeP1.Front)
         player.addSubview(activeP1.Back)
     }
     
@@ -91,7 +90,6 @@ class ViewController: UIViewController {
         activeP2.Back.image = playerOneCardsInPlay[0].backImage
         activeP2.Front.image = UIImage(named: String(activeP2.Name!))
         
-        player.addSubview(activeP2.Front)
         player.addSubview(activeP2.Back)
     }
     
@@ -114,7 +112,7 @@ class ViewController: UIViewController {
             deckOfCards.removeAtIndex(index)
         }
         
-        // Remaining cards putin P2 deck
+        // Remaining cards put in P2 deck
         playerTwoCards = deckOfCards
         
         for _ in 1...range {
@@ -138,41 +136,40 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
-    //    func tappedP1() {
-    //        print(cardViewP1.subviews)
-    //        if (showingBack) {
-    //            UIView.transitionWithView(cardViewP1, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, animations: {
-    //                self.cardViewP1.addSubview(self.front)
-    //                }, completion: nil)
-    //            showingBack = false
-    //        } else {
-    //            UIView.transitionWithView(cardViewP1, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, animations: {
-    //                self.cardViewP1.addSubview(self.back)
-    //                }, completion: nil)
-    //            showingBack = true
-    //        }
-    //    }
+
+    // Tap to flip cards
     func tappedP1() {
         print(playerOneCardsInPlay[0].Name!)
-        if (playerOneCardsInPlay[0].ShowingBack) {
-            UIView.transitionFromView(playerOneCardsInPlay[0].Back, toView: playerOneCardsInPlay[0].Front, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
-            playerOneCardsInPlay[0].ShowingBack = false
+        if (playerOneCardsInPlay[0].ShowingFront) {
+            UIView.transitionFromView(playerOneCardsInPlay[0].Front, toView: playerOneCardsInPlay[0].Back, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
+            playerOneCardsInPlay[0].ShowingFront = false
+            
         } else {
-            UIView.transitionFromView(playerOneCardsInPlay[0].Front, toView: playerOneCardsInPlay[0].Back, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
-            playerOneCardsInPlay[0].ShowingBack = true
+            UIView.transitionFromView(playerOneCardsInPlay[0].Back, toView: playerOneCardsInPlay[0].Front, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+            playerOneCardsInPlay[0].ShowingFront = true
+            if playerOneCardsInPlay[0].ShowingFront && playerTwoCardsInPlay[0].ShowingFront {
+                evaluate()
+            }
         }
     }
     func tappedP2() {
         print(playerTwoCardsInPlay[0].Name!)
-        if (playerTwoCardsInPlay[0].ShowingBack) {
-            UIView.transitionFromView(playerTwoCardsInPlay[0].Back, toView: playerTwoCardsInPlay[0].Front, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
-            playerTwoCardsInPlay[0].ShowingBack = false
+        if (playerTwoCardsInPlay[0].ShowingFront) {
+            
+            UIView.transitionFromView(playerTwoCardsInPlay[0].Front, toView: playerTwoCardsInPlay[0].Back, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
+            playerTwoCardsInPlay[0].ShowingFront = false
         } else {
-            UIView.transitionFromView(playerTwoCardsInPlay[0].Front, toView: playerTwoCardsInPlay[0].Back, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
-            playerTwoCardsInPlay[0].ShowingBack = true
+            UIView.transitionFromView(playerTwoCardsInPlay[0].Back, toView: playerTwoCardsInPlay[0].Front, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
+            playerTwoCardsInPlay[0].ShowingFront = true
+            if playerOneCardsInPlay[0].ShowingFront && playerTwoCardsInPlay[0].ShowingFront {
+                evaluate()
+            }
         }
     }
     
+    func evaluate() {
+        
+    }
 }
 
 // OUTSIDE OF CLASS
