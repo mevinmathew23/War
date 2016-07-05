@@ -27,6 +27,25 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        let war = War();
+        
+        war.addCards("spades")
+        war.addCards("clubs")
+        war.addCards("diamonds")
+        war.addCards("hearts")
+        
+        war.deckOfCards.shuffle();
+        war.deal();
+        war.play();
+        
+        if war.bPlayerOneWinner {
+            print("Player one wins")
+        } else{
+            print("Player 2 wins")
+        }
+        
     }
     
     override func viewDidAppear(animated: Bool) {

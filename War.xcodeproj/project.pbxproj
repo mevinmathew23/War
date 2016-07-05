@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B71DC19C1D2C36330040F476 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DC19B1D2C36330040F476 /* Card.swift */; };
+		B71DC19E1D2C366F0040F476 /* ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DC19D1D2C366F0040F476 /* ext.swift */; };
+		B71DC1A01D2C369E0040F476 /* War.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DC19F1D2C369E0040F476 /* War.swift */; };
 		B7C60D351D19B76B00E18A36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C60D341D19B76B00E18A36 /* AppDelegate.swift */; };
 		B7C60D371D19B76B00E18A36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C60D361D19B76B00E18A36 /* ViewController.swift */; };
 		B7C60D3A1D19B76B00E18A36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C60D381D19B76B00E18A36 /* Main.storyboard */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B71DC19B1D2C36330040F476 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		B71DC19D1D2C366F0040F476 /* ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ext.swift; sourceTree = "<group>"; };
+		B71DC19F1D2C369E0040F476 /* War.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = War.swift; sourceTree = "<group>"; };
 		B76FA96B1D230A27001D8F45 /* War Functions.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "War Functions.playground"; sourceTree = "<group>"; };
 		B7C60D311D19B76B00E18A36 /* War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = War.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C60D341D19B76B00E18A36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +68,9 @@
 				B7C60D3B1D19B76B00E18A36 /* Assets.xcassets */,
 				B7C60D3D1D19B76B00E18A36 /* LaunchScreen.storyboard */,
 				B7C60D401D19B76B00E18A36 /* Info.plist */,
+				B71DC19B1D2C36330040F476 /* Card.swift */,
+				B71DC19D1D2C366F0040F476 /* ext.swift */,
+				B71DC19F1D2C369E0040F476 /* War.swift */,
 			);
 			path = War;
 			sourceTree = "<group>";
@@ -138,6 +147,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7C60D371D19B76B00E18A36 /* ViewController.swift in Sources */,
+				B71DC19E1D2C366F0040F476 /* ext.swift in Sources */,
+				B71DC19C1D2C36330040F476 /* Card.swift in Sources */,
+				B71DC1A01D2C369E0040F476 /* War.swift in Sources */,
 				B7C60D351D19B76B00E18A36 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
