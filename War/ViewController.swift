@@ -15,7 +15,7 @@ class Card {
     
     var Back: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
     var Front: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
-    let backImage = UIImage(named: "backofDeck1")
+    let backImage = UIImage(named: "backOfDeck")
 }
 
 class ViewController: UIViewController {
@@ -28,9 +28,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var cardViewP1Constraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2Constraint: NSLayoutConstraint!
-    
-    var front: UIImageView!
-    var back: UIImageView!
     
     var deckOfCards = [Card]()
     var playerOneCards = [Card]()
@@ -126,10 +123,10 @@ class ViewController: UIViewController {
             
         }
         
-        playRoundButton.removeFromSuperview()
-        
         drawCardP1(cardViewP1)
         drawCardP2(cardViewP2)
+        
+        playRoundButton.removeFromSuperview()
         
         // Animate cards dealt
         UIView.animateWithDuration(0.8, animations: {
