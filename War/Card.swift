@@ -6,9 +6,14 @@
 //  Copyright © 2016 Apple Dev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Card {
     var Value : Int?;
     var Name : String?
+    var ShowingFront: Bool = false
+    
+    var Back: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
+    var Front: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
+    let backImage = UIImage(named: "backOfDeck")
 }
