@@ -28,7 +28,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         hideCounter()
-        self.playRoundButton.setTitle("Play", forState: UIControlState.Normal)
+        // Rotate player 2 counter
+        playerTwoCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+        
+        self.playRoundButton.setTitle("DEAL", forState: UIControlState.Normal)
         
         let tapP1 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedP1))
         let tapP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedP2))
@@ -36,6 +39,15 @@ class ViewController: UIViewController {
         tapP2.numberOfTapsRequired = 1
         cardViewP1.addGestureRecognizer(tapP1)
         cardViewP2.addGestureRecognizer(tapP2)
+        
+        // Setup cards
+        war.addCards("spades")
+        war.addCards("clubs")
+        war.addCards("diamonds")
+        war.addCards("hearts")
+        
+        war.deckOfCards.shuffle()
+        war.deal()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -49,6 +61,52 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // Button Click Action
+    
+    @IBAction func playRoundTapped(sender: UIButton) {
+        showCounter()
+        
+        updateCounter()
+        
+        drawCardP1(cardViewP1)
+        drawCardP2(cardViewP2)
+        
+        hideButton()
+        
+        // Animate cards dealt
+        startAnimation()
+    }
+    
+    // DECK COUNTERS
+    
+    func hideCounter() {
+        playerOneCounter.hidden = true
+        playerTwoCounter.hidden = true
+    }
+    
+    func showCounter() {
+        playerOneCounter.hidden = false
+        playerTwoCounter.hidden = false
+    }
+    
+    func updateCounter() {
+        playerOneCounter.text = String(war.playerOneCards.count + war.playerOneCardsInPlay.count)
+        playerTwoCounter.text = String(war.playerTwoCards.count + war.playerTwoCardsInPlay.count)
+    }
+    
+    // DRAW BUTTON TOGGLE
+    
+    func showButton() {
+        playRoundButton.hidden = false
+        playRoundButton.userInteractionEnabled = true
+    }
+    func hideButton() {
+        playRoundButton.hidden = true
+        playRoundButton.userInteractionEnabled = false
+    }
+    
+    // DRAW CARDS
     
     func drawCardP1(player: UIView) {
         war.playerOneCardsInPlay.append(war.playerOneCards[0])
@@ -70,45 +128,6 @@ class ViewController: UIViewController {
         player.addSubview(activeP2.Back)
     }
     
-    @IBAction func playRoundTapped(sender: UIButton) {
-        showCounter()
-        
-        war.addCards("spades")
-        war.addCards("clubs")
-        war.addCards("diamonds")
-        war.addCards("hearts")
-        
-        war.deckOfCards.shuffle()
-        war.deal()
-        
-        updateCounter()
-        
-        drawCardP1(cardViewP1)
-        drawCardP2(cardViewP2)
-        
-        playRoundButton.removeFromSuperview()
-        
-        // Animate cards dealt
-        startAnimation()
-    }
-    
-    // DECK COUNTERS
-    
-    func hideCounter() {
-        playerOneCounter.hidden = true
-        playerTwoCounter.hidden = true
-    }
-    
-    func showCounter() {
-        playerOneCounter.hidden = false
-        playerTwoCounter.hidden = false
-    }
-    
-    func updateCounter() {
-        playerOneCounter.text = String(war.playerOneCards.count)
-        playerTwoCounter.text = String(war.playerTwoCards.count)
-    }
-
     // FLIP FUNCTIONS
     
     func tappedP1() {
@@ -122,7 +141,6 @@ class ViewController: UIViewController {
             war.playerOneCardsInPlay[0].ShowingFront = true
             if war.playerOneCardsInPlay[0].ShowingFront && war.playerTwoCardsInPlay[0].ShowingFront {
                 evaluate()
-                updateCounter()
                 war.checkForWin()
                 
                 if war.bPlayerOneWinner == true {
@@ -146,7 +164,6 @@ class ViewController: UIViewController {
             war.playerTwoCardsInPlay[0].ShowingFront = true
             if war.playerOneCardsInPlay[0].ShowingFront && war.playerTwoCardsInPlay[0].ShowingFront {
                 evaluate()
-                updateCounter()
                 war.checkForWin()
                 
                 if war.bPlayerOneWinner == true {
@@ -161,10 +178,6 @@ class ViewController: UIViewController {
     }
     
     func evaluate() {
-        war.playerOneCardsInPlay.append(war.playerOneCards[0])
-        war.playerOneCards.removeAtIndex(0)
-        war.playerTwoCardsInPlay.append(war.playerTwoCards[0])
-        war.playerTwoCards.removeAtIndex(0)
         
         if war.playerOneCardsInPlay[0].Value > war.playerTwoCardsInPlay[0].Value {
             war.playerOneCards.append(war.playerOneCardsInPlay[0])
@@ -211,21 +224,38 @@ class ViewController: UIViewController {
         UIView.animateWithDuration(1.2, delay: 2.8, options: [.CurveEaseOut],animations: {
             self.cardViewP1Constraint.constant = -500
             self.view.layoutIfNeeded()
-            }, completion: nil)
+            }, completion: {
+                finished in
+                self.updateCounter()
+                self.showButton()
+        })
         UIView.animateWithDuration(1.2, delay: 2, options: [.CurveEaseOut], animations: {
             self.cardViewP2Constraint.constant = 900
             self.view.layoutIfNeeded()
-            }, completion: nil)
+            }, completion: {
+                finished in
+                self.updateCounter()
+                self.showButton()
+        })
+        
     }
     
     func normalWinP2() {
         UIView.animateWithDuration(1.2, delay: 2, options: [.CurveEaseOut],animations: {
             self.cardViewP1Constraint.constant = 900
             self.view.layoutIfNeeded()
-            }, completion: nil)
+            }, completion: {
+                finished in
+                self.updateCounter()
+                self.showButton()
+        })
         UIView.animateWithDuration(1.2, delay: 2.8, options: [.CurveEaseOut], animations: {
             self.cardViewP2Constraint.constant = -500
             self.view.layoutIfNeeded()
-            }, completion: nil)
+            }, completion: {
+                finished in
+                self.updateCounter()
+                self.showButton()
+        })
     }
 }

@@ -64,7 +64,10 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yk4-1h-AeT">
                                 <rect key="frame" x="285" y="0.0" width="31" height="30"/>
-                                <state key="normal" title="Deal"/>
+                                <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="66"/>
+                                <state key="normal" title="Deal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="playRoundTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pya-Me-biq"/>
                                 </connections>
@@ -141,15 +144,15 @@
                                 <exclude reference="1yI-70-QNt"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="CaK-lw-dyZ"/>
-                                <exclude reference="Uhd-jN-HQj"/>
                                 <exclude reference="11I-e2-VcG"/>
                                 <exclude reference="8Bw-r5-sQe"/>
-                                <exclude reference="3Bm-qY-zQZ"/>
-                                <exclude reference="wvO-te-WGc"/>
+                                <exclude reference="BF3-Xb-79j"/>
                                 <exclude reference="G4m-vi-fcP"/>
                                 <exclude reference="OOE-vJ-Tw1"/>
-                                <exclude reference="BF3-Xb-79j"/>
+                                <exclude reference="CaK-lw-dyZ"/>
+                                <exclude reference="Uhd-jN-HQj"/>
+                                <exclude reference="3Bm-qY-zQZ"/>
+                                <exclude reference="wvO-te-WGc"/>
                                 <exclude reference="iNc-GX-bbf"/>
                             </mask>
                         </variation>
@@ -166,19 +169,19 @@
                                 <include reference="1yI-70-QNt"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="11I-e2-VcG"/>
+                                <include reference="8Bw-r5-sQe"/>
+                                <include reference="BF3-Xb-79j"/>
+                                <include reference="G4m-vi-fcP"/>
+                                <include reference="OOE-vJ-Tw1"/>
+                                <include reference="CaK-lw-dyZ"/>
+                                <include reference="Uhd-jN-HQj"/>
                                 <include reference="ILp-KS-dTC"/>
                                 <include reference="jOi-PQ-Rcc"/>
                                 <include reference="kpp-RR-Yyh"/>
                                 <include reference="umW-Sz-QxO"/>
-                                <include reference="CaK-lw-dyZ"/>
-                                <include reference="Uhd-jN-HQj"/>
-                                <include reference="11I-e2-VcG"/>
-                                <include reference="8Bw-r5-sQe"/>
                                 <include reference="3Bm-qY-zQZ"/>
                                 <include reference="jLl-fh-x3m"/>
-                                <include reference="G4m-vi-fcP"/>
-                                <include reference="OOE-vJ-Tw1"/>
-                                <include reference="BF3-Xb-79j"/>
                                 <include reference="iNc-GX-bbf"/>
                             </mask>
                         </variation>
