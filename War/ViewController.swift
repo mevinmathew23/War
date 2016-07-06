@@ -8,16 +8,6 @@
 
 import UIKit
 
-class Card {
-    var Value: Int?
-    var Name: String?
-    var ShowingFront: Bool = false
-    
-    var Back: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
-    var Front: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
-    let backImage = UIImage(named: "backOfDeck")
-}
-
 class ViewController: UIViewController {
     
     @IBOutlet weak var cardViewP1: UIView!
@@ -41,6 +31,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.playRoundButton.setTitle("Play", forState: UIControlState.Normal)
+        
+        let tapP1 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedP1))
+        let tapP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedP2))
+        tapP1.numberOfTapsRequired = 1
+        tapP2.numberOfTapsRequired = 1
+        cardViewP1.addGestureRecognizer(tapP1)
+        cardViewP2.addGestureRecognizer(tapP2)
         
         let war = War();
         
@@ -52,6 +50,12 @@ class ViewController: UIViewController {
         war.deckOfCards.shuffle();
         war.deal();
         war.play();
+        
+        if war.bPlayerOneWinner {
+            print("Player one wins")
+        } else{
+            print("Player 2 wins")
+        }
         
         if war.bPlayerOneWinner {
             print("Player one wins")
@@ -144,7 +148,7 @@ class ViewController: UIViewController {
     // DECK COUNTERS
     
     func deckCounter() {
-        let deckCountP1 = UILabel(frame: 0, 0, 50, 50)
+        // let deckCountP1 = UILabel(frame: 0, 0, 50, 50)
         
     }
 
@@ -239,29 +243,5 @@ class ViewController: UIViewController {
             self.cardViewP2Constraint.constant = -500
             self.view.layoutIfNeeded()
             }, completion: nil)
-    }
-}
-
-// OUTSIDE OF CLASS
-
-extension CollectionType {
-    /// Return a copy of `self` with its elements shuffled
-    func shuffle() -> [Generator.Element] {
-        var list = Array(self)
-        list.shuffleInPlace()
-        return list
-    }
-}
-extension MutableCollectionType where Index == Int {
-    /// Shuffle the elements of `self` in-place.
-    mutating func shuffleInPlace() {
-        // empty and single-element collections don't shuffle
-        if count < 2 { return }
-        
-        for i in 0..<count - 1 {
-            let j = Int(arc4random_uniform(UInt32(count - i))) + i
-            guard i != j else { continue }
-            swap(&self[i], &self[j])
-        }
     }
 }

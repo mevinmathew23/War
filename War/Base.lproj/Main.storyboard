@@ -116,13 +116,13 @@
                                 <exclude reference="yZg-b8-7fL"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="BF3-Xb-79j"/>
+                                <exclude reference="G4m-vi-fcP"/>
+                                <exclude reference="OOE-vJ-Tw1"/>
                                 <exclude reference="CaK-lw-dyZ"/>
                                 <exclude reference="Uhd-jN-HQj"/>
                                 <exclude reference="3Bm-qY-zQZ"/>
                                 <exclude reference="wvO-te-WGc"/>
-                                <exclude reference="G4m-vi-fcP"/>
-                                <exclude reference="OOE-vJ-Tw1"/>
-                                <exclude reference="BF3-Xb-79j"/>
                                 <exclude reference="iNc-GX-bbf"/>
                             </mask>
                         </variation>
@@ -138,17 +138,17 @@
                                 <include reference="yZg-b8-7fL"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="BF3-Xb-79j"/>
+                                <include reference="G4m-vi-fcP"/>
+                                <include reference="OOE-vJ-Tw1"/>
+                                <include reference="CaK-lw-dyZ"/>
+                                <include reference="Uhd-jN-HQj"/>
                                 <include reference="ILp-KS-dTC"/>
                                 <include reference="jOi-PQ-Rcc"/>
                                 <include reference="kpp-RR-Yyh"/>
                                 <include reference="umW-Sz-QxO"/>
-                                <include reference="CaK-lw-dyZ"/>
-                                <include reference="Uhd-jN-HQj"/>
                                 <include reference="3Bm-qY-zQZ"/>
                                 <include reference="jLl-fh-x3m"/>
-                                <include reference="G4m-vi-fcP"/>
-                                <include reference="OOE-vJ-Tw1"/>
-                                <include reference="BF3-Xb-79j"/>
                                 <include reference="iNc-GX-bbf"/>
                             </mask>
                         </variation>
