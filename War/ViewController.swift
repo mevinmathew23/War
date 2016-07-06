@@ -127,17 +127,18 @@ class ViewController: UIViewController {
         playRoundButton.removeFromSuperview()
         
         // Animate cards dealt
-        UIView.animateWithDuration(0.8, animations: {
-            self.cardViewP1Constraint.constant = 50
-            self.view.layoutIfNeeded()
-            }, completion: nil)
-        UIView.animateWithDuration(0.8, delay: 0.3, options: [], animations: {
-            self.cardViewP2Constraint.constant = 50
-            self.view.layoutIfNeeded()
-            }, completion: nil)
+        startAnimation()
+    }
+    
+    // DECK COUNTERS
+    
+    func deckCounter() {
+        let deckCountP1 = UILabel(frame: 0, 0, 50, 50)
+        
     }
 
-    // Tap to flip cards
+    // FLIP FUNCTIONS
+    
     func tappedP1() {
         print(playerOneCardsInPlay[0].Name!)
         if (playerOneCardsInPlay[0].ShowingFront) {
@@ -168,7 +169,65 @@ class ViewController: UIViewController {
     }
     
     func evaluate() {
-        
+        if playerOneCardsInPlay[0].Value > playerTwoCardsInPlay[0].Value {
+            playerOneCards.append(playerOneCardsInPlay[0])
+            playerOneCards.append(playerTwoCardsInPlay[0])
+            playerOneCardsInPlay.removeAtIndex(0)
+            playerTwoCardsInPlay.removeAtIndex(0)
+            print("P1 WINS")
+            
+            // Animate P1 Win
+            normalWinP1()
+        }
+            
+        else if playerOneCardsInPlay[0].Value < playerTwoCardsInPlay[0].Value {
+            playerTwoCards.append(playerTwoCardsInPlay[0])
+            playerTwoCards.append(playerOneCardsInPlay[0])
+            playerTwoCardsInPlay.removeAtIndex(0)
+            playerOneCardsInPlay.removeAtIndex(0)
+            print(" P2 Wins")
+            
+            // Animate P2 Win
+            normalWinP2()
+        }
+        else {
+            print("WAR!")
+        }
+    }
+    
+    // CARD ANIMATIONS
+    
+    func startAnimation() {
+        UIView.animateWithDuration(0.8, delay: 0, options: [.CurveEaseOut],animations: {
+            self.cardViewP1Constraint.constant = 50
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        UIView.animateWithDuration(0.8, delay: 0.3, options: [.CurveEaseOut], animations: {
+            self.cardViewP2Constraint.constant = 50
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+    }
+    
+    func normalWinP1() {
+        UIView.animateWithDuration(1.2, delay: 2.8, options: [.CurveEaseOut],animations: {
+            self.cardViewP1Constraint.constant = -500
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        UIView.animateWithDuration(1.2, delay: 2, options: [.CurveEaseOut], animations: {
+            self.cardViewP2Constraint.constant = 900
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+    }
+    
+    func normalWinP2() {
+        UIView.animateWithDuration(1.2, delay: 2, options: [.CurveEaseOut],animations: {
+            self.cardViewP1Constraint.constant = 900
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        UIView.animateWithDuration(1.2, delay: 2.8, options: [.CurveEaseOut], animations: {
+            self.cardViewP2Constraint.constant = -500
+            self.view.layoutIfNeeded()
+            }, completion: nil)
     }
 }
 
