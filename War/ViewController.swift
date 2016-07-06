@@ -15,16 +15,19 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var playRoundButton: UIButton!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var playerOneCounter: UILabel!
+    @IBOutlet weak var playerTwoCounter: UILabel!
     
     @IBOutlet weak var cardViewP1Constraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2Constraint: NSLayoutConstraint!
     
-    let war = War();
+    let war = War()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        hideCounter()
         self.playRoundButton.setTitle("Play", forState: UIControlState.Normal)
         
         let tapP1 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedP1))
@@ -33,15 +36,6 @@ class ViewController: UIViewController {
         tapP2.numberOfTapsRequired = 1
         cardViewP1.addGestureRecognizer(tapP1)
         cardViewP2.addGestureRecognizer(tapP2)
-        
-        
-        /*war.play();
-        
-        if war.bPlayerOneWinner {
-            print("Player one wins")
-        } else{
-            print("Player 2 wins")
-        }*/
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -77,14 +71,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playRoundTapped(sender: UIButton) {
+        showCounter()
         
         war.addCards("spades")
         war.addCards("clubs")
         war.addCards("diamonds")
         war.addCards("hearts")
         
-        war.deckOfCards.shuffle();
-        war.deal();
+        war.deckOfCards.shuffle()
+        war.deal()
+        
+        updateCounter()
         
         drawCardP1(cardViewP1)
         drawCardP2(cardViewP2)
@@ -97,9 +94,19 @@ class ViewController: UIViewController {
     
     // DECK COUNTERS
     
-    func deckCounter() {
-        // let deckCountP1 = UILabel(frame: 0, 0, 50, 50)
-        
+    func hideCounter() {
+        playerOneCounter.hidden = true
+        playerTwoCounter.hidden = true
+    }
+    
+    func showCounter() {
+        playerOneCounter.hidden = false
+        playerTwoCounter.hidden = false
+    }
+    
+    func updateCounter() {
+        playerOneCounter.text = String(war.playerOneCards.count)
+        playerTwoCounter.text = String(war.playerTwoCards.count)
     }
 
     // FLIP FUNCTIONS
@@ -115,6 +122,16 @@ class ViewController: UIViewController {
             war.playerOneCardsInPlay[0].ShowingFront = true
             if war.playerOneCardsInPlay[0].ShowingFront && war.playerTwoCardsInPlay[0].ShowingFront {
                 evaluate()
+                updateCounter()
+                war.checkForWin()
+                
+                if war.bPlayerOneWinner == true {
+                    print("Player one wins")
+                } else if war.bPlayerOneWinner == false {
+                    print("Player 2 wins")
+                } else if war.bPlayerOneWinner == nil {
+                    print("No winner yet...")
+                }
             }
         }
     }
@@ -129,34 +146,51 @@ class ViewController: UIViewController {
             war.playerTwoCardsInPlay[0].ShowingFront = true
             if war.playerOneCardsInPlay[0].ShowingFront && war.playerTwoCardsInPlay[0].ShowingFront {
                 evaluate()
+                updateCounter()
+                war.checkForWin()
+                
+                if war.bPlayerOneWinner == true {
+                    print("Player one wins")
+                } else if war.bPlayerOneWinner == false {
+                    print("Player 2 wins")
+                } else if war.bPlayerOneWinner == nil {
+                    print("No winner yet...")
+                }
             }
         }
     }
     
     func evaluate() {
+        war.playerOneCardsInPlay.append(war.playerOneCards[0])
+        war.playerOneCards.removeAtIndex(0)
+        war.playerTwoCardsInPlay.append(war.playerTwoCards[0])
+        war.playerTwoCards.removeAtIndex(0)
+        
         if war.playerOneCardsInPlay[0].Value > war.playerTwoCardsInPlay[0].Value {
             war.playerOneCards.append(war.playerOneCardsInPlay[0])
             war.playerOneCards.append(war.playerTwoCardsInPlay[0])
-            war.playerOneCardsInPlay.removeAtIndex(0)
-            war.playerTwoCardsInPlay.removeAtIndex(0)
-            print("P1 WINS")
+            war.playerOneCardsInPlay.removeAll()
+            war.playerTwoCardsInPlay.removeAll()
             
-            // Animate P1 Win
+            // Animate
             normalWinP1()
-        }
             
+            print("P1 wins this round")
+        }
         else if war.playerOneCardsInPlay[0].Value < war.playerTwoCardsInPlay[0].Value {
             war.playerTwoCards.append(war.playerTwoCardsInPlay[0])
             war.playerTwoCards.append(war.playerOneCardsInPlay[0])
-            war.playerTwoCardsInPlay.removeAtIndex(0)
-            war.playerOneCardsInPlay.removeAtIndex(0)
-            print(" P2 Wins")
+            war.playerTwoCardsInPlay.removeAll()
+            war.playerOneCardsInPlay.removeAll()
             
-            // Animate P2 Win
+            // Animate
             normalWinP2()
+            
+            print("P2 wins this round")
         }
         else {
-            print("WAR!")
+            print("War!")
+            war.warScenario(0)
         }
     }
     
