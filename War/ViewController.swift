@@ -52,8 +52,8 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         // Set initial cards outside of view
-        self.cardViewP1Constraint.constant = 900
-        self.cardViewP2Constraint.constant = -500
+        self.cardViewP1Constraint.constant = -view.bounds.height
+        self.cardViewP2Constraint.constant = -view.bounds.height
         self.view.layoutIfNeeded()
     }
     
@@ -65,17 +65,36 @@ class ViewController: UIViewController {
     // Button Click Action
     
     @IBAction func playRoundTapped(sender: UIButton) {
-        showCounter()
-        
-        updateCounter()
         
         drawCardP1(cardViewP1)
         drawCardP2(cardViewP2)
         
+        showCounter()
+        updateCounter()
+        
         hideButton()
         
-        // Animate cards dealt
         startAnimation()
+    }
+    
+    // Evaluate upon flipping
+    
+    func evaluate() {
+        
+        if war.playerOneCardsInPlay[0].Value > war.playerTwoCardsInPlay[0].Value {
+            normalWinP1()
+            
+            print("P1 wins this round")
+        }
+        else if war.playerOneCardsInPlay[0].Value < war.playerTwoCardsInPlay[0].Value {
+            normalWinP2()
+            
+            print("P2 wins this round")
+        }
+        else {
+            print("War!")
+            war.warScenario(0)
+        }
     }
     
     // DECK COUNTERS
@@ -91,8 +110,8 @@ class ViewController: UIViewController {
     }
     
     func updateCounter() {
-        playerOneCounter.text = String(war.playerOneCards.count + war.playerOneCardsInPlay.count)
-        playerTwoCounter.text = String(war.playerTwoCards.count + war.playerTwoCardsInPlay.count)
+        playerOneCounter.text = String(war.playerOneCards.count)
+        playerTwoCounter.text = String(war.playerTwoCards.count)
     }
     
     // DRAW BUTTON TOGGLE
@@ -112,8 +131,8 @@ class ViewController: UIViewController {
         war.playerOneCardsInPlay.append(war.playerOneCards[0])
         let activeP1 = war.playerOneCardsInPlay[0]
         war.playerOneCards.removeAtIndex(0)
-        activeP1.Back.image = war.playerOneCardsInPlay[0].backImage
         activeP1.Front.image = UIImage(named: String(activeP1.Name!))
+        activeP1.Back.image = war.playerOneCardsInPlay[0].backImage
         
         player.addSubview(activeP1.Back)
     }
@@ -122,8 +141,8 @@ class ViewController: UIViewController {
         war.playerTwoCardsInPlay.append(war.playerTwoCards[0])
         let activeP2 = war.playerTwoCardsInPlay[0]
         war.playerTwoCards.removeAtIndex(0)
-        activeP2.Back.image = war.playerOneCardsInPlay[0].backImage
         activeP2.Front.image = UIImage(named: String(activeP2.Name!))
+        activeP2.Back.image = war.playerOneCardsInPlay[0].backImage
         
         player.addSubview(activeP2.Back)
     }
@@ -177,36 +196,6 @@ class ViewController: UIViewController {
         }
     }
     
-    func evaluate() {
-        
-        if war.playerOneCardsInPlay[0].Value > war.playerTwoCardsInPlay[0].Value {
-            war.playerOneCards.append(war.playerOneCardsInPlay[0])
-            war.playerOneCards.append(war.playerTwoCardsInPlay[0])
-            war.playerOneCardsInPlay.removeAll()
-            war.playerTwoCardsInPlay.removeAll()
-            
-            // Animate
-            normalWinP1()
-            
-            print("P1 wins this round")
-        }
-        else if war.playerOneCardsInPlay[0].Value < war.playerTwoCardsInPlay[0].Value {
-            war.playerTwoCards.append(war.playerTwoCardsInPlay[0])
-            war.playerTwoCards.append(war.playerOneCardsInPlay[0])
-            war.playerTwoCardsInPlay.removeAll()
-            war.playerOneCardsInPlay.removeAll()
-            
-            // Animate
-            normalWinP2()
-            
-            print("P2 wins this round")
-        }
-        else {
-            print("War!")
-            war.warScenario(0)
-        }
-    }
-    
     // CARD ANIMATIONS
     
     func startAnimation() {
@@ -221,19 +210,21 @@ class ViewController: UIViewController {
     }
     
     func normalWinP1() {
-        UIView.animateWithDuration(1.2, delay: 2.8, options: [.CurveEaseOut],animations: {
-            self.cardViewP1Constraint.constant = -500
+        UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut],animations: {
+            self.cardViewP1Constraint.constant = -self.view.bounds.height
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
+                self.war.normalWinP1AppendP1()
                 self.updateCounter()
                 self.showButton()
         })
-        UIView.animateWithDuration(1.2, delay: 2, options: [.CurveEaseOut], animations: {
-            self.cardViewP2Constraint.constant = 900
+        UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
+            self.cardViewP2Constraint.constant = self.view.bounds.height
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
+                self.war.normalWinP1AppendP2()
                 self.updateCounter()
                 self.showButton()
         })
@@ -241,19 +232,21 @@ class ViewController: UIViewController {
     }
     
     func normalWinP2() {
-        UIView.animateWithDuration(1.2, delay: 2, options: [.CurveEaseOut],animations: {
-            self.cardViewP1Constraint.constant = 900
+        UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut],animations: {
+            self.cardViewP1Constraint.constant = self.view.bounds.height
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
+                self.war.normalWinP2AppendP1()
                 self.updateCounter()
                 self.showButton()
         })
-        UIView.animateWithDuration(1.2, delay: 2.8, options: [.CurveEaseOut], animations: {
-            self.cardViewP2Constraint.constant = -500
+        UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
+            self.cardViewP2Constraint.constant = -self.view.bounds.height
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
+                self.war.normalWinP2AppendP2()
                 self.updateCounter()
                 self.showButton()
         })

@@ -158,39 +158,6 @@ class War {
         }
     }
     
-    func evaluate() {
-        playerOneCardsInPlay.append(playerOneCards[0])
-        playerOneCards.removeAtIndex(0)
-        playerTwoCardsInPlay.append(playerTwoCards[0])
-        playerTwoCards.removeAtIndex(0)
-        
-        if playerOneCardsInPlay[0].Value > playerTwoCardsInPlay[0].Value {
-            playerOneCards.append(playerOneCardsInPlay[0])
-            playerOneCards.append(playerTwoCardsInPlay[0])
-            playerOneCardsInPlay.removeAll()
-            playerTwoCardsInPlay.removeAll()
-            
-            // Animate
-            //vc.normalWinP1()
-            
-            print("P1 wins this round")
-        }
-        else if playerOneCardsInPlay[0].Value < playerTwoCardsInPlay[0].Value {
-            playerTwoCards.append(playerTwoCardsInPlay[0])
-            playerTwoCards.append(playerOneCardsInPlay[0])
-            playerTwoCardsInPlay.removeAll()
-            playerOneCardsInPlay.removeAll()
-            
-            // Animate
-            //vc.normalWinP2()
-            
-            print("P2 wins this round")
-        }
-        else {
-            warScenario(0)
-        }
-    }
-    
     func checkForWin() {
         if playerOneCards.count == 0 {
             bPlayerOneWinner = false
@@ -199,5 +166,25 @@ class War {
         } else {
             bPlayerOneWinner = nil
         }
+    }
+    
+    func normalWinP1AppendP1() {
+        playerOneCards.append(playerOneCardsInPlay[0])
+        playerOneCardsInPlay.removeAll()
+    }
+    
+    func normalWinP1AppendP2() {
+        playerOneCards.append(playerTwoCardsInPlay[0])
+        playerTwoCardsInPlay.removeAll()
+    }
+    
+    func normalWinP2AppendP2() {
+        playerTwoCards.append(playerTwoCardsInPlay[0])
+        playerTwoCardsInPlay.removeAll()
+    }
+    
+    func normalWinP2AppendP1() {
+        playerTwoCards.append(playerOneCardsInPlay[0])
+        playerOneCardsInPlay.removeAll()
     }
 }
