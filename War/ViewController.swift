@@ -23,13 +23,19 @@ class ViewController: UIViewController {
     
     let war = War()
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        hideCounter()
         // Rotate player 2 counter
         playerTwoCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+        hideCounter()
+        
+        // Rotate player 2 Card view
+        cardViewP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         
         self.playRoundButton.setTitle("DEAL", forState: UIControlState.Normal)
         
@@ -159,16 +165,10 @@ class ViewController: UIViewController {
             UIView.transitionFromView(war.playerOneCardsInPlay[0].Back, toView: war.playerOneCardsInPlay[0].Front, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
             war.playerOneCardsInPlay[0].ShowingFront = true
             if war.playerOneCardsInPlay[0].ShowingFront && war.playerTwoCardsInPlay[0].ShowingFront {
-                evaluate()
-                war.checkForWin()
                 
-                if war.bPlayerOneWinner == true {
-                    print("Player one wins")
-                } else if war.bPlayerOneWinner == false {
-                    print("Player 2 wins")
-                } else if war.bPlayerOneWinner == nil {
-                    print("No winner yet...")
-                }
+                evaluate()
+                war.checkDeck()
+                war.checkWinner()
             }
         }
     }
@@ -182,16 +182,10 @@ class ViewController: UIViewController {
             UIView.transitionFromView(war.playerTwoCardsInPlay[0].Back, toView: war.playerTwoCardsInPlay[0].Front, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
             war.playerTwoCardsInPlay[0].ShowingFront = true
             if war.playerOneCardsInPlay[0].ShowingFront && war.playerTwoCardsInPlay[0].ShowingFront {
-                evaluate()
-                war.checkForWin()
                 
-                if war.bPlayerOneWinner == true {
-                    print("Player one wins")
-                } else if war.bPlayerOneWinner == false {
-                    print("Player 2 wins")
-                } else if war.bPlayerOneWinner == nil {
-                    print("No winner yet...")
-                }
+                evaluate()
+                war.checkDeck()
+                war.checkWinner()
             }
         }
     }
@@ -217,6 +211,8 @@ class ViewController: UIViewController {
                 finished in
                 self.war.normalWinP1AppendP1()
                 self.updateCounter()
+                self.cardViewP1Constraint.constant = -self.view.bounds.height
+                self.view.layoutIfNeeded()
                 self.showButton()
         })
         UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
@@ -226,7 +222,8 @@ class ViewController: UIViewController {
                 finished in
                 self.war.normalWinP1AppendP2()
                 self.updateCounter()
-                self.showButton()
+                self.cardViewP2Constraint.constant = -self.view.bounds.height
+                self.view.layoutIfNeeded()
         })
         
     }
@@ -239,7 +236,8 @@ class ViewController: UIViewController {
                 finished in
                 self.war.normalWinP2AppendP1()
                 self.updateCounter()
-                self.showButton()
+                self.cardViewP1Constraint.constant = -self.view.bounds.height
+                self.view.layoutIfNeeded()
         })
         UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
             self.cardViewP2Constraint.constant = -self.view.bounds.height
@@ -248,6 +246,8 @@ class ViewController: UIViewController {
                 finished in
                 self.war.normalWinP2AppendP2()
                 self.updateCounter()
+                self.cardViewP2Constraint.constant = -self.view.bounds.height
+                self.view.layoutIfNeeded()
                 self.showButton()
         })
     }

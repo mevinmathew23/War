@@ -20,9 +20,6 @@ class War {
     
     var bPlayerOneWinner: Bool? = nil
     
-    //let vc = ViewController()
-    
-    
     //creating arrarys necessary to hold the cards for the game
     
     func addCards(Suit: String){
@@ -33,14 +30,7 @@ class War {
             deckOfCards.append(temp);
         }
     }
-    
-    //A function to add all four suits of cards into an array to create a deck
-    
-    
-    
-    // adding the four suits to a deck
-    
-    
+
     //creating a shuffling function.
     
     func deal(){
@@ -80,7 +70,6 @@ class War {
         guard counterTemp < 3 else {
             return;
         }
-        
         
         counterTemp += 1
         var playerOneWinCounter = 0
@@ -158,16 +147,6 @@ class War {
         }
     }
     
-    func checkForWin() {
-        if playerOneCards.count == 0 {
-            bPlayerOneWinner = false
-        } else if playerTwoCards.count == 0 {
-            bPlayerOneWinner = true
-        } else {
-            bPlayerOneWinner = nil
-        }
-    }
-    
     func normalWinP1AppendP1() {
         playerOneCards.append(playerOneCardsInPlay[0])
         playerOneCardsInPlay.removeAll()
@@ -186,5 +165,26 @@ class War {
     func normalWinP2AppendP1() {
         playerTwoCards.append(playerOneCardsInPlay[0])
         playerOneCardsInPlay.removeAll()
+    }
+    
+    func checkDeck() {
+        if playerOneCards.count == 0 {
+            bPlayerOneWinner = false
+        } else if playerTwoCards.count == 0 {
+            bPlayerOneWinner = true
+        } else {
+            bPlayerOneWinner = nil
+        }
+    }
+    
+    func checkWinner() {
+        if bPlayerOneWinner == true {
+            print("Player one wins")
+        } else if bPlayerOneWinner == false {
+            print("Player 2 wins")
+        } else if bPlayerOneWinner == nil {
+            print("No winner yet...")
+        }
+        
     }
 }
