@@ -55,20 +55,20 @@ class War {
     
     func warScenario( warCounter: Int)  {
         
-        var counterTemp = warCounter;
+        var counterTemp = warCounter
         
-        guard  playerOneCards.count >= 3 else{
-            playerOneCards.removeAll();
-            return;
+        guard playerOneCards.count >= 3 else{
+            playerOneCards.removeAll()
+            return
         }
         
         guard playerTwoCards.count >= 3 else{
-            playerTwoCards.removeAll();
-            return;
+            playerTwoCards.removeAll()
+            return
         }
         
         guard counterTemp < 3 else {
-            return;
+            return
         }
         
         counterTemp += 1
@@ -79,7 +79,7 @@ class War {
         for x in playerOneCardsInPlay {
             playerOneStorage.append(x)
         }
-        playerOneCardsInPlay.removeAll();
+        playerOneCardsInPlay.removeAll()
         
         for x in playerTwoCardsInPlay{
             playerTwoStorage.append(x)
@@ -89,8 +89,8 @@ class War {
         
         
         for j in 2.stride(to: 0, by: -1) {
-            let j1 = playerOneCards[j];
-            let j2 = playerTwoCards[j];
+            let j1 = playerOneCards[j]
+            let j2 = playerTwoCards[j]
             playerOneCardsInPlay.append(j1)
             playerTwoCardsInPlay.append(j2)
             playerOneCards.removeAtIndex(j)
@@ -147,6 +147,8 @@ class War {
         }
     }
     
+    
+    
     func normalWinP1AppendP1() {
         playerOneCards.append(playerOneCardsInPlay[0])
         playerOneCardsInPlay.removeAll()
@@ -165,6 +167,16 @@ class War {
     func normalWinP2AppendP1() {
         playerTwoCards.append(playerOneCardsInPlay[0])
         playerOneCardsInPlay.removeAll()
+    }
+    
+    func appendStorageP1() {
+        for x in playerOneCardsInPlay {
+            playerOneStorage.append(x)
+        }
+    }
+    
+    func appendStorageP2() {
+        
     }
     
     func checkDeck() {

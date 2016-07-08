@@ -11,15 +11,29 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var cardViewP1: UIView!
+    @IBOutlet weak var cardViewP1War1: UIView!
+    @IBOutlet weak var cardViewP1War2: UIView!
+    @IBOutlet weak var cardViewP1War3: UIView!
+    
     @IBOutlet weak var cardViewP2: UIView!
+    @IBOutlet weak var cardViewP2War1: UIView!
+    @IBOutlet weak var cardViewP2War2: UIView!
+    @IBOutlet weak var cardViewP2War3: UIView!
+    
+    @IBOutlet weak var cardViewP1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War3Constraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var cardViewP2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War3Constraint: NSLayoutConstraint!
     
     @IBOutlet weak var playRoundButton: UIButton!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var playerOneCounter: UILabel!
     @IBOutlet weak var playerTwoCounter: UILabel!
-    
-    @IBOutlet weak var cardViewP1Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2Constraint: NSLayoutConstraint!
     
     let war = War()
     
@@ -59,7 +73,15 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         // Set initial cards outside of view
         self.cardViewP1Constraint.constant = -view.bounds.height
+        self.cardViewP1War1Constraint.constant = -view.bounds.height
+        self.cardViewP1War2Constraint.constant = -view.bounds.height
+        self.cardViewP1War3Constraint.constant = -view.bounds.height
+        
         self.cardViewP2Constraint.constant = -view.bounds.height
+        self.cardViewP2War1Constraint.constant = -view.bounds.height
+        self.cardViewP2War2Constraint.constant = -view.bounds.height
+        self.cardViewP2War3Constraint.constant = -view.bounds.height
+        
         self.view.layoutIfNeeded()
     }
     
@@ -102,6 +124,98 @@ class ViewController: UIViewController {
             war.warScenario(0)
         }
     }
+    
+    // War Scenario
+    
+//    func warScenario( warCounter: Int)  {
+//        
+//        var counterTemp = warCounter
+//        
+//        guard playerOneCards.count >= 3 else{
+//            playerOneCards.removeAll()
+//            return
+//        }
+//        
+//        guard playerTwoCards.count >= 3 else{
+//            playerTwoCards.removeAll()
+//            return
+//        }
+//        
+//        guard counterTemp < 3 else {
+//            return
+//        }
+//        
+//        counterTemp += 1
+//        var playerOneWinCounter = 0
+//        var playerTwoWinCounter = 0
+//        
+//        playerOneCardsInPlay.removeAll()
+//        
+//        for x in playerTwoCardsInPlay{
+//            playerTwoStorage.append(x)
+//        }
+//        playerTwoCardsInPlay.removeAll()
+//        
+//        
+//        
+//        for j in 2.stride(to: 0, by: -1) {
+//            let j1 = playerOneCards[j]
+//            let j2 = playerTwoCards[j]
+//            playerOneCardsInPlay.append(j1)
+//            playerTwoCardsInPlay.append(j2)
+//            playerOneCards.removeAtIndex(j)
+//            playerTwoCards.removeAtIndex(j)
+//            
+//            if j1.Value > j2.Value {
+//                playerOneWinCounter += 1
+//                
+//            }
+//            else if j1.Value < j2.Value {
+//                playerTwoWinCounter += 1
+//            }
+//            else {
+//                warScenario(counterTemp)
+//                
+//            }
+//        }
+//        if playerOneWinCounter >= 2 {
+//            for i in playerOneStorage {
+//                playerOneCards.append(i)
+//            }
+//            for j in playerTwoStorage {
+//                playerOneCards.append(j)
+//            }
+//            for k in playerOneCardsInPlay {
+//                playerOneCards.append(k)
+//            }
+//            for l in playerTwoCardsInPlay {
+//                playerOneCards.append(l)
+//            }
+//            playerOneStorage.removeAll()
+//            playerTwoStorage.removeAll()
+//            playerOneCardsInPlay.removeAll()
+//            playerTwoCardsInPlay.removeAll()
+//            
+//        } else if playerTwoWinCounter >= 2 {
+//            for i in playerOneStorage {
+//                playerTwoCards.append(i)
+//            }
+//            for j in playerTwoStorage {
+//                playerTwoCards.append(j)
+//            }
+//            for k in playerOneCardsInPlay {
+//                playerTwoCards.append(k)
+//            }
+//            for l in playerTwoCardsInPlay {
+//                playerTwoCards.append(l)
+//            }
+//            playerOneStorage.removeAll()
+//            playerTwoStorage.removeAll()
+//            playerOneCardsInPlay.removeAll()
+//            playerTwoCardsInPlay.removeAll()
+//            
+//        }
+//    }
     
     // DECK COUNTERS
     
