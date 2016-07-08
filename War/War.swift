@@ -6,7 +6,7 @@
 //  Copyright © 2016 Apple Dev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class War {
     
@@ -17,9 +17,8 @@ class War {
     var playerOneStorage = [Card]()
     var playerTwoStorage = [Card]()
     var playerTwoCards = [Card]()
-
-    var bPlayerOneWinner = false;
     
+    var bPlayerOneWinner: Bool? = nil
     
     //creating arrarys necessary to hold the cards for the game
     
@@ -31,23 +30,16 @@ class War {
             deckOfCards.append(temp);
         }
     }
-    
-    //A function to add all four suits of cards into an array to create a deck
-    
-    
-    
-    // adding the four suits to a deck
 
-    
     //creating a shuffling function.
     
     func deal(){
         let range = Int(deckOfCards.count / 2)
         
         for _ in 1...range {
-        let index: Int = Int(arc4random_uniform(UInt32(deckOfCards.count - 1)));
-        playerOneCards.append(deckOfCards[index])
-        deckOfCards.removeAtIndex(index)
+            let index: Int = Int(arc4random_uniform(UInt32(deckOfCards.count - 1)));
+            playerOneCards.append(deckOfCards[index])
+            deckOfCards.removeAtIndex(index)
         }
         
         //putting 26 random cards into player one deck and the remaining into player two dec
@@ -55,9 +47,9 @@ class War {
         playerTwoCards = deckOfCards;
         
         for _ in 1...range {
-        playerOneCards.shuffle()
-        playerTwoCards.shuffle()
-        
+            playerOneCards.shuffle()
+            playerTwoCards.shuffle()
+            
         }
     }
     
@@ -79,7 +71,6 @@ class War {
             return;
         }
         
-       
         counterTemp += 1
         var playerOneWinCounter = 0
         var playerTwoWinCounter = 0
@@ -104,7 +95,7 @@ class War {
             playerTwoCardsInPlay.append(j2)
             playerOneCards.removeAtIndex(j)
             playerTwoCards.removeAtIndex(j)
-
+            
             if j1.Value > j2.Value {
                 playerOneWinCounter += 1
                 
@@ -156,41 +147,44 @@ class War {
         }
     }
     
-    func play(){
-        repeat {
-            playerOneCardsInPlay.append(playerOneCards[0])
-            playerOneCards.removeAtIndex(0)
-            playerTwoCardsInPlay.append(playerTwoCards[0])
-            playerTwoCards.removeAtIndex(0)
-            
-            
-            if playerOneCardsInPlay[0].Value > playerTwoCardsInPlay[0].Value {
-                playerOneCards.append(playerOneCardsInPlay[0])
-                playerOneCards.append(playerTwoCardsInPlay[0])
-                playerOneCardsInPlay.removeAll()
-                playerTwoCardsInPlay.removeAll()
-            }
-            else if playerOneCardsInPlay[0].Value < playerTwoCardsInPlay[0].Value {
-                playerTwoCards.append(playerTwoCardsInPlay[0])
-                playerTwoCards.append(playerOneCardsInPlay[0])
-                playerTwoCardsInPlay.removeAll()
-                playerOneCardsInPlay.removeAll()
-            }
-            else{
-                warScenario(0)
-            }
-        
-        
-        } while playerOneCards.count != 0 && playerTwoCards.count != 0
-        
-        if playerOneCards.count == 0 
-        {
+    func normalWinP1AppendP1() {
+        playerOneCards.append(playerOneCardsInPlay[0])
+        playerOneCardsInPlay.removeAll()
+    }
+    
+    func normalWinP1AppendP2() {
+        playerOneCards.append(playerTwoCardsInPlay[0])
+        playerTwoCardsInPlay.removeAll()
+    }
+    
+    func normalWinP2AppendP2() {
+        playerTwoCards.append(playerTwoCardsInPlay[0])
+        playerTwoCardsInPlay.removeAll()
+    }
+    
+    func normalWinP2AppendP1() {
+        playerTwoCards.append(playerOneCardsInPlay[0])
+        playerOneCardsInPlay.removeAll()
+    }
+    
+    func checkDeck() {
+        if playerOneCards.count == 0 {
             bPlayerOneWinner = false
+        } else if playerTwoCards.count == 0 {
+            bPlayerOneWinner = true
         } else {
-            bPlayerOneWinner = true;
+            bPlayerOneWinner = nil
+        }
+    }
+    
+    func checkWinner() {
+        if bPlayerOneWinner == true {
+            print("Player one wins")
+        } else if bPlayerOneWinner == false {
+            print("Player 2 wins")
+        } else if bPlayerOneWinner == nil {
+            print("No winner yet...")
         }
         
     }
-
-    
 }

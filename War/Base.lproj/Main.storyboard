@@ -62,20 +62,23 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yk4-1h-AeT">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yk4-1h-AeT">
                                 <rect key="frame" x="285" y="0.0" width="31" height="30"/>
-                                <state key="normal" title="Deal"/>
+                                <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="66"/>
+                                <state key="normal" title="Deal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="playRoundTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pya-Me-biq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZg-b8-7fL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZg-b8-7fL">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="CyS-In-rpP"/>
                                     <constraint firstAttribute="width" constant="108" id="rhy-hW-g2Q"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AcademyEngravedLetPlain" family="Academy Engraved LET" pointSize="42"/>
+                                <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="42"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="1" height="1"/>
@@ -92,10 +95,34 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yI-70-QNt">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="9kW-6v-7BL"/>
+                                    <constraint firstAttribute="height" constant="100" id="MYH-gv-9zh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="42"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="9kW-6v-7BL"/>
+                                        <exclude reference="MYH-gv-9zh"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="9kW-6v-7BL"/>
+                                        <include reference="MYH-gv-9zh"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="1yI-70-QNt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="11I-e2-VcG"/>
                             <constraint firstItem="Yk4-1h-AeT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3Bm-qY-zQZ"/>
+                            <constraint firstAttribute="trailing" secondItem="1yI-70-QNt" secondAttribute="trailing" id="8Bw-r5-sQe"/>
                             <constraint firstItem="yZg-b8-7fL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BF3-Xb-79j"/>
                             <constraint firstItem="yHw-EZ-5OG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="CaK-lw-dyZ"/>
                             <constraint firstAttribute="bottom" secondItem="rWA-cI-K6t" secondAttribute="bottom" constant="50" id="G4m-vi-fcP"/>
@@ -114,8 +141,11 @@
                                 <exclude reference="rWA-cI-K6t"/>
                                 <exclude reference="yHw-EZ-5OG"/>
                                 <exclude reference="yZg-b8-7fL"/>
+                                <exclude reference="1yI-70-QNt"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="11I-e2-VcG"/>
+                                <exclude reference="8Bw-r5-sQe"/>
                                 <exclude reference="BF3-Xb-79j"/>
                                 <exclude reference="G4m-vi-fcP"/>
                                 <exclude reference="OOE-vJ-Tw1"/>
@@ -136,8 +166,11 @@
                                 <include reference="rWA-cI-K6t"/>
                                 <include reference="yHw-EZ-5OG"/>
                                 <include reference="yZg-b8-7fL"/>
+                                <include reference="1yI-70-QNt"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="11I-e2-VcG"/>
+                                <include reference="8Bw-r5-sQe"/>
                                 <include reference="BF3-Xb-79j"/>
                                 <include reference="G4m-vi-fcP"/>
                                 <include reference="OOE-vJ-Tw1"/>
@@ -160,6 +193,8 @@
                         <outlet property="cardViewP2" destination="yHw-EZ-5OG" id="Pbr-ZP-FAR"/>
                         <outlet property="cardViewP2Constraint" destination="CaK-lw-dyZ" id="Jzx-sv-0nM"/>
                         <outlet property="playRoundButton" destination="Yk4-1h-AeT" id="ncD-1B-6CF"/>
+                        <outlet property="playerOneCounter" destination="yZg-b8-7fL" id="EAH-9Q-wAy"/>
+                        <outlet property="playerTwoCounter" destination="1yI-70-QNt" id="2ao-aD-t2Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
