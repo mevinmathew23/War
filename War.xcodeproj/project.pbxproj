@@ -21,6 +21,7 @@
 		B71DC19B1D2C36330040F476 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		B71DC19D1D2C366F0040F476 /* ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ext.swift; sourceTree = "<group>"; };
 		B71DC19F1D2C369E0040F476 /* War.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = War.swift; sourceTree = "<group>"; };
+		B76524601D304C1B00AC042D /* Betting Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = "Betting Playground.playground"; path = "War/Betting Playground.playground"; sourceTree = "<group>"; };
 		B7C60D311D19B76B00E18A36 /* War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = War.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C60D341D19B76B00E18A36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7C60D361D19B76B00E18A36 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +47,7 @@
 			children = (
 				B7C60D331D19B76B00E18A36 /* War */,
 				B7C60D321D19B76B00E18A36 /* Products */,
+				B76524601D304C1B00AC042D /* Betting Playground.playground */,
 			);
 			sourceTree = "<group>";
 		};
