@@ -173,10 +173,14 @@ class War {
         for x in playerOneCardsInPlay {
             playerOneStorage.append(x)
         }
+        playerOneCardsInPlay.removeAll()
     }
     
     func appendStorageP2() {
-        
+        for x in playerTwoCardsInPlay{
+            playerTwoStorage.append(x)
+        }
+        playerTwoCardsInPlay.removeAll()
     }
     
     func checkDeck() {

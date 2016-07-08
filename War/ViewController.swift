@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var cardViewP2War2: UIView!
     @IBOutlet weak var cardViewP2War3: UIView!
     
+    // Top and bottom constraints
+    
     @IBOutlet weak var cardViewP1Constraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1War1Constraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1War2Constraint: NSLayoutConstraint!
@@ -29,6 +31,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var cardViewP2War1Constraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2War2Constraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2War3Constraint: NSLayoutConstraint!
+    
+    // Horizontally centered alignment
+    
+    @IBOutlet weak var cardViewP1X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War1X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War2X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War3X: NSLayoutConstraint!
+    
+    @IBOutlet weak var cardViewP2X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War1X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War2X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War3X: NSLayoutConstraint!
     
     @IBOutlet weak var playRoundButton: UIButton!
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -121,101 +135,107 @@ class ViewController: UIViewController {
         }
         else {
             print("War!")
+            moveToStorage()
             war.warScenario(0)
         }
     }
     
     // War Scenario
     
-//    func warScenario( warCounter: Int)  {
-//        
-//        var counterTemp = warCounter
-//        
-//        guard playerOneCards.count >= 3 else{
-//            playerOneCards.removeAll()
-//            return
-//        }
-//        
-//        guard playerTwoCards.count >= 3 else{
-//            playerTwoCards.removeAll()
-//            return
-//        }
-//        
-//        guard counterTemp < 3 else {
-//            return
-//        }
-//        
-//        counterTemp += 1
-//        var playerOneWinCounter = 0
-//        var playerTwoWinCounter = 0
-//        
-//        playerOneCardsInPlay.removeAll()
-//        
-//        for x in playerTwoCardsInPlay{
-//            playerTwoStorage.append(x)
-//        }
-//        playerTwoCardsInPlay.removeAll()
-//        
-//        
-//        
-//        for j in 2.stride(to: 0, by: -1) {
-//            let j1 = playerOneCards[j]
-//            let j2 = playerTwoCards[j]
-//            playerOneCardsInPlay.append(j1)
-//            playerTwoCardsInPlay.append(j2)
-//            playerOneCards.removeAtIndex(j)
-//            playerTwoCards.removeAtIndex(j)
-//            
-//            if j1.Value > j2.Value {
-//                playerOneWinCounter += 1
-//                
-//            }
-//            else if j1.Value < j2.Value {
-//                playerTwoWinCounter += 1
-//            }
-//            else {
-//                warScenario(counterTemp)
-//                
-//            }
-//        }
-//        if playerOneWinCounter >= 2 {
-//            for i in playerOneStorage {
-//                playerOneCards.append(i)
-//            }
-//            for j in playerTwoStorage {
-//                playerOneCards.append(j)
-//            }
-//            for k in playerOneCardsInPlay {
-//                playerOneCards.append(k)
-//            }
-//            for l in playerTwoCardsInPlay {
-//                playerOneCards.append(l)
-//            }
-//            playerOneStorage.removeAll()
-//            playerTwoStorage.removeAll()
-//            playerOneCardsInPlay.removeAll()
-//            playerTwoCardsInPlay.removeAll()
-//            
-//        } else if playerTwoWinCounter >= 2 {
-//            for i in playerOneStorage {
-//                playerTwoCards.append(i)
-//            }
-//            for j in playerTwoStorage {
-//                playerTwoCards.append(j)
-//            }
-//            for k in playerOneCardsInPlay {
-//                playerTwoCards.append(k)
-//            }
-//            for l in playerTwoCardsInPlay {
-//                playerTwoCards.append(l)
-//            }
-//            playerOneStorage.removeAll()
-//            playerTwoStorage.removeAll()
-//            playerOneCardsInPlay.removeAll()
-//            playerTwoCardsInPlay.removeAll()
-//            
-//        }
-//    }
+    func warScenario( warCounter: Int)  {
+        
+        var counterTemp = warCounter
+        let cardViewP1Array: Array = [cardViewP1War1, cardViewP1War2, cardViewP1War3]
+        let cardViewP2Array: Array = [cardViewP2War1, cardViewP2War2, cardViewP2War3]
+        
+        guard playerOneCards.count >= 3 else{
+            playerOneCards.removeAll()
+            return
+        }
+        
+        guard playerTwoCards.count >= 3 else{
+            playerTwoCards.removeAll()
+            return
+        }
+        
+        guard counterTemp < 3 else {
+            return
+        }
+        
+        counterTemp += 1
+        var playerOneWinCounter = 0
+        var playerTwoWinCounter = 0
+        
+        for j in 2.stride(to: 0, by: -1) {
+            let j1 = war.playerOneCards[j]
+            let j2 = war.playerTwoCards[j]
+            
+            let assignedViewP1 = cardViewP1Array[(3-j)]
+            let assignedViewP2 = cardViewP2Array[(3-j)]
+            
+            war.playerOneCardsInPlay.append(j1)
+            war.playerTwoCardsInPlay.append(j2)
+            
+            war.playerOneCards.removeAtIndex(j)
+            war.playerTwoCards.removeAtIndex(j)
+            
+            j1.Front.image = UIImage(named: String(j1.Name!))
+            j1.Back.image = j1.backImage
+            j2.Front.image = UIImage(named: String(j2.Name!))
+            j2.Back.image = j2.backImage
+            
+            assignedViewP1.addSubview(j1.Back)
+            assignedViewP2.addSubview(j2.Back)
+            
+            if j1.Value > j2.Value {
+                playerOneWinCounter += 1
+                
+            }
+            else if j1.Value < j2.Value {
+                playerTwoWinCounter += 1
+            }
+            else {
+                warScenario(counterTemp)
+            }
+        }
+        if playerOneWinCounter >= 2 {
+            for i in playerOneStorage {
+                playerOneCards.append(i)
+            }
+            for j in playerTwoStorage {
+                playerOneCards.append(j)
+            }
+            for k in playerOneCardsInPlay {
+                playerOneCards.append(k)
+            }
+            for l in playerTwoCardsInPlay {
+                playerOneCards.append(l)
+            }
+            playerOneStorage.removeAll()
+            playerTwoStorage.removeAll()
+            playerOneCardsInPlay.removeAll()
+            playerTwoCardsInPlay.removeAll()
+            
+        } else if playerTwoWinCounter >= 2 {
+            for i in playerOneStorage {
+                playerTwoCards.append(i)
+            }
+            for j in playerTwoStorage {
+                playerTwoCards.append(j)
+            }
+            for k in playerOneCardsInPlay {
+                playerTwoCards.append(k)
+            }
+            for l in playerTwoCardsInPlay {
+                playerTwoCards.append(l)
+            }
+            playerOneStorage.removeAll()
+            playerTwoStorage.removeAll()
+            playerOneCardsInPlay.removeAll()
+            playerTwoCardsInPlay.removeAll()
+            
+        }
+    }
     
     // DECK COUNTERS
     
@@ -363,6 +383,57 @@ class ViewController: UIViewController {
                 self.cardViewP2Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
                 self.showButton()
+        })
+    }
+    
+    func startWar() {
+        
+        // P1
+        
+        UIView.animateWithDuration(1, delay: 0, options: [.CurveEaseOut], animations: {
+            self.cardViewP1War1Constraint.constant = 50
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        UIView.animateWithDuration(1, delay: 0.3, options: [.CurveEaseOut], animations: {
+            self.cardViewP1War2Constraint.constant = 50
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        UIView.animateWithDuration(1, delay: 0.6, options: [.CurveEaseOut], animations: {
+            self.cardViewP1War3Constraint.constant = 50
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        
+        // P2
+        
+        UIView.animateWithDuration(1, delay: 1, options: [.CurveEaseOut], animations: {
+            self.cardViewP2War1Constraint.constant = 50
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        UIView.animateWithDuration(1, delay: 0.4, options: [.CurveEaseOut], animations: {
+            self.cardViewP2War2Constraint.constant = 50
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+        UIView.animateWithDuration(1, delay: 0.7, options: [.CurveEaseOut], animations: {
+            self.cardViewP2War3Constraint.constant = 50
+            self.view.layoutIfNeeded()
+            }, completion: nil)
+    }
+    func moveToStorage() {
+        UIView.animateWithDuration(0.6, delay: 1.5, options: [.CurveEaseOut], animations: {
+            self.cardViewP1Constraint.constant = self.view.bounds.height/2
+            self.cardViewP1X.constant = (self.view.bounds.width/2) - ((self.cardViewP1.bounds.width/2)-5)
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.war.appendStorageP1()
+        })
+        UIView.animateWithDuration(0.6, delay: 1.6, options: [.CurveEaseOut], animations: {
+            self.cardViewP2Constraint.constant = self.view.bounds.height/2
+            self.cardViewP2X.constant = -(self.view.bounds.width/2) + ((self.cardViewP2.bounds.width/2)+5)
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.war.appendStorageP2()
         })
     }
 }

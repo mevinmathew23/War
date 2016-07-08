@@ -358,18 +358,26 @@
                         <outlet property="cardViewP1Constraint" destination="G4m-vi-fcP" id="CdC-bS-j6x"/>
                         <outlet property="cardViewP1War1" destination="dn4-W8-249" id="4QV-hD-Thz"/>
                         <outlet property="cardViewP1War1Constraint" destination="94A-k6-lTr" id="Jib-1q-CFb"/>
+                        <outlet property="cardViewP1War1X" destination="pFw-oE-G6e" id="EQB-Mr-Grp"/>
                         <outlet property="cardViewP1War2" destination="wH2-ZH-hIe" id="7yc-bZ-NU5"/>
                         <outlet property="cardViewP1War2Constraint" destination="elC-gU-CR5" id="80y-oD-dHW"/>
+                        <outlet property="cardViewP1War2X" destination="62S-tw-XJR" id="EMc-2Q-6Mg"/>
                         <outlet property="cardViewP1War3" destination="Zak-jf-YGh" id="yln-NY-tlz"/>
                         <outlet property="cardViewP1War3Constraint" destination="qCa-mq-pRN" id="Lqn-YX-Av2"/>
+                        <outlet property="cardViewP1War3X" destination="PTv-qd-8oD" id="HMw-Yt-1Hy"/>
+                        <outlet property="cardViewP1X" destination="OOE-vJ-Tw1" id="KyS-6y-hgq"/>
                         <outlet property="cardViewP2" destination="yHw-EZ-5OG" id="Pbr-ZP-FAR"/>
                         <outlet property="cardViewP2Constraint" destination="CaK-lw-dyZ" id="Jzx-sv-0nM"/>
                         <outlet property="cardViewP2War1" destination="j3Q-cT-X8x" id="rkO-Pk-X2d"/>
                         <outlet property="cardViewP2War1Constraint" destination="j8B-DA-04T" id="FJv-S5-mgI"/>
+                        <outlet property="cardViewP2War1X" destination="uhD-tN-Yjh" id="M18-oQ-fVD"/>
                         <outlet property="cardViewP2War2" destination="8cb-GE-Nbi" id="Kdk-bV-vcj"/>
                         <outlet property="cardViewP2War2Constraint" destination="oZx-ql-ZUi" id="Baz-L6-fqT"/>
+                        <outlet property="cardViewP2War2X" destination="uZt-gd-h5E" id="x4G-F7-d16"/>
                         <outlet property="cardViewP2War3" destination="oUp-lU-i4w" id="xXw-Xz-tFN"/>
                         <outlet property="cardViewP2War3Constraint" destination="pAp-9K-RqS" id="Wtx-Yp-cGJ"/>
+                        <outlet property="cardViewP2War3X" destination="IhQ-2d-4lO" id="cCI-Xl-vm0"/>
+                        <outlet property="cardViewP2X" destination="Uhd-jN-HQj" id="xhp-q9-WcY"/>
                         <outlet property="playRoundButton" destination="Yk4-1h-AeT" id="ncD-1B-6CF"/>
                         <outlet property="playerOneCounter" destination="yZg-b8-7fL" id="EAH-9Q-wAy"/>
                         <outlet property="playerTwoCounter" destination="1yI-70-QNt" id="2ao-aD-t2Y"/>
