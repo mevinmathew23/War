@@ -344,7 +344,7 @@ class ViewController: UIViewController {
         }
     }
     func tappedWarP1() {
-        print(war.playerOneCardsInPlay[0].Name!)
+        //print(war.playerOneCardsInPlay[0].Name!)
         if (war.playerOneCardsInPlay[0].ShowingFront) {
             UIView.transitionFromView(war.playerOneCardsInPlay[0].Front, toView: war.playerOneCardsInPlay[0].Back, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
             war.playerOneCardsInPlay[0].ShowingFront = false
@@ -361,7 +361,7 @@ class ViewController: UIViewController {
         }
     }
     func tappedWarP2() {
-        print(war.playerTwoCardsInPlay[0].Name!)
+        //print(war.playerTwoCardsInPlay[0].Name!)
         if (war.playerTwoCardsInPlay[0].ShowingFront) {
             
             UIView.transitionFromView(war.playerTwoCardsInPlay[0].Front, toView: war.playerTwoCardsInPlay[0].Back, duration: 1, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
