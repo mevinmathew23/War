@@ -174,16 +174,19 @@ class War {
     }
     
     func appendStorageP1() {
+        playerOneCardsInPlay[0].ShowingFront = false
         playerOneStorage.append(playerOneCardsInPlay[0])
         playerOneCardsInPlay.removeAtIndex(0)
     }
     
     func appendStorageP2() {
+        playerTwoCardsInPlay[0].ShowingFront = false
         playerTwoStorage.append(playerTwoCardsInPlay[0])
         playerTwoCardsInPlay.removeAtIndex(0)
     }
     func appendAllP1() {
         for x in playerOneCardsInPlay {
+            x.ShowingFront = false
             playerOneStorage.append(x)
         }
         playerOneCardsInPlay.removeAll()
@@ -191,6 +194,7 @@ class War {
     
     func appendAllP2() {
         for x in playerTwoCardsInPlay {
+            x.ShowingFront = false
             playerTwoStorage.append(x)
         }
         playerTwoCardsInPlay.removeAll()
