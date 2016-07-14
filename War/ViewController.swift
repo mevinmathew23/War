@@ -319,6 +319,8 @@ class ViewController: UIViewController {
             j2.Front.image = UIImage(named: String(j2.Name!))
             j2.Back.image = j2.backImage
             
+            updateCounter()
+            
             assignedViewP1.addSubview(j1.Back)
             assignedViewP2.addSubview(j2.Back)
         }
@@ -338,8 +340,6 @@ class ViewController: UIViewController {
     func warTapGest2() {
         let tapWarP1 = UITapGestureRecognizer(target: self, action: #selector (ViewController.tappedWarP1))
         let tapWarP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedWarP2))
-        cardViewP1War2.userInteractionEnabled = true
-        cardViewP2War2.userInteractionEnabled = true
         tapWarP1.numberOfTapsRequired = 1
         tapWarP2.numberOfTapsRequired = 1
         cardViewP1War2.addGestureRecognizer(tapWarP1)
@@ -348,8 +348,6 @@ class ViewController: UIViewController {
     func warTapGest3() {
         let tapWarP1 = UITapGestureRecognizer(target: self, action: #selector (ViewController.tappedWarP1))
         let tapWarP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedWarP2))
-        cardViewP1War3.userInteractionEnabled = true
-        cardViewP2War3.userInteractionEnabled = true
         tapWarP1.numberOfTapsRequired = 1
         tapWarP2.numberOfTapsRequired = 1
         cardViewP1War3.addGestureRecognizer(tapWarP1)
@@ -548,6 +546,7 @@ class ViewController: UIViewController {
                 }, completion: {
                     finished in
                     self.cardViewP1War1.userInteractionEnabled = false
+                    self.cardViewP1War2.userInteractionEnabled = true
                     self.war.appendStorageP1()
             })
             UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
@@ -557,6 +556,7 @@ class ViewController: UIViewController {
                 }, completion: {
                     finished in
                     self.cardViewP2War1.userInteractionEnabled = false
+                    self.cardViewP2War2.userInteractionEnabled = true
                     self.war.appendStorageP2()
                     self.warTapGest2()
             })
@@ -569,6 +569,7 @@ class ViewController: UIViewController {
                 }, completion: {
                     finished in
                     self.cardViewP1War2.userInteractionEnabled = false
+                    self.cardViewP1War3.userInteractionEnabled = true
                     self.war.appendStorageP1()
             })
             UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
@@ -578,6 +579,7 @@ class ViewController: UIViewController {
                 }, completion: {
                     finished in
                     self.cardViewP2War2.userInteractionEnabled = false
+                    self.cardViewP2War3.userInteractionEnabled = true
                     self.war.appendStorageP2()
                     self.warTapGest3()
             })
@@ -669,6 +671,8 @@ class ViewController: UIViewController {
                 finished in
                 self.cardViewP1War3X.constant = 45
                 self.view.layoutIfNeeded()
+                self.cardViewP1.userInteractionEnabled = true
+                self.cardViewP2.userInteractionEnabled = true
                 self.showButton()
         })
         UIView.animateWithDuration(1, delay: 2.1, options: [.CurveEaseOut], animations: {
@@ -759,6 +763,8 @@ class ViewController: UIViewController {
                 finished in
                 self.cardViewP2War3X.constant = -45
                 self.view.layoutIfNeeded()
+                self.cardViewP1.userInteractionEnabled = true
+                self.cardViewP2.userInteractionEnabled = true
                 self.showButton()
         })
     }

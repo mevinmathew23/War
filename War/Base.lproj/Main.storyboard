@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundPSI" translatesAutoresizingMaskIntoConstraints="NO" id="41g-bh-HY2" userLabel="background">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="41g-bh-HY2" userLabel="background">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zak-jf-YGh">
@@ -389,6 +389,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="backgroundPSI" width="306" height="396"/>
+        <image name="backgroundImage" width="640" height="366"/>
     </resources>
 </document>
