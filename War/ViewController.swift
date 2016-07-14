@@ -470,6 +470,7 @@ class ViewController: UIViewController {
                 self.updateCounter()
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
+                
         })
         UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
             self.cardViewP2Constraint.constant = -self.view.bounds.height
