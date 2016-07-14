@@ -150,34 +150,47 @@ class War {
     
     
     func normalWinP1AppendP1() {
+        playerOneCardsInPlay[0].ShowingFront = false
         playerOneCards.append(playerOneCardsInPlay[0])
         playerOneCardsInPlay.removeAll()
     }
     
     func normalWinP1AppendP2() {
+        playerTwoCardsInPlay[0].ShowingFront = false
         playerOneCards.append(playerTwoCardsInPlay[0])
         playerTwoCardsInPlay.removeAll()
     }
     
     func normalWinP2AppendP2() {
+        playerTwoCardsInPlay[0].ShowingFront = false
         playerTwoCards.append(playerTwoCardsInPlay[0])
         playerTwoCardsInPlay.removeAll()
     }
     
     func normalWinP2AppendP1() {
+        playerOneCardsInPlay[0].ShowingFront = false
         playerTwoCards.append(playerOneCardsInPlay[0])
         playerOneCardsInPlay.removeAll()
     }
     
     func appendStorageP1() {
+        playerOneStorage.append(playerOneCardsInPlay[0])
+        playerOneCardsInPlay.removeAtIndex(0)
+    }
+    
+    func appendStorageP2() {
+        playerTwoStorage.append(playerTwoCardsInPlay[0])
+        playerTwoCardsInPlay.removeAtIndex(0)
+    }
+    func appendAllP1() {
         for x in playerOneCardsInPlay {
             playerOneStorage.append(x)
         }
         playerOneCardsInPlay.removeAll()
     }
     
-    func appendStorageP2() {
-        for x in playerTwoCardsInPlay{
+    func appendAllP2() {
+        for x in playerTwoCardsInPlay {
             playerTwoStorage.append(x)
         }
         playerTwoCardsInPlay.removeAll()
