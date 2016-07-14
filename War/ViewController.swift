@@ -282,6 +282,7 @@ class ViewController: UIViewController {
         activeP1.Front.image = UIImage(named: String(activeP1.Name!))
         activeP1.Back.image = war.playerOneCardsInPlay[0].backImage
         
+        activeP1.ShowingFront = false
         player.addSubview(activeP1.Back)
     }
     
@@ -292,6 +293,7 @@ class ViewController: UIViewController {
         activeP2.Front.image = UIImage(named: String(activeP2.Name!))
         activeP2.Back.image = war.playerOneCardsInPlay[0].backImage
         
+        activeP2.ShowingFront = false
         player.addSubview(activeP2.Back)
     }
     
@@ -307,6 +309,9 @@ class ViewController: UIViewController {
             
             let assignedViewP1 = cardViewP1Array[(2-j)]
             let assignedViewP2 = cardViewP2Array[(2-j)]
+            
+            j1.ShowingFront = false
+            j2.ShowingFront = false
             
             war.playerOneCardsInPlay.append(j1)
             war.playerTwoCardsInPlay.append(j2)
