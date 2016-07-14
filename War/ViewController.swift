@@ -148,6 +148,18 @@ class ViewController: UIViewController {
         }
     }
     
+    func checkWinner() {
+        if war.bPlayerOneWinner == true {
+            print("Player one wins")
+        } else if war.bPlayerOneWinner == false {
+            print("Player 2 wins")
+        } else if war.bPlayerOneWinner == nil {
+            print("No winner yet...")
+            showButton()
+        }
+        
+    }
+    
     // War Scenario
     
     func warScenario( warCounter: Int)  {
@@ -213,6 +225,8 @@ class ViewController: UIViewController {
             war.playerOneCardsInPlay.removeAll()
             war.playerTwoCardsInPlay.removeAll()
             
+            warWinP1()
+            
         } else if playerTwoWinCounter >= 2 {
             print("Player two wins the war!")
             for i in war.playerOneStorage {
@@ -225,6 +239,8 @@ class ViewController: UIViewController {
             war.playerTwoStorage.removeAll()
             war.playerOneCardsInPlay.removeAll()
             war.playerTwoCardsInPlay.removeAll()
+            
+            warWinP2()
         }
     }
     
@@ -355,7 +371,6 @@ class ViewController: UIViewController {
                 
                 evaluate()
                 war.checkDeck()
-                war.checkWinner()
             }
         }
     }
@@ -372,7 +387,6 @@ class ViewController: UIViewController {
                 
                 evaluate()
                 war.checkDeck()
-                war.checkWinner()
             }
         }
     }
@@ -430,7 +444,8 @@ class ViewController: UIViewController {
                 self.updateCounter()
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
-                self.showButton()
+                self.checkWinner()
+                
         })
         UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
             self.cardViewP2Constraint.constant = self.view.bounds.height
@@ -461,11 +476,12 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
+                self.war.playerTwoCardsInPlay[0].Front.removeFromSuperview()
                 self.war.normalWinP2AppendP2()
                 self.updateCounter()
                 self.cardViewP2Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
-                self.showButton()
+                self.checkWinner()
         })
     }
     
@@ -588,104 +604,159 @@ class ViewController: UIViewController {
         }
     }
     func warWinP1() {
-        UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut],animations: {
+        UIView.animateWithDuration(1, delay: 1.6, options: [.CurveEaseOut],animations: {
             self.cardViewP1Constraint.constant = -self.view.bounds.height
+            self.cardViewP1X.constant = 0
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.war.normalWinP1AppendP1()
-                self.updateCounter()
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
-                self.showButton()
         })
         UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
             self.cardViewP2Constraint.constant = self.view.bounds.height
+            self.cardViewP2X.constant = 0
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.war.normalWinP1AppendP2()
-                self.updateCounter()
                 self.cardViewP2Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
-            self.cardViewP1War1Constraint.constant = self.view.bounds.height/2
-            self.cardViewP1War1X.constant = (self.view.bounds.width/2) - ((self.cardViewP1War1.bounds.width/2)-5)
+        UIView.animateWithDuration(1, delay: 1.8, options: [.CurveEaseOut], animations: {
+            self.cardViewP1War1Constraint.constant = -self.view.bounds.height
+            self.cardViewP1War1X.constant = 0
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.cardViewP1War1.userInteractionEnabled = false
-                self.war.appendStorageP1()
+                self.cardViewP1War1X.constant = 15
+                self.view.layoutIfNeeded()
+        })
+        UIView.animateWithDuration(1, delay: 1.7, options: [.CurveEaseOut], animations: {
+            self.cardViewP2War1Constraint.constant = self.view.bounds.height
+            self.cardViewP2War1X.constant = 0
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.cardViewP2War1Constraint.constant = -self.view.bounds.height
+                self.cardViewP2War1X.constant = -15
+                self.view.layoutIfNeeded()
         })
         UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
-            self.cardViewP2War1Constraint.constant = self.view.bounds.height/2
-            self.cardViewP2War1X.constant = -(self.view.bounds.width/2) + ((self.cardViewP2War1.bounds.width/2)+5)
+            self.cardViewP1War2Constraint.constant = -self.view.bounds.height
+            self.cardViewP1War2X.constant = 0
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.cardViewP2War1.userInteractionEnabled = false
-                self.war.appendStorageP2()
-                self.warTapGest2()
+                self.cardViewP1War2X.constant = 30
+                self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
-            self.cardViewP1War2Constraint.constant = self.view.bounds.height/2
-            self.cardViewP1War2X.constant = (self.view.bounds.width/2) - ((self.cardViewP1War2.bounds.width/2)-5)
+        UIView.animateWithDuration(1, delay: 1.9, options: [.CurveEaseOut], animations: {
+            self.cardViewP2War2Constraint.constant = self.view.bounds.height
+            self.cardViewP2War2X.constant = 0
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.cardViewP1War2.userInteractionEnabled = false
-                self.war.appendStorageP1()
+                self.cardViewP2War2Constraint.constant = -self.view.bounds.height
+                self.cardViewP2War2X.constant = -30
+                self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
-            self.cardViewP2War2Constraint.constant = self.view.bounds.height/2
-            self.cardViewP2War2X.constant = -(self.view.bounds.width/2) + ((self.cardViewP2War2.bounds.width/2)+5)
+        UIView.animateWithDuration(1, delay: 2.2, options: [.CurveEaseOut], animations: {
+            self.cardViewP1War3Constraint.constant = -self.view.bounds.height
+            self.cardViewP1War3X.constant = 0
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.cardViewP2War2.userInteractionEnabled = false
-                self.war.appendStorageP2()
-                self.warTapGest3()
+                self.cardViewP1War3X.constant = 45
+                self.view.layoutIfNeeded()
+                self.showButton()
         })
-        UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
-            self.cardViewP1War3Constraint.constant = self.view.bounds.height/2
-            self.cardViewP1War3X.constant = (self.view.bounds.width/2) - ((self.cardViewP1War3.bounds.width/2)-5)
+        UIView.animateWithDuration(1, delay: 2.1, options: [.CurveEaseOut], animations: {
+            self.cardViewP2War3Constraint.constant = self.view.bounds.height
+            self.cardViewP2War3X.constant = 0
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.cardViewP1War3.userInteractionEnabled = false
-                self.war.appendStorageP1()
-        })
-        UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
-            self.cardViewP2War3Constraint.constant = self.view.bounds.height/2
-            self.cardViewP2War3X.constant = -(self.view.bounds.width/2) + ((self.cardViewP2War3.bounds.width/2)+5)
-            self.view.layoutIfNeeded()
-            }, completion: {
-                finished in
-                self.cardViewP2War3.userInteractionEnabled = false
-                self.war.appendStorageP2()
-                self.warWinner()
+                self.cardViewP2War3Constraint.constant = -self.view.bounds.height
+                self.cardViewP2War3X.constant = -45
+                self.view.layoutIfNeeded()
+                self.updateCounter()
         })
     }
     func warWinP2() {
         UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut],animations: {
             self.cardViewP1Constraint.constant = self.view.bounds.height
+            self.cardViewP1X.constant = 0
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.war.normalWinP2AppendP1()
-                self.updateCounter()
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 1.6, options: [.CurveEaseOut], animations: {
             self.cardViewP2Constraint.constant = -self.view.bounds.height
+            self.cardViewP2X.constant = 0
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.war.normalWinP2AppendP2()
-                self.updateCounter()
                 self.cardViewP2Constraint.constant = -self.view.bounds.height
+                self.view.layoutIfNeeded()
+        })
+        UIView.animateWithDuration(1, delay: 1.7, options: [.CurveEaseOut], animations: {
+            self.cardViewP1War1Constraint.constant = self.view.bounds.height
+            self.cardViewP1War1X.constant = 0
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.cardViewP1War1Constraint.constant = -self.view.bounds.height
+                self.cardViewP1War1X.constant = 15
+                self.view.layoutIfNeeded()
+        })
+        UIView.animateWithDuration(1, delay: 1.8, options: [.CurveEaseOut], animations: {
+            self.cardViewP2War1Constraint.constant = -self.view.bounds.height
+            self.cardViewP2War1X.constant = 0
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.cardViewP2War1X.constant = -15
+                self.view.layoutIfNeeded()
+        })
+        UIView.animateWithDuration(1, delay: 1.9, options: [.CurveEaseOut], animations: {
+            self.cardViewP1War2Constraint.constant = self.view.bounds.height
+            self.cardViewP1War2X.constant = 0
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.cardViewP1War2Constraint.constant = -self.view.bounds.height
+                self.cardViewP1War2X.constant = 30
+                self.view.layoutIfNeeded()
+        })
+        UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
+            self.cardViewP2War2Constraint.constant = -self.view.bounds.height
+            self.cardViewP2War2X.constant = 0
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.cardViewP2War2X.constant = -30
+                self.view.layoutIfNeeded()
+        })
+        UIView.animateWithDuration(1, delay: 2.1, options: [.CurveEaseOut], animations: {
+            self.cardViewP1War3Constraint.constant = self.view.bounds.height
+            self.cardViewP1War3X.constant = 0
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.cardViewP1War3Constraint.constant = -self.view.bounds.height
+                self.cardViewP1War3X.constant = 45
+                self.view.layoutIfNeeded()
+                self.updateCounter()
+        })
+        UIView.animateWithDuration(1, delay: 2.2, options: [.CurveEaseOut], animations: {
+            self.cardViewP2War3Constraint.constant = -self.view.bounds.height
+            self.cardViewP2War3X.constant = 0
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.cardViewP2War3X.constant = -45
                 self.view.layoutIfNeeded()
                 self.showButton()
         })
