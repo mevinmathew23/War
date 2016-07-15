@@ -45,6 +45,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var cardViewP2War3X: NSLayoutConstraint!
     
     @IBOutlet weak var playRoundButton: UIButton!
+    @IBOutlet weak var notifyP1: UILabel!
+    @IBOutlet weak var notifyP1X: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2: UILabel!
+    @IBOutlet weak var notifyP2X: NSLayoutConstraint!
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var playerOneCounter: UILabel!
     @IBOutlet weak var playerTwoCounter: UILabel!
@@ -108,6 +113,11 @@ class ViewController: UIViewController {
         self.cardViewP2War1Constraint.constant = -view.bounds.height
         self.cardViewP2War2Constraint.constant = -view.bounds.height
         self.cardViewP2War3Constraint.constant = -view.bounds.height
+        
+        // Set notification labels
+        notifyP1X.constant = -view.bounds.width
+        notifyP2X.constant = -view.bounds.width
+        notifyP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         
         self.view.layoutIfNeeded()
     }
