@@ -105,14 +105,8 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         // Set initial cards outside of view
         self.cardViewP1Constraint.constant = -view.bounds.height
-        self.cardViewP1War1Constraint.constant = -view.bounds.height
-        self.cardViewP1War2Constraint.constant = -view.bounds.height
-        self.cardViewP1War3Constraint.constant = -view.bounds.height
-        
         self.cardViewP2Constraint.constant = -view.bounds.height
-        self.cardViewP2War1Constraint.constant = -view.bounds.height
-        self.cardViewP2War2Constraint.constant = -view.bounds.height
-        self.cardViewP2War3Constraint.constant = -view.bounds.height
+        setWarViews()
         
         // Set notification labels
         notifyP1X.constant = -view.bounds.width
@@ -125,6 +119,25 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Set cardViewWars default outside bounds
+    func setWarViews() {
+        cardViewP1War1Constraint.constant = -view.bounds.height
+        cardViewP1War2Constraint.constant = -view.bounds.height
+        cardViewP1War3Constraint.constant = -view.bounds.height
+        
+        cardViewP2War1Constraint.constant = -view.bounds.height
+        cardViewP2War2Constraint.constant = -view.bounds.height
+        cardViewP2War3Constraint.constant = -view.bounds.height
+        
+        cardViewP1War1X.constant = 25
+        cardViewP1War2X.constant = 40
+        cardViewP1War3X.constant = 55
+        
+        cardViewP2War1X.constant = -25
+        cardViewP2War2X.constant = -40
+        cardViewP2War3X.constant = -55
     }
     
     // Button Click Action
@@ -221,7 +234,7 @@ class ViewController: UIViewController {
         }
         else {
             print("Nobody wins this war...")
-            moveToStorage()
+            warToStorage()
             warScenario(counterTemp)
         }
     }
@@ -362,6 +375,7 @@ class ViewController: UIViewController {
             assignedViewP2.addSubview(j2.Back)
         }
         warTapGest1()
+        startWar()
     }
     
     func warTapGest1() {
@@ -578,7 +592,6 @@ class ViewController: UIViewController {
             }, completion: {
                 finished in
                 self.war.appendAllP2()
-                self.startWar()
                 self.drawWarCards()
                 self.updateStorageCounter()
                 self.showStorageCounter()
@@ -640,7 +653,7 @@ class ViewController: UIViewController {
                 self.cardViewP1War3.userInteractionEnabled = false
                 self.war.appendStorageP1()
                 self.updateStorageCounter()
-                self.startWar()
+                self.setWarViews()
                 self.drawWarCards()
         })
         UIView.animateWithDuration(1, delay: 1.9, options: [.CurveEaseOut], animations: {
