@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // MARK: Properties
+    // Card Views
+    
     @IBOutlet weak var cardViewP1: UIView!
     @IBOutlet weak var cardViewP1War1: UIView!
     @IBOutlet weak var cardViewP1War2: UIView!
@@ -121,7 +124,24 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Actions
+    // Button Click Action
+    
+    @IBAction func playRoundTapped(sender: UIButton) {
+        
+        drawCardP1(cardViewP1)
+        drawCardP2(cardViewP2)
+        
+        showCounter()
+        updateCounter()
+        
+        hideButton()
+        
+        startAnimation()
+    }
+    
     // Set cardViewWars default outside bounds
+    
     func setWarViews() {
         cardViewP1War1Constraint.constant = -view.bounds.height
         cardViewP1War2Constraint.constant = -view.bounds.height
@@ -140,21 +160,7 @@ class ViewController: UIViewController {
         cardViewP2War3X.constant = -55
     }
     
-    // Button Click Action
-    
-    @IBAction func playRoundTapped(sender: UIButton) {
-        
-        drawCardP1(cardViewP1)
-        drawCardP2(cardViewP2)
-        
-        showCounter()
-        updateCounter()
-        
-        hideButton()
-        
-        startAnimation()
-    }
-    
+    // MARK: Evaluation
     // Evaluate upon flipping
     
     func evaluate() {
@@ -188,7 +194,7 @@ class ViewController: UIViewController {
         
     }
     
-    // War Scenario
+    // MARK: War Scenario
     
     func warScenario( warCounter: Int)  {
         
@@ -274,8 +280,8 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    // DECK COUNTERS
+    // MARK: Counters
+    // Deck Counters
     
     func hideCounter() {
         playerOneCounter.hidden = true
@@ -291,7 +297,9 @@ class ViewController: UIViewController {
         playerOneCounter.text = String(war.playerOneCards.count)
         playerTwoCounter.text = String(war.playerTwoCards.count)
     }
-    // Storage counters
+    
+    // Storage Counters
+    
     func hideStorageCounter() {
         playerOneStorageCounter.hidden = true
         playerTwoStorageCounter.hidden = true
@@ -307,7 +315,8 @@ class ViewController: UIViewController {
         playerTwoStorageCounter.text = String(war.playerTwoStorage.count)
     }
     
-    // DRAW BUTTON TOGGLE
+    // MARK: Draw Cards
+    // Button Toggle
     
     func showButton() {
         playRoundButton.hidden = false
@@ -318,7 +327,7 @@ class ViewController: UIViewController {
         playRoundButton.userInteractionEnabled = false
     }
     
-    // DRAW CARDS
+    // Draw cards
     
     func drawCardP1(player: UIView) {
         war.playerOneCardsInPlay.append(war.playerOneCards[0])
@@ -342,7 +351,7 @@ class ViewController: UIViewController {
         player.addSubview(activeP2.Back)
     }
     
-    // DRAW WAR CARDS
+    // Draw War Cards
     
     func drawWarCards() {
         let cardViewP1Array: Array = [cardViewP1War1, cardViewP1War2, cardViewP1War3]
@@ -378,6 +387,8 @@ class ViewController: UIViewController {
         startWar()
     }
     
+    // MARK: Flip and Tap Gestures
+    
     func warTapGest1() {
         let tapWarP1 = UITapGestureRecognizer(target: self, action: #selector (ViewController.tappedWarP1))
         let tapWarP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedWarP2))
@@ -405,7 +416,7 @@ class ViewController: UIViewController {
         cardViewP2War3.addGestureRecognizer(tapWarP2)
     }
     
-    // FLIP FUNCTIONS
+    // Flip Functions
     
     func tappedP1() {
         print(war.playerOneCardsInPlay[0].Name!)
@@ -478,7 +489,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // CARD ANIMATIONS
+    // MARK: Card Animations
     
     func startAnimation() {
         UIView.animateWithDuration(0.8, delay: 0, options: [.CurveEaseOut],animations: {
