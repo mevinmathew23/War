@@ -400,29 +400,33 @@ class ViewController: UIViewController {
             war.playerOneCardsInPlay[0].ShowingFront = false
             
         } else {
-            UIView.transitionFromView(war.playerOneCardsInPlay[0].Back, toView: war.playerOneCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
-            war.playerOneCardsInPlay[0].ShowingFront = true
-            if war.playerOneCardsInPlay[0].ShowingFront && war.playerTwoCardsInPlay[0].ShowingFront {
-                
-                evaluate()
-                war.checkDeck()
-            }
+            
+            UIView.transitionFromView(war.playerOneCardsInPlay[0].Back, toView: war.playerOneCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
+                finished in
+                self.war.playerOneCardsInPlay[0].ShowingFront = true
+                if self.war.playerOneCardsInPlay[0].ShowingFront && self.war.playerTwoCardsInPlay[0].ShowingFront {
+                    self.evaluate()
+                    self.war.checkDeck()
+                }
+            })
         }
     }
     func tappedP2() {
         print(war.playerTwoCardsInPlay[0].Name!)
         if (war.playerTwoCardsInPlay[0].ShowingFront) {
-            
             UIView.transitionFromView(war.playerTwoCardsInPlay[0].Front, toView: war.playerTwoCardsInPlay[0].Back, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
             war.playerTwoCardsInPlay[0].ShowingFront = false
+            
         } else {
-            UIView.transitionFromView(war.playerTwoCardsInPlay[0].Back, toView: war.playerTwoCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
-            war.playerTwoCardsInPlay[0].ShowingFront = true
-            if war.playerOneCardsInPlay[0].ShowingFront && war.playerTwoCardsInPlay[0].ShowingFront {
-                
-                evaluate()
-                war.checkDeck()
-            }
+            
+            UIView.transitionFromView(war.playerTwoCardsInPlay[0].Back, toView: war.playerTwoCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
+                finished in
+                self.war.playerTwoCardsInPlay[0].ShowingFront = true
+                if self.war.playerOneCardsInPlay[0].ShowingFront && self.war.playerTwoCardsInPlay[0].ShowingFront {
+                    self.evaluate()
+                    self.war.checkDeck()
+                }
+            })
         }
     }
     func tappedWarP1() {
@@ -432,27 +436,31 @@ class ViewController: UIViewController {
             war.playerOneCardsInPlay[0].ShowingFront = false
             
         } else {
-            UIView.transitionFromView(war.playerOneCardsInPlay[0].Back, toView: war.playerOneCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
-            war.playerOneCardsInPlay[0].ShowingFront = true
-            if war.playerOneCardsInPlay[0].ShowingFront && war.playerTwoCardsInPlay[0].ShowingFront {
-                
-                evaluateWar()
-            }
+            
+            UIView.transitionFromView(war.playerOneCardsInPlay[0].Back, toView: war.playerOneCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
+                finished in
+                self.war.playerOneCardsInPlay[0].ShowingFront = true
+                if self.war.playerOneCardsInPlay[0].ShowingFront && self.war.playerTwoCardsInPlay[0].ShowingFront {
+                    self.evaluateWar()
+                }
+            })
         }
     }
     func tappedWarP2() {
         print(war.playerTwoCardsInPlay[0].Name!)
         if (war.playerTwoCardsInPlay[0].ShowingFront) {
-            
             UIView.transitionFromView(war.playerTwoCardsInPlay[0].Front, toView: war.playerTwoCardsInPlay[0].Back, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
             war.playerTwoCardsInPlay[0].ShowingFront = false
+            
         } else {
-            UIView.transitionFromView(war.playerTwoCardsInPlay[0].Back, toView: war.playerTwoCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: nil)
-            war.playerTwoCardsInPlay[0].ShowingFront = true
-            if war.playerOneCardsInPlay[0].ShowingFront && war.playerTwoCardsInPlay[0].ShowingFront {
-                
-                evaluateWar()
-            }
+            
+            UIView.transitionFromView(war.playerTwoCardsInPlay[0].Back, toView: war.playerTwoCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
+                finished in
+                self.war.playerTwoCardsInPlay[0].ShowingFront = true
+                if self.war.playerOneCardsInPlay[0].ShowingFront && self.war.playerTwoCardsInPlay[0].ShowingFront {
+                    self.evaluateWar()
+                }
+            })
         }
     }
     
@@ -480,7 +488,7 @@ class ViewController: UIViewController {
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
                 self.showButton()
-               
+                
         })
         UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
             self.cardViewP2Constraint.constant = self.view.bounds.height
@@ -574,6 +582,77 @@ class ViewController: UIViewController {
                 self.drawWarCards()
                 self.updateStorageCounter()
                 self.showStorageCounter()
+        })
+    }
+    
+    func warToStorage() {
+        UIView.animateWithDuration(1, delay: 1.6, options: [.CurveEaseOut], animations: {
+            self.cardViewP1War1Constraint.constant = self.view.bounds.height/4
+            self.cardViewP1War1X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.cardViewP1War1.userInteractionEnabled = false
+                self.cardViewP1War2.userInteractionEnabled = true
+                self.war.appendStorageP1()
+                self.updateCounter()
+                self.updateStorageCounter()
+        })
+        UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
+            self.cardViewP2War1Constraint.constant = self.view.bounds.height/4
+            self.cardViewP2War1X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.cardViewP2War1.userInteractionEnabled = false
+                self.cardViewP2War2.userInteractionEnabled = true
+                self.war.appendStorageP2()
+                self.updateStorageCounter()
+        })
+        UIView.animateWithDuration(1, delay: 1.8, options: [.CurveEaseOut], animations: {
+            self.cardViewP1War2Constraint.constant = self.view.bounds.height/4
+            self.cardViewP1War2X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.cardViewP1War2.userInteractionEnabled = false
+                self.cardViewP1War3.userInteractionEnabled = true
+                self.war.appendStorageP1()
+                self.updateStorageCounter()
+        })
+        UIView.animateWithDuration(1, delay: 1.7, options: [.CurveEaseOut], animations: {
+            self.cardViewP2War2Constraint.constant = self.view.bounds.height/4
+            self.cardViewP2War2X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.cardViewP2War2.userInteractionEnabled = false
+                self.cardViewP2War3.userInteractionEnabled = true
+                self.war.appendStorageP2()
+                self.updateStorageCounter()
+        })
+        UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
+            self.cardViewP1War3Constraint.constant = self.view.bounds.height/4
+            self.cardViewP1War3X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.cardViewP1War3.userInteractionEnabled = false
+                self.war.appendStorageP1()
+                self.updateStorageCounter()
+                self.startWar()
+                self.drawWarCards()
+        })
+        UIView.animateWithDuration(1, delay: 1.9, options: [.CurveEaseOut], animations: {
+            self.cardViewP2War3Constraint.constant = self.view.bounds.height/4
+            self.cardViewP2War3X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.cardViewP2War3.userInteractionEnabled = false
+                self.war.appendStorageP2()
+                self.updateStorageCounter()
+                self.warWinner()
         })
     }
     
