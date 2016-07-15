@@ -58,6 +58,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var playerTwoCounter: UILabel!
     @IBOutlet weak var playerOneStorageCounter: UILabel!
     @IBOutlet weak var playerTwoStorageCounter: UILabel!
+    @IBOutlet weak var playerOneStorageY: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoStorageY: NSLayoutConstraint!
     
     let war = War()
     
@@ -69,6 +71,8 @@ class ViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    // MARK: viewDidLoad() and viewDidAppear()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,6 +119,9 @@ class ViewController: UIViewController {
         notifyP1X.constant = -view.bounds.width
         notifyP2X.constant = -view.bounds.width
         notifyP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+        
+        playerOneStorageY.constant = (view.bounds.height/4) + (cardViewP1.bounds.height/2) - 30
+        playerTwoStorageY.constant = (view.bounds.height/4) + (cardViewP2.bounds.height/2) - 30
         
         self.view.layoutIfNeeded()
     }
