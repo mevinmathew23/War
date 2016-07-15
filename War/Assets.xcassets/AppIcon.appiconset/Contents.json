@@ -39,8 +39,9 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "App-Icon-58x58-1.png",
       "scale" : "2x"
     },
     {
@@ -49,8 +50,9 @@
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "App-Icon-80x80-1.png",
       "scale" : "2x"
     },
     {
