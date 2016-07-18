@@ -623,9 +623,7 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.cardViewP1War1.userInteractionEnabled = false
-                self.cardViewP1War2.userInteractionEnabled = true
-                self.war.appendStorageP1()
+                self.war.appendAllP1()
                 self.updateCounter()
                 self.updateStorageCounter()
         })
@@ -635,42 +633,26 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.cardViewP2War1.userInteractionEnabled = false
-                self.cardViewP2War2.userInteractionEnabled = true
-                self.war.appendStorageP2()
+                self.war.appendAllP2()
+                self.updateCounter()
                 self.updateStorageCounter()
         })
         UIView.animateWithDuration(1, delay: 1.8, options: [.CurveEaseOut], animations: {
             self.cardViewP1War2Constraint.constant = self.view.bounds.height/4
             self.cardViewP1War2X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
             self.view.layoutIfNeeded()
-            }, completion: {
-                finished in
-                self.cardViewP1War2.userInteractionEnabled = false
-                self.cardViewP1War3.userInteractionEnabled = true
-                self.war.appendStorageP1()
-                self.updateStorageCounter()
-        })
+            }, completion: nil)
         UIView.animateWithDuration(1, delay: 1.7, options: [.CurveEaseOut], animations: {
             self.cardViewP2War2Constraint.constant = self.view.bounds.height/4
             self.cardViewP2War2X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
             self.view.layoutIfNeeded()
-            }, completion: {
-                finished in
-                self.cardViewP2War2.userInteractionEnabled = false
-                self.cardViewP2War3.userInteractionEnabled = true
-                self.war.appendStorageP2()
-                self.updateStorageCounter()
-        })
+            }, completion: nil)
         UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
             self.cardViewP1War3Constraint.constant = self.view.bounds.height/4
             self.cardViewP1War3X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.cardViewP1War3.userInteractionEnabled = false
-                self.war.appendStorageP1()
-                self.updateStorageCounter()
                 self.setWarViews()
                 self.drawWarCards()
         })
@@ -678,13 +660,7 @@ class ViewController: UIViewController {
             self.cardViewP2War3Constraint.constant = self.view.bounds.height/4
             self.cardViewP2War3X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
             self.view.layoutIfNeeded()
-            }, completion: {
-                finished in
-                self.cardViewP2War3.userInteractionEnabled = false
-                self.war.appendStorageP2()
-                self.updateStorageCounter()
-                self.warWinner()
-        })
+            }, completion: nil)
     }
     
     func storeWar() {
