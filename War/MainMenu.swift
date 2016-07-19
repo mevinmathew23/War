@@ -8,6 +8,7 @@
 
 import UIKit
 
+/*
 class MainMenu: UIViewController {
     var image = UIImage()
     
@@ -19,7 +20,7 @@ class MainMenu: UIViewController {
     
     //Changing icon view to the actual image
     
-   var appIcon = UIImageView(frame: CGRectMake(0, 0, 300, 300))
+   let appIcon = UIImageView(frame: CGRectMake(0, 0, 300, 300))
         appIcon.image = UIImage(named: "icon")
         icon.addSubview(appIcon)
     
@@ -28,3 +29,4 @@ class MainMenu: UIViewController {
   
 
 }
+ */

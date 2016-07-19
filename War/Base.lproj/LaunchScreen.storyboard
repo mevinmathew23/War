@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,7 +17,24 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreenBackground" translatesAutoresizingMaskIntoConstraints="NO" id="kCs-rD-hIB" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoPSI" translatesAutoresizingMaskIntoConstraints="NO" id="v1i-3X-ZWt">
+                                <rect key="frame" x="228" y="50" width="144" height="144"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kCs-rD-hIB" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="6B0-Da-wVy"/>
+                            <constraint firstAttribute="trailing" secondItem="kCs-rD-hIB" secondAttribute="trailing" id="FY2-Q2-IXZ"/>
+                            <constraint firstItem="kCs-rD-hIB" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OK7-Ie-Oyv"/>
+                            <constraint firstItem="v1i-3X-ZWt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OiD-za-TI5"/>
+                            <constraint firstItem="kCs-rD-hIB" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="lfg-0C-eWR"/>
+                            <constraint firstItem="v1i-3X-ZWt" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="50" id="weS-31-bfV"/>
+                            <constraint firstAttribute="bottom" secondItem="kCs-rD-hIB" secondAttribute="bottom" id="yrO-4j-DNi"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +42,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launchscreenBackground" width="306" height="396"/>
+        <image name="logoPSI" width="144" height="144"/>
+    </resources>
 </document>
