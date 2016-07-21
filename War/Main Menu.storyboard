@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Main Menu-->
@@ -17,19 +18,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Du-QN-TPF" userLabel="icon">
-                                <rect key="frame" x="180" y="472" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundMainMenu" translatesAutoresizingMaskIntoConstraints="NO" id="dsg-Km-mW5" userLabel="background">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundMainMenu" translatesAutoresizingMaskIntoConstraints="NO" id="1rf-um-fPY" userLabel="mainMenuFelt">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoCleanPSI" translatesAutoresizingMaskIntoConstraints="NO" id="IuW-dw-JFg">
+                                <rect key="frame" x="207" y="475" width="187" height="106"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IuW-dw-JFg" secondAttribute="height" multiplier="187:106" id="oLq-mi-wJu"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warText" translatesAutoresizingMaskIntoConstraints="NO" id="1ET-PT-iQn">
+                                <rect key="frame" x="100" y="20" width="400" height="86"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x6I-p2-iWd">
+                                <rect key="frame" x="100" y="144" width="400" height="293"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onePlayer" translatesAutoresizingMaskIntoConstraints="NO" id="cRA-KL-aCk">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="66"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twoPlayer" translatesAutoresizingMaskIntoConstraints="NO" id="65x-i9-dIX">
+                                        <rect key="frame" x="0.0" y="76" width="400" height="66"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings" translatesAutoresizingMaskIntoConstraints="NO" id="FsZ-XO-ICV">
+                                        <rect key="frame" x="0.0" y="152" width="400" height="65"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="ybx-sB-AeR">
+                                        <rect key="frame" x="0.0" y="227" width="400" height="66"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x6I-p2-iWd" firstAttribute="leading" secondItem="Oh6-FO-Yfz" secondAttribute="leading" constant="100" id="8H5-9o-csc"/>
+                            <constraint firstItem="1ET-PT-iQn" firstAttribute="top" secondItem="Oh6-FO-Yfz" secondAttribute="top" constant="20" id="8xw-YZ-iGr"/>
+                            <constraint firstItem="1ET-PT-iQn" firstAttribute="leading" secondItem="Oh6-FO-Yfz" secondAttribute="leading" constant="100" id="95T-jY-AhT"/>
+                            <constraint firstItem="x6I-p2-iWd" firstAttribute="centerX" secondItem="Oh6-FO-Yfz" secondAttribute="centerX" id="9Ux-WQ-cz4"/>
+                            <constraint firstAttribute="trailing" secondItem="1rf-um-fPY" secondAttribute="trailing" id="BJh-7n-sYN"/>
+                            <constraint firstAttribute="trailing" secondItem="1ET-PT-iQn" secondAttribute="trailing" constant="100" id="G3b-X0-a0h"/>
+                            <constraint firstItem="1rf-um-fPY" firstAttribute="leading" secondItem="Oh6-FO-Yfz" secondAttribute="leading" id="Gaa-lU-QST"/>
+                            <constraint firstItem="x6I-p2-iWd" firstAttribute="top" secondItem="1ET-PT-iQn" secondAttribute="bottom" constant="38" id="T76-h6-uHk"/>
+                            <constraint firstItem="i67-qc-Ow4" firstAttribute="top" secondItem="IuW-dw-JFg" secondAttribute="bottom" constant="19" id="WcC-cf-dx3"/>
+                            <constraint firstItem="IuW-dw-JFg" firstAttribute="top" secondItem="x6I-p2-iWd" secondAttribute="bottom" constant="38" id="ZgF-kt-hM7"/>
+                            <constraint firstAttribute="trailing" secondItem="x6I-p2-iWd" secondAttribute="trailing" constant="100" id="bWd-A5-fKF"/>
+                            <constraint firstAttribute="bottom" secondItem="1rf-um-fPY" secondAttribute="bottom" id="ckm-wu-eXN"/>
+                            <constraint firstItem="1ET-PT-iQn" firstAttribute="centerX" secondItem="Oh6-FO-Yfz" secondAttribute="centerX" id="f3o-lL-9oz"/>
+                            <constraint firstItem="IuW-dw-JFg" firstAttribute="centerX" secondItem="Oh6-FO-Yfz" secondAttribute="centerX" id="tPf-cx-Vh9"/>
+                            <constraint firstItem="1rf-um-fPY" firstAttribute="top" secondItem="Oh6-FO-Yfz" secondAttribute="top" id="uMr-fh-IaC"/>
+                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="icon" destination="1Du-QN-TPF" id="j7s-8m-eHf"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gxd-AB-1Yz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -38,5 +75,11 @@
     </scenes>
     <resources>
         <image name="backgroundMainMenu" width="306" height="396"/>
+        <image name="help" width="133" height="50"/>
+        <image name="logoCleanPSI" width="187" height="106"/>
+        <image name="onePlayer" width="133" height="49"/>
+        <image name="settings" width="133" height="49"/>
+        <image name="twoPlayer" width="134" height="50"/>
+        <image name="warText" width="168" height="86"/>
     </resources>
 </document>
