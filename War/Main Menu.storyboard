@@ -3,13 +3,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Main Menu-->
         <scene sceneID="58y-tc-jDO">
             <objects>
-                <viewController id="Xuq-OO-eRp" customClass="MainMenu" customModule="War" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainMenu" id="Xuq-OO-eRp" customClass="MainMenu" customModule="War" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7hr-5e-3pG"/>
                         <viewControllerLayoutGuide type="bottom" id="i67-qc-Ow4"/>
@@ -22,47 +21,53 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoCleanPSI" translatesAutoresizingMaskIntoConstraints="NO" id="IuW-dw-JFg">
-                                <rect key="frame" x="207" y="475" width="187" height="106"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="IuW-dw-JFg" secondAttribute="height" multiplier="187:106" id="oLq-mi-wJu"/>
-                                </constraints>
+                                <rect key="frame" x="100" y="475" width="400" height="106"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warText" translatesAutoresizingMaskIntoConstraints="NO" id="1ET-PT-iQn">
                                 <rect key="frame" x="100" y="20" width="400" height="86"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x6I-p2-iWd">
-                                <rect key="frame" x="100" y="144" width="400" height="293"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fAl-ew-JbY">
+                                <rect key="frame" x="100" y="142" width="400" height="297"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onePlayer" translatesAutoresizingMaskIntoConstraints="NO" id="cRA-KL-aCk">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="66"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twoPlayer" translatesAutoresizingMaskIntoConstraints="NO" id="65x-i9-dIX">
-                                        <rect key="frame" x="0.0" y="76" width="400" height="66"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings" translatesAutoresizingMaskIntoConstraints="NO" id="FsZ-XO-ICV">
-                                        <rect key="frame" x="0.0" y="152" width="400" height="65"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="ybx-sB-AeR">
-                                        <rect key="frame" x="0.0" y="227" width="400" height="66"/>
-                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWl-sL-pKC" userLabel="onePlayer">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="67"/>
+                                        <state key="normal" backgroundImage="onePlayer"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFe-R8-aWu" userLabel="twoPlayer">
+                                        <rect key="frame" x="0.0" y="77" width="400" height="67"/>
+                                        <state key="normal" backgroundImage="twoPlayer"/>
+                                        <connections>
+                                            <segue destination="g3P-9M-SNN" kind="show" id="ryG-VN-spP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrP-89-LJu" userLabel="settings">
+                                        <rect key="frame" x="0.0" y="154" width="400" height="66"/>
+                                        <state key="normal" backgroundImage="settings"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpA-AU-7xY" userLabel="help">
+                                        <rect key="frame" x="0.0" y="230" width="400" height="67"/>
+                                        <state key="normal" backgroundImage="help"/>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="x6I-p2-iWd" firstAttribute="leading" secondItem="Oh6-FO-Yfz" secondAttribute="leading" constant="100" id="8H5-9o-csc"/>
                             <constraint firstItem="1ET-PT-iQn" firstAttribute="top" secondItem="Oh6-FO-Yfz" secondAttribute="top" constant="20" id="8xw-YZ-iGr"/>
                             <constraint firstItem="1ET-PT-iQn" firstAttribute="leading" secondItem="Oh6-FO-Yfz" secondAttribute="leading" constant="100" id="95T-jY-AhT"/>
-                            <constraint firstItem="x6I-p2-iWd" firstAttribute="centerX" secondItem="Oh6-FO-Yfz" secondAttribute="centerX" id="9Ux-WQ-cz4"/>
                             <constraint firstAttribute="trailing" secondItem="1rf-um-fPY" secondAttribute="trailing" id="BJh-7n-sYN"/>
+                            <constraint firstItem="IuW-dw-JFg" firstAttribute="top" secondItem="fAl-ew-JbY" secondAttribute="bottom" constant="36" id="Evg-E0-xe5"/>
                             <constraint firstAttribute="trailing" secondItem="1ET-PT-iQn" secondAttribute="trailing" constant="100" id="G3b-X0-a0h"/>
                             <constraint firstItem="1rf-um-fPY" firstAttribute="leading" secondItem="Oh6-FO-Yfz" secondAttribute="leading" id="Gaa-lU-QST"/>
-                            <constraint firstItem="x6I-p2-iWd" firstAttribute="top" secondItem="1ET-PT-iQn" secondAttribute="bottom" constant="38" id="T76-h6-uHk"/>
+                            <constraint firstItem="fAl-ew-JbY" firstAttribute="centerX" secondItem="Oh6-FO-Yfz" secondAttribute="centerX" id="IOF-mZ-r9v"/>
                             <constraint firstItem="i67-qc-Ow4" firstAttribute="top" secondItem="IuW-dw-JFg" secondAttribute="bottom" constant="19" id="WcC-cf-dx3"/>
-                            <constraint firstItem="IuW-dw-JFg" firstAttribute="top" secondItem="x6I-p2-iWd" secondAttribute="bottom" constant="38" id="ZgF-kt-hM7"/>
-                            <constraint firstAttribute="trailing" secondItem="x6I-p2-iWd" secondAttribute="trailing" constant="100" id="bWd-A5-fKF"/>
+                            <constraint firstItem="fAl-ew-JbY" firstAttribute="top" secondItem="1ET-PT-iQn" secondAttribute="bottom" constant="36" id="Yt4-OE-NQk"/>
+                            <constraint firstItem="IuW-dw-JFg" firstAttribute="leading" secondItem="Oh6-FO-Yfz" secondAttribute="leading" constant="100" id="bxA-Bw-I6O"/>
                             <constraint firstAttribute="bottom" secondItem="1rf-um-fPY" secondAttribute="bottom" id="ckm-wu-eXN"/>
+                            <constraint firstItem="fAl-ew-JbY" firstAttribute="leading" secondItem="Oh6-FO-Yfz" secondAttribute="leading" constant="100" id="d09-o3-maW"/>
+                            <constraint firstAttribute="trailing" secondItem="fAl-ew-JbY" secondAttribute="trailing" constant="100" id="dZd-H1-ZV1"/>
                             <constraint firstItem="1ET-PT-iQn" firstAttribute="centerX" secondItem="Oh6-FO-Yfz" secondAttribute="centerX" id="f3o-lL-9oz"/>
+                            <constraint firstAttribute="trailing" secondItem="IuW-dw-JFg" secondAttribute="trailing" constant="100" id="fWy-lM-FZI"/>
                             <constraint firstItem="IuW-dw-JFg" firstAttribute="centerX" secondItem="Oh6-FO-Yfz" secondAttribute="centerX" id="tPf-cx-Vh9"/>
                             <constraint firstItem="1rf-um-fPY" firstAttribute="top" secondItem="Oh6-FO-Yfz" secondAttribute="top" id="uMr-fh-IaC"/>
                         </constraints>
@@ -71,6 +76,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gxd-AB-1Yz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="541" y="354"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="p2O-rB-ROi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="g3P-9M-SNN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y8a-wW-XXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="995.5" y="264"/>
         </scene>
     </scenes>
     <resources>

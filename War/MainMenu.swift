@@ -8,25 +8,18 @@
 
 import UIKit
 
-/*
-class MainMenu: UIViewController {
-    var image = UIImage()
-    
-    // Mark: Properties 
-    @IBOutlet weak var icon: UIView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-    //Changing icon view to the actual image
-    
-   let appIcon = UIImageView(frame: CGRectMake(0, 0, 300, 300))
-        appIcon.image = UIImage(named: "icon")
-        icon.addSubview(appIcon)
-    
-    }
-    
-  
 
+class MainMenu: UIViewController {
+    
+    //Mark: Properties
+    //Button UI Image Views
+    @IBOutlet weak var onePlayer: UIImageView!
+    @IBOutlet weak var twoPlayer: UIImageView!
+    @IBOutlet weak var settings: UIImageView!
+    @IBOutlet weak var help: UIImageView!
+    
+
+    
+    
+    
 }
- */
