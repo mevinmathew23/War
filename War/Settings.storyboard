@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UzD-EZ-gnc">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Settings-->
+        <scene sceneID="7KD-3C-Nmg">
+            <objects>
+                <viewController id="UzD-EZ-gnc" customClass="Settings" customModule="War" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2jj-dK-5Pr"/>
+                        <viewControllerLayoutGuide type="bottom" id="hTM-1b-CnD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tih-4r-JrN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundMainMenu" translatesAutoresizingMaskIntoConstraints="NO" id="sI9-S5-iy9">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRe-fV-BY8">
+                                <rect key="frame" x="20" y="20" width="46" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="UzD-EZ-gnc" eventType="touchDown" id="FO8-3c-Qad"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="sI9-S5-iy9" secondAttribute="bottom" id="5bb-Ba-tZA"/>
+                            <constraint firstItem="sI9-S5-iy9" firstAttribute="top" secondItem="tih-4r-JrN" secondAttribute="top" id="BTg-WJ-5PM"/>
+                            <constraint firstAttribute="trailing" secondItem="sI9-S5-iy9" secondAttribute="trailing" id="Wqc-qX-sqi"/>
+                            <constraint firstItem="sI9-S5-iy9" firstAttribute="leading" secondItem="tih-4r-JrN" secondAttribute="leading" id="eYh-t3-YJL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NKi-J1-mFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="534" y="408"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="backgroundMainMenu" width="306" height="396"/>
+    </resources>
+</document>
