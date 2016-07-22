@@ -72,6 +72,12 @@ class ViewController: UIViewController {
         return true
     }
     
+    //Quit Button
+    @IBAction func Quit(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     // MARK: viewDidLoad() and viewDidAppear()
     
     override func viewDidLoad() {
