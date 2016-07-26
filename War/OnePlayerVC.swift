@@ -83,10 +83,6 @@ class OnePlayerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Rotate player 2 counter
-        playerTwoCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
-        playerTwoStorageCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
-        
         hideCounter()
         hideStorageCounter()
         
@@ -96,6 +92,12 @@ class OnePlayerVC: UIViewController {
         cardViewP2War2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         cardViewP2War3.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         
+        // Disable P2 User Interaction
+        cardViewP2.userInteractionEnabled = false
+        cardViewP2War1.userInteractionEnabled = false
+        cardViewP2War2.userInteractionEnabled = false
+        cardViewP2War3.userInteractionEnabled = false
+        
         // Set initial cards outside of view
         self.cardViewP1Constraint.constant = -view.bounds.height
         self.cardViewP2Constraint.constant = -view.bounds.height
@@ -104,16 +106,12 @@ class OnePlayerVC: UIViewController {
         // Set notification labels
         notifyP1X.constant = -view.bounds.width
         notifyP2X.constant = -view.bounds.width
-        notifyP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         
         self.playRoundButton.setTitle("DEAL", forState: UIControlState.Normal)
         
         let tapP1 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedP1))
-        let tapP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedP2))
         tapP1.numberOfTapsRequired = 1
-        tapP2.numberOfTapsRequired = 1
         cardViewP1.addGestureRecognizer(tapP1)
-        cardViewP2.addGestureRecognizer(tapP2)
         
         // Setup cards
         war.addCards("spades")
@@ -131,8 +129,6 @@ class OnePlayerVC: UIViewController {
         
         playerOneStorageY.constant = (view.bounds.height/4) + (cardViewP1.bounds.height/2) - 30
         playerTwoStorageY.constant = (view.bounds.height/4) + (cardViewP2.bounds.height/2) - 30
-        
-        self.view.layoutIfNeeded()
     }
     
     override func didReceiveMemoryWarning() {
@@ -144,16 +140,8 @@ class OnePlayerVC: UIViewController {
     // Button Click Action
     
     @IBAction func playRoundTapped(sender: UIButton) {
-        
-        drawCardP1(cardViewP1)
-        drawCardP2(cardViewP2)
-        
-        showCounter()
-        updateCounter()
-        
+        startRound()
         hideButton()
-        
-        startAnimation()
     }
     
     // Set cardViewWars default outside bounds
@@ -205,9 +193,8 @@ class OnePlayerVC: UIViewController {
             print("Player 2 wins")
         } else if war.bPlayerOneWinner == nil {
             print("No winner yet...")
-            showButton()
+            startRound()
         }
-        
     }
     
     // MARK: War Scenario
@@ -215,7 +202,6 @@ class OnePlayerVC: UIViewController {
     func warScenario( warCounter: Int)  {
         
         cardViewP1.userInteractionEnabled = false
-        cardViewP2.userInteractionEnabled = false
         
         counterTemp = warCounter
         
@@ -343,6 +329,16 @@ class OnePlayerVC: UIViewController {
         playRoundButton.userInteractionEnabled = false
     }
     
+    func startRound() {
+        drawCardP1(cardViewP1)
+        drawCardP2(cardViewP2)
+        
+        showCounter()
+        updateCounter()
+        
+        startAnimation()
+    }
+    
     // Draw cards
     
     func drawCardP1(player: UIView) {
@@ -407,29 +403,19 @@ class OnePlayerVC: UIViewController {
     
     func warTapGest1() {
         let tapWarP1 = UITapGestureRecognizer(target: self, action: #selector (ViewController.tappedWarP1))
-        let tapWarP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedWarP2))
         cardViewP1War1.userInteractionEnabled = true
-        cardViewP2War1.userInteractionEnabled = true
         tapWarP1.numberOfTapsRequired = 1
-        tapWarP2.numberOfTapsRequired = 1
         cardViewP1War1.addGestureRecognizer(tapWarP1)
-        cardViewP2War1.addGestureRecognizer(tapWarP2)
     }
     func warTapGest2() {
         let tapWarP1 = UITapGestureRecognizer(target: self, action: #selector (ViewController.tappedWarP1))
-        let tapWarP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedWarP2))
         tapWarP1.numberOfTapsRequired = 1
-        tapWarP2.numberOfTapsRequired = 1
         cardViewP1War2.addGestureRecognizer(tapWarP1)
-        cardViewP2War2.addGestureRecognizer(tapWarP2)
     }
     func warTapGest3() {
         let tapWarP1 = UITapGestureRecognizer(target: self, action: #selector (ViewController.tappedWarP1))
-        let tapWarP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedWarP2))
         tapWarP1.numberOfTapsRequired = 1
-        tapWarP2.numberOfTapsRequired = 1
         cardViewP1War3.addGestureRecognizer(tapWarP1)
-        cardViewP2War3.addGestureRecognizer(tapWarP2)
     }
     
     // Flip Functions
@@ -437,7 +423,10 @@ class OnePlayerVC: UIViewController {
     func tappedP1() {
         print(war.playerOneCardsInPlay[0].Name!)
         if (war.playerOneCardsInPlay[0].ShowingFront) {
-            UIView.transitionFromView(war.playerOneCardsInPlay[0].Front, toView: war.playerOneCardsInPlay[0].Back, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
+            UIView.transitionFromView(war.playerOneCardsInPlay[0].Front, toView: war.playerOneCardsInPlay[0].Back, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: {
+                finished in
+                self.tappedP2()
+            })
             war.playerOneCardsInPlay[0].ShowingFront = false
             
         } else {
@@ -445,10 +434,7 @@ class OnePlayerVC: UIViewController {
             UIView.transitionFromView(war.playerOneCardsInPlay[0].Back, toView: war.playerOneCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
                 finished in
                 self.war.playerOneCardsInPlay[0].ShowingFront = true
-                if self.war.playerOneCardsInPlay[0].ShowingFront && self.war.playerTwoCardsInPlay[0].ShowingFront {
-                    self.evaluate()
-                    self.war.checkDeck()
-                }
+                self.tappedP2()
             })
         }
     }
@@ -481,9 +467,7 @@ class OnePlayerVC: UIViewController {
             UIView.transitionFromView(war.playerOneCardsInPlay[0].Back, toView: war.playerOneCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
                 finished in
                 self.war.playerOneCardsInPlay[0].ShowingFront = true
-                if self.war.playerOneCardsInPlay[0].ShowingFront && self.war.playerTwoCardsInPlay[0].ShowingFront {
-                    self.evaluateWar()
-                }
+                self.tappedWarP2()
             })
         }
     }
@@ -528,8 +512,7 @@ class OnePlayerVC: UIViewController {
                 self.updateCounter()
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
-                self.showButton()
-                
+                self.checkWinner()
         })
         UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
             self.cardViewP2Constraint.constant = self.view.bounds.height
@@ -561,7 +544,7 @@ class OnePlayerVC: UIViewController {
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.war.playerTwoCardsInPlay[0].Front.removeFromSuperview()
+                //self.war.playerTwoCardsInPlay[0].Front.removeFromSuperview()
                 self.war.normalWinP2AppendP2()
                 self.updateCounter()
                 self.cardViewP2Constraint.constant = -self.view.bounds.height
@@ -814,7 +797,7 @@ class OnePlayerVC: UIViewController {
                 self.view.layoutIfNeeded()
                 self.cardViewP1.userInteractionEnabled = true
                 self.cardViewP2.userInteractionEnabled = true
-                self.showButton()
+                self.startRound()
         })
         UIView.animateWithDuration(1, delay: 2.1, options: [.CurveEaseOut], animations: {
             self.cardViewP2War3Constraint.constant = self.view.bounds.height
@@ -906,7 +889,7 @@ class OnePlayerVC: UIViewController {
                 self.view.layoutIfNeeded()
                 self.cardViewP1.userInteractionEnabled = true
                 self.cardViewP2.userInteractionEnabled = true
-                self.showButton()
+                self.startRound()
         })
     }
 }

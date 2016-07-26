@@ -131,8 +131,7 @@ class ViewController: UIViewController {
         
         playerOneStorageY.constant = (view.bounds.height/4) + (cardViewP1.bounds.height/2) - 30
         playerTwoStorageY.constant = (view.bounds.height/4) + (cardViewP2.bounds.height/2) - 30
-        
-        self.view.layoutIfNeeded()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -144,16 +143,8 @@ class ViewController: UIViewController {
     // Button Click Action
     
     @IBAction func playRoundTapped(sender: UIButton) {
-        
-        drawCardP1(cardViewP1)
-        drawCardP2(cardViewP2)
-        
-        showCounter()
-        updateCounter()
-        
+        startRound()
         hideButton()
-        
-        startAnimation()
     }
     
     // Set cardViewWars default outside bounds
@@ -205,7 +196,7 @@ class ViewController: UIViewController {
             print("Player 2 wins")
         } else if war.bPlayerOneWinner == nil {
             print("No winner yet...")
-            showButton()
+            startRound()
         }
         
     }
@@ -341,6 +332,16 @@ class ViewController: UIViewController {
     func hideButton() {
         playRoundButton.hidden = true
         playRoundButton.userInteractionEnabled = false
+    }
+    
+    func startRound() {
+        drawCardP1(cardViewP1)
+        drawCardP2(cardViewP2)
+        
+        showCounter()
+        updateCounter()
+        
+        startAnimation()
     }
     
     // Draw cards
@@ -528,8 +529,7 @@ class ViewController: UIViewController {
                 self.updateCounter()
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
-                self.showButton()
-                
+                self.checkWinner()
         })
         UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
             self.cardViewP2Constraint.constant = self.view.bounds.height
@@ -561,7 +561,7 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.war.playerTwoCardsInPlay[0].Front.removeFromSuperview()
+                //self.war.playerTwoCardsInPlay[0].Front.removeFromSuperview()
                 self.war.normalWinP2AppendP2()
                 self.updateCounter()
                 self.cardViewP2Constraint.constant = -self.view.bounds.height
@@ -814,7 +814,7 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 self.cardViewP1.userInteractionEnabled = true
                 self.cardViewP2.userInteractionEnabled = true
-                self.showButton()
+                self.startRound()
         })
         UIView.animateWithDuration(1, delay: 2.1, options: [.CurveEaseOut], animations: {
             self.cardViewP2War3Constraint.constant = self.view.bounds.height
@@ -906,7 +906,7 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 self.cardViewP1.userInteractionEnabled = true
                 self.cardViewP2.userInteractionEnabled = true
-                self.showButton()
+                self.startRound()
         })
     }
 }

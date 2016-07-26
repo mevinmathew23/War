@@ -30,6 +30,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWl-sL-pKC" userLabel="onePlayer">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="101"/>
                                         <state key="normal" backgroundImage="onePlayer"/>
+                                        <connections>
+                                            <segue destination="BZp-YA-nqo" kind="show" id="gZX-7r-Abo"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFe-R8-aWu" userLabel="twoPlayer">
                                         <rect key="frame" x="0.0" y="111" width="374" height="101"/>
@@ -84,6 +87,14 @@
             </objects>
             <point key="canvasLocation" x="541" y="354"/>
         </scene>
+        <!--OnePlayer-->
+        <scene sceneID="vbW-iB-5Ub">
+            <objects>
+                <viewControllerPlaceholder storyboardName="OnePlayer" id="BZp-YA-nqo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c5t-0a-R7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1007.5" y="163"/>
+        </scene>
         <!--Main-->
         <scene sceneID="p2O-rB-ROi">
             <objects>
@@ -92,18 +103,18 @@
             </objects>
             <point key="canvasLocation" x="995.5" y="264"/>
         </scene>
-        <!--Settings-->
+        <!--Main Menu-->
         <scene sceneID="KCZ-D6-NyF">
             <objects>
-                <viewControllerPlaceholder storyboardName="Settings" id="NHv-CB-TsM" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Main Menu" id="NHv-CB-TsM" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzb-1u-y5v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="923.5" y="429"/>
         </scene>
-        <!--Help-->
+        <!--OnePlayer-->
         <scene sceneID="fiI-rg-wKG">
             <objects>
-                <viewControllerPlaceholder storyboardName="Help" id="aYc-jJ-6BQ" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="OnePlayer" id="aYc-jJ-6BQ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5TH-sZ-kMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="917.5" y="520"/>
