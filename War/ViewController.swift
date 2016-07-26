@@ -68,6 +68,12 @@ class ViewController: UIViewController {
     var playerTwoWinCounter = 0
     var counterTemp = 0
     
+    var roundCount = 1
+    
+    let overlay: UIView = UIView()
+    
+    var playerOneWin: Bool? = nil
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -105,6 +111,8 @@ class ViewController: UIViewController {
         notifyP1X.constant = -view.bounds.width
         notifyP2X.constant = -view.bounds.width
         notifyP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+        
+        setOverlay()
         
         self.playRoundButton.setTitle("DEAL", forState: UIControlState.Normal)
         
@@ -173,13 +181,23 @@ class ViewController: UIViewController {
     func evaluate() {
         
         if war.playerOneCardsInPlay[0].Value > war.playerTwoCardsInPlay[0].Value {
-            normalWinP1()
+            //normalWinP1()
+            playerOneWin = true
+            notifyP1.text = "BLUE WINS ROUND " + String(roundCount)
+            notifyP2.text = "BLUE WINS ROUND " + String(roundCount)
+            showOverlay()
             
+            roundCount += 1
             print("P1 wins this round")
         }
         else if war.playerOneCardsInPlay[0].Value < war.playerTwoCardsInPlay[0].Value {
-            normalWinP2()
+            //normalWinP2()
+            playerOneWin = false
+            notifyP1.text = "RED WINS ROUND " + String(roundCount)
+            notifyP2.text = "RED WINS ROUND " + String(roundCount)
+            showOverlay()
             
+            roundCount += 1
             print("P2 wins this round")
         }
         else {
@@ -320,6 +338,62 @@ class ViewController: UIViewController {
     func updateStorageCounter() {
         playerOneStorageCounter.text = String(war.playerOneStorage.count)
         playerTwoStorageCounter.text = String(war.playerTwoStorage.count)
+    }
+    
+    // MARK: Overlay and Notifications
+    func setOverlay() {
+        overlay.backgroundColor = UIColor.blackColor()
+        view.bringSubviewToFront(overlay)
+        overlay.alpha = 0.0
+        overlay.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
+        overlay.userInteractionEnabled = false
+    }
+    func showOverlay() {
+        view.layoutIfNeeded()
+        UIView.animateWithDuration(1, delay: 0, options: [], animations: {
+            self.overlay.alpha = 0.5
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.swipeIn()
+        })
+    }
+    func hideOverlay() {
+        view.layoutIfNeeded()
+        UIView.animateWithDuration(1, delay: 0, options: [], animations: {
+            self.overlay.alpha = 0.0
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                if (self.playerOneWin == true) {
+                    self.normalWinP1()
+                } else if (self.playerOneWin == false) {
+                    self.normalWinP2()
+                }
+        })
+    }
+    
+    func swipeIn() {
+        view.layoutIfNeeded()
+        UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseOut], animations: {
+            self.notifyP1X.constant = 0
+            self.notifyP2X.constant = 0
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.swipeOut()
+        })
+    }
+    func swipeOut() {
+        view.layoutIfNeeded()
+        UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseIn], animations: {
+            self.notifyP1X.constant = self.view.bounds.width
+            self.notifyP2X.constant = self.view.bounds.width
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.hideOverlay()
+        })
     }
     
     // MARK: Draw Cards
