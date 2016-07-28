@@ -20,10 +20,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundMainMenu" translatesAutoresizingMaskIntoConstraints="NO" id="kCs-rD-hIB" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="HPp-eS-Jml">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="396" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="HPp-eS-Jml">
                                 <rect key="frame" x="0.0" y="204" width="600" height="396"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="logoPSI" translatesAutoresizingMaskIntoConstraints="NO" id="v1i-3X-ZWt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoPSI" translatesAutoresizingMaskIntoConstraints="NO" id="v1i-3X-ZWt">
                                 <rect key="frame" x="228" y="28" width="144" height="144"/>
                             </imageView>
                         </subviews>
