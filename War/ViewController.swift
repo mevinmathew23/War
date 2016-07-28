@@ -110,6 +110,8 @@ class ViewController: UIViewController {
         // Set notification labels
         notifyP1X.constant = -view.bounds.width
         notifyP2X.constant = -view.bounds.width
+        notifyP1.layer.zPosition = 999
+        notifyP2.layer.zPosition = 999
         notifyP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         
         setOverlay()
@@ -343,14 +345,16 @@ class ViewController: UIViewController {
     // MARK: Overlay and Notifications
     func setOverlay() {
         overlay.backgroundColor = UIColor.blackColor()
-        view.bringSubviewToFront(overlay)
+        overlay.layer.zPosition = 998
         overlay.alpha = 0.0
         overlay.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
         overlay.userInteractionEnabled = false
+        
+        view.addSubview(overlay)
     }
     func showOverlay() {
         view.layoutIfNeeded()
-        UIView.animateWithDuration(1, delay: 0, options: [], animations: {
+        UIView.animateWithDuration(0.25, delay: 0, options: [], animations: {
             self.overlay.alpha = 0.5
             self.view.layoutIfNeeded()
             }, completion: {
@@ -360,7 +364,7 @@ class ViewController: UIViewController {
     }
     func hideOverlay() {
         view.layoutIfNeeded()
-        UIView.animateWithDuration(1, delay: 0, options: [], animations: {
+        UIView.animateWithDuration(0.25, delay: 0, options: [], animations: {
             self.overlay.alpha = 0.0
             self.view.layoutIfNeeded()
             }, completion: {

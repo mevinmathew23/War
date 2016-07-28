@@ -10,6 +10,7 @@
 		B71DC19C1D2C36330040F476 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DC19B1D2C36330040F476 /* Card.swift */; };
 		B71DC19E1D2C366F0040F476 /* Shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DC19D1D2C366F0040F476 /* Shuffle.swift */; };
 		B71DC1A01D2C369E0040F476 /* War.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DC19F1D2C369E0040F476 /* War.swift */; };
+		B75122D51D492D5F007419C3 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75122D41D492D5F007419C3 /* Animations.swift */; };
 		B759C8991D357514007AB0EF /* Bet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B759C8981D357514007AB0EF /* Bet.swift */; };
 		B76524621D35349500AC042D /* (null) in Sources */ = {isa = PBXBuildFile; };
 		B76524641D3D2C5700AC042D /* Main Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76524631D3D2C5700AC042D /* Main Menu.storyboard */; };
@@ -27,6 +28,7 @@
 		B71DC19B1D2C36330040F476 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		B71DC19D1D2C366F0040F476 /* Shuffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shuffle.swift; sourceTree = "<group>"; };
 		B71DC19F1D2C369E0040F476 /* War.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = War.swift; sourceTree = "<group>"; };
+		B75122D41D492D5F007419C3 /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		B759C8981D357514007AB0EF /* Bet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bet.swift; sourceTree = "<group>"; };
 		B76524631D3D2C5700AC042D /* Main Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main Menu.storyboard"; sourceTree = "<group>"; };
 		B76524671D3D384200AC042D /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				B7C60D341D19B76B00E18A36 /* AppDelegate.swift */,
 				B759C8981D357514007AB0EF /* Bet.swift */,
 				B7C60D361D19B76B00E18A36 /* ViewController.swift */,
+				B75122D41D492D5F007419C3 /* Animations.swift */,
 				B7C60D381D19B76B00E18A36 /* Main.storyboard */,
 				B7A7DF7F1D429F9C00F2CC39 /* OnePlayerVC.swift */,
 				B7A7DF7C1D429F0D00F2CC39 /* OnePlayer.storyboard */,
@@ -168,6 +171,7 @@
 				B71DC19E1D2C366F0040F476 /* Shuffle.swift in Sources */,
 				B76524681D3D384200AC042D /* MainMenu.swift in Sources */,
 				B71DC19C1D2C36330040F476 /* Card.swift in Sources */,
+				B75122D51D492D5F007419C3 /* Animations.swift in Sources */,
 				B71DC1A01D2C369E0040F476 /* War.swift in Sources */,
 				B7C60D351D19B76B00E18A36 /* AppDelegate.swift in Sources */,
 				B759C8991D357514007AB0EF /* Bet.swift in Sources */,
