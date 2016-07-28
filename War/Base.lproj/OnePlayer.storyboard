@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--One PlayerVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="War" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="OnePlayerVC" customModule="War" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -207,13 +207,13 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLUE WINS!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6XX-M0-YuQ">
-                                <rect key="frame" x="0.0" y="160" width="600" height="140"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLUE WINS!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6XX-M0-YuQ">
+                                <rect key="frame" x="125" y="230" width="350" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="Ah0-DL-pRM"/>
-                                    <constraint firstAttribute="height" constant="140" id="fue-YP-15t"/>
+                                    <constraint firstAttribute="width" constant="350" id="Ah0-DL-pRM"/>
+                                    <constraint firstAttribute="height" constant="70" id="fue-YP-15t"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="140"/>
+                                <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="70"/>
                                 <color key="textColor" red="1" green="0.071741149340000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -222,6 +222,24 @@
                                     <mask key="constraints">
                                         <include reference="Ah0-DL-pRM"/>
                                         <include reference="fue-YP-15t"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLUE WINS!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3A-eN-UcA">
+                                <rect key="frame" x="125" y="300" width="350" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="5Nh-Ko-Eb8"/>
+                                    <constraint firstAttribute="width" constant="350" id="pE8-Ma-JaN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="70"/>
+                                <color key="textColor" red="0.20367902069999999" green="0.70923944790000004" blue="0.92052150710000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="-1" height="-1"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="5Nh-Ko-Eb8"/>
+                                        <include reference="pE8-Ma-JaN"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -245,28 +263,13 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJp-Ay-XBL">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Quit"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                </variation>
                                 <connections>
                                     <action selector="Quit:" destination="BYZ-38-t0r" eventType="touchDown" id="Gkz-LA-9Si"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLUE WINS!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G3A-eN-UcA">
-                                <rect key="frame" x="0.0" y="300" width="600" height="140"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="5Nh-Ko-Eb8"/>
-                                    <constraint firstAttribute="width" constant="600" id="pE8-Ma-JaN"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="140"/>
-                                <color key="textColor" red="0.20367902069999999" green="0.70923944790000004" blue="0.92052150710000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="shadowOffset" width="-1" height="-1"/>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="5Nh-Ko-Eb8"/>
-                                        <include reference="pE8-Ma-JaN"/>
-                                    </mask>
-                                </variation>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -275,7 +278,7 @@
                             <constraint firstItem="wH2-ZH-hIe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="40" id="62S-tw-XJR">
                                 <variation key="heightClass=regular-widthClass=compact" constant="40"/>
                             </constraint>
-                            <constraint firstItem="6XX-M0-YuQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-70" id="6Hs-ex-k0E">
+                            <constraint firstItem="6XX-M0-YuQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-35" id="6Hs-ex-k0E">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-35"/>
                             </constraint>
                             <constraint firstItem="xJp-Ay-XBL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7Xc-20-aE7"/>
@@ -320,8 +323,8 @@
                             <constraint firstItem="NJG-2g-R3d" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="200" id="vPe-wi-dhF">
                                 <variation key="heightClass=regular-widthClass=compact" constant="190"/>
                             </constraint>
-                            <constraint firstItem="G3A-eN-UcA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="70" id="y66-eh-pqK">
-                                <variation key="heightClass=regular-widthClass=compact" constant="70"/>
+                            <constraint firstItem="G3A-eN-UcA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="35" id="y66-eh-pqK">
+                                <variation key="heightClass=regular-widthClass=compact" constant="35"/>
                             </constraint>
                             <constraint firstAttribute="bottom" secondItem="QKo-hk-Jz0" secondAttribute="bottom" id="zpq-F8-q9n">
                                 <variation key="heightClass=regular-widthClass=compact" constant="190"/>
@@ -350,9 +353,9 @@
                                 <include reference="1yI-70-QNt"/>
                                 <include reference="QKo-hk-Jz0"/>
                                 <include reference="6XX-M0-YuQ"/>
+                                <include reference="G3A-eN-UcA"/>
                                 <include reference="NJG-2g-R3d"/>
                                 <include reference="xJp-Ay-XBL"/>
-                                <include reference="G3A-eN-UcA"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="7Xc-20-aE7"/>
@@ -435,7 +438,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="288" y="231"/>
+            <point key="canvasLocation" x="288" y="231.75"/>
         </scene>
     </scenes>
     <resources>
