@@ -21,24 +21,28 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="396" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="HPp-eS-Jml">
-                                <rect key="frame" x="0.0" y="204" width="600" height="396"/>
+                                <rect key="frame" x="0.0" y="217" width="600" height="383"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoPSI" translatesAutoresizingMaskIntoConstraints="NO" id="v1i-3X-ZWt">
-                                <rect key="frame" x="228" y="28" width="144" height="144"/>
+                                <rect key="frame" x="228" y="45" width="144" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="UbX-5O-C2B"/>
+                                    <constraint firstAttribute="width" constant="144" id="o8M-8Y-hTd"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="v1i-3X-ZWt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1BW-nK-CxU"/>
-                            <constraint firstAttribute="bottom" secondItem="kCs-rD-hIB" secondAttribute="bottom" id="G50-7y-DhD"/>
-                            <constraint firstItem="HPp-eS-Jml" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Jqs-xq-ex1"/>
-                            <constraint firstItem="HPp-eS-Jml" firstAttribute="top" secondItem="v1i-3X-ZWt" secondAttribute="bottom" constant="32" id="SdC-BP-fs0"/>
-                            <constraint firstItem="kCs-rD-hIB" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="YKY-9z-L3F"/>
-                            <constraint firstItem="kCs-rD-hIB" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ege-MC-spD"/>
-                            <constraint firstAttribute="trailing" secondItem="kCs-rD-hIB" secondAttribute="trailing" id="o52-E7-wwh"/>
-                            <constraint firstItem="v1i-3X-ZWt" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="28" id="qbz-td-nTI"/>
-                            <constraint firstAttribute="trailing" secondItem="HPp-eS-Jml" secondAttribute="trailing" id="qyx-vx-llb"/>
-                            <constraint firstAttribute="bottom" secondItem="HPp-eS-Jml" secondAttribute="bottom" id="t85-dA-BFE"/>
+                            <constraint firstItem="v1i-3X-ZWt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0ph-Nf-COg"/>
+                            <constraint firstAttribute="bottom" secondItem="HPp-eS-Jml" secondAttribute="bottom" id="5Vg-ap-74P"/>
+                            <constraint firstItem="HPp-eS-Jml" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="8P9-LN-kmt"/>
+                            <constraint firstItem="HPp-eS-Jml" firstAttribute="top" secondItem="v1i-3X-ZWt" secondAttribute="bottom" constant="28" id="OSZ-F2-lHx"/>
+                            <constraint firstItem="kCs-rD-hIB" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="THh-kZ-uLb"/>
+                            <constraint firstItem="v1i-3X-ZWt" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="25" id="i8n-Ko-xO5"/>
+                            <constraint firstAttribute="bottom" secondItem="kCs-rD-hIB" secondAttribute="bottom" id="rJn-he-Td7"/>
+                            <constraint firstItem="kCs-rD-hIB" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="u7U-jU-Cv5"/>
+                            <constraint firstAttribute="trailing" secondItem="HPp-eS-Jml" secondAttribute="trailing" id="uUN-NB-LDX"/>
+                            <constraint firstAttribute="trailing" secondItem="kCs-rD-hIB" secondAttribute="trailing" id="xHe-27-gCU"/>
                         </constraints>
                     </view>
                 </viewController>
