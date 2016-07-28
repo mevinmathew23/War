@@ -6,6 +6,7 @@
 //  Copyright © 2016 Apple Dev. All rights reserved.
 //
 
+import HockeySDK
 import UIKit
 
 @UIApplicationMain
@@ -17,6 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         [NSThread.sleepForTimeInterval(5)]
         // Override point for customization after application launch.
+        
+        // HockeyApp
+        BITHockeyManager.sharedHockeyManager().configureWithIdentifier("dbf1e829bf0249af96338565815b45f6")
+        // Do some additional configuration if needed here
+        BITHockeyManager.sharedHockeyManager().startManager()
+        BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()
+
         return true
     }
 
