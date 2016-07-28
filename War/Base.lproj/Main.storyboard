@@ -263,9 +263,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJp-Ay-XBL">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Quit"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="Quit:" destination="BYZ-38-t0r" eventType="touchDown" id="Gkz-LA-9Si"/>
                                 </connections>
@@ -358,12 +355,12 @@
                                 <include reference="xJp-Ay-XBL"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="7Xc-20-aE7"/>
+                                <include reference="ek1-Ed-wFx"/>
                                 <include reference="ILp-KS-dTC"/>
                                 <include reference="jOi-PQ-Rcc"/>
                                 <include reference="kpp-RR-Yyh"/>
                                 <include reference="umW-Sz-QxO"/>
-                                <include reference="7Xc-20-aE7"/>
-                                <include reference="ek1-Ed-wFx"/>
                                 <include reference="IhQ-2d-4lO"/>
                                 <include reference="pAp-9K-RqS"/>
                                 <include reference="oZx-ql-ZUi"/>
@@ -372,26 +369,26 @@
                                 <include reference="uhD-tN-Yjh"/>
                                 <include reference="CaK-lw-dyZ"/>
                                 <include reference="Uhd-jN-HQj"/>
-                                <include reference="11I-e2-VcG"/>
-                                <include reference="8Bw-r5-sQe"/>
                                 <include reference="6Hs-ex-k0E"/>
                                 <include reference="GEj-Vp-FOS"/>
-                                <include reference="CVF-q5-RXj"/>
-                                <include reference="vPe-wi-dhF"/>
-                                <include reference="3Bm-qY-zQZ"/>
-                                <include reference="jLl-fh-x3m"/>
                                 <include reference="g80-hV-gUn"/>
                                 <include reference="y66-eh-pqK"/>
-                                <include reference="Jqj-XX-19V"/>
-                                <include reference="zpq-F8-q9n"/>
+                                <include reference="3Bm-qY-zQZ"/>
+                                <include reference="jLl-fh-x3m"/>
                                 <include reference="G4m-vi-fcP"/>
                                 <include reference="OOE-vJ-Tw1"/>
                                 <include reference="pFw-oE-G6e"/>
                                 <include reference="62S-tw-XJR"/>
                                 <include reference="elC-gU-CR5"/>
+                                <include reference="11I-e2-VcG"/>
+                                <include reference="8Bw-r5-sQe"/>
                                 <include reference="PTv-qd-8oD"/>
                                 <include reference="qCa-mq-pRN"/>
                                 <include reference="BF3-Xb-79j"/>
+                                <include reference="CVF-q5-RXj"/>
+                                <include reference="vPe-wi-dhF"/>
+                                <include reference="Jqj-XX-19V"/>
+                                <include reference="zpq-F8-q9n"/>
                                 <include reference="94A-k6-lTr"/>
                                 <include reference="iNc-GX-bbf"/>
                             </mask>
