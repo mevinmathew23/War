@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -30,7 +31,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7MB-8M-iur">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7MB-8M-iur">
                                                     <rect key="frame" x="139" y="7" width="230" height="31"/>
                                                     <connections>
                                                         <action selector="adjustingVolume:" destination="PRC-Td-IcT" eventType="valueChanged" id="wU8-Ra-buP"/>
@@ -39,6 +40,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="7MB-8M-iur" firstAttribute="trailing" secondItem="ryQ-IE-wyJ" secondAttribute="trailingMargin" id="4Af-Ky-L0I"/>
+                                                <constraint firstItem="7MB-8M-iur" firstAttribute="leading" secondItem="341-FK-KqQ" secondAttribute="trailing" constant="67" id="4l9-92-xNh"/>
                                                 <constraint firstItem="341-FK-KqQ" firstAttribute="centerY" secondItem="ryQ-IE-wyJ" secondAttribute="centerY" id="IUU-pr-dHe"/>
                                                 <constraint firstItem="7MB-8M-iur" firstAttribute="centerY" secondItem="ryQ-IE-wyJ" secondAttribute="centerY" id="J79-dX-Pil"/>
                                                 <constraint firstItem="341-FK-KqQ" firstAttribute="leading" secondItem="ryQ-IE-wyJ" secondAttribute="leadingMargin" id="e2N-KL-XDu"/>
@@ -89,7 +91,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="r5A-Ta-lkV" firstAttribute="trailing" secondItem="bqB-VX-OL3" secondAttribute="trailingMargin" id="7oG-q4-vYl"/>
+                                                <constraint firstItem="r5A-Ta-lkV" firstAttribute="leading" secondItem="hoq-CW-xaN" secondAttribute="trailing" constant="43" id="Ffl-mq-Zdu"/>
                                                 <constraint firstItem="hoq-CW-xaN" firstAttribute="centerY" secondItem="bqB-VX-OL3" secondAttribute="centerY" id="KEy-vi-kMX"/>
+                                                <constraint firstItem="r5A-Ta-lkV" firstAttribute="centerY" secondItem="bqB-VX-OL3" secondAttribute="centerY" id="KsT-us-ELi"/>
                                                 <constraint firstItem="hoq-CW-xaN" firstAttribute="leading" secondItem="bqB-VX-OL3" secondAttribute="leadingMargin" id="M4M-8o-Udi"/>
                                                 <constraint firstItem="r5A-Ta-lkV" firstAttribute="centerY" secondItem="bqB-VX-OL3" secondAttribute="centerY" id="exd-GD-K8D"/>
                                                 <constraint firstItem="r5A-Ta-lkV" firstAttribute="trailing" secondItem="bqB-VX-OL3" secondAttribute="trailingMargin" id="tof-jY-MPM"/>
@@ -110,6 +114,9 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="110" placeholderIntrinsicHeight="110" image="cardBackPSI" translatesAutoresizingMaskIntoConstraints="NO" id="Ng0-gh-xAg">
                                                     <rect key="frame" x="8" y="7" width="110" height="194"/>
                                                     <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Ng0-gh-xAg" secondAttribute="height" multiplier="55:97" id="J0N-sN-40a"/>
+                                                    </constraints>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="nlQ-4Y-zY3" appends="YES" id="ciu-4W-gWd"/>
                                                     </connections>
@@ -122,8 +129,10 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="LOh-F2-iSF" firstAttribute="leading" secondItem="Ng0-gh-xAg" secondAttribute="trailing" constant="8" id="4Zj-52-DIh"/>
                                                 <constraint firstItem="Ng0-gh-xAg" firstAttribute="centerY" secondItem="gla-zg-9uL" secondAttribute="centerY" id="ETb-V6-3Ll"/>
                                                 <constraint firstItem="Ng0-gh-xAg" firstAttribute="leading" secondItem="gla-zg-9uL" secondAttribute="leadingMargin" id="LVI-Fo-8PV"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="LOh-F2-iSF" secondAttribute="trailing" constant="14" id="LlF-Qs-bt1"/>
                                                 <constraint firstItem="LOh-F2-iSF" firstAttribute="leading" secondItem="Ng0-gh-xAg" secondAttribute="trailing" constant="8" id="oGd-4Y-pPs"/>
                                                 <constraint firstItem="LOh-F2-iSF" firstAttribute="centerY" secondItem="gla-zg-9uL" secondAttribute="centerY" id="p63-6a-l7u"/>
                                                 <constraint firstItem="Ng0-gh-xAg" firstAttribute="top" secondItem="gla-zg-9uL" secondAttribute="topMargin" constant="-1" id="qY1-9e-cZO"/>
