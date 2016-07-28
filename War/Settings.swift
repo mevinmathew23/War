@@ -75,5 +75,7 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         
     }
     
+    let p1Blue = UIColor(red: 68/255, green: 194/255, blue: 239/255, alpha: 1.0)
+    let p2Red = UIColor(red: 255/255, green: 23/255, blue: 0, alpha: 1.0)
 
 }

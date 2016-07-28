@@ -207,11 +207,11 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLUE WINS!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6XX-M0-YuQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLUE WINS ROUND 89" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.20000000000000001" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6XX-M0-YuQ">
                                 <rect key="frame" x="0.0" y="160" width="600" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="Ah0-DL-pRM"/>
-                                    <constraint firstAttribute="height" constant="140" id="fue-YP-15t"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="140" id="fue-YP-15t"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="140"/>
                                 <color key="textColor" red="1" green="0.071741149340000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -249,10 +249,10 @@
                                     <action selector="Quit:" destination="BYZ-38-t0r" eventType="touchDown" id="Gkz-LA-9Si"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLUE WINS!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G3A-eN-UcA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLUE WINS ROUND 10" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.20000000000000001" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G3A-eN-UcA">
                                 <rect key="frame" x="0.0" y="300" width="600" height="140"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="5Nh-Ko-Eb8"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="140" id="5Nh-Ko-Eb8"/>
                                     <constraint firstAttribute="width" constant="600" id="pE8-Ma-JaN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="140"/>
