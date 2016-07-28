@@ -103,10 +103,10 @@
             </objects>
             <point key="canvasLocation" x="995.5" y="264"/>
         </scene>
-        <!--Main Menu-->
+        <!--Settings-->
         <scene sceneID="KCZ-D6-NyF">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main Menu" id="NHv-CB-TsM" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Settings" id="NHv-CB-TsM" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzb-1u-y5v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="923.5" y="429"/>
