@@ -50,8 +50,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var playRoundButton: UIButton!
     @IBOutlet weak var notifyP1: UILabel!
     @IBOutlet weak var notifyP1X: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Y: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Height: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Width: NSLayoutConstraint!
     @IBOutlet weak var notifyP2: UILabel!
     @IBOutlet weak var notifyP2X: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2Y: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2Height: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2Width: NSLayoutConstraint!
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var playerOneCounter: UILabel!
@@ -110,6 +116,12 @@ class ViewController: UIViewController {
         // Set notification labels
         notifyP1X.constant = -view.bounds.width
         notifyP2X.constant = -view.bounds.width
+        notifyP1Y.constant = notifyP1.frame.height
+        notifyP2Y.constant = notifyP2.frame.height
+        notifyP1Width.constant = view.bounds.width
+        notifyP2Width.constant = view.bounds.width
+        notifyP1Height.constant = view.bounds.height/6
+        notifyP2Height.constant = view.bounds.height/6
         notifyP1.layer.zPosition = 999
         notifyP2.layer.zPosition = 999
         notifyP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
