@@ -84,18 +84,13 @@
 		B7C60D331D19B76B00E18A36 /* War */ = {
 			isa = PBXGroup;
 			children = (
-				B7C60D341D19B76B00E18A36 /* AppDelegate.swift */,
-				B76524631D3D2C5700AC042D /* Main Menu.storyboard */,
-				B76524671D3D384200AC042D /* MainMenu.swift */,
-				B7C60D381D19B76B00E18A36 /* Main.storyboard */,
-				B7C60D361D19B76B00E18A36 /* ViewController.swift */,
-				FBA0A7301D4A83B800C191FA /* OnePlayer.storyboard */,
-				FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */,
-				B765247B1D42674000AC042D /* Help.storyboard */,
-				B76524871D47A8C200AC042D /* Help.swift */,
-				B76524891D47A8F800AC042D /* Settings.storyboard */,
-				B765248F1D47BC3100AC042D /* Settings.swift */,
+				FBA0A7361D4A871000C191FA /* Main Menu */,
+				FBA0A7371D4A871D00C191FA /* 2 Player */,
+				FBA0A7381D4A872700C191FA /* 1 Player */,
+				FBA0A7391D4A873400C191FA /* Help */,
+				FBA0A73A1D4A873B00C191FA /* Settings */,
 				B7C60D3B1D19B76B00E18A36 /* Assets.xcassets */,
+				B7C60D341D19B76B00E18A36 /* AppDelegate.swift */,
 				B7C60D3D1D19B76B00E18A36 /* LaunchScreen.storyboard */,
 				B7C60D401D19B76B00E18A36 /* Info.plist */,
 				B759C8981D357514007AB0EF /* Bet.swift */,
@@ -104,6 +99,51 @@
 				B71DC19F1D2C369E0040F476 /* War.swift */,
 			);
 			path = War;
+			sourceTree = "<group>";
+		};
+		FBA0A7361D4A871000C191FA /* Main Menu */ = {
+			isa = PBXGroup;
+			children = (
+				B76524631D3D2C5700AC042D /* Main Menu.storyboard */,
+				B76524671D3D384200AC042D /* MainMenu.swift */,
+			);
+			name = "Main Menu";
+			sourceTree = "<group>";
+		};
+		FBA0A7371D4A871D00C191FA /* 2 Player */ = {
+			isa = PBXGroup;
+			children = (
+				B7C60D381D19B76B00E18A36 /* Main.storyboard */,
+				B7C60D361D19B76B00E18A36 /* ViewController.swift */,
+			);
+			name = "2 Player";
+			sourceTree = "<group>";
+		};
+		FBA0A7381D4A872700C191FA /* 1 Player */ = {
+			isa = PBXGroup;
+			children = (
+				FBA0A7301D4A83B800C191FA /* OnePlayer.storyboard */,
+				FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */,
+			);
+			name = "1 Player";
+			sourceTree = "<group>";
+		};
+		FBA0A7391D4A873400C191FA /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				B765247B1D42674000AC042D /* Help.storyboard */,
+				B76524871D47A8C200AC042D /* Help.swift */,
+			);
+			name = Help;
+			sourceTree = "<group>";
+		};
+		FBA0A73A1D4A873B00C191FA /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B76524891D47A8F800AC042D /* Settings.storyboard */,
+				B765248F1D47BC3100AC042D /* Settings.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		FBA1A49F1D4A61CA009FC751 /* HockeySDK.embeddedframework */ = {
