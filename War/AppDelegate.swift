@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        [NSThread.sleepForTimeInterval(5)]
+        [NSThread.sleepForTimeInterval(0.5)]
         // Override point for customization after application launch.
         
         // HockeyApp
