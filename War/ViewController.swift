@@ -50,8 +50,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var playRoundButton: UIButton!
     @IBOutlet weak var notifyP1: UILabel!
     @IBOutlet weak var notifyP1X: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Y: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Height: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Width: NSLayoutConstraint!
     @IBOutlet weak var notifyP2: UILabel!
     @IBOutlet weak var notifyP2X: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2Y: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2Height: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2Width: NSLayoutConstraint!
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var playerOneCounter: UILabel!
@@ -62,6 +68,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var playerTwoStorageY: NSLayoutConstraint!
     
     let war = War()
+    let settings = Settings()
     
     // War counters
     var playerOneWinCounter = 0
@@ -89,12 +96,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideCounter()
+        hideStorageCounter()
+        
         // Rotate player 2 counter
         playerTwoCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         playerTwoStorageCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
-        
-        hideCounter()
-        hideStorageCounter()
         
         // Rotate player 2 card views
         cardViewP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
@@ -108,8 +115,14 @@ class ViewController: UIViewController {
         setWarViews()
         
         // Set notification labels
+        notifyP1Width.constant = view.bounds.width
+        notifyP2Width.constant = view.bounds.width
+        notifyP1Height.constant = view.frame.height/4
+        notifyP2Height.constant = view.frame.height/4
         notifyP1X.constant = -view.bounds.width
         notifyP2X.constant = -view.bounds.width
+        notifyP1Y.constant = -70
+        notifyP2Y.constant = 70
         notifyP1.layer.zPosition = 999
         notifyP2.layer.zPosition = 999
         notifyP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
@@ -187,6 +200,9 @@ class ViewController: UIViewController {
             playerOneWin = true
             notifyP1.text = "BLUE WINS ROUND " + String(roundCount)
             notifyP2.text = "BLUE WINS ROUND " + String(roundCount)
+            notifyP1.textColor = settings.p1Blue
+            notifyP2.textColor = settings.p1Blue
+            
             showOverlay()
             
             roundCount += 1
@@ -197,6 +213,9 @@ class ViewController: UIViewController {
             playerOneWin = false
             notifyP1.text = "RED WINS ROUND " + String(roundCount)
             notifyP2.text = "RED WINS ROUND " + String(roundCount)
+            notifyP1.textColor = settings.p2Red
+            notifyP2.textColor = settings.p2Red
+            
             showOverlay()
             
             roundCount += 1
@@ -397,6 +416,8 @@ class ViewController: UIViewController {
             }, completion: {
                 finished in
                 self.hideOverlay()
+                self.notifyP1X.constant = -self.view.bounds.width
+                self.notifyP2X.constant = -self.view.bounds.width
         })
     }
     
@@ -650,6 +671,8 @@ class ViewController: UIViewController {
     
     func startWar() {
         
+        self.view.layoutIfNeeded()
+        
         // P1
         
         UIView.animateWithDuration(1, delay: 0, options: [.CurveEaseOut], animations: {
@@ -740,7 +763,9 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
+                self.view.layoutIfNeeded()
                 self.setWarViews()
+                self.view.setNeedsLayout()
                 self.drawWarCards()
         })
         UIView.animateWithDuration(1, delay: 1.9, options: [.CurveEaseOut], animations: {
