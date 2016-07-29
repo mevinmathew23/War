@@ -96,12 +96,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideCounter()
+        hideStorageCounter()
+        
         // Rotate player 2 counter
         playerTwoCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         playerTwoStorageCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
-        
-        hideCounter()
-        hideStorageCounter()
         
         // Rotate player 2 card views
         cardViewP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))

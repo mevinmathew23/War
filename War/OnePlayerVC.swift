@@ -50,8 +50,14 @@ class OnePlayerVC: UIViewController {
     @IBOutlet weak var playRoundButton: UIButton!
     @IBOutlet weak var notifyP1: UILabel!
     @IBOutlet weak var notifyP1X: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Y: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Width: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Height: NSLayoutConstraint!
     @IBOutlet weak var notifyP2: UILabel!
     @IBOutlet weak var notifyP2X: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2Y: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2Width: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2Height: NSLayoutConstraint!
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var playerOneCounter: UILabel!
@@ -62,11 +68,18 @@ class OnePlayerVC: UIViewController {
     @IBOutlet weak var playerTwoStorageY: NSLayoutConstraint!
     
     let war = War()
+    let settings = Settings()
     
     // War counters
     var playerOneWinCounter = 0
     var playerTwoWinCounter = 0
     var counterTemp = 0
+    
+    var roundCount = 1
+    
+    let overlay: UIView = UIView()
+    
+    var playerOneWin: Bool? = nil
     
     override func prefersStatusBarHidden() -> Bool {
         return true
