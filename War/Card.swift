@@ -15,5 +15,11 @@ class Card {
     
     var Back: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
     var Front: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
-    let backImage = UIImage(named: "cardBackPSI")
+    var backImage = UIImage(named: "cardBackPSI")
+
+    let settings = Settings()
+    
+    func updateCardBack() {
+        backImage = settings.cardImage.image
+    }
 }
