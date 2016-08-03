@@ -19,10 +19,10 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
-                                <navigationItem title="Title" id="EVO-NC-HZI">
+                                <navigationItem title="Settings" id="EVO-NC-HZI">
                                     <barButtonItem key="rightBarButtonItem" systemItem="done" id="c9P-SO-4Gc">
                                         <connections>
-                                            <action selector="doneButton:" destination="PRC-Td-IcT" id="MGO-pa-jkT"/>
+                                            <action selector="pressDone:" destination="PRC-Td-IcT" id="2dN-4r-78e"/>
                                         </connections>
                                     </barButtonItem>
                                 </navigationItem>
@@ -47,7 +47,7 @@
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7MB-8M-iur">
                                                     <rect key="frame" x="139" y="7" width="230" height="31"/>
                                                     <connections>
-                                                        <action selector="adjustingVolume:" destination="PRC-Td-IcT" eventType="valueChanged" id="wU8-Ra-buP"/>
+                                                        <action selector="volumeAdjust:" destination="PRC-Td-IcT" eventType="valueChanged" id="B4d-2l-ZNM"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
@@ -164,18 +164,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="208.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Custom Background" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFG-kF-Mft">
-                                                    <rect key="frame" x="126" y="93" width="232.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundPSI" translatesAutoresizingMaskIntoConstraints="NO" id="hfv-rV-Zwz">
                                                     <rect key="frame" x="8" y="8" width="110" height="194"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="hfv-rV-Zwz" secondAttribute="height" multiplier="55:97" id="oqT-S5-KfU"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Custom Background" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFG-kF-Mft">
+                                                    <rect key="frame" x="126" y="93" width="232.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hfv-rV-Zwz" firstAttribute="top" secondItem="kS6-r8-ebA" secondAttribute="topMargin" id="AKy-Be-jAD"/>
@@ -186,6 +186,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Gs0-a3-h8F" appends="YES" id="ITX-xK-KRf"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -199,14 +202,21 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="backgroundImage" destination="hfv-rV-Zwz" id="MaI-b2-my4"/>
                         <outlet property="cardImage" destination="Ng0-gh-xAg" id="BCi-Yw-HUC"/>
-                        <outlet property="volumeControl" destination="7MB-8M-iur" id="bb5-WO-E0k"/>
+                        <outlet property="doneButton" destination="c9P-SO-4Gc" id="h7p-T0-nsC"/>
+                        <outlet property="volumeControl" destination="7MB-8M-iur" id="wO3-uq-h2D"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Va4-OV-wbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="pO2-eW-fGj">
                     <connections>
                         <action selector="selectImageFromLibrary:" destination="PRC-Td-IcT" id="H3C-gG-UkI"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Gs0-a3-h8F">
+                    <connections>
+                        <action selector="selectBackgroundFromPhotoLibrary:" destination="PRC-Td-IcT" id="7nP-9Z-ZNf"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

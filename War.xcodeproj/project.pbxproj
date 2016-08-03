@@ -24,6 +24,7 @@
 		B7C60D3F1D19B76B00E18A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C60D3D1D19B76B00E18A36 /* LaunchScreen.storyboard */; };
 		FBA0A7321D4A83B800C191FA /* OnePlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0A7301D4A83B800C191FA /* OnePlayer.storyboard */; };
 		FBA0A7341D4A83C300C191FA /* OnePlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */; };
+		FBA0A73E1D52502B00C191FA /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A73D1D52502B00C191FA /* Config.swift */; };
 		FBA1A4A31D4A61CA009FC751 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA1A4A01D4A61CA009FC751 /* HockeySDK.framework */; };
 		FBA1A4A41D4A61CA009FC751 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FBA1A4A21D4A61CA009FC751 /* HockeySDKResources.bundle */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		B7C60D401D19B76B00E18A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBA0A7311D4A83B800C191FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OnePlayer.storyboard; sourceTree = "<group>"; };
 		FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnePlayerVC.swift; sourceTree = "<group>"; };
+		FBA0A73D1D52502B00C191FA /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		FBA1A4A01D4A61CA009FC751 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		FBA1A4A21D4A61CA009FC751 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +101,7 @@
 				B71DC19B1D2C36330040F476 /* Card.swift */,
 				B71DC19D1D2C366F0040F476 /* Shuffle.swift */,
 				B71DC19F1D2C369E0040F476 /* War.swift */,
+				FBA0A73D1D52502B00C191FA /* Config.swift */,
 			);
 			path = War;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				B7C60D371D19B76B00E18A36 /* ViewController.swift in Sources */,
 				B71DC19E1D2C366F0040F476 /* Shuffle.swift in Sources */,
 				B76524901D47BC3100AC042D /* Settings.swift in Sources */,
+				FBA0A73E1D52502B00C191FA /* Config.swift in Sources */,
 				FBA0A7341D4A83C300C191FA /* OnePlayerVC.swift in Sources */,
 				B76524681D3D384200AC042D /* MainMenu.swift in Sources */,
 				B71DC19C1D2C36330040F476 /* Card.swift in Sources */,
