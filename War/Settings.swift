@@ -43,18 +43,6 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     var background: UIImage! = UIImage(named: "backgroundPSI")
     
 
-    
-    // Mark: UIBackgroundPickerControllerDelegate
-    
-//    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String :AnyObject]) {
-//        let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-//        
-//        backgroundImage.image = selectedImage
-//        
-//        dismissViewControllerAnimated(true, completion: nil)
-//    }
-//    
-    
     // Mark: UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

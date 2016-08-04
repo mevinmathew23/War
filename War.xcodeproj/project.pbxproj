@@ -25,6 +25,7 @@
 		FBA0A7321D4A83B800C191FA /* OnePlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0A7301D4A83B800C191FA /* OnePlayer.storyboard */; };
 		FBA0A7341D4A83C300C191FA /* OnePlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */; };
 		FBA0A73E1D52502B00C191FA /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A73D1D52502B00C191FA /* Config.swift */; };
+		FBA0A75D1D5394D300C191FA /* warData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A75B1D5394D300C191FA /* warData.xcdatamodeld */; };
 		FBA1A4A31D4A61CA009FC751 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA1A4A01D4A61CA009FC751 /* HockeySDK.framework */; };
 		FBA1A4A41D4A61CA009FC751 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FBA1A4A21D4A61CA009FC751 /* HockeySDKResources.bundle */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		FBA0A7311D4A83B800C191FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OnePlayer.storyboard; sourceTree = "<group>"; };
 		FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnePlayerVC.swift; sourceTree = "<group>"; };
 		FBA0A73D1D52502B00C191FA /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		FBA0A75C1D5394D300C191FA /* warData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = warData.xcdatamodel; sourceTree = "<group>"; };
 		FBA1A4A01D4A61CA009FC751 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		FBA1A4A21D4A61CA009FC751 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +97,7 @@
 				FBA0A73A1D4A873B00C191FA /* Settings */,
 				B7C60D3B1D19B76B00E18A36 /* Assets.xcassets */,
 				B7C60D341D19B76B00E18A36 /* AppDelegate.swift */,
+				FBA0A75B1D5394D300C191FA /* warData.xcdatamodeld */,
 				B7C60D3D1D19B76B00E18A36 /* LaunchScreen.storyboard */,
 				B7C60D401D19B76B00E18A36 /* Info.plist */,
 				B759C8981D357514007AB0EF /* Bet.swift */,
@@ -279,6 +282,7 @@
 				FBA0A7341D4A83C300C191FA /* OnePlayerVC.swift in Sources */,
 				B76524681D3D384200AC042D /* MainMenu.swift in Sources */,
 				B71DC19C1D2C36330040F476 /* Card.swift in Sources */,
+				FBA0A75D1D5394D300C191FA /* warData.xcdatamodeld in Sources */,
 				B71DC1A01D2C369E0040F476 /* War.swift in Sources */,
 				B7C60D351D19B76B00E18A36 /* AppDelegate.swift in Sources */,
 				B759C8991D357514007AB0EF /* Bet.swift in Sources */,
@@ -466,6 +470,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FBA0A75B1D5394D300C191FA /* warData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FBA0A75C1D5394D300C191FA /* warData.xcdatamodel */,
+			);
+			currentVersion = FBA0A75C1D5394D300C191FA /* warData.xcdatamodel */;
+			path = warData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B7C60D291D19B76B00E18A36 /* Project object */;
 }
