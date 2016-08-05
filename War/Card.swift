@@ -18,19 +18,21 @@ class Card {
     
     var Back: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
     var Front: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
-    var backImage = UIImage(named: "cardBackPSI")
+    var backImage: UIImage!
     
-//    let settings = Settings()
-//    func updateCardBack() -> UIImage {
-//        let newImage = settings.loadImageFromPath(settings.cardPath)
-//        if newImage == nil {
-//            backImage = UIImage(named: "cardBackPSI")!
-//            return backImage
-//        } else {
-//            backImage = newImage!
-//            return backImage
-//        }
-//    }
+    let settings = Settings()
+    func updateCardBack() {
+        let newImage = settings.loadImageFromPath(settings.cardPath)
+        if newImage == nil {
+            backImage = UIImage(named: "cardBackPSI")!
+        } else {
+            backImage = newImage!
+        }
+    }
+    
+    init () {
+        updateCardBack()
+    }
 }
 
 
