@@ -25,8 +25,14 @@ class War {
     func addCards(Suit: String){
         for x in 2...14{
             let temp = Card();
+            let customImage = Settings().loadImageFromPath(Settings().cardPath)
             temp.Value = x;
             temp.Name = Suit + String(x);
+            if customImage == nil {
+                return
+            } else {
+                temp.backImage = customImage!
+            }
             deckOfCards.append(temp);
         }
     }

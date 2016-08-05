@@ -9,7 +9,7 @@
 import UIKit
 
 class Card {
-
+    
     
     
     var Value : Int?;
@@ -20,10 +20,17 @@ class Card {
     var Front: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
     var backImage = UIImage(named: "cardBackPSI")
     
-    let settings = Settings()
-    func updateCardBack() {
-        backImage = settings.cardImage.image
-    }
+//    let settings = Settings()
+//    func updateCardBack() -> UIImage {
+//        let newImage = settings.loadImageFromPath(settings.cardPath)
+//        if newImage == nil {
+//            backImage = UIImage(named: "cardBackPSI")!
+//            return backImage
+//        } else {
+//            backImage = newImage!
+//            return backImage
+//        }
+//    }
 }
 
 
