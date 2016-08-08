@@ -98,6 +98,7 @@ class OnePlayerVC: UIViewController {
         
         hideCounter()
         hideStorageCounter()
+        changeBackground()
         
         // Rotate player 2 card views
         cardViewP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
@@ -905,4 +906,13 @@ class OnePlayerVC: UIViewController {
                 self.startRound()
         })
     }
+    func changeBackground() {
+        let newImage = settings.loadImageFromPath(settings.backgroundPath)
+        if newImage == nil {
+            backgroundImageView.image = UIImage(named: "backgroundPSI")!
+        } else {
+            backgroundImageView.image = newImage!
+        }
+    }
+
 }

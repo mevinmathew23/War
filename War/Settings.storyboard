@@ -189,6 +189,106 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Reset" footerTitle="" id="wCA-W5-fRq">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zoZ-Ro-SMH">
+                                        <rect key="frame" x="0.0" y="793.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zoZ-Ro-SMH" id="2Gd-Bq-GxQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Card Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuk-UB-Ss6">
+                                                    <rect key="frame" x="124" y="11" width="127" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.17465409773859386" green="0.56254753746722874" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xuk-UB-Ss6" firstAttribute="centerY" secondItem="2Gd-Bq-GxQ" secondAttribute="centerY" id="4m1-GR-7a7"/>
+                                                <constraint firstItem="xuk-UB-Ss6" firstAttribute="centerX" secondItem="2Gd-Bq-GxQ" secondAttribute="centerX" id="Thk-lj-OON"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="qS5-8A-sB4" appends="YES" id="BQG-Pi-5UC"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hLE-xu-Ipp">
+                                        <rect key="frame" x="0.0" y="837.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hLE-xu-Ipp" id="qgR-Qc-d7P">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Background" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mbj-fd-uum">
+                                                    <rect key="frame" x="117.5" y="11" width="140" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.17465409770000001" green="0.56254753749999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Mbj-fd-uum" firstAttribute="centerY" secondItem="qgR-Qc-d7P" secondAttribute="centerY" id="2vx-7d-mQG"/>
+                                                <constraint firstItem="Mbj-fd-uum" firstAttribute="centerX" secondItem="qgR-Qc-d7P" secondAttribute="centerX" id="Kjp-FA-80e"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="AYG-sY-X27" appends="YES" id="kDz-bx-MMF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PRJ-2O-LMe">
+                                        <rect key="frame" x="0.0" y="881.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PRJ-2O-LMe" id="uTg-pq-Jn8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Highscores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jw-Zc-8FN">
+                                                    <rect key="frame" x="120.5" y="11" width="134.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.17465409770000001" green="0.56254753749999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9jw-Zc-8FN" firstAttribute="centerY" secondItem="uTg-pq-Jn8" secondAttribute="centerY" id="4Sr-Xg-8wx"/>
+                                                <constraint firstItem="9jw-Zc-8FN" firstAttribute="centerX" secondItem="uTg-pq-Jn8" secondAttribute="centerX" id="XJr-iC-hpX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="3rJ-zr-x7v" appends="YES" id="AXV-H0-2On"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ebj-I7-tHQ">
+                                        <rect key="frame" x="0.0" y="925.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ebj-I7-tHQ" id="0ku-R7-kuc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset All Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJM-ce-cEc">
+                                                    <rect key="frame" x="133.5" y="11" width="107" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.1632360638" blue="0.098920594949999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fJM-ce-cEc" firstAttribute="centerX" secondItem="0ku-R7-kuc" secondAttribute="centerX" id="fEJ-Jp-lol"/>
+                                                <constraint firstItem="fJM-ce-cEc" firstAttribute="centerY" secondItem="0ku-R7-kuc" secondAttribute="centerY" id="ytk-Tc-SwG"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="6Ug-8E-PSt" appends="YES" id="SpO-Ww-lNA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="PRC-Td-IcT" id="nWO-8c-llc"/>
@@ -205,16 +305,20 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Va4-OV-wbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="pO2-eW-fGj">
+                <tapGestureRecognizer id="pO2-eW-fGj" userLabel="Custom Card Recognizer">
                     <connections>
                         <action selector="selectImageFromLibrary:" destination="PRC-Td-IcT" id="H3C-gG-UkI"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="Gs0-a3-h8F">
+                <tapGestureRecognizer id="Gs0-a3-h8F" userLabel="Custom Background Recognizer">
                     <connections>
                         <action selector="selectBackgroundFromPhotoLibrary:" destination="PRC-Td-IcT" id="7nP-9Z-ZNf"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="qS5-8A-sB4" userLabel="Reset Card Back Recognizer"/>
+                <tapGestureRecognizer id="AYG-sY-X27" userLabel="Reset Background Recognizer"/>
+                <tapGestureRecognizer id="3rJ-zr-x7v" userLabel="Reset Highscores Recognizer"/>
+                <tapGestureRecognizer id="6Ug-8E-PSt" userLabel="Reset All Data Recognizer"/>
             </objects>
             <point key="canvasLocation" x="415.5" y="408.5"/>
         </scene>

@@ -10,15 +10,9 @@
 		B71DC19C1D2C36330040F476 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DC19B1D2C36330040F476 /* Card.swift */; };
 		B71DC19E1D2C366F0040F476 /* Shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DC19D1D2C366F0040F476 /* Shuffle.swift */; };
 		B71DC1A01D2C369E0040F476 /* War.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DC19F1D2C369E0040F476 /* War.swift */; };
-		B72EFAC91D54ED3E004B6441 /* Thumbnail+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72EFAC51D54ED3E004B6441 /* Thumbnail+CoreDataProperties.swift */; };
-		B72EFACA1D54ED3E004B6441 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72EFAC61D54ED3E004B6441 /* Thumbnail.swift */; };
-		B72EFACB1D54ED3E004B6441 /* FullRes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72EFAC71D54ED3E004B6441 /* FullRes+CoreDataProperties.swift */; };
-		B72EFACC1D54ED3E004B6441 /* FullRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72EFAC81D54ED3E004B6441 /* FullRes.swift */; };
 		B759C8991D357514007AB0EF /* Bet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B759C8981D357514007AB0EF /* Bet.swift */; };
 		B76524641D3D2C5700AC042D /* Main Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76524631D3D2C5700AC042D /* Main Menu.storyboard */; };
 		B76524681D3D384200AC042D /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76524671D3D384200AC042D /* MainMenu.swift */; };
-		B765247C1D42674000AC042D /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B765247B1D42674000AC042D /* Help.storyboard */; };
-		B76524881D47A8C200AC042D /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76524871D47A8C200AC042D /* Help.swift */; };
 		B765248A1D47A8F800AC042D /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76524891D47A8F800AC042D /* Settings.storyboard */; };
 		B76524901D47BC3100AC042D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765248F1D47BC3100AC042D /* Settings.swift */; };
 		B7C60D351D19B76B00E18A36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C60D341D19B76B00E18A36 /* AppDelegate.swift */; };
@@ -28,8 +22,8 @@
 		B7C60D3F1D19B76B00E18A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C60D3D1D19B76B00E18A36 /* LaunchScreen.storyboard */; };
 		FBA0A7321D4A83B800C191FA /* OnePlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0A7301D4A83B800C191FA /* OnePlayer.storyboard */; };
 		FBA0A7341D4A83C300C191FA /* OnePlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */; };
-		FBA0A73E1D52502B00C191FA /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A73D1D52502B00C191FA /* Config.swift */; };
-		FBA0A75D1D5394D300C191FA /* warData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A75B1D5394D300C191FA /* warData.xcdatamodeld */; };
+		FBA0A7671D58D97700C191FA /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0A7661D58D97700C191FA /* About.storyboard */; };
+		FBA0A76A1D58D9D000C191FA /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A7691D58D9D000C191FA /* AboutViewController.swift */; };
 		FBA1A4A31D4A61CA009FC751 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA1A4A01D4A61CA009FC751 /* HockeySDK.framework */; };
 		FBA1A4A41D4A61CA009FC751 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FBA1A4A21D4A61CA009FC751 /* HockeySDKResources.bundle */; };
 /* End PBXBuildFile section */
@@ -38,16 +32,10 @@
 		B71DC19B1D2C36330040F476 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		B71DC19D1D2C366F0040F476 /* Shuffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shuffle.swift; sourceTree = "<group>"; };
 		B71DC19F1D2C369E0040F476 /* War.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = War.swift; sourceTree = "<group>"; };
-		B72EFAC51D54ED3E004B6441 /* Thumbnail+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Thumbnail+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B72EFAC61D54ED3E004B6441 /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
-		B72EFAC71D54ED3E004B6441 /* FullRes+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FullRes+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B72EFAC81D54ED3E004B6441 /* FullRes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRes.swift; sourceTree = "<group>"; };
 		B75122D71D4A9FC8007419C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = War/Base.lproj/OnePlayer.storyboard; sourceTree = "<group>"; };
 		B759C8981D357514007AB0EF /* Bet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bet.swift; sourceTree = "<group>"; };
 		B76524631D3D2C5700AC042D /* Main Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main Menu.storyboard"; sourceTree = "<group>"; };
 		B76524671D3D384200AC042D /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
-		B765247B1D42674000AC042D /* Help.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
-		B76524871D47A8C200AC042D /* Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		B76524891D47A8F800AC042D /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		B765248F1D47BC3100AC042D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		B7C60D311D19B76B00E18A36 /* War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = War.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,8 +47,8 @@
 		B7C60D401D19B76B00E18A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FBA0A7311D4A83B800C191FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OnePlayer.storyboard; sourceTree = "<group>"; };
 		FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnePlayerVC.swift; sourceTree = "<group>"; };
-		FBA0A73D1D52502B00C191FA /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		FBA0A75C1D5394D300C191FA /* warData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = warData.xcdatamodel; sourceTree = "<group>"; };
+		FBA0A7661D58D97700C191FA /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
+		FBA0A7691D58D9D000C191FA /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		FBA1A4A01D4A61CA009FC751 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		FBA1A4A21D4A61CA009FC751 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,10 +68,6 @@
 		B7C60D281D19B76B00E18A36 = {
 			isa = PBXGroup;
 			children = (
-				B72EFAC51D54ED3E004B6441 /* Thumbnail+CoreDataProperties.swift */,
-				B72EFAC61D54ED3E004B6441 /* Thumbnail.swift */,
-				B72EFAC71D54ED3E004B6441 /* FullRes+CoreDataProperties.swift */,
-				B72EFAC81D54ED3E004B6441 /* FullRes.swift */,
 				B75122D61D4A9FC8007419C3 /* OnePlayer.storyboard */,
 				B7C60D331D19B76B00E18A36 /* War */,
 				B7C60D321D19B76B00E18A36 /* Products */,
@@ -102,21 +86,19 @@
 		B7C60D331D19B76B00E18A36 /* War */ = {
 			isa = PBXGroup;
 			children = (
+				FBA0A7681D58D98300C191FA /* About */,
 				FBA0A7361D4A871000C191FA /* Main Menu */,
 				FBA0A7371D4A871D00C191FA /* 2 Player */,
 				FBA0A7381D4A872700C191FA /* 1 Player */,
-				FBA0A7391D4A873400C191FA /* Help */,
 				FBA0A73A1D4A873B00C191FA /* Settings */,
 				B7C60D3B1D19B76B00E18A36 /* Assets.xcassets */,
 				B7C60D341D19B76B00E18A36 /* AppDelegate.swift */,
-				FBA0A75B1D5394D300C191FA /* warData.xcdatamodeld */,
 				B7C60D3D1D19B76B00E18A36 /* LaunchScreen.storyboard */,
 				B7C60D401D19B76B00E18A36 /* Info.plist */,
 				B759C8981D357514007AB0EF /* Bet.swift */,
 				B71DC19B1D2C36330040F476 /* Card.swift */,
 				B71DC19D1D2C366F0040F476 /* Shuffle.swift */,
 				B71DC19F1D2C369E0040F476 /* War.swift */,
-				FBA0A73D1D52502B00C191FA /* Config.swift */,
 			);
 			path = War;
 			sourceTree = "<group>";
@@ -148,15 +130,6 @@
 			name = "1 Player";
 			sourceTree = "<group>";
 		};
-		FBA0A7391D4A873400C191FA /* Help */ = {
-			isa = PBXGroup;
-			children = (
-				B765247B1D42674000AC042D /* Help.storyboard */,
-				B76524871D47A8C200AC042D /* Help.swift */,
-			);
-			name = Help;
-			sourceTree = "<group>";
-		};
 		FBA0A73A1D4A873B00C191FA /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +137,15 @@
 				B765248F1D47BC3100AC042D /* Settings.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		FBA0A7681D58D98300C191FA /* About */ = {
+			isa = PBXGroup;
+			children = (
+				FBA0A7661D58D97700C191FA /* About.storyboard */,
+				FBA0A7691D58D9D000C191FA /* AboutViewController.swift */,
+			);
+			name = About;
 			sourceTree = "<group>";
 		};
 		FBA1A49F1D4A61CA009FC751 /* HockeySDK.embeddedframework */ = {
@@ -253,8 +235,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7C60D3F1D19B76B00E18A36 /* LaunchScreen.storyboard in Resources */,
-				B765247C1D42674000AC042D /* Help.storyboard in Resources */,
 				FBA0A7321D4A83B800C191FA /* OnePlayer.storyboard in Resources */,
+				FBA0A7671D58D97700C191FA /* About.storyboard in Resources */,
 				FBA1A4A41D4A61CA009FC751 /* HockeySDKResources.bundle in Resources */,
 				B76524641D3D2C5700AC042D /* Main Menu.storyboard in Resources */,
 				B765248A1D47A8F800AC042D /* Settings.storyboard in Resources */,
@@ -286,21 +268,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B76524881D47A8C200AC042D /* Help.swift in Sources */,
 				B7C60D371D19B76B00E18A36 /* ViewController.swift in Sources */,
 				B71DC19E1D2C366F0040F476 /* Shuffle.swift in Sources */,
-				B72EFAC91D54ED3E004B6441 /* Thumbnail+CoreDataProperties.swift in Sources */,
+				FBA0A76A1D58D9D000C191FA /* AboutViewController.swift in Sources */,
 				B76524901D47BC3100AC042D /* Settings.swift in Sources */,
-				B72EFACC1D54ED3E004B6441 /* FullRes.swift in Sources */,
-				FBA0A73E1D52502B00C191FA /* Config.swift in Sources */,
-				B72EFACA1D54ED3E004B6441 /* Thumbnail.swift in Sources */,
 				FBA0A7341D4A83C300C191FA /* OnePlayerVC.swift in Sources */,
 				B76524681D3D384200AC042D /* MainMenu.swift in Sources */,
 				B71DC19C1D2C36330040F476 /* Card.swift in Sources */,
-				FBA0A75D1D5394D300C191FA /* warData.xcdatamodeld in Sources */,
 				B71DC1A01D2C369E0040F476 /* War.swift in Sources */,
 				B7C60D351D19B76B00E18A36 /* AppDelegate.swift in Sources */,
-				B72EFACB1D54ED3E004B6441 /* FullRes+CoreDataProperties.swift in Sources */,
 				B759C8991D357514007AB0EF /* Bet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,19 +462,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		FBA0A75B1D5394D300C191FA /* warData.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				FBA0A75C1D5394D300C191FA /* warData.xcdatamodel */,
-			);
-			currentVersion = FBA0A75C1D5394D300C191FA /* warData.xcdatamodel */;
-			path = warData.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = B7C60D291D19B76B00E18A36 /* Project object */;
 }
