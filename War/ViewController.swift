@@ -156,7 +156,7 @@ class ViewController: UIViewController {
         
         playerOneStorageY.constant = (view.bounds.height/4) + (cardViewP1.bounds.height/2) - 30
         playerTwoStorageY.constant = (view.bounds.height/4) + (cardViewP2.bounds.height/2) - 30
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -1016,7 +1016,12 @@ class ViewController: UIViewController {
     }
     
     func changeBackground() {
-        let config = Config()
-        backgroundImageView.image = config.background
+        let newImage = settings.loadImageFromPath(settings.backgroundPath)
+        if newImage == nil {
+            backgroundImageView.image = UIImage(named: "backgroundPSI")!
+        } else {
+            backgroundImageView.image = newImage!
+        }
     }
 }
+
