@@ -7,22 +7,21 @@
 //
 
 import AVFoundation
+import UIKit
 
 class Audio : NSObject {
     
     var avPlayer:AVAudioPlayer!
     
     func readFileIntoAVPlayer(fileName: String, volume: Float) {
-        guard let fileURL: NSURL = NSBundle.mainBundle().URLForResource(fileName, withExtension: "mp3")
-            else {
-                print("could not read sound file")
-                return
-        }
-        
-        do {
-            try self.avPlayer = AVAudioPlayer(contentsOfURL: fileURL, fileTypeHint: AVFileTypeMPEGLayer3)
-        } catch {
-            print("could not create AVAudioPlayer \(error)")
+        if let sound = NSDataAsset(fileName) {
+            do {
+                try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                try! AVAudioSession.sharedInstance().setActive(true)
+                try avPlayer = AVAudioPlayer(data: sound.data, fileTypeHint: AVFileTypeMPEGLayer3)
+            } catch {
+                print("error initializing AVAudioPlayer")
+            }
         }
         
         avPlayer.delegate = self
