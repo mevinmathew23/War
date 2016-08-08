@@ -22,13 +22,23 @@ func fileInDocumentsDirectory(filename: String) -> String {
 
 class Settings: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    let defaults = NSUserDefaults.standardUserDefaults()
     var newImage:UIImage?
+    var newVolume:Float!
+    var newBrightness:Float!
+    var newMute:Bool!
     let cardPath = fileInDocumentsDirectory("customCard")
     let backgroundPath = fileInDocumentsDirectory("customBackground")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let volume = defaults.floatForKey("Volume")
+        let brightness = defaults.floatForKey("Brightness")
+        let mute = defaults.boolForKey("Mute")
+        volumeControl.setValue(volume, animated: false)
+        brightnessControl.setValue(brightness, animated: false)
+        muteControl.setOn(mute, animated: false)
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,6 +52,7 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     
     @IBOutlet weak var volumeControl: UISlider!
     @IBOutlet weak var brightnessControl: UISlider!
+    @IBOutlet weak var muteControl: UISwitch!
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
@@ -150,7 +161,7 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     
     
     @IBAction func pressDone(sender: UIBarButtonItem) {
-        
+        setDefaults()
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -172,9 +183,28 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         return image
     }
     @IBAction func volumeChange(sender: UISlider) {
-        
+        newVolume = volumeControl.value
     }
     @IBAction func brightnessChange(sender: UISlider) {
-        UIScreen.mainScreen().brightness = CGFloat(brightnessControl.value)
+        newBrightness = brightnessControl.value
+        UIScreen.mainScreen().brightness = CGFloat(newBrightness)
+    }
+    @IBAction func muteChange(sender: UISwitch) {
+        newMute = muteControl.on
+    }
+    
+    func setDefaults() {
+        if newVolume == nil {
+            print("No new volume set")
+        } else {
+            defaults.setFloat(newVolume, forKey: "Volume")}
+        if newBrightness == nil {
+            print("No new brightness set")
+        } else {
+            defaults.setFloat(newBrightness, forKey: "Brightness")}
+        if newMute == nil {
+            print("No new mute option set")
+        } else {
+            defaults.setBool(newMute, forKey: "Mute")}
     }
 }

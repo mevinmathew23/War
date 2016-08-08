@@ -14,10 +14,9 @@ class Audio : NSObject {
     var avPlayer:AVAudioPlayer!
     
     func readFileIntoAVPlayer(fileName: String, volume: Float) {
-        if let sound = NSDataAsset(fileName) {
+        if let sound = NSDataAsset(name: fileName) {
             do {
-                try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-                try! AVAudioSession.sharedInstance().setActive(true)
+                setSessionPlayback()
                 try avPlayer = AVAudioPlayer(data: sound.data, fileTypeHint: AVFileTypeMPEGLayer3)
             } catch {
                 print("error initializing AVAudioPlayer")

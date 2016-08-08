@@ -75,6 +75,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qYq-YH-2BR">
                                                     <rect key="frame" x="318" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="muteChange:" destination="PRC-Td-IcT" eventType="valueChanged" id="rLf-LN-9tE"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -209,6 +212,7 @@
                         <outlet property="brightnessControl" destination="r5A-Ta-lkV" id="ivV-bU-9kD"/>
                         <outlet property="cardImage" destination="Ng0-gh-xAg" id="BCi-Yw-HUC"/>
                         <outlet property="doneButton" destination="c9P-SO-4Gc" id="h7p-T0-nsC"/>
+                        <outlet property="muteControl" destination="qYq-YH-2BR" id="bIT-BQ-q80"/>
                         <outlet property="volumeControl" destination="7MB-8M-iur" id="H3t-gy-vpK"/>
                     </connections>
                 </tableViewController>
