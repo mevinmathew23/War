@@ -99,6 +99,8 @@ class OnePlayerVC: UIViewController {
         hideCounter()
         hideStorageCounter()
         
+        changeBackground()
+        
         // Rotate player 2 card views
         cardViewP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         cardViewP2War1.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
@@ -119,6 +121,16 @@ class OnePlayerVC: UIViewController {
         // Set notification labels
         notifyP1X.constant = -view.bounds.width
         notifyP2X.constant = -view.bounds.width
+        notifyP1Height.constant = view.frame.height/4
+        notifyP2Height.constant = view.frame.height/4
+        notifyP1X.constant = -view.bounds.width
+        notifyP2X.constant = -view.bounds.width
+        notifyP1Y.constant = -70
+        notifyP2Y.constant = 70
+        notifyP1.layer.zPosition = 999
+        notifyP2.layer.zPosition = 999
+        
+        setOverlay()
         
         self.playRoundButton.setTitle("DEAL", forState: UIControlState.Normal)
         
@@ -183,13 +195,29 @@ class OnePlayerVC: UIViewController {
     func evaluate() {
         
         if war.playerOneCardsInPlay[0].Value > war.playerTwoCardsInPlay[0].Value {
-            normalWinP1()
+            //normalWinP1()
+            playerOneWin = true
+            notifyP1.text = "BLUE WINS ROUND " + String(roundCount)
+            notifyP2.text = "BLUE WINS ROUND " + String(roundCount)
+            //notifyP1.textColor = settings.p1Blue
+            //notifyP2.textColor = settings.p1Blue
             
+            showOverlay()
+            
+            roundCount += 1
             print("P1 wins this round")
         }
         else if war.playerOneCardsInPlay[0].Value < war.playerTwoCardsInPlay[0].Value {
-            normalWinP2()
+            //normalWinP2()
+            playerOneWin = false
+            notifyP1.text = "RED WINS ROUND " + String(roundCount)
+            notifyP2.text = "RED WINS ROUND " + String(roundCount)
+            //notifyP1.textColor = settings.p2Red
+            //notifyP2.textColor = settings.p2Red
             
+            showOverlay()
+            
+            roundCount += 1
             print("P2 wins this round")
         }
         else {
@@ -328,6 +356,66 @@ class OnePlayerVC: UIViewController {
     func updateStorageCounter() {
         playerOneStorageCounter.text = String(war.playerOneStorage.count)
         playerTwoStorageCounter.text = String(war.playerTwoStorage.count)
+    }
+    
+    // MARK: Overlay and Notifications
+    func setOverlay() {
+        overlay.backgroundColor = UIColor.blackColor()
+        overlay.layer.zPosition = 998
+        overlay.alpha = 0.0
+        overlay.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
+        overlay.userInteractionEnabled = false
+        
+        view.addSubview(overlay)
+    }
+    func showOverlay() {
+        view.layoutIfNeeded()
+        UIView.animateWithDuration(0.25, delay: 0, options: [], animations: {
+            self.overlay.alpha = 0.5
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.swipeIn()
+        })
+    }
+    func hideOverlay() {
+        view.layoutIfNeeded()
+        UIView.animateWithDuration(0.25, delay: 0, options: [], animations: {
+            self.overlay.alpha = 0.0
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                if (self.playerOneWin == true) {
+                    self.normalWinP1()
+                } else if (self.playerOneWin == false) {
+                    self.normalWinP2()
+                }
+        })
+    }
+    
+    func swipeIn() {
+        view.layoutIfNeeded()
+        UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseOut], animations: {
+            self.notifyP1X.constant = 0
+            self.notifyP2X.constant = 0
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.swipeOut()
+        })
+    }
+    func swipeOut() {
+        view.layoutIfNeeded()
+        UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseIn], animations: {
+            self.notifyP1X.constant = self.view.bounds.width
+            self.notifyP2X.constant = self.view.bounds.width
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.hideOverlay()
+                self.notifyP1X.constant = -self.view.bounds.width
+                self.notifyP2X.constant = -self.view.bounds.width
+        })
     }
     
     // MARK: Draw Cards
@@ -904,5 +992,14 @@ class OnePlayerVC: UIViewController {
                 self.cardViewP2.userInteractionEnabled = true
                 self.startRound()
         })
+    }
+    
+    func changeBackground() {
+        let newImage = settings.loadImageFromPath(settings.backgroundPath)
+        if newImage == nil {
+            backgroundImageView.image = UIImage(named: "backgroundPSI")!
+        } else {
+            backgroundImageView.image = newImage!
+        }
     }
 }
