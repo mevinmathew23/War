@@ -14,6 +14,7 @@
 		B72EFACA1D54ED3E004B6441 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72EFAC61D54ED3E004B6441 /* Thumbnail.swift */; };
 		B72EFACB1D54ED3E004B6441 /* FullRes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72EFAC71D54ED3E004B6441 /* FullRes+CoreDataProperties.swift */; };
 		B72EFACC1D54ED3E004B6441 /* FullRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72EFAC81D54ED3E004B6441 /* FullRes.swift */; };
+		B72EFAD01D58FCE5004B6441 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72EFACF1D58FCE5004B6441 /* Audio.swift */; };
 		B759C8991D357514007AB0EF /* Bet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B759C8981D357514007AB0EF /* Bet.swift */; };
 		B76524641D3D2C5700AC042D /* Main Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76524631D3D2C5700AC042D /* Main Menu.storyboard */; };
 		B76524681D3D384200AC042D /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76524671D3D384200AC042D /* MainMenu.swift */; };
@@ -42,6 +43,7 @@
 		B72EFAC61D54ED3E004B6441 /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		B72EFAC71D54ED3E004B6441 /* FullRes+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FullRes+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B72EFAC81D54ED3E004B6441 /* FullRes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRes.swift; sourceTree = "<group>"; };
+		B72EFACF1D58FCE5004B6441 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		B75122D71D4A9FC8007419C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = War/Base.lproj/OnePlayer.storyboard; sourceTree = "<group>"; };
 		B759C8981D357514007AB0EF /* Bet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bet.swift; sourceTree = "<group>"; };
 		B76524631D3D2C5700AC042D /* Main Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main Menu.storyboard"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				FBA0A75B1D5394D300C191FA /* warData.xcdatamodeld */,
 				B7C60D3D1D19B76B00E18A36 /* LaunchScreen.storyboard */,
 				B7C60D401D19B76B00E18A36 /* Info.plist */,
+				B72EFACF1D58FCE5004B6441 /* Audio.swift */,
 				B759C8981D357514007AB0EF /* Bet.swift */,
 				B71DC19B1D2C36330040F476 /* Card.swift */,
 				B71DC19D1D2C366F0040F476 /* Shuffle.swift */,
@@ -295,6 +298,7 @@
 				FBA0A73E1D52502B00C191FA /* Config.swift in Sources */,
 				B72EFACA1D54ED3E004B6441 /* Thumbnail.swift in Sources */,
 				FBA0A7341D4A83C300C191FA /* OnePlayerVC.swift in Sources */,
+				B72EFAD01D58FCE5004B6441 /* Audio.swift in Sources */,
 				B76524681D3D384200AC042D /* MainMenu.swift in Sources */,
 				B71DC19C1D2C36330040F476 /* Card.swift in Sources */,
 				FBA0A75D1D5394D300C191FA /* warData.xcdatamodeld in Sources */,

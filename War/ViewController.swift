@@ -69,6 +69,7 @@ class ViewController: UIViewController {
     
     let war = War()
     let settings = Settings()
+    let audio = Audio()
     
     // War counters
     var playerOneWinCounter = 0
@@ -100,6 +101,7 @@ class ViewController: UIViewController {
         hideStorageCounter()
         
         changeBackground()
+        audio.readFileIntoAVPlayer("bgm", volume: 1.0)
         
         // Rotate player 2 counter
         playerTwoCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))

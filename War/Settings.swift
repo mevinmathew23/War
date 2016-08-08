@@ -41,6 +41,7 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     // Mark: Properties
     
     @IBOutlet weak var volumeControl: UISlider!
+    @IBOutlet weak var brightnessControl: UISlider!
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
@@ -169,5 +170,11 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         }
         print("Loading image from path: \(path)")
         return image
+    }
+    @IBAction func volumeChange(sender: UISlider) {
+        
+    }
+    @IBAction func brightnessChange(sender: UISlider) {
+        UIScreen.mainScreen().brightness = CGFloat(brightnessControl.value)
     }
 }
