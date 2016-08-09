@@ -16,7 +16,6 @@ class MainMenu: UIViewController {
         super.viewDidLoad()
         
         audio.readFileIntoAVPlayer("bgm", volume: 1.0)
-        audio.setSessionPlayback()
         audio.toggleAVPlayer()
 
             }
