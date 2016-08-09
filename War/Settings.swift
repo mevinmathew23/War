@@ -227,6 +227,9 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     
     @IBAction func volumeChange(sender: UISlider) {
         newVolume = volumeControl.value
+        if Audio().avPlayer != nil {
+           Audio().avPlayer.volume = volumeControl.value
+        }
     }
     @IBAction func brightnessChange(sender: UISlider) {
         newBrightness = brightnessControl.value
@@ -234,6 +237,13 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     }
     @IBAction func muteChange(sender: UISwitch) {
         newMute = muteControl.on
+        if Audio().avPlayer != nil {
+            if muteControl.on == true {
+                Audio().avPlayer.volume = 0
+            } else {
+                Audio().avPlayer.volume = volumeControl.value
+            }
+        }
     }
     
     @IBAction func resetCardBack(sender: UITapGestureRecognizer) {
