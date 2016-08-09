@@ -48,9 +48,9 @@
                                             <segue destination="NHv-CB-TsM" kind="show" id="b2u-Ka-DMd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpA-AU-7xY" userLabel="help">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpA-AU-7xY" userLabel="about">
                                         <rect key="frame" x="0.0" y="333" width="374" height="101"/>
-                                        <state key="normal" backgroundImage="help"/>
+                                        <state key="normal" backgroundImage="about"/>
                                         <connections>
                                             <segue destination="aYc-jJ-6BQ" kind="show" id="XPb-B3-lzH"/>
                                         </connections>
@@ -111,18 +111,18 @@
             </objects>
             <point key="canvasLocation" x="923.5" y="429"/>
         </scene>
-        <!--Help-->
+        <!--About-->
         <scene sceneID="fiI-rg-wKG">
             <objects>
-                <viewControllerPlaceholder storyboardName="Help" id="aYc-jJ-6BQ" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="About" id="aYc-jJ-6BQ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5TH-sZ-kMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="917.5" y="520"/>
         </scene>
     </scenes>
     <resources>
+        <image name="about" width="132" height="48"/>
         <image name="backgroundMainMenu" width="306" height="396"/>
-        <image name="help" width="133" height="50"/>
         <image name="logoCleanPSI" width="187" height="106"/>
         <image name="onePlayer" width="133" height="49"/>
         <image name="settings" width="133" height="49"/>

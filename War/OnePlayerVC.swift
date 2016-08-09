@@ -98,6 +98,7 @@ class OnePlayerVC: UIViewController {
         
         hideCounter()
         hideStorageCounter()
+        changeBackground()
         
         changeBackground()
         
@@ -993,7 +994,6 @@ class OnePlayerVC: UIViewController {
                 self.startRound()
         })
     }
-    
     func changeBackground() {
         let newImage = settings.loadImageFromPath(settings.backgroundPath)
         if newImage == nil {
@@ -1002,4 +1002,5 @@ class OnePlayerVC: UIViewController {
             backgroundImageView.image = newImage!
         }
     }
+
 }

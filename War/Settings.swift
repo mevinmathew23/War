@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 import MediaPlayer
-import CoreData
+
 
 func getDocumentsURL() -> NSURL {
     let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
@@ -167,6 +167,8 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         setDefaults()
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
     
     
     func saveImage(image: UIImage, path: String) -> Bool {
