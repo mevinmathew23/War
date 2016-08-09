@@ -82,6 +82,12 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="about" destination="fpA-AU-7xY" id="mQm-UZ-6q4"/>
+                        <outlet property="onePlayer" destination="AWl-sL-pKC" id="Krd-iM-GFs"/>
+                        <outlet property="settings" destination="yrP-89-LJu" id="gMV-XV-fMZ"/>
+                        <outlet property="twoPlayer" destination="tFe-R8-aWu" id="p8u-U3-MMu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gxd-AB-1Yz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
