@@ -17,6 +17,8 @@ class MainMenu: UIViewController {
         
         audio.readFileIntoAVPlayer("bgm", volume: 1.0)
         audio.toggleAVPlayer()
+        audio.loopAVPlayer()
+        
 
             }
 
@@ -25,6 +27,14 @@ class MainMenu: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "segSettings" {
+            if let vc = segue.destinationViewController as? Settings {
+                vc.audio = self.audio;
+            }
+        }
+    }
 
     // Mark: Properties
     @IBOutlet weak var onePlayer: UIButton!
