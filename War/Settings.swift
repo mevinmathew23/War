@@ -30,6 +30,11 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     let cardPath = fileInDocumentsDirectory("customCard")
     let backgroundPath = fileInDocumentsDirectory("customBackground")
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +44,20 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         volumeControl.setValue(volume, animated: false)
         brightnessControl.setValue(brightness, animated: false)
         muteControl.setOn(mute, animated: false)
+        
+        if loadImageFromPath(cardPath) == nil {
+            print("No new image selected.")
+            cardImage.image = UIImage(named: "cardBackPSI")
+        } else {
+            cardImage.image = loadImageFromPath(cardPath)
+        }
+        if loadImageFromPath(backgroundPath) == nil {
+            backgroundImage.image = UIImage(named: "backgroundPSI")
+            print("No new background selected")
+        } else {
+            backgroundImage.image = loadImageFromPath(backgroundPath)
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -187,6 +206,25 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         print("Loading image from path: \(path)")
         return image
     }
+    
+    func removeImage(itemName:String, fileExtension: String) {
+        let fileManager = NSFileManager.defaultManager()
+        let nsDocumentDirectory = NSSearchPathDirectory.DocumentDirectory
+        let nsUserDomainMask = NSSearchPathDomainMask.UserDomainMask
+        let paths = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+        guard let dirPath = paths.first else {
+            return
+        }
+        let filePath = "\(dirPath)/\(itemName)"
+        do {
+            try fileManager.removeItemAtPath(filePath)
+        } catch let error as NSError {
+            print(error.debugDescription)
+        }
+    }
+    
+    
+    
     @IBAction func volumeChange(sender: UISlider) {
         newVolume = volumeControl.value
         if Audio().avPlayer != nil {
@@ -207,6 +245,27 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
             }
         }
     }
+    
+    @IBAction func resetCardBack(sender: UITapGestureRecognizer) {
+        removeImage("customCard", fileExtension: "")
+        cardImage.image = UIImage(named: "cardBackPSI")
+        
+    }
+    
+    @IBAction func resetBackground(sender: UITapGestureRecognizer) {
+        removeImage("customBackground", fileExtension: "")
+        backgroundImage.image = UIImage(named: "backgroundPSI")
+        
+    }
+    @IBAction func resetAllData(sender: UITapGestureRecognizer) {
+        
+        removeImage("customCard", fileExtension: "")
+        cardImage.image = UIImage(named: "cardBackPSI")
+        removeImage("customBackground", fileExtension: "")
+        backgroundImage.image = UIImage(named: "backgroundPSI")
+    }
+    
+    
     
     func setDefaults() {
         if newVolume == nil {

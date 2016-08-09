@@ -130,7 +130,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="208.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="227" placeholderIntrinsicHeight="24" text="Choose a Custom Card Back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOh-F2-iSF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="227" placeholderIntrinsicHeight="24" text="Choose a Custom Card Back" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LOh-F2-iSF">
                                                     <rect key="frame" x="126" y="92" width="227" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -176,7 +176,7 @@
                                                         <constraint firstAttribute="width" secondItem="hfv-rV-Zwz" secondAttribute="height" multiplier="55:97" id="oqT-S5-KfU"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Custom Background" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFG-kF-Mft">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Custom Background" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFG-kF-Mft">
                                                     <rect key="frame" x="126" y="93" width="233" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -186,6 +186,7 @@
                                             <constraints>
                                                 <constraint firstItem="hfv-rV-Zwz" firstAttribute="top" secondItem="kS6-r8-ebA" secondAttribute="topMargin" id="AKy-Be-jAD"/>
                                                 <constraint firstItem="NFG-kF-Mft" firstAttribute="centerY" secondItem="kS6-r8-ebA" secondAttribute="centerY" id="Dr1-rM-9NL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="NFG-kF-Mft" secondAttribute="trailing" constant="8" id="I48-Kd-eqB"/>
                                                 <constraint firstItem="hfv-rV-Zwz" firstAttribute="centerY" secondItem="kS6-r8-ebA" secondAttribute="centerY" id="O7g-1c-AMJ"/>
                                                 <constraint firstItem="hfv-rV-Zwz" firstAttribute="leading" secondItem="kS6-r8-ebA" secondAttribute="leadingMargin" id="RVz-O2-07c"/>
                                                 <constraint firstItem="NFG-kF-Mft" firstAttribute="leading" secondItem="hfv-rV-Zwz" secondAttribute="trailing" constant="8" id="bj4-cE-h36"/>
@@ -248,32 +249,8 @@
                                             <outletCollection property="gestureRecognizers" destination="AYG-sY-X27" appends="YES" id="kDz-bx-MMF"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PRJ-2O-LMe">
-                                        <rect key="frame" x="0.0" y="881.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PRJ-2O-LMe" id="uTg-pq-Jn8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Highscores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jw-Zc-8FN">
-                                                    <rect key="frame" x="120.5" y="11" width="134.5" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.17465409770000001" green="0.56254753749999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="9jw-Zc-8FN" firstAttribute="centerY" secondItem="uTg-pq-Jn8" secondAttribute="centerY" id="4Sr-Xg-8wx"/>
-                                                <constraint firstItem="9jw-Zc-8FN" firstAttribute="centerX" secondItem="uTg-pq-Jn8" secondAttribute="centerX" id="XJr-iC-hpX"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <gestureRecognizers/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="3rJ-zr-x7v" appends="YES" id="AXV-H0-2On"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ebj-I7-tHQ">
-                                        <rect key="frame" x="0.0" y="925.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="881.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ebj-I7-tHQ" id="0ku-R7-kuc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -327,10 +304,21 @@
                         <action selector="selectBackgroundFromPhotoLibrary:" destination="PRC-Td-IcT" id="7nP-9Z-ZNf"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="qS5-8A-sB4" userLabel="Reset Card Back Recognizer"/>
-                <tapGestureRecognizer id="AYG-sY-X27" userLabel="Reset Background Recognizer"/>
-                <tapGestureRecognizer id="3rJ-zr-x7v" userLabel="Reset Highscores Recognizer"/>
-                <tapGestureRecognizer id="6Ug-8E-PSt" userLabel="Reset All Data Recognizer"/>
+                <tapGestureRecognizer id="qS5-8A-sB4" userLabel="Reset Card Back Recognizer">
+                    <connections>
+                        <action selector="resetCardBack:" destination="PRC-Td-IcT" id="OdU-hl-f9E"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="AYG-sY-X27" userLabel="Reset Background Recognizer">
+                    <connections>
+                        <action selector="resetBackground:" destination="PRC-Td-IcT" id="15e-IT-c8L"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="6Ug-8E-PSt" userLabel="Reset All Data Recognizer">
+                    <connections>
+                        <action selector="resetAllData:" destination="PRC-Td-IcT" id="3r3-pz-CzW"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="415.5" y="408.5"/>
         </scene>
