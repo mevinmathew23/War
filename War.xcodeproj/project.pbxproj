@@ -284,6 +284,7 @@
 				FBA0A76A1D58D9D000C191FA /* AboutViewController.swift in Sources */,
 				B76524901D47BC3100AC042D /* Settings.swift in Sources */,
 				FBA0A7341D4A83C300C191FA /* OnePlayerVC.swift in Sources */,
+				B76524681D3D384200AC042D /* MainMenu.swift in Sources */,
 				B71DC19C1D2C36330040F476 /* Card.swift in Sources */,
 				B71DC1A01D2C369E0040F476 /* War.swift in Sources */,
 				B7B5F69F1D5A4CC400DE3D73 /* Animations.swift in Sources */,
