@@ -12,7 +12,6 @@
 		B71DC1A01D2C369E0040F476 /* War.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DC19F1D2C369E0040F476 /* War.swift */; };
 		B759C8991D357514007AB0EF /* Bet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B759C8981D357514007AB0EF /* Bet.swift */; };
 		B76524641D3D2C5700AC042D /* Main Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76524631D3D2C5700AC042D /* Main Menu.storyboard */; };
-		B76524681D3D384200AC042D /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76524671D3D384200AC042D /* MainMenu.swift */; };
 		B765248A1D47A8F800AC042D /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76524891D47A8F800AC042D /* Settings.storyboard */; };
 		B76524901D47BC3100AC042D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765248F1D47BC3100AC042D /* Settings.swift */; };
 		B7C60D351D19B76B00E18A36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C60D341D19B76B00E18A36 /* AppDelegate.swift */; };
@@ -24,6 +23,8 @@
 		FBA0A7341D4A83C300C191FA /* OnePlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */; };
 		FBA0A7671D58D97700C191FA /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0A7661D58D97700C191FA /* About.storyboard */; };
 		FBA0A76A1D58D9D000C191FA /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A7691D58D9D000C191FA /* AboutViewController.swift */; };
+		FBA0A76C1D5A17E100C191FA /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A76B1D5A17E100C191FA /* Audio.swift */; };
+		FBA0A76E1D5A2C1A00C191FA /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A76D1D5A2C1A00C191FA /* MainMenu.swift */; };
 		FBA1A4A31D4A61CA009FC751 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA1A4A01D4A61CA009FC751 /* HockeySDK.framework */; };
 		FBA1A4A41D4A61CA009FC751 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FBA1A4A21D4A61CA009FC751 /* HockeySDKResources.bundle */; };
 /* End PBXBuildFile section */
@@ -35,7 +36,6 @@
 		B75122D71D4A9FC8007419C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = War/Base.lproj/OnePlayer.storyboard; sourceTree = "<group>"; };
 		B759C8981D357514007AB0EF /* Bet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bet.swift; sourceTree = "<group>"; };
 		B76524631D3D2C5700AC042D /* Main Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main Menu.storyboard"; sourceTree = "<group>"; };
-		B76524671D3D384200AC042D /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		B76524891D47A8F800AC042D /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		B765248F1D47BC3100AC042D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		B7C60D311D19B76B00E18A36 /* War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = War.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +49,8 @@
 		FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnePlayerVC.swift; sourceTree = "<group>"; };
 		FBA0A7661D58D97700C191FA /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 		FBA0A7691D58D9D000C191FA /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		FBA0A76B1D5A17E100C191FA /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		FBA0A76D1D5A2C1A00C191FA /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		FBA1A4A01D4A61CA009FC751 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
 		FBA1A4A21D4A61CA009FC751 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,11 +97,11 @@
 				B7C60D341D19B76B00E18A36 /* AppDelegate.swift */,
 				B7C60D3D1D19B76B00E18A36 /* LaunchScreen.storyboard */,
 				B7C60D401D19B76B00E18A36 /* Info.plist */,
-				B72EFACF1D58FCE5004B6441 /* Audio.swift */,
 				B759C8981D357514007AB0EF /* Bet.swift */,
 				B71DC19B1D2C36330040F476 /* Card.swift */,
 				B71DC19D1D2C366F0040F476 /* Shuffle.swift */,
 				B71DC19F1D2C369E0040F476 /* War.swift */,
+				FBA0A76B1D5A17E100C191FA /* Audio.swift */,
 			);
 			path = War;
 			sourceTree = "<group>";
@@ -108,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				B76524631D3D2C5700AC042D /* Main Menu.storyboard */,
-				B76524671D3D384200AC042D /* MainMenu.swift */,
+				FBA0A76D1D5A2C1A00C191FA /* MainMenu.swift */,
 			);
 			name = "Main Menu";
 			sourceTree = "<group>";
@@ -269,13 +271,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBA0A76E1D5A2C1A00C191FA /* MainMenu.swift in Sources */,
 				B7C60D371D19B76B00E18A36 /* ViewController.swift in Sources */,
 				B71DC19E1D2C366F0040F476 /* Shuffle.swift in Sources */,
+				FBA0A76C1D5A17E100C191FA /* Audio.swift in Sources */,
 				FBA0A76A1D58D9D000C191FA /* AboutViewController.swift in Sources */,
 				B76524901D47BC3100AC042D /* Settings.swift in Sources */,
 				FBA0A7341D4A83C300C191FA /* OnePlayerVC.swift in Sources */,
-				B72EFAD01D58FCE5004B6441 /* Audio.swift in Sources */,
-				B76524681D3D384200AC042D /* MainMenu.swift in Sources */,
 				B71DC19C1D2C36330040F476 /* Card.swift in Sources */,
 				B71DC1A01D2C369E0040F476 /* War.swift in Sources */,
 				B7C60D351D19B76B00E18A36 /* AppDelegate.swift in Sources */,
@@ -410,8 +412,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
@@ -428,8 +430,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HockeySDK-iOS/HockeySDK.embeddedframework",
