@@ -44,7 +44,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7MB-8M-iur">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.01" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="7MB-8M-iur">
                                                     <rect key="frame" x="139" y="7" width="230" height="31"/>
                                                     <connections>
                                                         <action selector="volumeChange:" destination="PRC-Td-IcT" eventType="valueChanged" id="h8L-AG-aUm"/>

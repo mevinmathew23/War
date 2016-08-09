@@ -22,6 +22,8 @@ func fileInDocumentsDirectory(filename: String) -> String {
 
 class Settings: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    var audio: Audio?;
+    
     let defaults = NSUserDefaults.standardUserDefaults()
     var newImage:UIImage?
     var newVolume:Float!
@@ -57,6 +59,8 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         } else {
             backgroundImage.image = loadImageFromPath(backgroundPath)
         }
+        
+        
 
     }
     
@@ -223,12 +227,12 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         }
     }
     
-    
+    let mainMenu = MainMenu()
     
     @IBAction func volumeChange(sender: UISlider) {
         newVolume = volumeControl.value
-        if Audio().avPlayer != nil {
-           Audio().avPlayer.volume = volumeControl.value
+        if audio!.avPlayer.volume != 0 {
+           audio!.avPlayer.volume = volumeControl.value
         }
     }
     @IBAction func brightnessChange(sender: UISlider) {
@@ -237,11 +241,11 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     }
     @IBAction func muteChange(sender: UISwitch) {
         newMute = muteControl.on
-        if Audio().avPlayer != nil {
+        if audio!.avPlayer != nil {
             if muteControl.on == true {
-                Audio().avPlayer.volume = 0
+                audio!.avPlayer.volume = 0
             } else {
-                Audio().avPlayer.volume = volumeControl.value
+                audio!.avPlayer.volume = volumeControl.value
             }
         }
     }

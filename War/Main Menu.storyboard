@@ -45,7 +45,7 @@
                                         <rect key="frame" x="0.0" y="222" width="374" height="101"/>
                                         <state key="normal" backgroundImage="settings"/>
                                         <connections>
-                                            <segue destination="NHv-CB-TsM" kind="show" id="b2u-Ka-DMd"/>
+                                            <segue destination="NHv-CB-TsM" kind="show" identifier="segSettings" id="b2u-Ka-DMd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpA-AU-7xY" userLabel="about">

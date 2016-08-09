@@ -52,6 +52,10 @@ class Audio : NSObject {
             avPlayer.play()
         }
     }
+    
+    func loopAVPlayer() {
+            avPlayer.numberOfLoops = -1
+    }
 }
 
 extension Audio : AVAudioPlayerDelegate {
