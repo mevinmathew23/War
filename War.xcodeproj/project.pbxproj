@@ -22,6 +22,7 @@
 		B76524881D47A8C200AC042D /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76524871D47A8C200AC042D /* Help.swift */; };
 		B765248A1D47A8F800AC042D /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76524891D47A8F800AC042D /* Settings.storyboard */; };
 		B76524901D47BC3100AC042D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B765248F1D47BC3100AC042D /* Settings.swift */; };
+		B7B5F69F1D5A4CC400DE3D73 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B5F69E1D5A4CC400DE3D73 /* Animations.swift */; };
 		B7C60D351D19B76B00E18A36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C60D341D19B76B00E18A36 /* AppDelegate.swift */; };
 		B7C60D371D19B76B00E18A36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C60D361D19B76B00E18A36 /* ViewController.swift */; };
 		B7C60D3A1D19B76B00E18A36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C60D381D19B76B00E18A36 /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		B76524871D47A8C200AC042D /* Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		B76524891D47A8F800AC042D /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		B765248F1D47BC3100AC042D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		B7B5F69E1D5A4CC400DE3D73 /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animations.swift; path = ../Animations.swift; sourceTree = "<group>"; };
 		B7C60D311D19B76B00E18A36 /* War.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = War.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7C60D341D19B76B00E18A36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7C60D361D19B76B00E18A36 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			children = (
 				B7C60D381D19B76B00E18A36 /* Main.storyboard */,
 				B7C60D361D19B76B00E18A36 /* ViewController.swift */,
+				B7B5F69E1D5A4CC400DE3D73 /* Animations.swift */,
 			);
 			name = "2 Player";
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				B71DC19C1D2C36330040F476 /* Card.swift in Sources */,
 				FBA0A75D1D5394D300C191FA /* warData.xcdatamodeld in Sources */,
 				B71DC1A01D2C369E0040F476 /* War.swift in Sources */,
+				B7B5F69F1D5A4CC400DE3D73 /* Animations.swift in Sources */,
 				B7C60D351D19B76B00E18A36 /* AppDelegate.swift in Sources */,
 				B72EFACB1D54ED3E004B6441 /* FullRes+CoreDataProperties.swift in Sources */,
 				B759C8991D357514007AB0EF /* Bet.swift in Sources */,

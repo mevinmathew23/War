@@ -203,8 +203,8 @@ class ViewController: UIViewController {
             playerOneWin = true
             notifyP1.text = "BLUE WINS ROUND " + String(roundCount)
             notifyP2.text = "BLUE WINS ROUND " + String(roundCount)
-            //notifyP1.textColor = settings.p1Blue
-            //notifyP2.textColor = settings.p1Blue
+            notifyP1.textColor = settings.p1Blue
+            notifyP2.textColor = settings.p1Blue
             
             showOverlay()
             
@@ -216,8 +216,8 @@ class ViewController: UIViewController {
             playerOneWin = false
             notifyP1.text = "RED WINS ROUND " + String(roundCount)
             notifyP2.text = "RED WINS ROUND " + String(roundCount)
-            //notifyP1.textColor = settings.p2Red
-            //notifyP2.textColor = settings.p2Red
+            notifyP1.textColor = settings.p2Red
+            notifyP2.textColor = settings.p2Red
             
             showOverlay()
             
