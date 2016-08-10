@@ -10,8 +10,6 @@ import UIKit
 
 class AboutViewController: UIViewController {
     
-    let overlay: UIView = UIView()
-    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -21,7 +19,6 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setOverlay()
         
     }
 
@@ -32,21 +29,12 @@ class AboutViewController: UIViewController {
     
     // Mark: Properties
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var overlay: UIView!
     
     
     // Mark: Actions
     @IBAction func pressBack(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func setOverlay() {
-        overlay.backgroundColor = UIColor.whiteColor()
-        overlay.layer.zPosition = 998
-        overlay.alpha = 0.5
-        overlay.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
-        overlay.userInteractionEnabled = false
-        
-        view.addSubview(overlay)
     }
     
 }
