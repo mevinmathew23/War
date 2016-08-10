@@ -122,9 +122,12 @@
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Cards" id="hc8-Mb-o2j">
+                                <cells/>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Background" footerTitle="" id="teB-Z0-kAP">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="209" id="iBz-PJ-PEj">
-                                        <rect key="frame" x="0.0" y="275.5" width="375" height="209"/>
+                                        <rect key="frame" x="0.0" y="325.5" width="375" height="209"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="208" tableViewCell="iBz-PJ-PEj" id="gla-zg-9uL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="208.5"/>
@@ -159,10 +162,6 @@
                                             <outletCollection property="gestureRecognizers" destination="pO2-eW-fGj" appends="YES" id="t9Q-hm-45N"/>
                                         </connections>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Background" footerTitle="" id="teB-Z0-kAP">
-                                <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="209" id="Lov-ZY-df2">
                                         <rect key="frame" x="0.0" y="534.5" width="375" height="209"/>
                                         <autoresizingMask key="autoresizingMask"/>
