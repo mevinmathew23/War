@@ -18,7 +18,7 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        aboutTextView.textColor = UIColor.whiteColor()
+        //aboutTextView.textColor = UIColor.whiteColor()
         
         
         
