@@ -10,6 +10,11 @@ import UIKit
 
 class MainMenu: UIViewController {
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+
+    
     let audio = Audio()
 
     override func viewDidLoad() {

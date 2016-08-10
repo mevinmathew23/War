@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BCe-FK-XJj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BCe-FK-XJj">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -35,10 +35,12 @@
                                     <action selector="pressBack:" destination="BCe-FK-XJj" eventType="touchUpInside" id="2Yl-Zd-jze"/>
                                 </connections>
                             </button>
-                            <view opaque="NO" userInteractionEnabled="NO" alpha="0.33000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RM7-Te-Gdc">
-                                <rect key="frame" x="0.0" y="126" width="600" height="474"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8P-JW-JqE">
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -47,18 +49,18 @@
                             <constraint firstItem="bIO-U3-eN3" firstAttribute="leading" secondItem="xhg-NY-btb" secondAttribute="leadingMargin" id="9jR-EO-cyc"/>
                             <constraint firstAttribute="trailing" secondItem="0m2-XG-uH1" secondAttribute="trailing" id="Gjw-bv-5cb"/>
                             <constraint firstItem="G7E-4p-xSi" firstAttribute="centerX" secondItem="xhg-NY-btb" secondAttribute="centerX" id="LTp-nY-xOO"/>
-                            <constraint firstAttribute="trailing" secondItem="RM7-Te-Gdc" secondAttribute="trailing" id="RYu-7T-Qr0"/>
                             <constraint firstItem="G7E-4p-xSi" firstAttribute="top" secondItem="PFL-hW-d07" secondAttribute="bottom" id="XZm-tF-RTA"/>
-                            <constraint firstAttribute="bottom" secondItem="RM7-Te-Gdc" secondAttribute="bottom" id="XsP-Fs-gGp"/>
                             <constraint firstAttribute="bottom" secondItem="0m2-XG-uH1" secondAttribute="bottom" id="ZjK-de-aqd"/>
+                            <constraint firstItem="C8P-JW-JqE" firstAttribute="bottom" secondItem="xhg-NY-btb" secondAttribute="bottomMargin" id="csH-yj-udY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="C8P-JW-JqE" secondAttribute="trailing" constant="-20" id="ecQ-Ca-LpX"/>
                             <constraint firstItem="0m2-XG-uH1" firstAttribute="top" secondItem="xhg-NY-btb" secondAttribute="top" id="fge-L9-ekB"/>
-                            <constraint firstItem="RM7-Te-Gdc" firstAttribute="leading" secondItem="xhg-NY-btb" secondAttribute="leading" id="uXI-tg-qEZ"/>
-                            <constraint firstItem="RM7-Te-Gdc" firstAttribute="top" secondItem="G7E-4p-xSi" secondAttribute="bottom" constant="26" id="x0N-5a-tRZ"/>
+                            <constraint firstItem="C8P-JW-JqE" firstAttribute="top" secondItem="G7E-4p-xSi" secondAttribute="bottom" constant="8" id="gUV-ie-WCe"/>
+                            <constraint firstItem="C8P-JW-JqE" firstAttribute="leading" secondItem="xhg-NY-btb" secondAttribute="leadingMargin" constant="-20" id="jch-0Y-mv2"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="aboutTextView" destination="C8P-JW-JqE" id="3vF-Kh-ZkJ"/>
                         <outlet property="backButton" destination="bIO-U3-eN3" id="8Sc-IP-3u5"/>
-                        <outlet property="overlay" destination="RM7-Te-Gdc" id="253-gI-ynL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dy2-2h-p6W" userLabel="First Responder" sceneMemberID="firstResponder"/>
