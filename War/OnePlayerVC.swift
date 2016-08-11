@@ -159,6 +159,15 @@ class OnePlayerVC: UIViewController {
         
         playerOneStorageCounterWidth.constant = cardViewP1.frame.width
         playerTwoStorageCounterWidth.constant = cardViewP2.frame.width
+        
+        print(String(cardViewP1.frame.height))
+        print(String(cardViewP2.frame.height))
+        print(String(cardViewP1War1.frame.height))
+        print(String(cardViewP2War1.frame.height))
+        print(String(cardViewP1War2.frame.height))
+        print(String(cardViewP2War2.frame.height))
+        print(String(cardViewP1War3.frame.height))
+        print(String(cardViewP2War3.frame.height))
     }
     
     override func didReceiveMemoryWarning() {
@@ -502,10 +511,10 @@ class OnePlayerVC: UIViewController {
             war.playerOneCards.removeAtIndex(j)
             war.playerTwoCards.removeAtIndex(j)
             
-            j1.Back = UIImageView(frame: CGRectMake(0,0, cardViewP1.frame.width, cardViewP1.frame.height))
-            j1.Front = UIImageView(frame: CGRectMake(0,0, cardViewP1.frame.width, cardViewP1.frame.height))
-            j2.Back = UIImageView(frame: CGRectMake(0,0, cardViewP2.frame.width, cardViewP2.frame.height))
-            j2.Front = UIImageView(frame: CGRectMake(0,0, cardViewP2.frame.width, cardViewP2.frame.height))
+            j1.Back = UIImageView(frame: CGRectMake(0,0, assignedViewP1.frame.width, assignedViewP1.frame.height))
+            j1.Front = UIImageView(frame: CGRectMake(0,0, assignedViewP1.frame.width, assignedViewP1.frame.height))
+            j2.Back = UIImageView(frame: CGRectMake(0,0, assignedViewP2.frame.width, assignedViewP2.frame.height))
+            j2.Front = UIImageView(frame: CGRectMake(0,0, assignedViewP2.frame.width, assignedViewP2.frame.height))
             
             j1.Front.image = UIImage(named: String(j1.Name!))
             j1.Back.image = j1.backImage
@@ -516,6 +525,16 @@ class OnePlayerVC: UIViewController {
             
             assignedViewP1.addSubview(j1.Back)
             assignedViewP2.addSubview(j2.Back)
+            
+            print(String(j1.Back.contentMode))
+            print(String(j1.Front.contentMode))
+            print(String(j1.Back.frame.height))
+            print(String(j1.Front.frame.height))
+            
+            print(String(j1.Back.contentMode))
+            print(String(j1.Front.contentMode))
+            print(String(j2.Back.frame.height))
+            print(String(j2.Front.frame.height))
         }
         warTapGest1()
         startWar()

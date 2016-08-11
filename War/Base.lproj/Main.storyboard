@@ -98,9 +98,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3Q-cT-X8x">
                                 <rect key="frame" x="215" y="50" width="120" height="170"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="1FC-Du-mfc">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="170"/>
-                                    </constraint>
+                                    <constraint firstAttribute="height" constant="170" id="1FC-Du-mfc"/>
                                     <constraint firstAttribute="width" secondItem="j3Q-cT-X8x" secondAttribute="height" multiplier="12:17" id="FtY-RR-cds"/>
                                 </constraints>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -436,7 +434,7 @@
                         <outlet property="playerOneStorageY" destination="zpq-F8-q9n" id="26X-qN-VBF"/>
                         <outlet property="playerTwoCounter" destination="1yI-70-QNt" id="2ao-aD-t2Y"/>
                         <outlet property="playerTwoStorageCounter" destination="NJG-2g-R3d" id="YKO-18-uDl"/>
-                        <outlet property="playerTwoStorageCounterWidth" destination="8T7-4X-7s2" id="kbq-gY-Aed"/>
+                        <outlet property="playerTwoStorageCounterWidth" destination="fJJ-Za-Zcs" id="gSN-C5-wmf"/>
                         <outlet property="playerTwoStorageY" destination="vPe-wi-dhF" id="XfX-5g-UTm"/>
                     </connections>
                 </viewController>

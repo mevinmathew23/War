@@ -98,9 +98,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3Q-cT-X8x">
                                 <rect key="frame" x="215" y="50" width="120" height="170"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="1FC-Du-mfc">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="170"/>
-                                    </constraint>
+                                    <constraint firstAttribute="height" constant="170" id="1FC-Du-mfc"/>
                                     <constraint firstAttribute="width" secondItem="j3Q-cT-X8x" secondAttribute="height" multiplier="12:17" id="ayj-nd-kr4"/>
                                 </constraints>
                                 <variation key="heightClass=regular-widthClass=compact">

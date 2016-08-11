@@ -33,8 +33,8 @@ class Card {
     }
     
     init () {
-        Back.contentMode = UIViewContentMode.ScaleAspectFill
-        Front.contentMode = UIViewContentMode.ScaleAspectFill
+//        Back.contentMode = UIViewContentMode.ScaleAspectFill
+//        Front.contentMode = UIViewContentMode.ScaleAspectFill
         
         updateCardBack()
     }
