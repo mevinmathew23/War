@@ -26,6 +26,7 @@ class OnePlayerVC: UIViewController {
     // Top and bottom constraints
     
     @IBOutlet weak var cardViewP1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1War1Constraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1War2Constraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1War3Constraint: NSLayoutConstraint!
@@ -53,11 +54,6 @@ class OnePlayerVC: UIViewController {
     @IBOutlet weak var notifyP1Y: NSLayoutConstraint!
     @IBOutlet weak var notifyP1Width: NSLayoutConstraint!
     @IBOutlet weak var notifyP1Height: NSLayoutConstraint!
-    @IBOutlet weak var notifyP2: UILabel!
-    @IBOutlet weak var notifyP2X: NSLayoutConstraint!
-    @IBOutlet weak var notifyP2Y: NSLayoutConstraint!
-    @IBOutlet weak var notifyP2Width: NSLayoutConstraint!
-    @IBOutlet weak var notifyP2Height: NSLayoutConstraint!
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var playerOneCounter: UILabel!
@@ -120,16 +116,11 @@ class OnePlayerVC: UIViewController {
         setWarViews()
         
         // Set notification labels
-        notifyP1X.constant = -view.bounds.width
-        notifyP2X.constant = -view.bounds.width
+        notifyP1Width.constant = view.bounds.width
         notifyP1Height.constant = view.frame.height/4
-        notifyP2Height.constant = view.frame.height/4
         notifyP1X.constant = -view.bounds.width
-        notifyP2X.constant = -view.bounds.width
         notifyP1Y.constant = -70
-        notifyP2Y.constant = 70
         notifyP1.layer.zPosition = 999
-        notifyP2.layer.zPosition = 999
         
         setOverlay()
         
@@ -181,6 +172,9 @@ class OnePlayerVC: UIViewController {
         cardViewP2War2Constraint.constant = -view.bounds.height
         cardViewP2War3Constraint.constant = -view.bounds.height
         
+        cardViewP1Height.constant = view.bounds.height/4
+        Card().setSize(cardViewP1)
+        
         cardViewP1War1X.constant = 25
         cardViewP1War2X.constant = 40
         cardViewP1War3X.constant = 55
@@ -199,9 +193,7 @@ class OnePlayerVC: UIViewController {
             //normalWinP1()
             playerOneWin = true
             notifyP1.text = "BLUE WINS ROUND " + String(roundCount)
-            notifyP2.text = "BLUE WINS ROUND " + String(roundCount)
             notifyP1.textColor = settings.p1Blue
-            notifyP2.textColor = settings.p1Blue
             
             showOverlay()
             
@@ -212,9 +204,7 @@ class OnePlayerVC: UIViewController {
             //normalWinP2()
             playerOneWin = false
             notifyP1.text = "RED WINS ROUND " + String(roundCount)
-            notifyP2.text = "RED WINS ROUND " + String(roundCount)
             notifyP1.textColor = settings.p2Red
-            notifyP2.textColor = settings.p2Red
             
             showOverlay()
             
@@ -398,7 +388,6 @@ class OnePlayerVC: UIViewController {
         view.layoutIfNeeded()
         UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseOut], animations: {
             self.notifyP1X.constant = 0
-            self.notifyP2X.constant = 0
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
@@ -409,13 +398,11 @@ class OnePlayerVC: UIViewController {
         view.layoutIfNeeded()
         UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseIn], animations: {
             self.notifyP1X.constant = self.view.bounds.width
-            self.notifyP2X.constant = self.view.bounds.width
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
                 self.hideOverlay()
                 self.notifyP1X.constant = -self.view.bounds.width
-                self.notifyP2X.constant = -self.view.bounds.width
         })
     }
     
@@ -448,6 +435,7 @@ class OnePlayerVC: UIViewController {
         let activeP1 = war.playerOneCardsInPlay[0]
         war.playerOneCards.removeAtIndex(0)
         activeP1.Front.image = UIImage(named: String(activeP1.Name!))
+        activeP1.Back = 
         activeP1.Back.image = war.playerOneCardsInPlay[0].backImage
         
         activeP1.ShowingFront = false
@@ -1002,5 +990,4 @@ class OnePlayerVC: UIViewController {
             backgroundImageView.image = newImage!
         }
     }
-
 }
