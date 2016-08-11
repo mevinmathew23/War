@@ -26,14 +26,22 @@ class ViewController: UIViewController {
     // Top and bottom constraints
     
     @IBOutlet weak var cardViewP1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1War1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War1Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1War2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War2Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1War3Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War3Height: NSLayoutConstraint!
     
     @IBOutlet weak var cardViewP2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2War1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War1Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2War2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War2Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2War3Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War3Height: NSLayoutConstraint!
     
     // Horizontally centered alignment
     
@@ -64,6 +72,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var playerTwoCounter: UILabel!
     @IBOutlet weak var playerOneStorageCounter: UILabel!
     @IBOutlet weak var playerTwoStorageCounter: UILabel!
+    @IBOutlet weak var playerOneStorageCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoStorageCounterWidth: NSLayoutConstraint!
     @IBOutlet weak var playerOneStorageY: NSLayoutConstraint!
     @IBOutlet weak var playerTwoStorageY: NSLayoutConstraint!
     
@@ -155,9 +165,13 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
+        // Set Counters
+        
         playerOneStorageY.constant = (view.bounds.height/4) + (cardViewP1.bounds.height/2) - 30
         playerTwoStorageY.constant = (view.bounds.height/4) + (cardViewP2.bounds.height/2) - 30
         
+        playerOneStorageCounterWidth.constant = cardViewP1.frame.width
+        playerTwoStorageCounterWidth.constant = cardViewP2.frame.width
     }
     
     override func didReceiveMemoryWarning() {
@@ -183,6 +197,16 @@ class ViewController: UIViewController {
         cardViewP2War1Constraint.constant = -view.bounds.height
         cardViewP2War2Constraint.constant = -view.bounds.height
         cardViewP2War3Constraint.constant = -view.bounds.height
+        
+        cardViewP1Height.constant = view.bounds.height/4
+        cardViewP1War1Height.constant = view.bounds.height/4
+        cardViewP1War2Height.constant = view.bounds.height/4
+        cardViewP1War3Height.constant = view.bounds.height/4
+        
+        cardViewP2Height.constant = view.bounds.height/4
+        cardViewP2War1Height.constant = view.bounds.height/4
+        cardViewP2War2Height.constant = view.bounds.height/4
+        cardViewP2War3Height.constant = view.bounds.height/4
         
         cardViewP1War1X.constant = 25
         cardViewP1War2X.constant = 40
@@ -452,8 +476,12 @@ class ViewController: UIViewController {
         war.playerOneCardsInPlay.append(war.playerOneCards[0])
         let activeP1 = war.playerOneCardsInPlay[0]
         war.playerOneCards.removeAtIndex(0)
-        activeP1.Front.image = UIImage(named: String(activeP1.Name!))
+        
+        activeP1.Back = UIImageView(frame: CGRectMake(0,0, player.frame.width, player.frame.height))
+        activeP1.Front = UIImageView(frame: CGRectMake(0,0, player.frame.width, player.frame.height))
+        
         activeP1.Back.image = war.playerOneCardsInPlay[0].backImage
+        activeP1.Front.image = UIImage(named: String(activeP1.Name!))
         
         activeP1.ShowingFront = false
         player.addSubview(activeP1.Back)
@@ -463,8 +491,12 @@ class ViewController: UIViewController {
         war.playerTwoCardsInPlay.append(war.playerTwoCards[0])
         let activeP2 = war.playerTwoCardsInPlay[0]
         war.playerTwoCards.removeAtIndex(0)
-        activeP2.Front.image = UIImage(named: String(activeP2.Name!))
+        
+        activeP2.Back = UIImageView(frame: CGRectMake(0,0, player.frame.width, player.frame.height))
+        activeP2.Front = UIImageView(frame: CGRectMake(0,0, player.frame.width, player.frame.height))
+        
         activeP2.Back.image = war.playerOneCardsInPlay[0].backImage
+        activeP2.Front.image = UIImage(named: String(activeP2.Name!))
         
         activeP2.ShowingFront = false
         player.addSubview(activeP2.Back)
@@ -491,6 +523,11 @@ class ViewController: UIViewController {
             
             war.playerOneCards.removeAtIndex(j)
             war.playerTwoCards.removeAtIndex(j)
+            
+            j1.Back = UIImageView(frame: CGRectMake(0,0, assignedViewP1.frame.width, assignedViewP1.frame.height))
+            j1.Front = UIImageView(frame: CGRectMake(0,0, assignedViewP1.frame.width, assignedViewP1.frame.height))
+            j2.Back = UIImageView(frame: CGRectMake(0,0, assignedViewP2.frame.width, assignedViewP2.frame.height))
+            j2.Front = UIImageView(frame: CGRectMake(0,0, assignedViewP2.frame.width, assignedViewP2.frame.height))
             
             j1.Front.image = UIImage(named: String(j1.Name!))
             j1.Back.image = j1.backImage

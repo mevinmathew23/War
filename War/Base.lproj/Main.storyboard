@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -25,12 +26,11 @@
                                 <rect key="frame" x="295" y="380" width="120" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="KsI-ig-Uyy"/>
-                                    <constraint firstAttribute="width" constant="120" id="VbE-xD-mmH"/>
+                                    <constraint firstAttribute="width" secondItem="Zak-jf-YGh" secondAttribute="height" multiplier="12:17" id="b4Q-D9-34A"/>
                                 </constraints>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="KsI-ig-Uyy"/>
-                                        <include reference="VbE-xD-mmH"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -38,25 +38,23 @@
                                 <rect key="frame" x="280" y="380" width="120" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="1lh-CS-120"/>
-                                    <constraint firstAttribute="width" constant="120" id="smy-xZ-8r9"/>
+                                    <constraint firstAttribute="width" secondItem="wH2-ZH-hIe" secondAttribute="height" multiplier="12:17" id="iGy-Dd-22u"/>
                                 </constraints>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="1lh-CS-120"/>
-                                        <include reference="smy-xZ-8r9"/>
                                     </mask>
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dn4-W8-249">
                                 <rect key="frame" x="265" y="380" width="120" height="170"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="dn4-W8-249" secondAttribute="height" multiplier="12:17" id="3Lt-te-IUr"/>
                                     <constraint firstAttribute="height" constant="170" id="IJL-k7-T1P"/>
-                                    <constraint firstAttribute="width" constant="120" id="ngd-TA-5s6"/>
                                 </constraints>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="IJL-k7-T1P"/>
-                                        <include reference="ngd-TA-5s6"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -65,14 +63,11 @@
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="5Dq-8v-toP"/>
-                                    <constraint firstAttribute="width" constant="120" id="SIf-L2-35S">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="120"/>
-                                    </constraint>
+                                    <constraint firstAttribute="width" secondItem="rWA-cI-K6t" secondAttribute="height" multiplier="12:17" id="hoh-X1-26s"/>
                                 </constraints>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="5Dq-8v-toP"/>
-                                        <include reference="SIf-L2-35S"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -80,12 +75,11 @@
                                 <rect key="frame" x="185" y="50" width="120" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="Bpr-9F-GVp"/>
-                                    <constraint firstAttribute="width" constant="120" id="Tz6-Uy-xnd"/>
+                                    <constraint firstAttribute="width" secondItem="oUp-lU-i4w" secondAttribute="height" multiplier="12:17" id="T1i-nV-0WE"/>
                                 </constraints>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Bpr-9F-GVp"/>
-                                        <include reference="Tz6-Uy-xnd"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -93,12 +87,11 @@
                                 <rect key="frame" x="200" y="50" width="120" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="SRP-Kc-J3D"/>
-                                    <constraint firstAttribute="width" constant="120" id="ZKx-1c-8ZO"/>
+                                    <constraint firstAttribute="width" secondItem="8cb-GE-Nbi" secondAttribute="height" multiplier="12:17" id="ev3-KK-NrN"/>
                                 </constraints>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="SRP-Kc-J3D"/>
-                                        <include reference="ZKx-1c-8ZO"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -108,12 +101,11 @@
                                     <constraint firstAttribute="height" constant="170" id="1FC-Du-mfc">
                                         <variation key="heightClass=regular-widthClass=compact" constant="170"/>
                                     </constraint>
-                                    <constraint firstAttribute="width" constant="120" id="vq9-QR-xFk"/>
+                                    <constraint firstAttribute="width" secondItem="j3Q-cT-X8x" secondAttribute="height" multiplier="12:17" id="FtY-RR-cds"/>
                                 </constraints>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="1FC-Du-mfc"/>
-                                        <include reference="vq9-QR-xFk"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -122,12 +114,11 @@
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="3tf-Do-QJE"/>
-                                    <constraint firstAttribute="width" constant="120" id="A02-EX-mOC"/>
+                                    <constraint firstAttribute="width" secondItem="yHw-EZ-5OG" secondAttribute="height" multiplier="12:17" id="BIh-WY-bqr"/>
                                 </constraints>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="3tf-Do-QJE"/>
-                                        <include reference="A02-EX-mOC"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -398,26 +389,34 @@
                         <outlet property="backgroundImageView" destination="41g-bh-HY2" id="WFd-Kl-ls0"/>
                         <outlet property="cardViewP1" destination="rWA-cI-K6t" id="lFm-Z9-wez"/>
                         <outlet property="cardViewP1Constraint" destination="G4m-vi-fcP" id="CdC-bS-j6x"/>
+                        <outlet property="cardViewP1Height" destination="5Dq-8v-toP" id="951-sS-4nJ"/>
                         <outlet property="cardViewP1War1" destination="dn4-W8-249" id="4QV-hD-Thz"/>
                         <outlet property="cardViewP1War1Constraint" destination="94A-k6-lTr" id="Jib-1q-CFb"/>
+                        <outlet property="cardViewP1War1Height" destination="IJL-k7-T1P" id="Jki-ht-noE"/>
                         <outlet property="cardViewP1War1X" destination="pFw-oE-G6e" id="EQB-Mr-Grp"/>
                         <outlet property="cardViewP1War2" destination="wH2-ZH-hIe" id="7yc-bZ-NU5"/>
                         <outlet property="cardViewP1War2Constraint" destination="elC-gU-CR5" id="80y-oD-dHW"/>
+                        <outlet property="cardViewP1War2Height" destination="1lh-CS-120" id="Npw-if-FSR"/>
                         <outlet property="cardViewP1War2X" destination="62S-tw-XJR" id="EMc-2Q-6Mg"/>
                         <outlet property="cardViewP1War3" destination="Zak-jf-YGh" id="yln-NY-tlz"/>
                         <outlet property="cardViewP1War3Constraint" destination="qCa-mq-pRN" id="Lqn-YX-Av2"/>
+                        <outlet property="cardViewP1War3Height" destination="KsI-ig-Uyy" id="Ajx-N2-3XX"/>
                         <outlet property="cardViewP1War3X" destination="PTv-qd-8oD" id="HMw-Yt-1Hy"/>
                         <outlet property="cardViewP1X" destination="OOE-vJ-Tw1" id="KyS-6y-hgq"/>
                         <outlet property="cardViewP2" destination="yHw-EZ-5OG" id="Pbr-ZP-FAR"/>
                         <outlet property="cardViewP2Constraint" destination="CaK-lw-dyZ" id="Jzx-sv-0nM"/>
+                        <outlet property="cardViewP2Height" destination="3tf-Do-QJE" id="0qb-Rb-Dai"/>
                         <outlet property="cardViewP2War1" destination="j3Q-cT-X8x" id="rkO-Pk-X2d"/>
                         <outlet property="cardViewP2War1Constraint" destination="j8B-DA-04T" id="FJv-S5-mgI"/>
+                        <outlet property="cardViewP2War1Height" destination="1FC-Du-mfc" id="bHv-88-JkK"/>
                         <outlet property="cardViewP2War1X" destination="uhD-tN-Yjh" id="M18-oQ-fVD"/>
                         <outlet property="cardViewP2War2" destination="8cb-GE-Nbi" id="Kdk-bV-vcj"/>
                         <outlet property="cardViewP2War2Constraint" destination="oZx-ql-ZUi" id="Baz-L6-fqT"/>
+                        <outlet property="cardViewP2War2Height" destination="SRP-Kc-J3D" id="gpA-0R-RPA"/>
                         <outlet property="cardViewP2War2X" destination="uZt-gd-h5E" id="x4G-F7-d16"/>
                         <outlet property="cardViewP2War3" destination="oUp-lU-i4w" id="xXw-Xz-tFN"/>
                         <outlet property="cardViewP2War3Constraint" destination="pAp-9K-RqS" id="Wtx-Yp-cGJ"/>
+                        <outlet property="cardViewP2War3Height" destination="Bpr-9F-GVp" id="Ss7-LT-ViX"/>
                         <outlet property="cardViewP2War3X" destination="IhQ-2d-4lO" id="cCI-Xl-vm0"/>
                         <outlet property="cardViewP2X" destination="Uhd-jN-HQj" id="xhp-q9-WcY"/>
                         <outlet property="notifyP1" destination="G3A-eN-UcA" id="07D-mE-qk3"/>
@@ -433,9 +432,11 @@
                         <outlet property="playRoundButton" destination="Yk4-1h-AeT" id="ncD-1B-6CF"/>
                         <outlet property="playerOneCounter" destination="yZg-b8-7fL" id="EAH-9Q-wAy"/>
                         <outlet property="playerOneStorageCounter" destination="QKo-hk-Jz0" id="Xrf-qd-Odq"/>
+                        <outlet property="playerOneStorageCounterWidth" destination="4Oh-O3-tjF" id="mgd-CE-tU4"/>
                         <outlet property="playerOneStorageY" destination="zpq-F8-q9n" id="26X-qN-VBF"/>
                         <outlet property="playerTwoCounter" destination="1yI-70-QNt" id="2ao-aD-t2Y"/>
                         <outlet property="playerTwoStorageCounter" destination="NJG-2g-R3d" id="YKO-18-uDl"/>
+                        <outlet property="playerTwoStorageCounterWidth" destination="8T7-4X-7s2" id="kbq-gY-Aed"/>
                         <outlet property="playerTwoStorageY" destination="vPe-wi-dhF" id="XfX-5g-UTm"/>
                     </connections>
                 </viewController>
