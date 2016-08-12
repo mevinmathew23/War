@@ -11,32 +11,55 @@ import UIKit
 class Chips: UIView {
 
     // MARK: Properties
-    var selectedChip = 0 {
+    var selectedChip: Int? = nil {
         didSet {
             setNeedsLayout()
         }
     }
+    
     var chipButtons = [UIButton]()
-    var chipImages = [UIImage(named: "bet5"), UIImage(named: "bet10"), UIImage(named: "bet20"), UIImage(named: "bet50"), UIImage(named: "bet100")]
     
     let spacing = 5
     let chipCount = 5
     
+    func translate(index: Int) -> Int {
+        switch index {
+        case 0:
+            return 5
+        case 1:
+            return 10
+        case 2:
+            return 20
+        case 3:
+            return 50
+        case 4:
+            return 100
+        default:
+            return 0
+        }
+    }
+    
     // MARK: Initialization
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        let filledStarImage = UIImage(named: "filledStar")
-        let emptyStarImage = UIImage(named: "emptyStar")
         
         for x in 0..<chipCount {
             let button = UIButton()
-            button.setImage(emptyStarImage, forState: .Normal)
-            button.setImage(filledStarImage, forState: .Selected)
-            button.setImage(filledStarImage, forState: [.Highlighted, .Selected])
+
+            var chipImages = [UIImage(named: "bet5"), UIImage(named: "bet10"), UIImage(named: "bet20"), UIImage(named: "bet50"), UIImage(named: "bet100")]
+            
+            chipImages[x]?.description
+            
+            button.setImage(chipImages[x], forState: .Normal)
+            button.setImage(chipImages[x], forState: .Selected)
+            button.setImage(chipImages[x], forState: .Disabled)
+            button.setImage(chipImages[x], forState: [.Highlighted, .Selected])
             
             
             // button.backgroundColor = UIColor.cyanColor()
-            button.adjustsImageWhenHighlighted = false
+            button.adjustsImageWhenHighlighted = true
+            button.adjustsImageWhenDisabled = true
+            button.showsTouchWhenHighlighted = true
             
             button.addTarget(self, action: #selector(Chips.chipButtonTapped(_:)), forControlEvents: .TouchDown)
             chipButtons += [button]
@@ -60,6 +83,8 @@ class Chips: UIView {
         }
         updateButtonSelectionStates()
     }
+    
+    
     // MARK: Button Action
     func chipButtonTapped(button: UIButton) {
         // print("Button has been tapped!")
@@ -68,7 +93,8 @@ class Chips: UIView {
     func updateButtonSelectionStates() {
         for (index, button) in chipButtons.enumerate() {
             // If the index of a button is less than the rating, that buton should be selected.
-            button.selected = index < selectedChip
+            button.enabled = playerOneMoney > translate(index)
+            button.selected = index == selectedChip
         }
         func chipButtonTapped(button: UIButton) {
             selectedChip = chipButtons.indexOf(button)! + 1
@@ -76,5 +102,5 @@ class Chips: UIView {
             updateButtonSelectionStates()
         }
     }
-
+    
 }

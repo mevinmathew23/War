@@ -55,6 +55,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var cardViewP2War2X: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2War3X: NSLayoutConstraint!
     
+    // Chips
+    
+    @IBOutlet weak var chipsView: Chips!
+    @IBOutlet weak var chipsViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewY: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewX: NSLayoutConstraint!
+    
+    // Misc. UI
+    
     @IBOutlet weak var playRoundButton: UIButton!
     @IBOutlet weak var playRoundButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var notifyP1: UILabel!
@@ -154,6 +164,8 @@ class ViewController: UIViewController {
         cardViewP1.addGestureRecognizer(tapP1)
         cardViewP2.addGestureRecognizer(tapP2)
         
+        chipsView.hidden = true
+        
         // Setup cards
         war.addCards("spades")
         war.addCards("clubs")
@@ -163,7 +175,7 @@ class ViewController: UIViewController {
         war.deckOfCards.shuffle()
         war.deal()
         
-        self.view.layoutIfNeeded()
+        self.view.setNeedsLayout()
     }
     
     override func viewDidAppear(animated: Bool) {

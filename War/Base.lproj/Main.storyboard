@@ -267,6 +267,14 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6v-ha-Tc8" customClass="Chips" customModule="War" customModuleProvider="target">
+                                <rect key="frame" x="50" y="250" width="500" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="2Ec-HI-9Fs"/>
+                                    <constraint firstAttribute="width" constant="500" id="gAO-Mq-niF"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -317,6 +325,8 @@
                             <constraint firstItem="dn4-W8-249" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="25" id="pFw-oE-G6e">
                                 <variation key="heightClass=regular-widthClass=compact" constant="25"/>
                             </constraint>
+                            <constraint firstItem="r6v-ha-Tc8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pMn-Cq-Sz7"/>
+                            <constraint firstItem="r6v-ha-Tc8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="peN-35-gXV"/>
                             <constraint firstAttribute="bottom" secondItem="Zak-jf-YGh" secondAttribute="bottom" constant="50" id="qCa-mq-pRN"/>
                             <constraint firstItem="8cb-GE-Nbi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-40" id="uZt-gd-h5E">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-40"/>
@@ -433,6 +443,11 @@
                         <outlet property="cardViewP2War3Height" destination="Bpr-9F-GVp" id="Ss7-LT-ViX"/>
                         <outlet property="cardViewP2War3X" destination="IhQ-2d-4lO" id="cCI-Xl-vm0"/>
                         <outlet property="cardViewP2X" destination="Uhd-jN-HQj" id="xhp-q9-WcY"/>
+                        <outlet property="chipsView" destination="r6v-ha-Tc8" id="gOR-xJ-IoO"/>
+                        <outlet property="chipsViewHeight" destination="2Ec-HI-9Fs" id="AbX-MN-xKb"/>
+                        <outlet property="chipsViewWidth" destination="gAO-Mq-niF" id="tCH-gX-mKh"/>
+                        <outlet property="chipsViewX" destination="peN-35-gXV" id="lWV-4z-pBL"/>
+                        <outlet property="chipsViewY" destination="pMn-Cq-Sz7" id="lN7-om-f7s"/>
                         <outlet property="notifyP1" destination="G3A-eN-UcA" id="07D-mE-qk3"/>
                         <outlet property="notifyP1Height" destination="5Nh-Ko-Eb8" id="9fd-4f-fOE"/>
                         <outlet property="notifyP1Width" destination="pE8-Ma-JaN" id="buO-p3-fHI"/>

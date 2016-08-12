@@ -252,10 +252,19 @@
                                     <action selector="Quit:" destination="BYZ-38-t0r" eventType="touchDown" id="Gkz-LA-9Si"/>
                                 </connections>
                             </button>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1BJ-a2-JbG" customClass="Chips" customModule="War" customModuleProvider="target">
+                                <rect key="frame" x="50" y="250" width="500" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="VEG-Z6-Kg3"/>
+                                    <constraint firstAttribute="width" constant="500" id="oG3-0b-xlq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1yI-70-QNt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="11I-e2-VcG"/>
+                            <constraint firstItem="1BJ-a2-JbG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="12d-Os-LPc"/>
                             <constraint firstItem="Yk4-1h-AeT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3Bm-qY-zQZ"/>
                             <constraint firstItem="wH2-ZH-hIe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="40" id="62S-tw-XJR">
                                 <variation key="heightClass=regular-widthClass=compact" constant="40"/>
@@ -279,6 +288,7 @@
                             <constraint firstItem="Zak-jf-YGh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="55" id="PTv-qd-8oD">
                                 <variation key="heightClass=regular-widthClass=compact" constant="55"/>
                             </constraint>
+                            <constraint firstItem="1BJ-a2-JbG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QPM-hA-p1g"/>
                             <constraint firstAttribute="trailing" secondItem="CbG-DP-tnI" secondAttribute="trailing" id="Tqr-EJ-lrv"/>
                             <constraint firstItem="yHw-EZ-5OG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Uhd-jN-HQj"/>
                             <constraint firstItem="xJp-Ay-XBL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="XJh-zG-goP"/>
@@ -411,6 +421,11 @@
                         <outlet property="cardViewP2War3Height" destination="Bpr-9F-GVp" id="udC-NM-rBi"/>
                         <outlet property="cardViewP2War3X" destination="IhQ-2d-4lO" id="cCI-Xl-vm0"/>
                         <outlet property="cardViewP2X" destination="Uhd-jN-HQj" id="xhp-q9-WcY"/>
+                        <outlet property="chipsView" destination="1BJ-a2-JbG" id="SNz-aa-MOf"/>
+                        <outlet property="chipsViewHeight" destination="VEG-Z6-Kg3" id="MuB-HI-aZj"/>
+                        <outlet property="chipsViewWidth" destination="oG3-0b-xlq" id="Xzf-Sm-5Uc"/>
+                        <outlet property="chipsViewX" destination="QPM-hA-p1g" id="942-x6-S7W"/>
+                        <outlet property="chipsViewY" destination="12d-Os-LPc" id="XVE-d4-rOe"/>
                         <outlet property="notifyP1" destination="G3A-eN-UcA" id="07D-mE-qk3"/>
                         <outlet property="notifyP1Height" destination="5Nh-Ko-Eb8" id="a84-oB-xtK"/>
                         <outlet property="notifyP1Width" destination="pE8-Ma-JaN" id="JJ0-mz-R8n"/>

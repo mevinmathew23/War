@@ -55,6 +55,16 @@ class OnePlayerVC: UIViewController {
     @IBOutlet weak var cardViewP2War2X: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2War3X: NSLayoutConstraint!
     
+    // Chips
+    
+    @IBOutlet weak var chipsView: Chips!
+    @IBOutlet weak var chipsViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewY: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewX: NSLayoutConstraint!
+    
+    // Misc. UI
+    
     @IBOutlet weak var playRoundButton: UIButton!
     @IBOutlet weak var playRoundButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var notifyP1: UILabel!
