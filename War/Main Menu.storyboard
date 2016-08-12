@@ -41,14 +41,14 @@
                                             <segue destination="g3P-9M-SNN" kind="show" id="ryG-VN-spP"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrP-89-LJu" userLabel="settings">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrP-89-LJu" userLabel="settings">
                                         <rect key="frame" x="0.0" y="222" width="374" height="100"/>
                                         <state key="normal" backgroundImage="settings"/>
                                         <connections>
                                             <segue destination="NHv-CB-TsM" kind="show" identifier="segSettings" id="b2u-Ka-DMd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpA-AU-7xY" userLabel="about">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpA-AU-7xY" userLabel="about">
                                         <rect key="frame" x="0.0" y="332" width="374" height="101"/>
                                         <state key="normal" backgroundImage="about"/>
                                         <connections>

@@ -232,7 +232,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJp-Ay-XBL">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                 <state key="normal" title="Quit"/>
                                 <connections>
                                     <action selector="Quit:" destination="BYZ-38-t0r" eventType="touchDown" id="Gkz-LA-9Si"/>
@@ -280,6 +280,7 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="-55"/>
                             </constraint>
                             <constraint firstItem="QKo-hk-Jz0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jqj-XX-19V"/>
+                            <constraint firstItem="xJp-Ay-XBL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Lx8-R3-Lvx"/>
                             <constraint firstItem="rWA-cI-K6t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OOE-vJ-Tw1"/>
                             <constraint firstItem="Zak-jf-YGh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="55" id="PTv-qd-8oD">
                                 <variation key="heightClass=regular-widthClass=compact" constant="55"/>
@@ -288,6 +289,7 @@
                             <constraint firstItem="xJp-Ay-XBL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ek1-Ed-wFx"/>
                             <constraint firstAttribute="bottom" secondItem="wH2-ZH-hIe" secondAttribute="bottom" constant="50" id="elC-gU-CR5"/>
                             <constraint firstItem="G3A-eN-UcA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g80-hV-gUn"/>
+                            <constraint firstItem="xJp-Ay-XBL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gUo-7u-jVW"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yZg-b8-7fL" secondAttribute="bottom" id="iNc-GX-bbf"/>
                             <constraint firstItem="j3Q-cT-X8x" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="j8B-DA-04T"/>
                             <constraint firstItem="Yk4-1h-AeT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jLl-fh-x3m"/>
@@ -317,9 +319,6 @@
                             </constraint>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="xJp-Ay-XBL"/>
-                            </mask>
                             <mask key="constraints">
                                 <exclude reference="7Xc-20-aE7"/>
                                 <exclude reference="ek1-Ed-wFx"/>
@@ -344,12 +343,12 @@
                                 <include reference="G3A-eN-UcA"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="7Xc-20-aE7"/>
-                                <include reference="ek1-Ed-wFx"/>
                                 <include reference="ILp-KS-dTC"/>
                                 <include reference="jOi-PQ-Rcc"/>
                                 <include reference="kpp-RR-Yyh"/>
                                 <include reference="umW-Sz-QxO"/>
+                                <include reference="7Xc-20-aE7"/>
+                                <include reference="ek1-Ed-wFx"/>
                                 <include reference="6Hs-ex-k0E"/>
                                 <include reference="GEj-Vp-FOS"/>
                                 <include reference="IhQ-2d-4lO"/>
