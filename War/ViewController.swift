@@ -70,6 +70,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var playerOneCounter: UILabel!
     @IBOutlet weak var playerTwoCounter: UILabel!
+    @IBOutlet weak var playerOneCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoCounterWidth: NSLayoutConstraint!
     @IBOutlet weak var playerOneStorageCounter: UILabel!
     @IBOutlet weak var playerTwoStorageCounter: UILabel!
     @IBOutlet weak var playerOneStorageCounterWidth: NSLayoutConstraint!
@@ -172,6 +174,9 @@ class ViewController: UIViewController {
         
         playerOneStorageCounterWidth.constant = cardViewP1.frame.width
         playerTwoStorageCounterWidth.constant = cardViewP2.frame.width
+        
+        playerOneCounterWidth.constant = cardViewP1.frame.width
+        playerTwoCounterWidth.constant = cardViewP2.frame.width
     }
     
     override func didReceiveMemoryWarning() {

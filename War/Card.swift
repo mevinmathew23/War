@@ -19,7 +19,6 @@ class Card {
     var Back: UIImageView = UIImageView(frame: CGRectMake(0, 0, 120, 170))
     var Front: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
     var backImage: UIImage!
-    var frontImage: UIImage!
     
     
     let settings = Settings()

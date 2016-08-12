@@ -65,6 +65,8 @@ class OnePlayerVC: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var playerOneCounter: UILabel!
     @IBOutlet weak var playerTwoCounter: UILabel!
+    @IBOutlet weak var playerOneCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoCounterWidth: NSLayoutConstraint!
     @IBOutlet weak var playerOneStorageCounter: UILabel!
     @IBOutlet weak var playerTwoStorageCounter: UILabel!
     @IBOutlet weak var playerOneStorageCounterWidth: NSLayoutConstraint!
@@ -160,14 +162,8 @@ class OnePlayerVC: UIViewController {
         playerOneStorageCounterWidth.constant = cardViewP1.frame.width
         playerTwoStorageCounterWidth.constant = cardViewP2.frame.width
         
-        print(String(cardViewP1.frame.height))
-        print(String(cardViewP2.frame.height))
-        print(String(cardViewP1War1.frame.height))
-        print(String(cardViewP2War1.frame.height))
-        print(String(cardViewP1War2.frame.height))
-        print(String(cardViewP2War2.frame.height))
-        print(String(cardViewP1War3.frame.height))
-        print(String(cardViewP2War3.frame.height))
+        playerOneCounterWidth.constant = cardViewP1.frame.width
+        playerTwoCounterWidth.constant = cardViewP2.frame.width
     }
     
     override func didReceiveMemoryWarning() {
@@ -525,16 +521,6 @@ class OnePlayerVC: UIViewController {
             
             assignedViewP1.addSubview(j1.Back)
             assignedViewP2.addSubview(j2.Back)
-            
-            print(String(j1.Back.contentMode))
-            print(String(j1.Front.contentMode))
-            print(String(j1.Back.frame.height))
-            print(String(j1.Front.frame.height))
-            
-            print(String(j1.Back.contentMode))
-            print(String(j1.Front.contentMode))
-            print(String(j2.Back.frame.height))
-            print(String(j2.Front.frame.height))
         }
         warTapGest1()
         startWar()
