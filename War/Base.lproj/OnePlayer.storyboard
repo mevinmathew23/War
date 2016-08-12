@@ -23,17 +23,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbG-DP-tnI">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="25"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="15"/>
                                 <color key="backgroundColor" red="1" green="0.071741149340000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Hjo-9v-jyI"/>
+                                    <constraint firstAttribute="height" constant="15" id="Hjo-9v-jyI"/>
                                 </constraints>
                             </view>
                             <view userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdy-Wg-5EA">
-                                <rect key="frame" x="0.0" y="575" width="600" height="25"/>
+                                <rect key="frame" x="0.0" y="585" width="600" height="15"/>
                                 <color key="backgroundColor" red="0.20367902069999999" green="0.70923944790000004" blue="0.92052150710000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="aD9-eI-eTD"/>
+                                    <constraint firstAttribute="height" constant="15" id="aD9-eI-eTD"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zak-jf-YGh">
@@ -137,12 +137,12 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yk4-1h-AeT">
                                 <rect key="frame" x="245" y="255" width="110" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="YpT-KA-f5E"/>
+                                    <constraint firstAttribute="width" secondItem="Yk4-1h-AeT" secondAttribute="height" multiplier="11:9" id="nSB-Yl-REc"/>
                                     <constraint firstAttribute="width" constant="110" id="plz-7h-XMs">
                                         <variation key="heightClass=regular-widthClass=compact" constant="110"/>
                                     </constraint>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="66"/>
+                                <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="200"/>
                                 <size key="titleShadowOffset" width="3" height="2"/>
                                 <state key="normal" title="DEAL">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -150,7 +150,6 @@
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="YpT-KA-f5E"/>
                                         <include reference="plz-7h-XMs"/>
                                     </mask>
                                 </variation>
@@ -418,6 +417,7 @@
                         <outlet property="notifyP1X" destination="g80-hV-gUn" id="Jrf-Ec-fGo"/>
                         <outlet property="notifyP1Y" destination="y66-eh-pqK" id="z97-3Z-X27"/>
                         <outlet property="playRoundButton" destination="Yk4-1h-AeT" id="ncD-1B-6CF"/>
+                        <outlet property="playRoundButtonWidth" destination="plz-7h-XMs" id="lCc-1z-o03"/>
                         <outlet property="playerOneCounter" destination="yZg-b8-7fL" id="EAH-9Q-wAy"/>
                         <outlet property="playerOneCounterWidth" destination="rhy-hW-g2Q" id="OFl-f6-5xg"/>
                         <outlet property="playerOneStorageCounter" destination="QKo-hk-Jz0" id="Xrf-qd-Odq"/>

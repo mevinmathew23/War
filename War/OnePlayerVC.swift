@@ -56,6 +56,7 @@ class OnePlayerVC: UIViewController {
     @IBOutlet weak var cardViewP2War3X: NSLayoutConstraint!
     
     @IBOutlet weak var playRoundButton: UIButton!
+    @IBOutlet weak var playRoundButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var notifyP1: UILabel!
     @IBOutlet weak var notifyP1X: NSLayoutConstraint!
     @IBOutlet weak var notifyP1Y: NSLayoutConstraint!
@@ -153,6 +154,11 @@ class OnePlayerVC: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+        playRoundButtonWidth.constant = view.bounds.width/3
+        playRoundButton.titleLabel?.minimumScaleFactor = 0.05
+        playRoundButton.titleLabel?.numberOfLines = 1
+        playRoundButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
         // Set Counters
         
