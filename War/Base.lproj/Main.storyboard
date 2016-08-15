@@ -157,8 +157,8 @@
                                     <action selector="playRoundTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pya-Me-biq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZg-b8-7fL">
-                                <rect key="frame" x="0.0" y="924" width="120" height="100"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZg-b8-7fL">
+                                <rect key="frame" x="0.0" y="500" width="120" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yZg-b8-7fL" secondAttribute="height" multiplier="6:5" id="jhX-sU-lvf"/>
                                     <constraint firstAttribute="width" constant="120" id="rhy-hW-g2Q"/>
@@ -173,8 +173,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yI-70-QNt">
-                                <rect key="frame" x="648" y="0.0" width="120" height="100"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1yI-70-QNt">
+                                <rect key="frame" x="480" y="0.0" width="120" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="9kW-6v-7BL">
                                         <variation key="heightClass=regular-widthClass=compact" constant="120"/>
@@ -190,8 +190,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKo-hk-Jz0">
-                                <rect key="frame" x="0.0" y="964" width="120" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QKo-hk-Jz0">
+                                <rect key="frame" x="0.0" y="540" width="120" height="60"/>
                                 <color key="backgroundColor" red="0.20367902069999999" green="0.70923944790000004" blue="0.92052150710000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="4Oh-O3-tjF"/>
@@ -225,8 +225,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJG-2g-R3d">
-                                <rect key="frame" x="648" y="200" width="120" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NJG-2g-R3d">
+                                <rect key="frame" x="480" y="200" width="120" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.071741149340000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8T7-4X-7s2"/>
@@ -243,7 +243,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJp-Ay-XBL">
-                                <rect key="frame" x="20" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                 <state key="normal" title="Quit"/>
                                 <connections>
                                     <action selector="Quit:" destination="BYZ-38-t0r" eventType="touchDown" id="Gkz-LA-9Si"/>
@@ -325,7 +325,8 @@
                             <constraint firstItem="dn4-W8-249" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="25" id="pFw-oE-G6e">
                                 <variation key="heightClass=regular-widthClass=compact" constant="25"/>
                             </constraint>
-                            <constraint firstItem="xJp-Ay-XBL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="pUI-q6-We3"/>
+                            <constraint firstItem="r6v-ha-Tc8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pMn-Cq-Sz7"/>
+                            <constraint firstItem="r6v-ha-Tc8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="peN-35-gXV"/>
                             <constraint firstAttribute="bottom" secondItem="Zak-jf-YGh" secondAttribute="bottom" constant="50" id="qCa-mq-pRN"/>
                             <constraint firstItem="8cb-GE-Nbi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-40" id="uZt-gd-h5E">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-40"/>
