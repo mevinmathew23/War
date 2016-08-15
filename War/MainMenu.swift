@@ -20,7 +20,7 @@ class MainMenu: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        audio.readFileIntoAVPlayer("bgm", volume: 1.0)
+        audio.readFileIntoAVPlayer("bgm", volume: 0.125)
         audio.toggleAVPlayer()
         audio.loopAVPlayer()
         

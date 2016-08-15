@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -16,11 +16,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundPSI" translatesAutoresizingMaskIntoConstraints="NO" id="41g-bh-HY2" userLabel="background">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                             </imageView>
                             <view userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wfx-bg-22Q">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="15"/>
@@ -37,7 +37,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zak-jf-YGh">
-                                <rect key="frame" x="295" y="380" width="120" height="170"/>
+                                <rect key="frame" x="379" y="804" width="120" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="KsI-ig-Uyy"/>
                                     <constraint firstAttribute="width" secondItem="Zak-jf-YGh" secondAttribute="height" multiplier="12:17" id="b4Q-D9-34A"/>
@@ -49,7 +49,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wH2-ZH-hIe">
-                                <rect key="frame" x="280" y="380" width="120" height="170"/>
+                                <rect key="frame" x="364" y="804" width="120" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="1lh-CS-120"/>
                                     <constraint firstAttribute="width" secondItem="wH2-ZH-hIe" secondAttribute="height" multiplier="12:17" id="iGy-Dd-22u"/>
@@ -61,7 +61,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dn4-W8-249">
-                                <rect key="frame" x="265" y="380" width="120" height="170"/>
+                                <rect key="frame" x="349" y="804" width="120" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dn4-W8-249" secondAttribute="height" multiplier="12:17" id="3Lt-te-IUr"/>
                                     <constraint firstAttribute="height" constant="170" id="IJL-k7-T1P"/>
@@ -73,7 +73,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWA-cI-K6t">
-                                <rect key="frame" x="240" y="380" width="120" height="170"/>
+                                <rect key="frame" x="324" y="804" width="120" height="170"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="5Dq-8v-toP"/>
@@ -86,7 +86,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUp-lU-i4w">
-                                <rect key="frame" x="185" y="50" width="120" height="170"/>
+                                <rect key="frame" x="269" y="50" width="120" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="Bpr-9F-GVp"/>
                                     <constraint firstAttribute="width" secondItem="oUp-lU-i4w" secondAttribute="height" multiplier="12:17" id="T1i-nV-0WE"/>
@@ -98,7 +98,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8cb-GE-Nbi">
-                                <rect key="frame" x="200" y="50" width="120" height="170"/>
+                                <rect key="frame" x="284" y="50" width="120" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="SRP-Kc-J3D"/>
                                     <constraint firstAttribute="width" secondItem="8cb-GE-Nbi" secondAttribute="height" multiplier="12:17" id="ev3-KK-NrN"/>
@@ -110,7 +110,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3Q-cT-X8x">
-                                <rect key="frame" x="215" y="50" width="120" height="170"/>
+                                <rect key="frame" x="299" y="50" width="120" height="170"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="1FC-Du-mfc"/>
                                     <constraint firstAttribute="width" secondItem="j3Q-cT-X8x" secondAttribute="height" multiplier="12:17" id="FtY-RR-cds"/>
@@ -122,7 +122,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHw-EZ-5OG">
-                                <rect key="frame" x="240" y="50" width="120" height="170"/>
+                                <rect key="frame" x="324" y="50" width="120" height="170"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="170" id="3tf-Do-QJE"/>
@@ -135,7 +135,7 @@
                                 </variation>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yk4-1h-AeT">
-                                <rect key="frame" x="245" y="255" width="110" height="90"/>
+                                <rect key="frame" x="329" y="467" width="110" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Yk4-1h-AeT" secondAttribute="height" multiplier="11:9" id="ZLn-Ch-AQb"/>
                                     <constraint firstAttribute="width" constant="110" id="plz-7h-XMs">
@@ -208,7 +208,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLUE WINS ROUND 89" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6XX-M0-YuQ">
-                                <rect key="frame" x="0.0" y="160" width="600" height="140"/>
+                                <rect key="frame" x="84" y="372" width="600" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="Ah0-DL-pRM"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="140" id="fue-YP-15t"/>
@@ -250,7 +250,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BLUE WINS ROUND 10" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.050000000000000003" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G3A-eN-UcA">
-                                <rect key="frame" x="0.0" y="300" width="600" height="140"/>
+                                <rect key="frame" x="84" y="512" width="600" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="140" id="5Nh-Ko-Eb8"/>
                                     <constraint firstAttribute="width" constant="600" id="pE8-Ma-JaN"/>
@@ -331,6 +331,7 @@
                             <constraint firstItem="8cb-GE-Nbi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-40" id="uZt-gd-h5E">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-40"/>
                             </constraint>
+                            <constraint firstItem="xJp-Ay-XBL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ug8-jN-QBQ"/>
                             <constraint firstItem="j3Q-cT-X8x" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-25" id="uhD-tN-Yjh">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-25"/>
                             </constraint>
@@ -409,6 +410,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="41g-bh-HY2" id="WFd-Kl-ls0"/>
                         <outlet property="cardViewP1" destination="rWA-cI-K6t" id="lFm-Z9-wez"/>
@@ -474,7 +476,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="288" y="231"/>
+            <point key="canvasLocation" x="306" y="276"/>
         </scene>
     </scenes>
     <resources>
