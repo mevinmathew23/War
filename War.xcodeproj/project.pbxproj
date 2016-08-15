@@ -10,6 +10,7 @@
 		B71DC19C1D2C36330040F476 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DC19B1D2C36330040F476 /* Card.swift */; };
 		B71DC19E1D2C366F0040F476 /* Shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DC19D1D2C366F0040F476 /* Shuffle.swift */; };
 		B71DC1A01D2C369E0040F476 /* War.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DC19F1D2C369E0040F476 /* War.swift */; };
+		B7481B481D5E5467000F16DF /* Chips.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7481B471D5E5467000F16DF /* Chips.swift */; };
 		B759C8991D357514007AB0EF /* Bet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B759C8981D357514007AB0EF /* Bet.swift */; };
 		B76524641D3D2C5700AC042D /* Main Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76524631D3D2C5700AC042D /* Main Menu.storyboard */; };
 		B765248A1D47A8F800AC042D /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B76524891D47A8F800AC042D /* Settings.storyboard */; };
@@ -99,6 +100,7 @@
 				B7C60D401D19B76B00E18A36 /* Info.plist */,
 				B759C8981D357514007AB0EF /* Bet.swift */,
 				B71DC19B1D2C36330040F476 /* Card.swift */,
+				B7481B471D5E5467000F16DF /* Chips.swift */,
 				B71DC19D1D2C366F0040F476 /* Shuffle.swift */,
 				B71DC19F1D2C369E0040F476 /* War.swift */,
 				FBA0A76B1D5A17E100C191FA /* Audio.swift */,
@@ -278,6 +280,7 @@
 				FBA0A76C1D5A17E100C191FA /* Audio.swift in Sources */,
 				FBA0A76A1D58D9D000C191FA /* AboutViewController.swift in Sources */,
 				B76524901D47BC3100AC042D /* Settings.swift in Sources */,
+				B7481B481D5E5467000F16DF /* Chips.swift in Sources */,
 				FBA0A7341D4A83C300C191FA /* OnePlayerVC.swift in Sources */,
 				B71DC19C1D2C36330040F476 /* Card.swift in Sources */,
 				B71DC1A01D2C369E0040F476 /* War.swift in Sources */,

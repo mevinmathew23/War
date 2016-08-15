@@ -27,11 +27,7 @@ class War {
             let temp = Card();
             temp.Value = x;
             temp.Name = Suit + String(x);
-//            if customImage == nil {
-//                return
-//            } else {
-//                temp.backImage = customImage!
-//            }
+            
             deckOfCards.append(temp);
         }
     }

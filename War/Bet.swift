@@ -21,13 +21,9 @@ func bet(amount: Int) {
     playerOneBet += amount
     playerTwoBet += amount
     pot += (amount)*2
+        
 }
-
-
-
 func roundWinner(inout roundWinner: Int) {
     return roundWinner += pot
-    
-    
 }
 
