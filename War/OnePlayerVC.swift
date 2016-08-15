@@ -151,6 +151,8 @@ class OnePlayerVC: UIViewController {
         tapP1.numberOfTapsRequired = 1
         cardViewP1.addGestureRecognizer(tapP1)
         
+        chipsView.hidden = true
+        
         // Setup cards
         war.addCards("spades")
         war.addCards("clubs")
