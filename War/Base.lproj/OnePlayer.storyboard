@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -261,7 +261,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJp-Ay-XBL">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <rect key="frame" x="20" y="0.0" width="30" height="30"/>
                                 <state key="normal" title="Quit"/>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
@@ -299,6 +299,7 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="55"/>
                             </constraint>
                             <constraint firstItem="yHw-EZ-5OG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Uhd-jN-HQj"/>
+                            <constraint firstItem="xJp-Ay-XBL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="X6f-Ks-HRl"/>
                             <constraint firstItem="xJp-Ay-XBL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ek1-Ed-wFx"/>
                             <constraint firstAttribute="bottom" secondItem="wH2-ZH-hIe" secondAttribute="bottom" constant="50" id="elC-gU-CR5"/>
                             <constraint firstItem="G3A-eN-UcA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g80-hV-gUn"/>
@@ -313,6 +314,7 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="25"/>
                             </constraint>
                             <constraint firstAttribute="bottom" secondItem="Zak-jf-YGh" secondAttribute="bottom" constant="50" id="qCa-mq-pRN"/>
+                            <constraint firstItem="xJp-Ay-XBL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="uXD-I6-6XI"/>
                             <constraint firstItem="8cb-GE-Nbi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-40" id="uZt-gd-h5E">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-40"/>
                             </constraint>
@@ -331,9 +333,6 @@
                             </constraint>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="xJp-Ay-XBL"/>
-                            </mask>
                             <mask key="constraints">
                                 <exclude reference="7Xc-20-aE7"/>
                                 <exclude reference="ek1-Ed-wFx"/>
@@ -358,12 +357,12 @@
                                 <include reference="xJp-Ay-XBL"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="7Xc-20-aE7"/>
-                                <include reference="ek1-Ed-wFx"/>
                                 <include reference="ILp-KS-dTC"/>
                                 <include reference="jOi-PQ-Rcc"/>
                                 <include reference="kpp-RR-Yyh"/>
                                 <include reference="umW-Sz-QxO"/>
+                                <include reference="7Xc-20-aE7"/>
+                                <include reference="ek1-Ed-wFx"/>
                                 <include reference="IhQ-2d-4lO"/>
                                 <include reference="pAp-9K-RqS"/>
                                 <include reference="oZx-ql-ZUi"/>

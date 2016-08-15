@@ -34,7 +34,6 @@
 		B71DC19B1D2C36330040F476 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		B71DC19D1D2C366F0040F476 /* Shuffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shuffle.swift; sourceTree = "<group>"; };
 		B71DC19F1D2C369E0040F476 /* War.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = War.swift; sourceTree = "<group>"; };
-		B75122D71D4A9FC8007419C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = War/Base.lproj/OnePlayer.storyboard; sourceTree = "<group>"; };
 		B759C8981D357514007AB0EF /* Bet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bet.swift; sourceTree = "<group>"; };
 		B76524631D3D2C5700AC042D /* Main Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main Menu.storyboard"; sourceTree = "<group>"; };
 		B76524891D47A8F800AC042D /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -72,7 +71,6 @@
 		B7C60D281D19B76B00E18A36 = {
 			isa = PBXGroup;
 			children = (
-				B75122D61D4A9FC8007419C3 /* OnePlayer.storyboard */,
 				B7C60D331D19B76B00E18A36 /* War */,
 				B7C60D321D19B76B00E18A36 /* Products */,
 				FBA1A4A51D4A61CE009FC751 /* Frameworks */,
@@ -292,14 +290,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B75122D61D4A9FC8007419C3 /* OnePlayer.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B75122D71D4A9FC8007419C3 /* Base */,
-			);
-			name = OnePlayer.storyboard;
-			sourceTree = "<group>";
-		};
 		B7C60D381D19B76B00E18A36 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
