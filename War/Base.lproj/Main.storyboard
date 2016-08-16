@@ -330,9 +330,9 @@
                             <constraint firstItem="6XX-M0-YuQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-70" id="6Hs-ex-k0E">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-35"/>
                             </constraint>
-                            <constraint firstItem="xJp-Ay-XBL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7Xc-20-aE7"/>
                             <constraint firstAttribute="trailing" secondItem="1yI-70-QNt" secondAttribute="trailing" id="8Bw-r5-sQe"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dn4-W8-249" secondAttribute="bottom" constant="50" id="94A-k6-lTr"/>
+                            <constraint firstItem="xJp-Ay-XBL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="14" id="9hR-KT-ehU"/>
                             <constraint firstItem="yZg-b8-7fL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BF3-Xb-79j"/>
                             <constraint firstAttribute="trailing" secondItem="NJG-2g-R3d" secondAttribute="trailing" id="CVF-q5-RXj"/>
                             <constraint firstItem="yHw-EZ-5OG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="CaK-lw-dyZ"/>
@@ -355,10 +355,8 @@
                             <constraint firstItem="34p-vL-avn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="100" id="U2N-IS-v8J"/>
                             <constraint firstItem="yHw-EZ-5OG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Uhd-jN-HQj"/>
                             <constraint firstItem="Wfx-bg-22Q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Zqj-uo-XvR"/>
-                            <constraint firstItem="xJp-Ay-XBL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ek1-Ed-wFx"/>
                             <constraint firstAttribute="bottom" secondItem="wH2-ZH-hIe" secondAttribute="bottom" constant="50" id="elC-gU-CR5"/>
                             <constraint firstItem="G3A-eN-UcA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g80-hV-gUn"/>
-                            <constraint firstItem="xJp-Ay-XBL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gUo-7u-jVW"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yZg-b8-7fL" secondAttribute="bottom" id="iNc-GX-bbf"/>
                             <constraint firstItem="FiO-og-lxk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="inc-Cm-RxH"/>
                             <constraint firstItem="j3Q-cT-X8x" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="j8B-DA-04T"/>
@@ -393,12 +391,6 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="190"/>
                             </constraint>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="7Xc-20-aE7"/>
-                                <exclude reference="ek1-Ed-wFx"/>
-                            </mask>
-                        </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Zak-jf-YGh"/>
@@ -414,8 +406,8 @@
                                 <include reference="QKo-hk-Jz0"/>
                                 <include reference="6XX-M0-YuQ"/>
                                 <include reference="NJG-2g-R3d"/>
-                                <include reference="xJp-Ay-XBL"/>
                                 <include reference="G3A-eN-UcA"/>
+                                <include reference="xJp-Ay-XBL"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="ILp-KS-dTC"/>
@@ -436,6 +428,10 @@
                                 <include reference="GEj-Vp-FOS"/>
                                 <include reference="g80-hV-gUn"/>
                                 <include reference="y66-eh-pqK"/>
+                                <include reference="CVF-q5-RXj"/>
+                                <include reference="vPe-wi-dhF"/>
+                                <include reference="Jqj-XX-19V"/>
+                                <include reference="zpq-F8-q9n"/>
                                 <include reference="3Bm-qY-zQZ"/>
                                 <include reference="jLl-fh-x3m"/>
                                 <include reference="11I-e2-VcG"/>

@@ -89,6 +89,7 @@ class OnePlayerVC: UIViewController {
     let war = War()
     let settings = Settings()
     let audio = Audio()
+    let sounds = Sounds()
     
     // War counters
     var playerOneWinCounter = 0
@@ -98,6 +99,9 @@ class OnePlayerVC: UIViewController {
     var roundCount = 1
     
     let overlay: UIView = UIView()
+    
+    let sFX = Settings().defaults.boolForKey("soundFX")
+    
     
     var playerOneWin: Bool? = nil
     
@@ -373,6 +377,7 @@ class OnePlayerVC: UIViewController {
     }
     
     func updateCounter() {
+        war.totalCounter()
         playerOneCounter.text = String(war.playerOneCards.count)
         playerTwoCounter.text = String(war.playerTwoCards.count)
     }
@@ -476,6 +481,9 @@ class OnePlayerVC: UIViewController {
     // Draw cards
     
     func drawCardP1(player: UIView) {
+        guard war.playerOneCards.count > 0 else {
+            return
+        }
         war.playerOneCardsInPlay.append(war.playerOneCards[0])
         let activeP1 = war.playerOneCardsInPlay[0]
         war.playerOneCards.removeAtIndex(0)
@@ -491,6 +499,9 @@ class OnePlayerVC: UIViewController {
     }
     
     func drawCardP2(player: UIView) {
+        guard war.playerTwoCards.count > 0 else {
+            return
+        }
         war.playerTwoCardsInPlay.append(war.playerTwoCards[0])
         let activeP2 = war.playerTwoCardsInPlay[0]
         war.playerTwoCards.removeAtIndex(0)
@@ -508,6 +519,9 @@ class OnePlayerVC: UIViewController {
     // Draw War Cards
     
     func drawWarCards() {
+        guard  war.playerOneCards.count >= 3 && war.playerTwoCards.count >= 3 else {
+            return
+        }
         let cardViewP1Array: Array = [cardViewP1War1, cardViewP1War2, cardViewP1War3]
         let cardViewP2Array: Array = [cardViewP2War1, cardViewP2War2, cardViewP2War3]
         
@@ -569,8 +583,10 @@ class OnePlayerVC: UIViewController {
     
     func tappedP1() {
         print(war.playerOneCardsInPlay[0].Name!)
-        audio.readFileIntoAVPlayer("cardFlip", volume: 1.0)
-        audio.toggleAVPlayer()
+        if sFX == false {
+            sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+            sounds.toggleAVPlayer()
+        }
         if (war.playerOneCardsInPlay[0].ShowingFront) {
             UIView.transitionFromView(war.playerOneCardsInPlay[0].Front, toView: war.playerOneCardsInPlay[0].Back, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: {
                 finished in
@@ -589,8 +605,10 @@ class OnePlayerVC: UIViewController {
     }
     func tappedP2() {
         print(war.playerTwoCardsInPlay[0].Name!)
-        audio.readFileIntoAVPlayer("cardFlip", volume: 1.0)
-        audio.toggleAVPlayer()
+        if sFX == false {
+            sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+            sounds.toggleAVPlayer()
+        }
         if (war.playerTwoCardsInPlay[0].ShowingFront) {
             UIView.transitionFromView(war.playerTwoCardsInPlay[0].Front, toView: war.playerTwoCardsInPlay[0].Back, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
             war.playerTwoCardsInPlay[0].ShowingFront = false
@@ -609,8 +627,10 @@ class OnePlayerVC: UIViewController {
     }
     func tappedWarP1() {
         print(war.playerOneCardsInPlay[0].Name!)
-        audio.readFileIntoAVPlayer("cardFlip", volume: 1.0)
-        audio.toggleAVPlayer()
+        if sFX == false {
+            sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+            sounds.toggleAVPlayer()
+        }
         if (war.playerOneCardsInPlay[0].ShowingFront) {
             UIView.transitionFromView(war.playerOneCardsInPlay[0].Front, toView: war.playerOneCardsInPlay[0].Back, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
             war.playerOneCardsInPlay[0].ShowingFront = false
@@ -626,8 +646,10 @@ class OnePlayerVC: UIViewController {
     }
     func tappedWarP2() {
         print(war.playerTwoCardsInPlay[0].Name!)
-        audio.readFileIntoAVPlayer("cardFlip", volume: 1.0)
-        audio.toggleAVPlayer()
+        if sFX == false {
+            sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+            sounds.toggleAVPlayer()
+        }
         if (war.playerTwoCardsInPlay[0].ShowingFront) {
             UIView.transitionFromView(war.playerTwoCardsInPlay[0].Front, toView: war.playerTwoCardsInPlay[0].Back, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
             war.playerTwoCardsInPlay[0].ShowingFront = false
@@ -658,8 +680,7 @@ class OnePlayerVC: UIViewController {
     }
     
     func normalWinP1Timer() {
-        var normalWinP1Timer = NSTimer.init()
-        normalWinP1Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.normalWinP1), userInfo: nil, repeats: false)
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.normalWinP1), userInfo: nil, repeats: false)
     }
     
     func normalWinP1() {
@@ -673,11 +694,13 @@ class OnePlayerVC: UIViewController {
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
                 self.checkWinner()
-            
+                
         })
         UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseOut], animations: {
-            self.audio.readFileIntoAVPlayer("cardSlide", volume: 1)
-            self.audio.playAVPlayer()
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP2Constraint.constant = self.view.bounds.height
             self.view.layoutIfNeeded()
             }, completion: {
@@ -686,22 +709,26 @@ class OnePlayerVC: UIViewController {
                 self.updateCounter()
                 self.cardViewP2Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
-                self.audio.readFileIntoAVPlayer("cardSlide2", volume: 1)
-                self.audio.playAVPlayer()
-
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide2", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
+                
         })
         
     }
     
     func normalWinP2Timer() {
-        var normalWinP2Timer = NSTimer.init()
-        normalWinP2Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.normalWinP2), userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.normalWinP2), userInfo: nil, repeats: false)
     }
     
     func normalWinP2() {
         UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseOut],animations: {
-            self.audio.readFileIntoAVPlayer("cardSlide", volume: 1)
-            self.audio.playAVPlayer()
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP1Constraint.constant = self.view.bounds.height
             self.view.layoutIfNeeded()
             }, completion: {
@@ -710,9 +737,11 @@ class OnePlayerVC: UIViewController {
                 self.updateCounter()
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
-                self.audio.readFileIntoAVPlayer("cardSlide2", volume: 1)
-                self.audio.playAVPlayer()
-
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide2", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
+                
                 
         })
         UIView.animateWithDuration(0.75, delay: 0.75, options: [.CurveEaseOut], animations: {
@@ -734,22 +763,28 @@ class OnePlayerVC: UIViewController {
         // P1
         
         UIView.animateWithDuration(0.3, delay: 0, options: [.CurveEaseOut], animations: {
-            self.audio.readFileIntoAVPlayer("cardFlip", volume: 1.0)
-            self.audio.playAVPlayer()
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP1War1Constraint.constant = 50
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.audio.readFileIntoAVPlayer("cardFlip2", volume: 1.0)
-                self.audio.playAVPlayer()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardFlip2", volume: 1.0)
+                    self.sounds.playAVPlayer()
+                }
         })
         UIView.animateWithDuration(0.3, delay: 0.3, options: [.CurveEaseOut], animations: {
             self.cardViewP1War2Constraint.constant = 50
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.audio.readFileIntoAVPlayer("cardFlip3", volume: 1.0)
-                self.audio.playAVPlayer()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardFlip3", volume: 1.0)
+                    self.sounds.playAVPlayer()
+                }
         })
         UIView.animateWithDuration(0.3, delay: 0.6, options: [.CurveEaseOut], animations: {
             self.cardViewP1War3Constraint.constant = 50
@@ -759,22 +794,28 @@ class OnePlayerVC: UIViewController {
         // P2
         
         UIView.animateWithDuration(0.4, delay: 0, options: [.CurveEaseOut], animations: {
-            self.audio.readFileIntoAVPlayer("cardFlip", volume: 1.0)
-            self.audio.playAVPlayer()
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP2War1Constraint.constant = 50
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.audio.readFileIntoAVPlayer("cardFlip", volume: 1.0)
-                self.audio.playAVPlayer()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+                    self.sounds.playAVPlayer()
+                }
         })
         UIView.animateWithDuration(0.3, delay: 0.4, options: [.CurveEaseOut], animations: {
             self.cardViewP2War2Constraint.constant = 50
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.audio.readFileIntoAVPlayer("cardFlip", volume: 1.0)
-                self.audio.playAVPlayer()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+                    self.sounds.playAVPlayer()
+                }
         })
         UIView.animateWithDuration(0.3, delay: 0.7, options: [.CurveEaseOut], animations: {
             self.cardViewP2War3Constraint.constant = 50
@@ -783,15 +824,17 @@ class OnePlayerVC: UIViewController {
     }
     
     func moveToStorageTimer() {
-        var moveToStorageTimer = NSTimer.init()
-        moveToStorageTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.moveToStorage), userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.moveToStorage), userInfo: nil, repeats: false)
         
     }
     
     func moveToStorage() {
         UIView.animateWithDuration(0.6, delay: 0, options: [.CurveEaseOut], animations: {
-            self.audio.readFileIntoAVPlayer("cardSlide", volume: 1)
-            self.audio.playAVPlayer()
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP1Constraint.constant = self.view.bounds.height/4
             self.cardViewP1X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
             self.view.layoutIfNeeded()
@@ -800,8 +843,10 @@ class OnePlayerVC: UIViewController {
                 self.war.appendAllP1()
         })
         UIView.animateWithDuration(0.6, delay: 0.1, options: [.CurveEaseOut], animations: {
-            self.audio.readFileIntoAVPlayer("cardSlide2", volume: 1)
-            self.audio.playAVPlayer()
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardSlide2", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP2Constraint.constant = self.view.bounds.height/4
             self.cardViewP2X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
             self.view.layoutIfNeeded()
@@ -814,8 +859,8 @@ class OnePlayerVC: UIViewController {
         })
     }
     func warToStorageTimer() {
-        var warToStorageTimer = NSTimer.init()
-        warToStorageTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(OnePlayerVC.warToStorage), userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(OnePlayerVC.warToStorage), userInfo: nil, repeats: false)
         
     }
     
@@ -823,8 +868,10 @@ class OnePlayerVC: UIViewController {
     
     func warToStorage() {
         UIView.animateWithDuration(0.5, delay: 0.1, options: [.CurveEaseOut], animations: {
-            self.audio.readFileIntoAVPlayer("cardSlide", volume: 1)
-            self.audio.playAVPlayer()
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP1War1Constraint.constant = self.view.bounds.height/4
             self.cardViewP1War1X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
             self.view.layoutIfNeeded()
@@ -833,12 +880,16 @@ class OnePlayerVC: UIViewController {
                 self.war.appendAllP1()
                 self.updateCounter()
                 self.updateStorageCounter()
-                self.audio.readFileIntoAVPlayer("cardSlide2", volume: 1)
-                self.audio.playAVPlayer()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide2", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
         })
         UIView.animateWithDuration(0.5, delay: 0, options: [.CurveEaseOut], animations: {
-            self.audio.readFileIntoAVPlayer("cardSlide", volume: 1)
-            self.audio.playAVPlayer()
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP2War1Constraint.constant = self.view.bounds.height/4
             self.cardViewP2War1X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
             self.view.layoutIfNeeded()
@@ -847,8 +898,10 @@ class OnePlayerVC: UIViewController {
                 self.war.appendAllP2()
                 self.updateCounter()
                 self.updateStorageCounter()
-                self.audio.readFileIntoAVPlayer("cardSlide2", volume: 1)
-                self.audio.playAVPlayer()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide2", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
         })
         UIView.animateWithDuration(0.5, delay: 0.6, options: [.CurveEaseOut], animations: {
             self.cardViewP1War2Constraint.constant = self.view.bounds.height/4
@@ -856,8 +909,10 @@ class OnePlayerVC: UIViewController {
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.audio.readFileIntoAVPlayer("cardSlide", volume: 1)
-                self.audio.playAVPlayer()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
         })
         UIView.animateWithDuration(0.5, delay: 0.5, options: [.CurveEaseOut], animations: {
             self.cardViewP2War2Constraint.constant = self.view.bounds.height/4
@@ -865,8 +920,10 @@ class OnePlayerVC: UIViewController {
             self.view.layoutIfNeeded()
             }, completion: {
                 finishd in
-                self.audio.readFileIntoAVPlayer("cardSlide2", volume: 1)
-                self.audio.playAVPlayer()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide2", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
         })
         UIView.animateWithDuration(0.5, delay: 1.1, options: [.CurveEaseOut], animations: {
             self.cardViewP1War3Constraint.constant = self.view.bounds.height/4
@@ -887,16 +944,18 @@ class OnePlayerVC: UIViewController {
     
     
     func storeWarTimer() {
-        var storeWarTimer = NSTimer.init()
-        storeWarTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(OnePlayerVC.storeWar), userInfo: nil, repeats: false)
-
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(OnePlayerVC.storeWar), userInfo: nil, repeats: false)
+        
     }
     
     func storeWar() {
         if (playerOneWinCounter + playerTwoWinCounter) == 1 {
             UIView.animateWithDuration(0.5, delay: 0, options: [.CurveEaseOut], animations: {
-                self.audio.readFileIntoAVPlayer("cardSlide", volume: 1)
-                self.audio.playAVPlayer()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
                 self.cardViewP1War1Constraint.constant = self.view.bounds.height/4
                 self.cardViewP1War1X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
                 self.view.layoutIfNeeded()
@@ -906,8 +965,10 @@ class OnePlayerVC: UIViewController {
                     self.cardViewP1War2.userInteractionEnabled = true
                     self.war.appendStorageP1()
                     self.updateStorageCounter()
-                    self.audio.readFileIntoAVPlayer("cardSlide", volume: 1)
-                    self.audio.playAVPlayer()
+                    if self.sFX == false {
+                        self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                        self.sounds.playAVPlayer()
+                    }
             })
             UIView.animateWithDuration(0.5, delay: 0.5, options: [.CurveEaseOut], animations: {
                 self.cardViewP2War1Constraint.constant = self.view.bounds.height/4
@@ -924,8 +985,10 @@ class OnePlayerVC: UIViewController {
         }
         else if (playerOneWinCounter + playerTwoWinCounter) == 2 {
             UIView.animateWithDuration(0.5, delay: 0, options: [.CurveEaseOut], animations: {
-                self.audio.readFileIntoAVPlayer("cardSlide", volume: 1)
-                self.audio.playAVPlayer()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
                 self.cardViewP1War2Constraint.constant = self.view.bounds.height/4
                 self.cardViewP1War2X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
                 self.view.layoutIfNeeded()
@@ -935,8 +998,10 @@ class OnePlayerVC: UIViewController {
                     self.cardViewP1War3.userInteractionEnabled = true
                     self.war.appendStorageP1()
                     self.updateStorageCounter()
-                    self.audio.readFileIntoAVPlayer("cardSlide2", volume: 1)
-                    self.audio.playAVPlayer()
+                    if self.sFX == false {
+                        self.sounds.readFileIntoAVPlayer("cardSlide2", volume: 1)
+                        self.sounds.playAVPlayer()
+                    }
             })
             UIView.animateWithDuration(0.5, delay: 0.5, options: [.CurveEaseOut], animations: {
                 self.cardViewP2War2Constraint.constant = self.view.bounds.height/4
@@ -953,8 +1018,10 @@ class OnePlayerVC: UIViewController {
         }
         else if (playerOneWinCounter + playerTwoWinCounter) == 3 {
             UIView.animateWithDuration(0.5, delay: 0, options: [.CurveEaseOut], animations: {
-                self.audio.readFileIntoAVPlayer("cardSlide", volume: 1)
-                self.audio.playAVPlayer()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
                 self.cardViewP1War3Constraint.constant = self.view.bounds.height/4
                 self.cardViewP1War3X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
                 self.view.layoutIfNeeded()
@@ -963,11 +1030,13 @@ class OnePlayerVC: UIViewController {
                     self.cardViewP1War3.userInteractionEnabled = false
                     self.war.appendStorageP1()
                     self.updateStorageCounter()
-                    self.audio.readFileIntoAVPlayer("cardSlide2", volume: 1)
-                    self.audio.playAVPlayer()
+                    if self.sFX == false {
+                        self.sounds.readFileIntoAVPlayer("cardSlide2", volume: 1)
+                        self.sounds.playAVPlayer()
+                    }
             })
             UIView.animateWithDuration(0.5, delay: 0.5, options: [.CurveEaseOut], animations: {
-
+                
                 self.cardViewP2War3Constraint.constant = self.view.bounds.height/4
                 self.cardViewP2War3X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
                 self.view.layoutIfNeeded()
@@ -982,8 +1051,7 @@ class OnePlayerVC: UIViewController {
     }
     
     func warWinP1Timer() {
-        var warWinP1Timer = NSTimer.init()
-        warWinP1Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.warWinP1), userInfo: nil, repeats: false)
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.warWinP1), userInfo: nil, repeats: false)
     }
     func warWinP1() {
         UIView.animateWithDuration(1, delay: 0.1, options: [.CurveEaseOut],animations: {
@@ -996,8 +1064,10 @@ class OnePlayerVC: UIViewController {
                 self.view.layoutIfNeeded()
         })
         UIView.animateWithDuration(1, delay: 0, options: [.CurveEaseOut], animations: {
-            self.audio.readFileIntoAVPlayer("riffle", volume: 1)
-            self.audio.playAVPlayer()
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("riffle", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP2Constraint.constant = self.view.bounds.height
             self.cardViewP2X.constant = 0
             self.view.layoutIfNeeded()
@@ -1070,13 +1140,15 @@ class OnePlayerVC: UIViewController {
     }
     
     func warWinP2Timer() {
-        var warWinP2Timer = NSTimer.init()
-        warWinP2Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.warWinP2), userInfo: nil, repeats: false)
+       
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.warWinP2), userInfo: nil, repeats: false)
     }
     func warWinP2() {
         UIView.animateWithDuration(1, delay: 0, options: [.CurveEaseOut],animations: {
-            self.audio.readFileIntoAVPlayer("riffle", volume: 1)
-            self.audio.playAVPlayer()
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("riffle", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP1Constraint.constant = self.view.bounds.height
             self.cardViewP1X.constant = 0
             self.view.layoutIfNeeded()

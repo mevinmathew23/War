@@ -23,19 +23,21 @@ func fileInDocumentsDirectory(filename: String) -> String {
 class Settings: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var audio: Audio?;
+    var sounds: Sounds?;
     
     let defaults = NSUserDefaults.standardUserDefaults()
     var newImage:UIImage?
     var newVolume:Float!
     var newBrightness:Float!
     var newMute:Bool!
+    var newMuteSounds: Bool!
     let cardPath = fileInDocumentsDirectory("customCard")
     let backgroundPath = fileInDocumentsDirectory("customBackground")
     
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +45,11 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         let volume = defaults.floatForKey("Volume")
         let brightness = defaults.floatForKey("Brightness")
         let mute = defaults.boolForKey("Mute")
+        let sFX = defaults.boolForKey("soundFX")
         volumeControl.setValue(volume, animated: false)
         brightnessControl.setValue(brightness, animated: false)
         muteControl.setOn(mute, animated: false)
+        soundFX.setOn(sFX, animated: false)
         
         if loadImageFromPath(cardPath) == nil {
             print("No new image selected.")
@@ -61,7 +65,7 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
         }
         
         
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,6 +83,8 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var soundFX: UISwitch!
+    
     
     var changeCard: Bool? = nil
     var background: UIImage! = UIImage(named: "backgroundPSI")
@@ -232,7 +238,7 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     @IBAction func volumeChange(sender: UISlider) {
         newVolume = volumeControl.value
         if audio!.avPlayer.volume != 0 {
-           audio!.avPlayer.volume = volumeControl.value
+            audio!.avPlayer.volume = volumeControl.value
         }
     }
     @IBAction func brightnessChange(sender: UISlider) {
@@ -248,6 +254,11 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
                 audio!.avPlayer.volume = volumeControl.value
             }
         }
+    }
+    
+    
+    @IBAction func muteSoundFX(sender: UISwitch) {
+        newMuteSounds = soundFX.on
     }
     
     @IBAction func resetCardBack(sender: UITapGestureRecognizer) {
@@ -284,5 +295,10 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
             print("No new mute option set")
         } else {
             defaults.setBool(newMute, forKey: "Mute")}
+        if newMuteSounds == nil {
+            print("No new mute sound FX option set")
+        } else {
+            defaults.setBool(newMuteSounds, forKey: "soundFX")
+        }
     }
 }

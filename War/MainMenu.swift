@@ -24,6 +24,15 @@ class MainMenu: UIViewController {
         audio.toggleAVPlayer()
         audio.loopAVPlayer()
         
+        let mute = Settings().defaults.boolForKey("Mute")
+        
+        if mute == true {
+            audio.avPlayer.volume = 0
+        } else {
+            audio.avPlayer.volume = Settings().defaults.floatForKey("Volume")
+        }
+        
+        
 
             }
 
