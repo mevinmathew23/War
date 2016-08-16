@@ -8,36 +8,56 @@
 
 import UIKit
 
+var selectedChip: Int? = nil
+
+func translate(index: Int) -> Int {
+    switch index {
+    case 0:
+        return 5
+    case 1:
+        return 10
+    case 2:
+        return 20
+    case 3:
+        return 50
+    case 4:
+        return 100
+    default:
+        return 0
+    }
+}
+
 class Chips: UIView {
 
     // MARK: Properties
-    var selectedChip: Int? = nil {
-        didSet {
-            setNeedsLayout()
-        }
-    }
-    
+//    var selectedChip: Int? = nil {
+//        didSet {
+//            setNeedsLayout()
+//        }
+//    }
+//    
     var chipButtons = [UIButton]()
     
-    let spacing = 5
+    let spacing = 0
     let chipCount = 5
-    
-    func translate(index: Int) -> Int {
-        switch index {
-        case 0:
-            return 5
-        case 1:
-            return 10
-        case 2:
-            return 20
-        case 3:
-            return 50
-        case 4:
-            return 100
-        default:
-            return 0
-        }
-    }
+    let isHighlighted: Bool = false
+//
+//    func translate(index: Int) -> Int {
+//        switch index {
+//        case 0:
+//            return 5
+//        case 1:
+//            return 10
+//        case 2:
+//            return 20
+//        case 3:
+//            return 50
+//        case 4:
+//            return 100
+//        default:
+//            return 0
+//        }
+//    }
     
     // MARK: Initialization
     required init?(coder aDecoder: NSCoder) {
@@ -51,9 +71,9 @@ class Chips: UIView {
             chipImages[x]?.description
             
             button.setImage(chipImages[x], forState: .Normal)
-            button.setImage(chipImages[x], forState: .Selected)
-            button.setImage(chipImages[x], forState: .Disabled)
-            button.setImage(chipImages[x], forState: [.Highlighted, .Selected])
+//            button.setImage(chipImages[x], forState: .Selected)
+//            button.setImage(chipImages[x], forState: .Disabled)
+//            button.setImage(chipImages[x], forState: [.Highlighted, .Selected])
             
             
             // button.backgroundColor = UIColor.cyanColor()
@@ -87,17 +107,28 @@ class Chips: UIView {
     
     // MARK: Button Action
     func chipButtonTapped(button: UIButton) {
-        // print("Button has been tapped!")
-        selectedChip = chipButtons.indexOf(button)! + 1
+        
+        selectedChip = chipButtons.indexOf(button)!
+        
+        print("Button has been tapped!")
+        print(String(selectedChip))
+        
+        updateButtonSelectionStates()
     }
     func updateButtonSelectionStates() {
         for (index, button) in chipButtons.enumerate() {
             // If the index of a button is less than the rating, that buton should be selected.
             button.enabled = playerOneMoney > translate(index)
+            
             button.selected = index == selectedChip
         }
+        dispatch_async(dispatch_get_main_queue(), {
+            self.setNeedsLayout()
+            });
+        
         func chipButtonTapped(button: UIButton) {
-            selectedChip = chipButtons.indexOf(button)! + 1
+            selectedChip = chipButtons.indexOf(button)!
+            print(String(selectedChip))
             
             updateButtonSelectionStates()
         }

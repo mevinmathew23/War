@@ -78,11 +78,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var notifyP2Height: NSLayoutConstraint!
     @IBOutlet weak var notifyP2Width: NSLayoutConstraint!
     
+    @IBOutlet weak var placeBet: UIButton!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var playerOneCounter: UILabel!
     @IBOutlet weak var playerTwoCounter: UILabel!
     @IBOutlet weak var playerOneCounterWidth: NSLayoutConstraint!
     @IBOutlet weak var playerTwoCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerOneWallet: UILabel!
+    @IBOutlet weak var playerTwoWallet: UILabel!
+    @IBOutlet weak var playerOneWalletWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoWalletWidth: NSLayoutConstraint!
     @IBOutlet weak var playerOneStorageCounter: UILabel!
     @IBOutlet weak var playerTwoStorageCounter: UILabel!
     @IBOutlet weak var playerOneStorageCounterWidth: NSLayoutConstraint!
@@ -114,20 +119,26 @@ class ViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
     // MARK: viewDidLoad() and viewDidAppear()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         hideCounter()
+        hideWallet()
         hideStorageCounter()
+        chipsView.hidden = true
+        placeBet.hidden = true
+        playerOneMoney = startingWallet
+        playerTwoMoney = startingWallet
+        selectedChip = nil
         
         changeBackground()
         
         // Rotate player 2 counter
         playerTwoCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         playerTwoStorageCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+        playerTwoWallet.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         
         // Rotate player 2 card views
         cardViewP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
@@ -164,7 +175,7 @@ class ViewController: UIViewController {
         cardViewP1.addGestureRecognizer(tapP1)
         cardViewP2.addGestureRecognizer(tapP2)
         
-        chipsView.hidden = true
+        setChips()
         
         // Setup cards
         war.addCards("spades")
@@ -195,6 +206,9 @@ class ViewController: UIViewController {
         
         playerOneCounterWidth.constant = cardViewP1.frame.width
         playerTwoCounterWidth.constant = cardViewP2.frame.width
+        
+        playerOneWalletWidth.constant = cardViewP1.frame.width
+        playerTwoWalletWidth.constant = cardViewP2.frame.width
     }
     
     override func didReceiveMemoryWarning() {
@@ -208,6 +222,29 @@ class ViewController: UIViewController {
     @IBAction func playRoundTapped(sender: UIButton) {
         startRound()
         hideButton()
+    }
+    
+    @IBAction func placeBets(sender: AnyObject) {
+        bet(translate(selectedChip!))
+        chipsView.hidden = true
+        placeBet.hidden = true
+        updateWallet()
+        
+        startAnimation()
+    }
+    func setChips() {
+        let tapGest = UITapGestureRecognizer(target: self, action: #selector (ViewController.updateChips))
+        tapGest.cancelsTouchesInView = false
+        chipsView.addGestureRecognizer(tapGest)
+    }
+    func updateChips() {
+        if selectedChip == nil {
+            placeBet.enabled = false
+            placeBet.alpha = 0.5
+        } else {
+            placeBet.enabled = true
+            placeBet.alpha = 1.0
+        }
     }
     
     // Set cardViewWars default outside bounds
@@ -383,15 +420,27 @@ class ViewController: UIViewController {
         playerOneCounter.hidden = true
         playerTwoCounter.hidden = true
     }
-    
     func showCounter() {
         playerOneCounter.hidden = false
         playerTwoCounter.hidden = false
     }
-    
     func updateCounter() {
         playerOneCounter.text = String(war.playerOneCards.count)
         playerTwoCounter.text = String(war.playerTwoCards.count)
+    }
+    // Wallet Counters
+    
+    func hideWallet() {
+        playerOneWallet.hidden = true
+        playerTwoWallet.hidden = true
+    }
+    func showWallet() {
+        playerOneWallet.hidden = false
+        playerTwoWallet.hidden = false
+    }
+    func updateWallet() {
+        playerOneWallet.text = "$" + String(playerOneMoney)
+        playerTwoWallet.text = "$" + String(playerTwoMoney)
     }
     
     // Storage Counters
@@ -488,9 +537,15 @@ class ViewController: UIViewController {
         drawCardP2(cardViewP2)
         
         showCounter()
+        showWallet()
         updateCounter()
+        updateWallet()
+        updateChips()
         
-        startAnimation()
+        chipsView.hidden = false
+        placeBet.hidden = false
+        
+        //startAnimation()
     }
     
     // Draw cards
