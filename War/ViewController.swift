@@ -393,6 +393,7 @@ class ViewController: UIViewController {
     }
     
     func updateCounter() {
+        war.totalCounter()
         playerOneCounter.text = String(war.playerOneCards.count)
         playerTwoCounter.text = String(war.playerTwoCards.count)
     }
@@ -701,8 +702,8 @@ class ViewController: UIViewController {
     }
     
     func normalWinP1Timer() {
-        var normalWinP1Timer = NSTimer.init()
-        normalWinP1Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.normalWinP1), userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.normalWinP1), userInfo: nil, repeats: false)
     }
     
     func normalWinP1() {
@@ -739,8 +740,8 @@ class ViewController: UIViewController {
     }
     
     func normalWinP2Timer() {
-        var normalWinP1Timer = NSTimer.init()
-        normalWinP1Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.normalWinP2), userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.normalWinP2), userInfo: nil, repeats: false)
     }
     
     func normalWinP2() {
@@ -845,8 +846,8 @@ class ViewController: UIViewController {
     }
     
     func moveToStorageTimer() {
-        var moveToStorageTimer = NSTimer.init()
-        moveToStorageTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.moveToStorage), userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.moveToStorage), userInfo: nil, repeats: false)
     }
     
     func moveToStorage() {
@@ -880,8 +881,7 @@ class ViewController: UIViewController {
     }
     
     func warToStorageTimer() {
-        var warToStorageTimer = NSTimer.init()
-        warToStorageTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ViewController.warToStorage), userInfo: nil, repeats: false)
+        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ViewController.warToStorage), userInfo: nil, repeats: false)
     }
     
     func warToStorage() {
@@ -963,8 +963,8 @@ class ViewController: UIViewController {
     }
     
     func storeWarTimer() {
-        var storeWarTimer = NSTimer.init()
-        storeWarTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ViewController.storeWar), userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ViewController.storeWar), userInfo: nil, repeats: false)
     }
     
     func storeWar() {
@@ -1073,8 +1073,8 @@ class ViewController: UIViewController {
         }
     }
     func warWinP1Timer() {
-        var warWinP1Timer = NSTimer.init()
-        warWinP1Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.warWinP1), userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.warWinP1), userInfo: nil, repeats: false)
     }
     func warWinP1() {
         UIView.animateWithDuration(1, delay: 0.1, options: [.CurveEaseOut],animations: {
@@ -1162,8 +1162,8 @@ class ViewController: UIViewController {
         })
     }
     func warWinP2Timer() {
-        var warWinP2Timer = NSTimer.init()
-        warWinP2Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.warWinP2), userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.warWinP2), userInfo: nil, repeats: false)
     }
     func warWinP2() {
         UIView.animateWithDuration(1, delay: 0, options: [.CurveEaseOut],animations: {

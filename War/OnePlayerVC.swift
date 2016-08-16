@@ -377,6 +377,7 @@ class OnePlayerVC: UIViewController {
     }
     
     func updateCounter() {
+        war.totalCounter()
         playerOneCounter.text = String(war.playerOneCards.count)
         playerTwoCounter.text = String(war.playerTwoCards.count)
     }
@@ -480,6 +481,9 @@ class OnePlayerVC: UIViewController {
     // Draw cards
     
     func drawCardP1(player: UIView) {
+        guard war.playerOneCards.count > 0 else {
+            return
+        }
         war.playerOneCardsInPlay.append(war.playerOneCards[0])
         let activeP1 = war.playerOneCardsInPlay[0]
         war.playerOneCards.removeAtIndex(0)
@@ -495,6 +499,9 @@ class OnePlayerVC: UIViewController {
     }
     
     func drawCardP2(player: UIView) {
+        guard war.playerTwoCards.count > 0 else {
+            return
+        }
         war.playerTwoCardsInPlay.append(war.playerTwoCards[0])
         let activeP2 = war.playerTwoCardsInPlay[0]
         war.playerTwoCards.removeAtIndex(0)
@@ -673,8 +680,7 @@ class OnePlayerVC: UIViewController {
     }
     
     func normalWinP1Timer() {
-        var normalWinP1Timer = NSTimer.init()
-        normalWinP1Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.normalWinP1), userInfo: nil, repeats: false)
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.normalWinP1), userInfo: nil, repeats: false)
     }
     
     func normalWinP1() {
@@ -713,8 +719,8 @@ class OnePlayerVC: UIViewController {
     }
     
     func normalWinP2Timer() {
-        var normalWinP2Timer = NSTimer.init()
-        normalWinP2Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.normalWinP2), userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.normalWinP2), userInfo: nil, repeats: false)
     }
     
     func normalWinP2() {
@@ -818,8 +824,8 @@ class OnePlayerVC: UIViewController {
     }
     
     func moveToStorageTimer() {
-        var moveToStorageTimer = NSTimer.init()
-        moveToStorageTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.moveToStorage), userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.moveToStorage), userInfo: nil, repeats: false)
         
     }
     
@@ -853,8 +859,8 @@ class OnePlayerVC: UIViewController {
         })
     }
     func warToStorageTimer() {
-        var warToStorageTimer = NSTimer.init()
-        warToStorageTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(OnePlayerVC.warToStorage), userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(OnePlayerVC.warToStorage), userInfo: nil, repeats: false)
         
     }
     
@@ -938,8 +944,8 @@ class OnePlayerVC: UIViewController {
     
     
     func storeWarTimer() {
-        var storeWarTimer = NSTimer.init()
-        storeWarTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(OnePlayerVC.storeWar), userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(OnePlayerVC.storeWar), userInfo: nil, repeats: false)
         
     }
     
@@ -1045,8 +1051,7 @@ class OnePlayerVC: UIViewController {
     }
     
     func warWinP1Timer() {
-        var warWinP1Timer = NSTimer.init()
-        warWinP1Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.warWinP1), userInfo: nil, repeats: false)
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.warWinP1), userInfo: nil, repeats: false)
     }
     func warWinP1() {
         UIView.animateWithDuration(1, delay: 0.1, options: [.CurveEaseOut],animations: {
@@ -1135,8 +1140,8 @@ class OnePlayerVC: UIViewController {
     }
     
     func warWinP2Timer() {
-        var warWinP2Timer = NSTimer.init()
-        warWinP2Timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.warWinP2), userInfo: nil, repeats: false)
+       
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.warWinP2), userInfo: nil, repeats: false)
     }
     func warWinP2() {
         UIView.animateWithDuration(1, delay: 0, options: [.CurveEaseOut],animations: {
