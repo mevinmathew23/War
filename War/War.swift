@@ -20,21 +20,29 @@ class War {
     
     var bPlayerOneWinner: Bool? = nil
     
+    var totalCardsP1: Int!
+    var totalCardsP2: Int!
+
+    
+    func totalCounter() {
+        totalCardsP1 = playerOneCards.count + playerOneStorage.count + playerOneCardsInPlay.count
+        totalCardsP2 = playerTwoCards.count + playerTwoStorage.count + playerTwoCardsInPlay.count
+}
+    
+    
     //creating arrarys necessary to hold the cards for the game
     
     func addCards(Suit: String){
-        for x in 2...14{
+        for x in 2...5{
             let temp = Card();
             temp.Value = x;
             temp.Name = Suit + String(x);
-//            if customImage == nil {
-//                return
-//            } else {
-//                temp.backImage = customImage!
-//            }
+            
             deckOfCards.append(temp);
         }
     }
+    
+    
 
     //creating a shuffling function.
     
@@ -56,6 +64,8 @@ class War {
             playerTwoCards.shuffle()
             
         }
+        
+        totalCounter()
     }
     
     func warScenario( warCounter: Int)  {
@@ -206,9 +216,9 @@ class War {
     }
     
     func checkDeck() {
-        if playerOneCards.count == 0 {
+        if totalCardsP1 == 0 {
             bPlayerOneWinner = false
-        } else if playerTwoCards.count == 0 {
+        } else if totalCardsP2 == 0 {
             bPlayerOneWinner = true
         } else {
             bPlayerOneWinner = nil

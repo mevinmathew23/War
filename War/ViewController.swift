@@ -26,14 +26,22 @@ class ViewController: UIViewController {
     // Top and bottom constraints
     
     @IBOutlet weak var cardViewP1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1War1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War1Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1War2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War2Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1War3Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War3Height: NSLayoutConstraint!
     
     @IBOutlet weak var cardViewP2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2War1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War1Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2War2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War2Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2War3Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War3Height: NSLayoutConstraint!
     
     // Horizontally centered alignment
     
@@ -47,7 +55,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var cardViewP2War2X: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2War3X: NSLayoutConstraint!
     
+    // Chips
+    
+    @IBOutlet weak var chipsView: Chips!
+    @IBOutlet weak var chipsViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewY: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewX: NSLayoutConstraint!
+    
+    // Misc. UI
+    
     @IBOutlet weak var playRoundButton: UIButton!
+    @IBOutlet weak var playRoundButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var notifyP1: UILabel!
     @IBOutlet weak var notifyP1X: NSLayoutConstraint!
     @IBOutlet weak var notifyP1Y: NSLayoutConstraint!
@@ -59,17 +78,27 @@ class ViewController: UIViewController {
     @IBOutlet weak var notifyP2Height: NSLayoutConstraint!
     @IBOutlet weak var notifyP2Width: NSLayoutConstraint!
     
+    @IBOutlet weak var placeBet: UIButton!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var playerOneCounter: UILabel!
     @IBOutlet weak var playerTwoCounter: UILabel!
+    @IBOutlet weak var playerOneCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerOneWallet: UILabel!
+    @IBOutlet weak var playerTwoWallet: UILabel!
+    @IBOutlet weak var playerOneWalletWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoWalletWidth: NSLayoutConstraint!
     @IBOutlet weak var playerOneStorageCounter: UILabel!
     @IBOutlet weak var playerTwoStorageCounter: UILabel!
+    @IBOutlet weak var playerOneStorageCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoStorageCounterWidth: NSLayoutConstraint!
     @IBOutlet weak var playerOneStorageY: NSLayoutConstraint!
     @IBOutlet weak var playerTwoStorageY: NSLayoutConstraint!
     
     let war = War()
     let settings = Settings()
     let audio = Audio()
+    let sounds = Sounds()
     
     // War counters
     var playerOneWinCounter = 0
@@ -79,6 +108,8 @@ class ViewController: UIViewController {
     var roundCount = 1
     
     let overlay: UIView = UIView()
+    
+    let sFX = Settings().defaults.boolForKey("soundFX")
     
     var playerOneWin: Bool? = nil
     
@@ -91,21 +122,26 @@ class ViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
     // MARK: viewDidLoad() and viewDidAppear()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         hideCounter()
+        hideWallet()
         hideStorageCounter()
+        chipsView.hidden = true
+        placeBet.hidden = true
+        playerOneMoney = startingWallet
+        playerTwoMoney = startingWallet
+        selectedChip = nil
         
         changeBackground()
-        audio.readFileIntoAVPlayer("bgm", volume: 1.0)
         
         // Rotate player 2 counter
         playerTwoCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         playerTwoStorageCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+        playerTwoWallet.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         
         // Rotate player 2 card views
         cardViewP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
@@ -142,6 +178,8 @@ class ViewController: UIViewController {
         cardViewP1.addGestureRecognizer(tapP1)
         cardViewP2.addGestureRecognizer(tapP2)
         
+        setChips()
+        
         // Setup cards
         war.addCards("spades")
         war.addCards("clubs")
@@ -151,14 +189,29 @@ class ViewController: UIViewController {
         war.deckOfCards.shuffle()
         war.deal()
         
-        self.view.layoutIfNeeded()
+        self.view.setNeedsLayout()
     }
     
     override func viewDidAppear(animated: Bool) {
         
+        playRoundButtonWidth.constant = view.bounds.width/3
+        playRoundButton.titleLabel?.minimumScaleFactor = 0.05
+        playRoundButton.titleLabel?.numberOfLines = 1
+        playRoundButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        // Set Counters
+        
         playerOneStorageY.constant = (view.bounds.height/4) + (cardViewP1.bounds.height/2) - 30
         playerTwoStorageY.constant = (view.bounds.height/4) + (cardViewP2.bounds.height/2) - 30
         
+        playerOneStorageCounterWidth.constant = cardViewP1.frame.width
+        playerTwoStorageCounterWidth.constant = cardViewP2.frame.width
+        
+        playerOneCounterWidth.constant = cardViewP1.frame.width
+        playerTwoCounterWidth.constant = cardViewP2.frame.width
+        
+        playerOneWalletWidth.constant = cardViewP1.frame.width
+        playerTwoWalletWidth.constant = cardViewP2.frame.width
     }
     
     override func didReceiveMemoryWarning() {
@@ -174,6 +227,29 @@ class ViewController: UIViewController {
         hideButton()
     }
     
+    @IBAction func placeBets(sender: AnyObject) {
+        bet(translate(selectedChip!))
+        chipsView.hidden = true
+        placeBet.hidden = true
+        updateWallet()
+        
+        startAnimation()
+    }
+    func setChips() {
+        let tapGest = UITapGestureRecognizer(target: self, action: #selector (ViewController.updateChips))
+        tapGest.cancelsTouchesInView = false
+        chipsView.addGestureRecognizer(tapGest)
+    }
+    func updateChips() {
+        if selectedChip == nil {
+            placeBet.enabled = false
+            placeBet.alpha = 0.5
+        } else {
+            placeBet.enabled = true
+            placeBet.alpha = 1.0
+        }
+    }
+    
     // Set cardViewWars default outside bounds
     
     func setWarViews() {
@@ -184,6 +260,16 @@ class ViewController: UIViewController {
         cardViewP2War1Constraint.constant = -view.bounds.height
         cardViewP2War2Constraint.constant = -view.bounds.height
         cardViewP2War3Constraint.constant = -view.bounds.height
+        
+        cardViewP1Height.constant = view.bounds.height/4
+        cardViewP1War1Height.constant = view.bounds.height/4
+        cardViewP1War2Height.constant = view.bounds.height/4
+        cardViewP1War3Height.constant = view.bounds.height/4
+        
+        cardViewP2Height.constant = view.bounds.height/4
+        cardViewP2War1Height.constant = view.bounds.height/4
+        cardViewP2War2Height.constant = view.bounds.height/4
+        cardViewP2War3Height.constant = view.bounds.height/4
         
         cardViewP1War1X.constant = 25
         cardViewP1War2X.constant = 40
@@ -204,8 +290,8 @@ class ViewController: UIViewController {
             playerOneWin = true
             notifyP1.text = "BLUE WINS ROUND " + String(roundCount)
             notifyP2.text = "BLUE WINS ROUND " + String(roundCount)
-            //notifyP1.textColor = settings.p1Blue
-            //notifyP2.textColor = settings.p1Blue
+            notifyP1.textColor = settings.p1Blue
+            notifyP2.textColor = settings.p1Blue
             
             showOverlay()
             
@@ -217,8 +303,8 @@ class ViewController: UIViewController {
             playerOneWin = false
             notifyP1.text = "RED WINS ROUND " + String(roundCount)
             notifyP2.text = "RED WINS ROUND " + String(roundCount)
-            //notifyP1.textColor = settings.p2Red
-            //notifyP2.textColor = settings.p2Red
+            notifyP1.textColor = settings.p2Red
+            notifyP2.textColor = settings.p2Red
             
             showOverlay()
             
@@ -227,7 +313,7 @@ class ViewController: UIViewController {
         }
         else {
             print("War!")
-            moveToStorage()
+            moveToStorageTimer()
             warScenario(0)
         }
     }
@@ -281,16 +367,16 @@ class ViewController: UIViewController {
         if war.playerOneCardsInPlay[0].Value > war.playerTwoCardsInPlay[0].Value {
             print("P1 wins this battle...")
             playerOneWinCounter += 1
-            storeWar()
+            storeWarTimer()
         }
         else if war.playerOneCardsInPlay[0].Value < war.playerTwoCardsInPlay[0].Value {
             print("P2 wins this battle...")
             playerTwoWinCounter += 1
-            storeWar()
+            storeWarTimer()
         }
         else {
             print("Nobody wins this war...")
-            warToStorage()
+            warToStorageTimer()
             warScenario(counterTemp)
         }
     }
@@ -310,7 +396,7 @@ class ViewController: UIViewController {
             war.playerTwoCardsInPlay.removeAll()
             
             hideStorageCounter()
-            warWinP1()
+            warWinP1Timer()
             
         } else if playerTwoWinCounter >= 2 {
             print("Player two wins the war!")
@@ -326,7 +412,7 @@ class ViewController: UIViewController {
             war.playerTwoCardsInPlay.removeAll()
             
             hideStorageCounter()
-            warWinP2()
+            warWinP2Timer()
         }
     }
     
@@ -337,15 +423,28 @@ class ViewController: UIViewController {
         playerOneCounter.hidden = true
         playerTwoCounter.hidden = true
     }
-    
     func showCounter() {
         playerOneCounter.hidden = false
         playerTwoCounter.hidden = false
     }
-    
     func updateCounter() {
+        war.totalCounter()
         playerOneCounter.text = String(war.playerOneCards.count)
         playerTwoCounter.text = String(war.playerTwoCards.count)
+    }
+    // Wallet Counters
+    
+    func hideWallet() {
+        playerOneWallet.hidden = true
+        playerTwoWallet.hidden = true
+    }
+    func showWallet() {
+        playerOneWallet.hidden = false
+        playerTwoWallet.hidden = false
+    }
+    func updateWallet() {
+        playerOneWallet.text = "$" + String(playerOneMoney)
+        playerTwoWallet.text = "$" + String(playerTwoMoney)
     }
     
     // Storage Counters
@@ -393,9 +492,9 @@ class ViewController: UIViewController {
             }, completion: {
                 finished in
                 if (self.playerOneWin == true) {
-                    self.normalWinP1()
+                    self.normalWinP1Timer()
                 } else if (self.playerOneWin == false) {
-                    self.normalWinP2()
+                    self.normalWinP2Timer()
                 }
         })
     }
@@ -442,9 +541,15 @@ class ViewController: UIViewController {
         drawCardP2(cardViewP2)
         
         showCounter()
+        showWallet()
         updateCounter()
+        updateWallet()
+        updateChips()
         
-        startAnimation()
+        chipsView.hidden = false
+        placeBet.hidden = false
+        
+        //startAnimation()
     }
     
     // Draw cards
@@ -453,8 +558,12 @@ class ViewController: UIViewController {
         war.playerOneCardsInPlay.append(war.playerOneCards[0])
         let activeP1 = war.playerOneCardsInPlay[0]
         war.playerOneCards.removeAtIndex(0)
-        activeP1.Front.image = UIImage(named: String(activeP1.Name!))
+        
+        activeP1.Back = UIImageView(frame: CGRectMake(0,0, player.frame.width, player.frame.height))
+        activeP1.Front = UIImageView(frame: CGRectMake(0,0, player.frame.width, player.frame.height))
+        
         activeP1.Back.image = war.playerOneCardsInPlay[0].backImage
+        activeP1.Front.image = UIImage(named: String(activeP1.Name!))
         
         activeP1.ShowingFront = false
         player.addSubview(activeP1.Back)
@@ -464,8 +573,12 @@ class ViewController: UIViewController {
         war.playerTwoCardsInPlay.append(war.playerTwoCards[0])
         let activeP2 = war.playerTwoCardsInPlay[0]
         war.playerTwoCards.removeAtIndex(0)
-        activeP2.Front.image = UIImage(named: String(activeP2.Name!))
+        
+        activeP2.Back = UIImageView(frame: CGRectMake(0,0, player.frame.width, player.frame.height))
+        activeP2.Front = UIImageView(frame: CGRectMake(0,0, player.frame.width, player.frame.height))
+        
         activeP2.Back.image = war.playerOneCardsInPlay[0].backImage
+        activeP2.Front.image = UIImage(named: String(activeP2.Name!))
         
         activeP2.ShowingFront = false
         player.addSubview(activeP2.Back)
@@ -492,6 +605,11 @@ class ViewController: UIViewController {
             
             war.playerOneCards.removeAtIndex(j)
             war.playerTwoCards.removeAtIndex(j)
+            
+            j1.Back = UIImageView(frame: CGRectMake(0,0, assignedViewP1.frame.width, assignedViewP1.frame.height))
+            j1.Front = UIImageView(frame: CGRectMake(0,0, assignedViewP1.frame.width, assignedViewP1.frame.height))
+            j2.Back = UIImageView(frame: CGRectMake(0,0, assignedViewP2.frame.width, assignedViewP2.frame.height))
+            j2.Front = UIImageView(frame: CGRectMake(0,0, assignedViewP2.frame.width, assignedViewP2.frame.height))
             
             j1.Front.image = UIImage(named: String(j1.Name!))
             j1.Back.image = j1.backImage
@@ -540,6 +658,10 @@ class ViewController: UIViewController {
     
     func tappedP1() {
         print(war.playerOneCardsInPlay[0].Name!)
+        if sFX == false {
+            sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+            sounds.toggleAVPlayer()
+        }
         if (war.playerOneCardsInPlay[0].ShowingFront) {
             UIView.transitionFromView(war.playerOneCardsInPlay[0].Front, toView: war.playerOneCardsInPlay[0].Back, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
             war.playerOneCardsInPlay[0].ShowingFront = false
@@ -558,6 +680,10 @@ class ViewController: UIViewController {
     }
     func tappedP2() {
         print(war.playerTwoCardsInPlay[0].Name!)
+        if sFX == false {
+            sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+            sounds.toggleAVPlayer()
+        }
         if (war.playerTwoCardsInPlay[0].ShowingFront) {
             UIView.transitionFromView(war.playerTwoCardsInPlay[0].Front, toView: war.playerTwoCardsInPlay[0].Back, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
             war.playerTwoCardsInPlay[0].ShowingFront = false
@@ -576,6 +702,10 @@ class ViewController: UIViewController {
     }
     func tappedWarP1() {
         print(war.playerOneCardsInPlay[0].Name!)
+        if sFX == false {
+            sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+            sounds.toggleAVPlayer()
+        }
         if (war.playerOneCardsInPlay[0].ShowingFront) {
             UIView.transitionFromView(war.playerOneCardsInPlay[0].Front, toView: war.playerOneCardsInPlay[0].Back, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
             war.playerOneCardsInPlay[0].ShowingFront = false
@@ -593,6 +723,10 @@ class ViewController: UIViewController {
     }
     func tappedWarP2() {
         print(war.playerTwoCardsInPlay[0].Name!)
+        if sFX == false {
+            sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+            sounds.toggleAVPlayer()
+        }
         if (war.playerTwoCardsInPlay[0].ShowingFront) {
             UIView.transitionFromView(war.playerTwoCardsInPlay[0].Front, toView: war.playerTwoCardsInPlay[0].Back, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromRight, completion: nil)
             war.playerTwoCardsInPlay[0].ShowingFront = false
@@ -622,8 +756,13 @@ class ViewController: UIViewController {
             }, completion: nil)
     }
     
+    func normalWinP1Timer() {
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.normalWinP1), userInfo: nil, repeats: false)
+    }
+    
     func normalWinP1() {
-        UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut],animations: {
+        UIView.animateWithDuration(0.75, delay: 0.75, options: [.CurveEaseOut],animations: {
             self.cardViewP1Constraint.constant = -self.view.bounds.height
             self.view.layoutIfNeeded()
             }, completion: {
@@ -634,7 +773,11 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 self.checkWinner()
         })
-        UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseOut], animations: {
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP2Constraint.constant = self.view.bounds.height
             self.view.layoutIfNeeded()
             }, completion: {
@@ -643,12 +786,25 @@ class ViewController: UIViewController {
                 self.updateCounter()
                 self.cardViewP2Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide2", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
         })
         
     }
     
+    func normalWinP2Timer() {
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.normalWinP2), userInfo: nil, repeats: false)
+    }
+    
     func normalWinP2() {
-        UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut],animations: {
+        UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseOut],animations: {
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP1Constraint.constant = self.view.bounds.height
             self.view.layoutIfNeeded()
             }, completion: {
@@ -657,9 +813,13 @@ class ViewController: UIViewController {
                 self.updateCounter()
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
                 
         })
-        UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(0.75, delay: 0.75, options: [.CurveEaseOut], animations: {
             self.cardViewP2Constraint.constant = -self.view.bounds.height
             self.view.layoutIfNeeded()
             }, completion: {
@@ -679,37 +839,78 @@ class ViewController: UIViewController {
         
         // P1
         
-        UIView.animateWithDuration(1, delay: 0, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(0.3, delay: 0, options: [.CurveEaseOut], animations: {
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP1War1Constraint.constant = 50
             self.view.layoutIfNeeded()
-            }, completion: nil)
-        UIView.animateWithDuration(1, delay: 0.3, options: [.CurveEaseOut], animations: {
+            }, completion: {
+                finished in
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardFlip2", volume: 1.0)
+                    self.sounds.playAVPlayer()
+                }
+        })
+        UIView.animateWithDuration(0.3, delay: 0.3, options: [.CurveEaseOut], animations: {
             self.cardViewP1War2Constraint.constant = 50
             self.view.layoutIfNeeded()
-            }, completion: nil)
-        UIView.animateWithDuration(1, delay: 0.6, options: [.CurveEaseOut], animations: {
+            }, completion: {
+                finished in
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardFlip3", volume: 1.0)
+                    self.sounds.playAVPlayer()
+                }
+        })
+        UIView.animateWithDuration(0.3, delay: 0.6, options: [.CurveEaseOut], animations: {
             self.cardViewP1War3Constraint.constant = 50
             self.view.layoutIfNeeded()
             }, completion: nil)
         
         // P2
         
-        UIView.animateWithDuration(1, delay: 0, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(0.4, delay: 0, options: [.CurveEaseOut], animations: {
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardFlip", volume: 1.0)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP2War1Constraint.constant = 50
             self.view.layoutIfNeeded()
-            }, completion: nil)
-        UIView.animateWithDuration(1, delay: 0.4, options: [.CurveEaseOut], animations: {
+            }, completion: {
+                finished in
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardFlip2", volume: 1.0)
+                    self.sounds.playAVPlayer()
+                }
+        })
+        UIView.animateWithDuration(0.3, delay: 0.4, options: [.CurveEaseOut], animations: {
             self.cardViewP2War2Constraint.constant = 50
             self.view.layoutIfNeeded()
-            }, completion: nil)
-        UIView.animateWithDuration(1, delay: 0.7, options: [.CurveEaseOut], animations: {
+            }, completion: {
+                finished in
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardFlip3", volume: 1.0)
+                    self.sounds.playAVPlayer()
+                }
+        })
+        UIView.animateWithDuration(0.3, delay: 0.7, options: [.CurveEaseOut], animations: {
             self.cardViewP2War3Constraint.constant = 50
             self.view.layoutIfNeeded()
             }, completion: nil)
     }
     
+    func moveToStorageTimer() {
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.moveToStorage), userInfo: nil, repeats: false)
+    }
+    
     func moveToStorage() {
-        UIView.animateWithDuration(0.6, delay: 1.5, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(0.6, delay: 0, options: [.CurveEaseOut], animations: {
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP1Constraint.constant = self.view.bounds.height/4
             self.cardViewP1X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
             self.view.layoutIfNeeded()
@@ -717,7 +918,11 @@ class ViewController: UIViewController {
                 finished in
                 self.war.appendAllP1()
         })
-        UIView.animateWithDuration(0.6, delay: 1.6, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(0.6, delay: 0.1, options: [.CurveEaseOut], animations: {
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP2Constraint.constant = self.view.bounds.height/4
             self.cardViewP2X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
             self.view.layoutIfNeeded()
@@ -730,8 +935,17 @@ class ViewController: UIViewController {
         })
     }
     
+    func warToStorageTimer() {
+        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ViewController.warToStorage), userInfo: nil, repeats: false)
+    }
+    
     func warToStorage() {
-        UIView.animateWithDuration(1, delay: 1.6, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(0.5, delay: 0.1, options: [.CurveEaseOut], animations: {
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                self.sounds.playAVPlayer()
+            }
+            
             self.cardViewP1War1Constraint.constant = self.view.bounds.height/4
             self.cardViewP1War1X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
             self.view.layoutIfNeeded()
@@ -740,8 +954,12 @@ class ViewController: UIViewController {
                 self.war.appendAllP1()
                 self.updateCounter()
                 self.updateStorageCounter()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide2", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
         })
-        UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(0.5, delay: 0, options: [.CurveEaseOut], animations: {
             self.cardViewP2War1Constraint.constant = self.view.bounds.height/4
             self.cardViewP2War1X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
             self.view.layoutIfNeeded()
@@ -750,8 +968,12 @@ class ViewController: UIViewController {
                 self.war.appendAllP2()
                 self.updateCounter()
                 self.updateStorageCounter()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
         })
-        UIView.animateWithDuration(1, delay: 1.8, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(0.5, delay: 0.6, options: [.CurveEaseOut], animations: {
             self.cardViewP1War2Constraint.constant = self.view.bounds.height/4
             self.cardViewP1War2X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
             self.view.layoutIfNeeded()
@@ -760,8 +982,14 @@ class ViewController: UIViewController {
             self.cardViewP2War2Constraint.constant = self.view.bounds.height/4
             self.cardViewP2War2X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
             self.view.layoutIfNeeded()
-            }, completion: nil)
-        UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
+            }, completion: {
+                finished in
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
+        })
+        UIView.animateWithDuration(0.5, delay: 0.5, options: [.CurveEaseOut], animations: {
             self.cardViewP1War3Constraint.constant = self.view.bounds.height/4
             self.cardViewP1War3X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
             self.view.layoutIfNeeded()
@@ -771,17 +999,37 @@ class ViewController: UIViewController {
                 self.setWarViews()
                 self.view.setNeedsLayout()
                 self.drawWarCards()
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
         })
-        UIView.animateWithDuration(1, delay: 1.9, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(0.5, delay: 1.1, options: [.CurveEaseOut], animations: {
             self.cardViewP2War3Constraint.constant = self.view.bounds.height/4
             self.cardViewP2War3X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
             self.view.layoutIfNeeded()
-            }, completion: nil)
+            }, completion: {
+                finished in
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
+        })
+    }
+    
+    func storeWarTimer() {
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(ViewController.storeWar), userInfo: nil, repeats: false)
     }
     
     func storeWar() {
         if (playerOneWinCounter + playerTwoWinCounter) == 1 {
-            UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
+            UIView.animateWithDuration(0.5, delay: 0, options: [.CurveEaseOut], animations: {
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
+                
                 self.cardViewP1War1Constraint.constant = self.view.bounds.height/4
                 self.cardViewP1War1X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
                 self.view.layoutIfNeeded()
@@ -791,8 +1039,13 @@ class ViewController: UIViewController {
                     self.cardViewP1War2.userInteractionEnabled = true
                     self.war.appendStorageP1()
                     self.updateStorageCounter()
+                    if self.sFX == false {
+                        self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                        self.sounds.playAVPlayer()
+                    }
+                    
             })
-            UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
+            UIView.animateWithDuration(0.5, delay: 0.5, options: [.CurveEaseOut], animations: {
                 self.cardViewP2War1Constraint.constant = self.view.bounds.height/4
                 self.cardViewP2War1X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
                 self.view.layoutIfNeeded()
@@ -806,7 +1059,12 @@ class ViewController: UIViewController {
             })
         }
         else if (playerOneWinCounter + playerTwoWinCounter) == 2 {
-            UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
+            UIView.animateWithDuration(0.5, delay: 0, options: [.CurveEaseOut], animations: {
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
+                
                 self.cardViewP1War2Constraint.constant = self.view.bounds.height/4
                 self.cardViewP1War2X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
                 self.view.layoutIfNeeded()
@@ -816,8 +1074,13 @@ class ViewController: UIViewController {
                     self.cardViewP1War3.userInteractionEnabled = true
                     self.war.appendStorageP1()
                     self.updateStorageCounter()
+                    if self.sFX == false {
+                        self.sounds.readFileIntoAVPlayer("cardSlide2", volume: 1)
+                        self.sounds.playAVPlayer()
+                    }
+                    
             })
-            UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
+            UIView.animateWithDuration(0.5, delay: 0.5, options: [.CurveEaseOut], animations: {
                 self.cardViewP2War2Constraint.constant = self.view.bounds.height/4
                 self.cardViewP2War2X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
                 self.view.layoutIfNeeded()
@@ -831,7 +1094,12 @@ class ViewController: UIViewController {
             })
         }
         else if (playerOneWinCounter + playerTwoWinCounter) == 3 {
-            UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
+            UIView.animateWithDuration(0.5, delay: 0, options: [.CurveEaseOut], animations: {
+                if self.sFX == false {
+                    self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
+                    self.sounds.playAVPlayer()
+                }
+                
                 self.cardViewP1War3Constraint.constant = self.view.bounds.height/4
                 self.cardViewP1War3X.constant = -(self.view.bounds.width/2) + (self.cardViewP1.bounds.width/2)
                 self.view.layoutIfNeeded()
@@ -840,8 +1108,13 @@ class ViewController: UIViewController {
                     self.cardViewP1War3.userInteractionEnabled = false
                     self.war.appendStorageP1()
                     self.updateStorageCounter()
+                    if self.sFX == false {
+                        self.sounds.readFileIntoAVPlayer("cardSlide2", volume: 1)
+                        self.sounds.playAVPlayer()
+                    }
+                    
             })
-            UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
+            UIView.animateWithDuration(0.5, delay: 0.5, options: [.CurveEaseOut], animations: {
                 self.cardViewP2War3Constraint.constant = self.view.bounds.height/4
                 self.cardViewP2War3X.constant = (self.view.bounds.width/2) - (self.cardViewP2.bounds.width/2)
                 self.view.layoutIfNeeded()
@@ -854,8 +1127,12 @@ class ViewController: UIViewController {
             })
         }
     }
+    func warWinP1Timer() {
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.warWinP1), userInfo: nil, repeats: false)
+    }
     func warWinP1() {
-        UIView.animateWithDuration(1, delay: 1.6, options: [.CurveEaseOut],animations: {
+        UIView.animateWithDuration(1, delay: 0.1, options: [.CurveEaseOut],animations: {
             self.cardViewP1Constraint.constant = -self.view.bounds.height
             self.cardViewP1X.constant = 0
             self.view.layoutIfNeeded()
@@ -864,7 +1141,11 @@ class ViewController: UIViewController {
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0, options: [.CurveEaseOut], animations: {
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("riffle", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP2Constraint.constant = self.view.bounds.height
             self.cardViewP2X.constant = 0
             self.view.layoutIfNeeded()
@@ -873,7 +1154,7 @@ class ViewController: UIViewController {
                 self.cardViewP2Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 1.8, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0.3, options: [.CurveEaseOut], animations: {
             self.cardViewP1War1Constraint.constant = -self.view.bounds.height
             self.cardViewP1War1X.constant = 0
             self.view.layoutIfNeeded()
@@ -882,7 +1163,7 @@ class ViewController: UIViewController {
                 self.cardViewP1War1X.constant = 25
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 1.7, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0.2, options: [.CurveEaseOut], animations: {
             self.cardViewP2War1Constraint.constant = self.view.bounds.height
             self.cardViewP2War1X.constant = 0
             self.view.layoutIfNeeded()
@@ -892,7 +1173,7 @@ class ViewController: UIViewController {
                 self.cardViewP2War1X.constant = -25
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0.5, options: [.CurveEaseOut], animations: {
             self.cardViewP1War2Constraint.constant = -self.view.bounds.height
             self.cardViewP1War2X.constant = 0
             self.view.layoutIfNeeded()
@@ -901,7 +1182,7 @@ class ViewController: UIViewController {
                 self.cardViewP1War2X.constant = 40
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 1.9, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0.4, options: [.CurveEaseOut], animations: {
             self.cardViewP2War2Constraint.constant = self.view.bounds.height
             self.cardViewP2War2X.constant = 0
             self.view.layoutIfNeeded()
@@ -911,7 +1192,7 @@ class ViewController: UIViewController {
                 self.cardViewP2War2X.constant = -40
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 2.2, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0.7, options: [.CurveEaseOut], animations: {
             self.cardViewP1War3Constraint.constant = -self.view.bounds.height
             self.cardViewP1War3X.constant = 0
             self.view.layoutIfNeeded()
@@ -923,7 +1204,7 @@ class ViewController: UIViewController {
                 self.cardViewP2.userInteractionEnabled = true
                 self.startRound()
         })
-        UIView.animateWithDuration(1, delay: 2.1, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0.6, options: [.CurveEaseOut], animations: {
             self.cardViewP2War3Constraint.constant = self.view.bounds.height
             self.cardViewP2War3X.constant = 0
             self.view.layoutIfNeeded()
@@ -935,8 +1216,16 @@ class ViewController: UIViewController {
                 self.updateCounter()
         })
     }
+    func warWinP2Timer() {
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.warWinP2), userInfo: nil, repeats: false)
+    }
     func warWinP2() {
-        UIView.animateWithDuration(1, delay: 1.5, options: [.CurveEaseOut],animations: {
+        UIView.animateWithDuration(1, delay: 0, options: [.CurveEaseOut],animations: {
+            if self.sFX == false {
+                self.sounds.readFileIntoAVPlayer("riffle", volume: 1)
+                self.sounds.playAVPlayer()
+            }
             self.cardViewP1Constraint.constant = self.view.bounds.height
             self.cardViewP1X.constant = 0
             self.view.layoutIfNeeded()
@@ -945,7 +1234,7 @@ class ViewController: UIViewController {
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 1.6, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0.1, options: [.CurveEaseOut], animations: {
             self.cardViewP2Constraint.constant = -self.view.bounds.height
             self.cardViewP2X.constant = 0
             self.view.layoutIfNeeded()
@@ -954,7 +1243,7 @@ class ViewController: UIViewController {
                 self.cardViewP2Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 1.7, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0.2, options: [.CurveEaseOut], animations: {
             self.cardViewP1War1Constraint.constant = self.view.bounds.height
             self.cardViewP1War1X.constant = 0
             self.view.layoutIfNeeded()
@@ -964,7 +1253,7 @@ class ViewController: UIViewController {
                 self.cardViewP1War1X.constant = 25
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 1.8, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0.3, options: [.CurveEaseOut], animations: {
             self.cardViewP2War1Constraint.constant = -self.view.bounds.height
             self.cardViewP2War1X.constant = 0
             self.view.layoutIfNeeded()
@@ -973,7 +1262,7 @@ class ViewController: UIViewController {
                 self.cardViewP2War1X.constant = -25
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 1.9, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0.4, options: [.CurveEaseOut], animations: {
             self.cardViewP1War2Constraint.constant = self.view.bounds.height
             self.cardViewP1War2X.constant = 0
             self.view.layoutIfNeeded()
@@ -983,7 +1272,7 @@ class ViewController: UIViewController {
                 self.cardViewP1War2X.constant = 40
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 2, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0.5, options: [.CurveEaseOut], animations: {
             self.cardViewP2War2Constraint.constant = -self.view.bounds.height
             self.cardViewP2War2X.constant = 0
             self.view.layoutIfNeeded()
@@ -992,7 +1281,7 @@ class ViewController: UIViewController {
                 self.cardViewP2War2X.constant = -40
                 self.view.layoutIfNeeded()
         })
-        UIView.animateWithDuration(1, delay: 2.1, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0.6, options: [.CurveEaseOut], animations: {
             self.cardViewP1War3Constraint.constant = self.view.bounds.height
             self.cardViewP1War3X.constant = 0
             self.view.layoutIfNeeded()
@@ -1003,7 +1292,7 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 self.updateCounter()
         })
-        UIView.animateWithDuration(1, delay: 2.2, options: [.CurveEaseOut], animations: {
+        UIView.animateWithDuration(1, delay: 0.7, options: [.CurveEaseOut], animations: {
             self.cardViewP2War3Constraint.constant = -self.view.bounds.height
             self.cardViewP2War3X.constant = 0
             self.view.layoutIfNeeded()

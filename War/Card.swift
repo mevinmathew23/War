@@ -16,9 +16,10 @@ class Card {
     var Name : String?
     var ShowingFront: Bool = false
     
-    var Back: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
+    var Back: UIImageView = UIImageView(frame: CGRectMake(0, 0, 120, 170))
     var Front: UIImageView! = UIImageView(frame: CGRectMake(0, 0, 120, 170))
     var backImage: UIImage!
+    
     
     let settings = Settings()
     func updateCardBack() {
@@ -31,6 +32,9 @@ class Card {
     }
     
     init () {
+//        Back.contentMode = UIViewContentMode.ScaleAspectFill
+//        Front.contentMode = UIViewContentMode.ScaleAspectFill
+        
         updateCardBack()
     }
 }

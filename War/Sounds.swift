@@ -1,5 +1,5 @@
 //
-//  Audio.swift
+//  Sounds.swift
 //  War
 //
 //  Created by Apple Dev on 2016-08-08.
@@ -9,7 +9,7 @@
 import AVFoundation
 import UIKit
 
-class Audio : NSObject {
+class Sounds : NSObject {
     
     var avPlayer:AVAudioPlayer!
     
@@ -63,7 +63,7 @@ class Audio : NSObject {
     }
 }
 
-extension Audio : AVAudioPlayerDelegate {
+extension Sounds : AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         print("finished playing \(flag)")
     }
