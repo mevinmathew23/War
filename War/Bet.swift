@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let startingWallet = 49
+let startingWallet = 1000
 var playerOneMoney = startingWallet
 var playerTwoMoney = startingWallet
 var pot = 0
