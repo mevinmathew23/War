@@ -215,6 +215,8 @@ class ViewController: UIViewController {
             war.playerOneCardsInPlay.removeAll()
             war.playerTwoCardsInPlay.removeAll()
             
+            roundCount += 1
+            
             hideStorageCounter()
             warWinP1Timer()
             
@@ -230,6 +232,8 @@ class ViewController: UIViewController {
             war.playerTwoStorage.removeAll()
             war.playerOneCardsInPlay.removeAll()
             war.playerTwoCardsInPlay.removeAll()
+            
+            roundCount += 1
             
             hideStorageCounter()
             warWinP2Timer()
@@ -274,6 +278,7 @@ class ViewController: UIViewController {
         activeP1.Back.image = war.playerOneCardsInPlay[0].backImage
         activeP1.Front.image = UIImage(named: String(activeP1.Name!))
         
+        player.userInteractionEnabled = true
         activeP1.ShowingFront = false
         player.addSubview(activeP1.Back)
     }
@@ -292,6 +297,7 @@ class ViewController: UIViewController {
         activeP2.Back.image = war.playerOneCardsInPlay[0].backImage
         activeP2.Front.image = UIImage(named: String(activeP2.Name!))
         
+        player.userInteractionEnabled = true
         activeP2.ShowingFront = false
         player.addSubview(activeP2.Back)
     }
@@ -356,7 +362,7 @@ class ViewController: UIViewController {
             war.playerOneCardsInPlay[0].ShowingFront = false
             
         } else {
-            
+            cardViewP1.userInteractionEnabled = false
             UIView.transitionFromView(war.playerOneCardsInPlay[0].Back, toView: war.playerOneCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
                 finished in
                 self.war.playerOneCardsInPlay[0].ShowingFront = true
@@ -378,7 +384,7 @@ class ViewController: UIViewController {
             war.playerTwoCardsInPlay[0].ShowingFront = false
             
         } else {
-            
+            cardViewP2.userInteractionEnabled = false
             UIView.transitionFromView(war.playerTwoCardsInPlay[0].Back, toView: war.playerTwoCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
                 finished in
                 self.war.playerTwoCardsInPlay[0].ShowingFront = true
