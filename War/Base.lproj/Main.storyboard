@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -322,9 +322,16 @@
                                     <action selector="placeBets:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0B3-4S-zoZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9B-gS-fR2">
-                                <rect key="frame" x="134" y="869" width="46" height="30"/>
-                                <state key="normal" title="CLEAR"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9B-gS-fR2">
+                                <rect key="frame" x="351.5" y="497.5" width="65" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="41i-bn-KKf"/>
+                                    <constraint firstAttribute="width" secondItem="V9B-gS-fR2" secondAttribute="height" multiplier="458:207" id="Ynz-MW-nx1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="150"/>
+                                <state key="normal" title="CLEAR">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -341,6 +348,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dn4-W8-249" secondAttribute="bottom" constant="50" id="94A-k6-lTr"/>
                             <constraint firstItem="xJp-Ay-XBL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="14" id="9hR-KT-ehU"/>
                             <constraint firstItem="yZg-b8-7fL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="BF3-Xb-79j"/>
+                            <constraint firstItem="V9B-gS-fR2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="COX-qM-7yG"/>
                             <constraint firstAttribute="trailing" secondItem="NJG-2g-R3d" secondAttribute="trailing" id="CVF-q5-RXj"/>
                             <constraint firstItem="yHw-EZ-5OG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="CaK-lw-dyZ"/>
                             <constraint firstItem="Wfx-bg-22Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ESe-A2-54U"/>
@@ -372,6 +380,7 @@
                             <constraint firstItem="FiO-og-lxk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="klW-IB-zxE"/>
                             <constraint firstItem="41g-bh-HY2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kpp-RR-Yyh"/>
                             <constraint firstAttribute="bottom" secondItem="grK-vn-e2c" secondAttribute="bottom" id="kqc-l9-4Ck"/>
+                            <constraint firstItem="V9B-gS-fR2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lLF-YV-cF7"/>
                             <constraint firstItem="8cb-GE-Nbi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="oZx-ql-ZUi"/>
                             <constraint firstItem="oUp-lU-i4w" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="pAp-9K-RqS"/>
                             <constraint firstItem="dn4-W8-249" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="25" id="pFw-oE-G6e">
@@ -487,6 +496,10 @@
                         <outlet property="chipsViewWidth" destination="gAO-Mq-niF" id="tCH-gX-mKh"/>
                         <outlet property="chipsViewX" destination="peN-35-gXV" id="lWV-4z-pBL"/>
                         <outlet property="chipsViewY" destination="pMn-Cq-Sz7" id="lN7-om-f7s"/>
+                        <outlet property="clearBet" destination="V9B-gS-fR2" id="3gW-CF-95D"/>
+                        <outlet property="clearBetWidth" destination="41i-bn-KKf" id="OUQ-5o-umL"/>
+                        <outlet property="clearBetX" destination="COX-qM-7yG" id="tYT-zT-xqq"/>
+                        <outlet property="clearBetY" destination="lLF-YV-cF7" id="9uQ-S7-tou"/>
                         <outlet property="notifyP1" destination="G3A-eN-UcA" id="07D-mE-qk3"/>
                         <outlet property="notifyP1Height" destination="5Nh-Ko-Eb8" id="9fd-4f-fOE"/>
                         <outlet property="notifyP1Width" destination="pE8-Ma-JaN" id="buO-p3-fHI"/>

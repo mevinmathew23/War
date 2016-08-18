@@ -54,6 +54,7 @@ class ViewController: UIViewController {
         hideStorageCounter()
         chipsView.hidden = true
         placeBet.hidden = true
+        clearBet.hidden = true
         
         changeBackground()
         resetGlobals()
@@ -95,6 +96,7 @@ class ViewController: UIViewController {
         isBettingPhase = false
         chipsView.hidden = true
         placeBet.hidden = true
+        clearBet.hidden = true
         updateWallet()
         
         startAnimation()
@@ -265,6 +267,7 @@ class ViewController: UIViewController {
         
         chipsView.hidden = false
         placeBet.hidden = false
+        clearBet.hidden = false
     }
     
     //      Draw cards
@@ -1103,6 +1106,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var placeBetWidth: NSLayoutConstraint!
     @IBOutlet weak var placeBetX: NSLayoutConstraint!
     @IBOutlet weak var placeBetY: NSLayoutConstraint!
+    @IBOutlet weak var clearBet: UIButton!
+    @IBOutlet weak var clearBetWidth: NSLayoutConstraint!
+    @IBOutlet weak var clearBetX: NSLayoutConstraint!
+    @IBOutlet weak var clearBetY: NSLayoutConstraint!
+    
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var playerOneCounter: UILabel!
     @IBOutlet weak var playerTwoCounter: UILabel!
@@ -1223,6 +1231,14 @@ class ViewController: UIViewController {
         placeBet.titleLabel?.adjustsFontSizeToFitWidth = true
         placeBet.titleLabel?.textAlignment = NSTextAlignment.Center
         placeBet.titleLabel?.baselineAdjustment = UIBaselineAdjustment.AlignCenters
+    }
+    func setClearButton() {
+        clearBetWidth.constant = view.bounds.width/5
+        clearBet.titleLabel?.minimumScaleFactor = 0.05
+        clearBet.titleLabel?.numberOfLines = 1
+        clearBet.titleLabel?.adjustsFontSizeToFitWidth = true
+        clearBet.titleLabel?.textAlignment = NSTextAlignment.Center
+        clearBet.titleLabel?.baselineAdjustment = UIBaselineAdjustment.AlignCenters
     }
     func showButton() {
         playRoundButton.hidden = false
@@ -1397,15 +1413,19 @@ class ViewController: UIViewController {
         if isEven == true {
             chipsViewY.constant = -view.bounds.height/6
             placeBetY.constant = -view.bounds.height/3.5
+            clearBetY.constant = -view.bounds.height/2.9
             chipsView.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
             placeBet.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+            clearBet.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
             totalBet = 0
             selectedChips = []
         } else {
             chipsViewY.constant = view.bounds.height/6
             placeBetY.constant = view.bounds.height/3.5
+            clearBetY.constant = view.bounds.height/2.9
             chipsView.transform = CGAffineTransformMakeRotation(0)
             placeBet.transform = CGAffineTransformMakeRotation(0)
+            clearBet.transform = CGAffineTransformMakeRotation(0)
             totalBet = 0
             selectedChips = []
         }
@@ -1414,11 +1434,15 @@ class ViewController: UIViewController {
         updateWallet()
         if selectedChips.isEmpty {
             placeBet.enabled = false
+            clearBet.enabled = false
             placeBet.alpha = 0.5
+            clearBet.alpha = 0.5
             placeBet.setTitle("BET", forState: .Normal)
         } else {
             placeBet.enabled = true
+            clearBet.enabled = true
             placeBet.alpha = 1.0
+            clearBet.alpha = 1.0
             placeBet.setTitle("BET " + String(totalBet), forState: .Normal)
         }
     }
@@ -1430,8 +1454,11 @@ class ViewController: UIViewController {
         playerOneMoney = startingWallet
         playerTwoMoney = startingWallet
         selectedChips = []
+        touchedChip = nil
         totalBet = 0
+        isSolo = false
+        isEven = false
+        isBettingPhase = true
         roundCount = 1
-        
     }
 }

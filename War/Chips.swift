@@ -111,7 +111,7 @@ class Chips: UIView {
         for (index, button) in chipButtons.enumerate() {
             
             if isSolo == false {
-                button.enabled = whoBets(roundCount) > translate(index) && totalBet < whoBets(roundCount) - translate(index)
+                button.enabled = whoBets(roundCount) >= translate(index) && totalBet <= whoBets(roundCount) - translate(index)
             } else {
                 button.enabled = playerOneMoney > translate(index)
             }

@@ -21,11 +21,12 @@ class Audio : NSObject {
             } catch {
                 print("error initializing AVAudioPlayer")
             }
+            avPlayer.delegate = self
+            avPlayer.prepareToPlay()
+            avPlayer.volume = volume
         }
         
-        avPlayer.delegate = self
-        avPlayer.prepareToPlay()
-        avPlayer.volume = volume
+        
         
     }
     
