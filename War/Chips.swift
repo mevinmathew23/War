@@ -41,7 +41,7 @@ class Chips: UIView {
     //
     var chipButtons = [UIButton]()
     
-    let spacing = 0
+    let spacing = 15
     let chipCount = 5
     var isHighlighted: Bool = false
 

@@ -300,11 +300,11 @@
                                 </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6v-ha-Tc8" customClass="Chips" customModule="War" customModuleProvider="target">
-                                <rect key="frame" x="134" y="462" width="500" height="100"/>
+                                <rect key="frame" x="134" y="470.5" width="500" height="83"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="r6v-ha-Tc8" secondAttribute="height" multiplier="5:1" id="4rn-ZT-Dej"/>
+                                    <constraint firstAttribute="width" secondItem="r6v-ha-Tc8" secondAttribute="height" multiplier="6:1" id="4rn-ZT-Dej"/>
                                     <constraint firstAttribute="width" constant="500" id="gAO-Mq-niF"/>
                                 </constraints>
                             </view>
