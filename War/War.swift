@@ -33,7 +33,7 @@ class War {
     //creating arrarys necessary to hold the cards for the game
     
     func addCards(Suit: String){
-        for x in 2...14{
+        for x in 2...5{
             let temp = Card();
             temp.Value = x;
             temp.Name = Suit + String(x);

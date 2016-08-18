@@ -58,10 +58,6 @@ class ViewController: UIViewController {
         changeBackground()
         resetGlobals()
         
-        // Rely on new card sizes
-        setOverlay()
-        setCounters()
-        
         // Setup cards
         war.addCards("spades")
         war.addCards("clubs")
@@ -71,7 +67,14 @@ class ViewController: UIViewController {
         war.deckOfCards.shuffle()
         war.deal()
         
+        // Rely on new card sizes
+        setOverlay()
+        setCounters()
+        
         self.view.setNeedsLayout()
+    }
+    override func viewDidAppear(animated: Bool) {
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -407,6 +410,14 @@ class ViewController: UIViewController {
             
         } else {
             
+            if (playerOneWinCounter + playerTwoWinCounter) == 0 {
+                cardViewP1War1.userInteractionEnabled = false
+            } else if (playerOneWinCounter + playerTwoWinCounter) == 1 {
+                cardViewP1War2.userInteractionEnabled = false
+            } else if (playerOneWinCounter + playerTwoWinCounter) == 2 {
+                cardViewP1War3.userInteractionEnabled = false
+            }
+            
             UIView.transitionFromView(war.playerOneCardsInPlay[0].Back, toView: war.playerOneCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
                 finished in
                 self.war.playerOneCardsInPlay[0].ShowingFront = true
@@ -427,6 +438,14 @@ class ViewController: UIViewController {
             war.playerTwoCardsInPlay[0].ShowingFront = false
             
         } else {
+            
+            if (playerOneWinCounter + playerTwoWinCounter) == 0 {
+                cardViewP2War1.userInteractionEnabled = false
+            } else if (playerOneWinCounter + playerTwoWinCounter) == 1 {
+                cardViewP2War2.userInteractionEnabled = false
+            } else if (playerOneWinCounter + playerTwoWinCounter) == 2 {
+                cardViewP2War3.userInteractionEnabled = false
+            }
             
             UIView.transitionFromView(war.playerTwoCardsInPlay[0].Back, toView: war.playerTwoCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
                 finished in
@@ -733,7 +752,6 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 }, completion: {
                     finished in
-                    self.cardViewP1War1.userInteractionEnabled = false
                     self.cardViewP1War2.userInteractionEnabled = true
                     self.war.appendStorageP1()
                     self.updateStorageCounter()
@@ -749,7 +767,6 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 }, completion: {
                     finished in
-                    self.cardViewP2War1.userInteractionEnabled = false
                     self.cardViewP2War2.userInteractionEnabled = true
                     self.war.appendStorageP2()
                     self.updateStorageCounter()
@@ -768,7 +785,6 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 }, completion: {
                     finished in
-                    self.cardViewP1War2.userInteractionEnabled = false
                     self.cardViewP1War3.userInteractionEnabled = true
                     self.war.appendStorageP1()
                     self.updateStorageCounter()
@@ -784,7 +800,6 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 }, completion: {
                     finished in
-                    self.cardViewP2War2.userInteractionEnabled = false
                     self.cardViewP2War3.userInteractionEnabled = true
                     self.war.appendStorageP2()
                     self.updateStorageCounter()
@@ -803,7 +818,6 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 }, completion: {
                     finished in
-                    self.cardViewP1War3.userInteractionEnabled = false
                     self.war.appendStorageP1()
                     self.updateStorageCounter()
                     if self.sFX == false {
@@ -818,7 +832,6 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 }, completion: {
                     finished in
-                    self.cardViewP2War3.userInteractionEnabled = false
                     self.war.appendStorageP2()
                     self.updateStorageCounter()
                     self.warWinner()
@@ -1228,7 +1241,7 @@ class ViewController: UIViewController {
     func setCounters() {
         playerOneStorageY.constant = (view.bounds.height/4) + (cardViewP1.bounds.height/2) - 30
         playerTwoStorageY.constant = (view.bounds.height/4) + (cardViewP2.bounds.height/2) - 30
-        playerOneStorageCounterWidth.constant = cardViewP1.frame.width
+        playerOneStorageCounterWidth.constant = cardViewP1.bounds.width
         playerTwoStorageCounterWidth.constant = cardViewP2.frame.width
         
         playerOneCounterWidth.constant = cardViewP1.frame.width

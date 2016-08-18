@@ -384,13 +384,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="-25"/>
                             </constraint>
                             <constraint firstItem="41g-bh-HY2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="umW-Sz-QxO"/>
-                            <constraint firstItem="NJG-2g-R3d" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="200" id="vPe-wi-dhF">
-                                <variation key="heightClass=regular-widthClass=compact" constant="190"/>
-                            </constraint>
+                            <constraint firstItem="NJG-2g-R3d" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="200" id="vPe-wi-dhF"/>
                             <constraint firstItem="G3A-eN-UcA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="70" id="y66-eh-pqK"/>
-                            <constraint firstAttribute="bottom" secondItem="QKo-hk-Jz0" secondAttribute="bottom" id="zpq-F8-q9n">
-                                <variation key="heightClass=regular-widthClass=compact" constant="190"/>
-                            </constraint>
+                            <constraint firstAttribute="bottom" secondItem="QKo-hk-Jz0" secondAttribute="bottom" id="zpq-F8-q9n"/>
                         </constraints>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
