@@ -314,7 +314,7 @@
                                     <constraint firstAttribute="width" constant="70" id="IAM-c0-e1t"/>
                                     <constraint firstAttribute="width" secondItem="34p-vL-avn" secondAttribute="height" multiplier="7:3" id="g4s-ht-em2"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="150"/>
+                                <fontDescription key="fontDescription" name="Futura-CondensedMedium" family="Futura" pointSize="150"/>
                                 <state key="normal" title="BET">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -323,15 +323,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9B-gS-fR2">
-                                <rect key="frame" x="351.5" y="497.5" width="65" height="29"/>
+                                <rect key="frame" x="351.5" y="498" width="65" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="41i-bn-KKf"/>
-                                    <constraint firstAttribute="width" secondItem="V9B-gS-fR2" secondAttribute="height" multiplier="458:207" id="Ynz-MW-nx1"/>
+                                    <constraint firstAttribute="width" secondItem="V9B-gS-fR2" secondAttribute="height" multiplier="7:3" id="Ynz-MW-nx1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="150"/>
                                 <state key="normal" title="CLEAR">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="clearBets:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GA1-XN-Pvf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

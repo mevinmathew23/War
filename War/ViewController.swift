@@ -44,6 +44,7 @@ class ViewController: UIViewController {
         setNotifications()
         setPlayRoundButton()
         setBetButton()
+        setClearButton()
         setTapGest()
         
         rotateForP2()
@@ -100,6 +101,13 @@ class ViewController: UIViewController {
         updateWallet()
         
         startAnimation()
+    }
+    @IBAction func clearBets(sender: AnyObject) {
+        selectedChips = []
+        totalBet = 0
+        touchedChip = nil
+        
+        updateChips()
     }
     @IBAction func Quit(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -1225,7 +1233,7 @@ class ViewController: UIViewController {
         playRoundButton.setTitle("DEAL", forState: UIControlState.Normal)
     }
     func setBetButton() {
-        placeBetWidth.constant = view.bounds.width/5
+        placeBetWidth.constant = view.bounds.width/3.5
         placeBet.titleLabel?.minimumScaleFactor = 0.05
         placeBet.titleLabel?.numberOfLines = 1
         placeBet.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -1233,7 +1241,7 @@ class ViewController: UIViewController {
         placeBet.titleLabel?.baselineAdjustment = UIBaselineAdjustment.AlignCenters
     }
     func setClearButton() {
-        clearBetWidth.constant = view.bounds.width/5
+        clearBetWidth.constant = view.bounds.width/3.5
         clearBet.titleLabel?.minimumScaleFactor = 0.05
         clearBet.titleLabel?.numberOfLines = 1
         clearBet.titleLabel?.adjustsFontSizeToFitWidth = true
