@@ -8,8 +8,6 @@
 
 import UIKit
 
-var roundCount = 1
-
 class ViewController: UIViewController {
     
     let war = War()
@@ -21,12 +19,11 @@ class ViewController: UIViewController {
     var playerOneWinCounter = 0
     var playerTwoWinCounter = 0
     var counterTemp = 0
+    var playerOneWin: Bool? = nil
     
     let overlay: UIView = UIView()
     
     let sFX = Settings().defaults.boolForKey("soundFX")
-    
-    var playerOneWin: Bool? = nil
     
     override func prefersStatusBarHidden() -> Bool {
         return true

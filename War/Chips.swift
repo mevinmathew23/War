@@ -15,6 +15,7 @@ var totalBet: Int = 0
 var isSolo: Bool! = false
 var isEven: Bool! = false
 var isBettingPhase: Bool! = true
+var roundCount = 1
 
 func translate(index: Int) -> Int {
     switch index {

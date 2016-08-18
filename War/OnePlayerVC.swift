@@ -7,84 +7,8 @@
 //
 
 import UIKit
-import Foundation
 
 class OnePlayerVC: UIViewController {
-    
-    // MARK: Properties
-    // Card Views
-    
-    @IBOutlet weak var cardViewP1: UIView!
-    @IBOutlet weak var cardViewP1War1: UIView!
-    @IBOutlet weak var cardViewP1War2: UIView!
-    @IBOutlet weak var cardViewP1War3: UIView!
-    
-    @IBOutlet weak var cardViewP2: UIView!
-    @IBOutlet weak var cardViewP2War1: UIView!
-    @IBOutlet weak var cardViewP2War2: UIView!
-    @IBOutlet weak var cardViewP2War3: UIView!
-    
-    // Top and bottom constraints
-    
-    @IBOutlet weak var cardViewP1Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1Height: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War1Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War1Height: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War2Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War2Height: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War3Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War3Height: NSLayoutConstraint!
-    
-    @IBOutlet weak var cardViewP2Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2Height: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War1Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War1Height: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War2Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War2Height: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War3Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War3Height: NSLayoutConstraint!
-    
-    // Horizontally centered alignment
-    
-    @IBOutlet weak var cardViewP1X: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War1X: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War2X: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War3X: NSLayoutConstraint!
-    
-    @IBOutlet weak var cardViewP2X: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War1X: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War2X: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War3X: NSLayoutConstraint!
-    
-    // Chips
-    
-    @IBOutlet weak var chipsView: Chips!
-    @IBOutlet weak var chipsViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var chipsViewWidth: NSLayoutConstraint!
-    @IBOutlet weak var chipsViewY: NSLayoutConstraint!
-    @IBOutlet weak var chipsViewX: NSLayoutConstraint!
-    
-    // Misc. UI
-    
-    @IBOutlet weak var playRoundButton: UIButton!
-    @IBOutlet weak var playRoundButtonWidth: NSLayoutConstraint!
-    @IBOutlet weak var notifyP1: UILabel!
-    @IBOutlet weak var notifyP1X: NSLayoutConstraint!
-    @IBOutlet weak var notifyP1Y: NSLayoutConstraint!
-    @IBOutlet weak var notifyP1Width: NSLayoutConstraint!
-    @IBOutlet weak var notifyP1Height: NSLayoutConstraint!
-    
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var playerOneCounter: UILabel!
-    @IBOutlet weak var playerTwoCounter: UILabel!
-    @IBOutlet weak var playerOneCounterWidth: NSLayoutConstraint!
-    @IBOutlet weak var playerTwoCounterWidth: NSLayoutConstraint!
-    @IBOutlet weak var playerOneStorageCounter: UILabel!
-    @IBOutlet weak var playerTwoStorageCounter: UILabel!
-    @IBOutlet weak var playerOneStorageCounterWidth: NSLayoutConstraint!
-    @IBOutlet weak var playerTwoStorageCounterWidth: NSLayoutConstraint!
-    @IBOutlet weak var playerOneStorageY: NSLayoutConstraint!
-    @IBOutlet weak var playerTwoStorageY: NSLayoutConstraint!
     
     let war = War()
     let settings = Settings()
@@ -95,27 +19,18 @@ class OnePlayerVC: UIViewController {
     var playerOneWinCounter = 0
     var playerTwoWinCounter = 0
     var counterTemp = 0
-    
-    var roundCount = 1
+    var playerOneWin: Bool? = nil
     
     let overlay: UIView = UIView()
     
     let sFX = Settings().defaults.boolForKey("soundFX")
     
-    
-    var playerOneWin: Bool? = nil
-    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
     
-    //Quit Button
-    @IBAction func Quit(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
     
-    
-    // MARK: viewDidLoad() and viewDidAppear()
+    // MARK: viewDidLoad()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -203,6 +118,10 @@ class OnePlayerVC: UIViewController {
         hideButton()
     }
     
+    //Quit Button
+    @IBAction func Quit(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     // Set cardViewWars default outside bounds
     
     func setWarViews() {
@@ -1236,4 +1155,76 @@ class OnePlayerVC: UIViewController {
             backgroundImageView.image = newImage!
         }
     }
+    
+    
+    // MARK: Properties
+    // Card Views
+    
+    @IBOutlet weak var cardViewP1: UIView!
+    @IBOutlet weak var cardViewP1War1: UIView!
+    @IBOutlet weak var cardViewP1War2: UIView!
+    @IBOutlet weak var cardViewP1War3: UIView!
+    
+    @IBOutlet weak var cardViewP2: UIView!
+    @IBOutlet weak var cardViewP2War1: UIView!
+    @IBOutlet weak var cardViewP2War2: UIView!
+    @IBOutlet weak var cardViewP2War3: UIView!
+    
+    @IBOutlet weak var cardViewP1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1Height: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War1Height: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War2Height: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War3Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War3Height: NSLayoutConstraint!
+    
+    @IBOutlet weak var cardViewP2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2Height: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War1Height: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War2Height: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War3Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War3Height: NSLayoutConstraint!
+    
+    @IBOutlet weak var cardViewP1X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War1X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War2X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War3X: NSLayoutConstraint!
+    
+    @IBOutlet weak var cardViewP2X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War1X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War2X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War3X: NSLayoutConstraint!
+    
+    // Chips
+    
+    @IBOutlet weak var chipsView: Chips!
+    @IBOutlet weak var chipsViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewY: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewX: NSLayoutConstraint!
+    
+    // Misc. UI
+    
+    @IBOutlet weak var playRoundButton: UIButton!
+    @IBOutlet weak var playRoundButtonWidth: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1: UILabel!
+    @IBOutlet weak var notifyP1X: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Y: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Width: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Height: NSLayoutConstraint!
+    
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var playerOneCounter: UILabel!
+    @IBOutlet weak var playerTwoCounter: UILabel!
+    @IBOutlet weak var playerOneCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerOneStorageCounter: UILabel!
+    @IBOutlet weak var playerTwoStorageCounter: UILabel!
+    @IBOutlet weak var playerOneStorageCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoStorageCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerOneStorageY: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoStorageY: NSLayoutConstraint!
 }
