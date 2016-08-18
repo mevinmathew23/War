@@ -322,6 +322,10 @@
                                     <action selector="placeBets:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0B3-4S-zoZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9B-gS-fR2">
+                                <rect key="frame" x="134" y="869" width="46" height="30"/>
+                                <state key="normal" title="CLEAR"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>

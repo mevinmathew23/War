@@ -1045,8 +1045,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var cardViewP2War2: UIView!
     @IBOutlet weak var cardViewP2War3: UIView!
     
-    //      Top and bottom constraints
-    
     @IBOutlet weak var cardViewP1Constraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1War1Constraint: NSLayoutConstraint!
@@ -1064,8 +1062,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var cardViewP2War2Height: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2War3Constraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewP2War3Height: NSLayoutConstraint!
-    
-    //      Horizontally centered alignment
     
     @IBOutlet weak var cardViewP1X: NSLayoutConstraint!
     @IBOutlet weak var cardViewP1War1X: NSLayoutConstraint!
