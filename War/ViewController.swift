@@ -91,7 +91,8 @@ class ViewController: UIViewController {
         hideButton()
     }
     @IBAction func placeBets(sender: AnyObject) {
-        bet(translate(selectedChip!))
+        bet(totalBet)
+        isBettingPhase = false
         chipsView.hidden = true
         placeBet.hidden = true
         updateWallet()
@@ -253,6 +254,7 @@ class ViewController: UIViewController {
         drawCardP1(cardViewP1)
         drawCardP2(cardViewP2)
         
+        isBettingPhase = true
         shiftChips()
         
         showCounter()
@@ -1283,8 +1285,13 @@ class ViewController: UIViewController {
         playerTwoWallet.hidden = false
     }
     func updateWallet() {
-        playerOneWallet.text = "$" + String(playerOneMoney)
-        playerTwoWallet.text = "$" + String(playerTwoMoney)
+        if isBettingPhase == true {
+            playerOneWallet.text = "$" + String(playerOneMoney-totalBet)
+            playerTwoWallet.text = "$" + String(playerTwoMoney-totalBet)
+        } else {
+            playerOneWallet.text = "$" + String(playerOneMoney)
+            playerTwoWallet.text = "$" + String(playerTwoMoney)
+        }
     }
     
     
@@ -1396,22 +1403,27 @@ class ViewController: UIViewController {
             placeBetY.constant = -view.bounds.height/3.5
             chipsView.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
             placeBet.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+            totalBet = 0
+            selectedChips = []
         } else {
             chipsViewY.constant = view.bounds.height/6
             placeBetY.constant = view.bounds.height/3.5
             chipsView.transform = CGAffineTransformMakeRotation(0)
             placeBet.transform = CGAffineTransformMakeRotation(0)
+            totalBet = 0
+            selectedChips = []
         }
     }
     func updateChips() {
-        if selectedChip == nil {
+        updateWallet()
+        if selectedChips.isEmpty {
             placeBet.enabled = false
             placeBet.alpha = 0.5
             placeBet.setTitle("BET", forState: .Normal)
         } else {
             placeBet.enabled = true
             placeBet.alpha = 1.0
-            placeBet.setTitle("BET " + String(translate(selectedChip!)), forState: .Normal)
+            placeBet.setTitle("BET " + String(totalBet), forState: .Normal)
         }
     }
     
@@ -1421,7 +1433,9 @@ class ViewController: UIViewController {
     func resetGlobals() {
         playerOneMoney = startingWallet
         playerTwoMoney = startingWallet
-        selectedChip = nil
+        selectedChips = []
+        totalBet = 0
         roundCount = 1
+        
     }
 }
