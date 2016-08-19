@@ -10,91 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    // MARK: Properties
-    // Card Views
-    
-    @IBOutlet weak var cardViewP1: UIView!
-    @IBOutlet weak var cardViewP1War1: UIView!
-    @IBOutlet weak var cardViewP1War2: UIView!
-    @IBOutlet weak var cardViewP1War3: UIView!
-    
-    @IBOutlet weak var cardViewP2: UIView!
-    @IBOutlet weak var cardViewP2War1: UIView!
-    @IBOutlet weak var cardViewP2War2: UIView!
-    @IBOutlet weak var cardViewP2War3: UIView!
-    
-    // Top and bottom constraints
-    
-    @IBOutlet weak var cardViewP1Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1Height: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War1Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War1Height: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War2Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War2Height: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War3Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War3Height: NSLayoutConstraint!
-    
-    @IBOutlet weak var cardViewP2Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2Height: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War1Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War1Height: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War2Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War2Height: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War3Constraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War3Height: NSLayoutConstraint!
-    
-    // Horizontally centered alignment
-    
-    @IBOutlet weak var cardViewP1X: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War1X: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War2X: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP1War3X: NSLayoutConstraint!
-    
-    @IBOutlet weak var cardViewP2X: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War1X: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War2X: NSLayoutConstraint!
-    @IBOutlet weak var cardViewP2War3X: NSLayoutConstraint!
-    
-    // Chips
-    
-    @IBOutlet weak var chipsView: Chips!
-    @IBOutlet weak var chipsViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var chipsViewWidth: NSLayoutConstraint!
-    @IBOutlet weak var chipsViewY: NSLayoutConstraint!
-    @IBOutlet weak var chipsViewX: NSLayoutConstraint!
-    
-    // Misc. UI
-    
-    @IBOutlet weak var playRoundButton: UIButton!
-    @IBOutlet weak var playRoundButtonWidth: NSLayoutConstraint!
-    @IBOutlet weak var notifyP1: UILabel!
-    @IBOutlet weak var notifyP1X: NSLayoutConstraint!
-    @IBOutlet weak var notifyP1Y: NSLayoutConstraint!
-    @IBOutlet weak var notifyP1Height: NSLayoutConstraint!
-    @IBOutlet weak var notifyP1Width: NSLayoutConstraint!
-    @IBOutlet weak var notifyP2: UILabel!
-    @IBOutlet weak var notifyP2X: NSLayoutConstraint!
-    @IBOutlet weak var notifyP2Y: NSLayoutConstraint!
-    @IBOutlet weak var notifyP2Height: NSLayoutConstraint!
-    @IBOutlet weak var notifyP2Width: NSLayoutConstraint!
-    
-    @IBOutlet weak var placeBet: UIButton!
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var playerOneCounter: UILabel!
-    @IBOutlet weak var playerTwoCounter: UILabel!
-    @IBOutlet weak var playerOneCounterWidth: NSLayoutConstraint!
-    @IBOutlet weak var playerTwoCounterWidth: NSLayoutConstraint!
-    @IBOutlet weak var playerOneWallet: UILabel!
-    @IBOutlet weak var playerTwoWallet: UILabel!
-    @IBOutlet weak var playerOneWalletWidth: NSLayoutConstraint!
-    @IBOutlet weak var playerTwoWalletWidth: NSLayoutConstraint!
-    @IBOutlet weak var playerOneStorageCounter: UILabel!
-    @IBOutlet weak var playerTwoStorageCounter: UILabel!
-    @IBOutlet weak var playerOneStorageCounterWidth: NSLayoutConstraint!
-    @IBOutlet weak var playerTwoStorageCounterWidth: NSLayoutConstraint!
-    @IBOutlet weak var playerOneStorageY: NSLayoutConstraint!
-    @IBOutlet weak var playerTwoStorageY: NSLayoutConstraint!
-    
     let war = War()
     let settings = Settings()
     let audio = Audio()
@@ -104,81 +19,43 @@ class ViewController: UIViewController {
     var playerOneWinCounter = 0
     var playerTwoWinCounter = 0
     var counterTemp = 0
-    
-    var roundCount = 1
+    var playerOneWin: Bool? = nil
     
     let overlay: UIView = UIView()
     
     let sFX = Settings().defaults.boolForKey("soundFX")
     
-    var playerOneWin: Bool? = nil
-    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
     
-    //Quit Button
-    @IBAction func Quit(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
     
-    // MARK: viewDidLoad() and viewDidAppear()
+    // MARK: viewDidLoad()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setCardViews()
+        setWarViews()
+        setChips()
+        setNotifications()
+        setPlayRoundButton()
+        setBetButton()
+        setClearButton()
+        setTapGest()
+        
+        rotateForP2()
+        
+        // Hide views
         hideCounter()
         hideWallet()
         hideStorageCounter()
         chipsView.hidden = true
         placeBet.hidden = true
-        playerOneMoney = startingWallet
-        playerTwoMoney = startingWallet
-        selectedChip = nil
+        clearBet.hidden = true
         
         changeBackground()
-        
-        // Rotate player 2 counter
-        playerTwoCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
-        playerTwoStorageCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
-        playerTwoWallet.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
-        
-        // Rotate player 2 card views
-        cardViewP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
-        cardViewP2War1.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
-        cardViewP2War2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
-        cardViewP2War3.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
-        
-        // Set initial cards outside of view
-        self.cardViewP1Constraint.constant = -view.bounds.height
-        self.cardViewP2Constraint.constant = -view.bounds.height
-        setWarViews()
-        
-        // Set notification labels
-        notifyP1Width.constant = view.bounds.width
-        notifyP2Width.constant = view.bounds.width
-        notifyP1Height.constant = view.frame.height/4
-        notifyP2Height.constant = view.frame.height/4
-        notifyP1X.constant = -view.bounds.width
-        notifyP2X.constant = -view.bounds.width
-        notifyP1Y.constant = -70
-        notifyP2Y.constant = 70
-        notifyP1.layer.zPosition = 999
-        notifyP2.layer.zPosition = 999
-        notifyP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
-        
-        setOverlay()
-        
-        self.playRoundButton.setTitle("DEAL", forState: UIControlState.Normal)
-        
-        let tapP1 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedP1))
-        let tapP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedP2))
-        tapP1.numberOfTapsRequired = 1
-        tapP2.numberOfTapsRequired = 1
-        cardViewP1.addGestureRecognizer(tapP1)
-        cardViewP2.addGestureRecognizer(tapP2)
-        
-        setChips()
+        resetGlobals()
         
         // Setup cards
         war.addCards("spades")
@@ -189,35 +66,21 @@ class ViewController: UIViewController {
         war.deckOfCards.shuffle()
         war.deal()
         
+        // Rely on new card sizes
+        setOverlay()
+        setCounters()
+        
         self.view.setNeedsLayout()
     }
-    
     override func viewDidAppear(animated: Bool) {
         
-        playRoundButtonWidth.constant = view.bounds.width/3
-        playRoundButton.titleLabel?.minimumScaleFactor = 0.05
-        playRoundButton.titleLabel?.numberOfLines = 1
-        playRoundButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        
-        // Set Counters
-        
-        playerOneStorageY.constant = (view.bounds.height/4) + (cardViewP1.bounds.height/2) - 30
-        playerTwoStorageY.constant = (view.bounds.height/4) + (cardViewP2.bounds.height/2) - 30
-        
-        playerOneStorageCounterWidth.constant = cardViewP1.frame.width
-        playerTwoStorageCounterWidth.constant = cardViewP2.frame.width
-        
-        playerOneCounterWidth.constant = cardViewP1.frame.width
-        playerTwoCounterWidth.constant = cardViewP2.frame.width
-        
-        playerOneWalletWidth.constant = cardViewP1.frame.width
-        playerTwoWalletWidth.constant = cardViewP2.frame.width
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     // MARK: Actions
     // Button Click Action
@@ -226,62 +89,29 @@ class ViewController: UIViewController {
         startRound()
         hideButton()
     }
-    
     @IBAction func placeBets(sender: AnyObject) {
-        bet(translate(selectedChip!))
+        bet(totalBet)
+        isBettingPhase = false
         chipsView.hidden = true
         placeBet.hidden = true
+        clearBet.hidden = true
         updateWallet()
         
         startAnimation()
     }
-    func setChips() {
-        let tapGest = UITapGestureRecognizer(target: self, action: #selector (ViewController.updateChips))
-        tapGest.cancelsTouchesInView = false
-        chipsView.addGestureRecognizer(tapGest)
+    @IBAction func clearBets(sender: AnyObject) {
+        selectedChips = []
+        totalBet = 0
+        touchedChip = nil
+        
+        updateChips()
     }
-    func updateChips() {
-        if selectedChip == nil {
-            placeBet.enabled = false
-            placeBet.alpha = 0.5
-        } else {
-            placeBet.enabled = true
-            placeBet.alpha = 1.0
-        }
+    @IBAction func Quit(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    // Set cardViewWars default outside bounds
-    
-    func setWarViews() {
-        cardViewP1War1Constraint.constant = -view.bounds.height
-        cardViewP1War2Constraint.constant = -view.bounds.height
-        cardViewP1War3Constraint.constant = -view.bounds.height
-        
-        cardViewP2War1Constraint.constant = -view.bounds.height
-        cardViewP2War2Constraint.constant = -view.bounds.height
-        cardViewP2War3Constraint.constant = -view.bounds.height
-        
-        cardViewP1Height.constant = view.bounds.height/4
-        cardViewP1War1Height.constant = view.bounds.height/4
-        cardViewP1War2Height.constant = view.bounds.height/4
-        cardViewP1War3Height.constant = view.bounds.height/4
-        
-        cardViewP2Height.constant = view.bounds.height/4
-        cardViewP2War1Height.constant = view.bounds.height/4
-        cardViewP2War2Height.constant = view.bounds.height/4
-        cardViewP2War3Height.constant = view.bounds.height/4
-        
-        cardViewP1War1X.constant = 25
-        cardViewP1War2X.constant = 40
-        cardViewP1War3X.constant = 55
-        
-        cardViewP2War1X.constant = -25
-        cardViewP2War2X.constant = -40
-        cardViewP2War3X.constant = -55
-    }
     
     // MARK: Evaluation
-    // Evaluate upon flipping
     
     func evaluate() {
         
@@ -329,6 +159,7 @@ class ViewController: UIViewController {
         }
         
     }
+    
     
     // MARK: War Scenario
     
@@ -395,6 +226,8 @@ class ViewController: UIViewController {
             war.playerOneCardsInPlay.removeAll()
             war.playerTwoCardsInPlay.removeAll()
             
+            roundCount += 1
+            
             hideStorageCounter()
             warWinP1Timer()
             
@@ -411,134 +244,25 @@ class ViewController: UIViewController {
             war.playerOneCardsInPlay.removeAll()
             war.playerTwoCardsInPlay.removeAll()
             
+            roundCount += 1
+            
             hideStorageCounter()
             warWinP2Timer()
         }
     }
     
-    // MARK: Counters
-    // Deck Counters
-    
-    func hideCounter() {
-        playerOneCounter.hidden = true
-        playerTwoCounter.hidden = true
-    }
-    func showCounter() {
-        playerOneCounter.hidden = false
-        playerTwoCounter.hidden = false
-    }
-    func updateCounter() {
-        war.totalCounter()
-        playerOneCounter.text = String(war.playerOneCards.count)
-        playerTwoCounter.text = String(war.playerTwoCards.count)
-    }
-    // Wallet Counters
-    
-    func hideWallet() {
-        playerOneWallet.hidden = true
-        playerTwoWallet.hidden = true
-    }
-    func showWallet() {
-        playerOneWallet.hidden = false
-        playerTwoWallet.hidden = false
-    }
-    func updateWallet() {
-        playerOneWallet.text = "$" + String(playerOneMoney)
-        playerTwoWallet.text = "$" + String(playerTwoMoney)
-    }
-    
-    // Storage Counters
-    
-    func hideStorageCounter() {
-        playerOneStorageCounter.hidden = true
-        playerTwoStorageCounter.hidden = true
-    }
-    
-    func showStorageCounter() {
-        playerOneStorageCounter.hidden = false
-        playerTwoStorageCounter.hidden = false
-    }
-    
-    func updateStorageCounter() {
-        playerOneStorageCounter.text = String(war.playerOneStorage.count)
-        playerTwoStorageCounter.text = String(war.playerTwoStorage.count)
-    }
-    
-    // MARK: Overlay and Notifications
-    func setOverlay() {
-        overlay.backgroundColor = UIColor.blackColor()
-        overlay.layer.zPosition = 998
-        overlay.alpha = 0.0
-        overlay.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
-        overlay.userInteractionEnabled = false
-        
-        view.addSubview(overlay)
-    }
-    func showOverlay() {
-        view.layoutIfNeeded()
-        UIView.animateWithDuration(0.25, delay: 0, options: [], animations: {
-            self.overlay.alpha = 0.5
-            self.view.layoutIfNeeded()
-            }, completion: {
-                finished in
-                self.swipeIn()
-        })
-    }
-    func hideOverlay() {
-        view.layoutIfNeeded()
-        UIView.animateWithDuration(0.25, delay: 0, options: [], animations: {
-            self.overlay.alpha = 0.0
-            self.view.layoutIfNeeded()
-            }, completion: {
-                finished in
-                if (self.playerOneWin == true) {
-                    self.normalWinP1Timer()
-                } else if (self.playerOneWin == false) {
-                    self.normalWinP2Timer()
-                }
-        })
-    }
-    
-    func swipeIn() {
-        view.layoutIfNeeded()
-        UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseOut], animations: {
-            self.notifyP1X.constant = 0
-            self.notifyP2X.constant = 0
-            self.view.layoutIfNeeded()
-            }, completion: {
-                finished in
-                self.swipeOut()
-        })
-    }
-    func swipeOut() {
-        view.layoutIfNeeded()
-        UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseIn], animations: {
-            self.notifyP1X.constant = self.view.bounds.width
-            self.notifyP2X.constant = self.view.bounds.width
-            self.view.layoutIfNeeded()
-            }, completion: {
-                finished in
-                self.hideOverlay()
-                self.notifyP1X.constant = -self.view.bounds.width
-                self.notifyP2X.constant = -self.view.bounds.width
-        })
-    }
     
     // MARK: Draw Cards
-    // Button Toggle
-    
-    func showButton() {
-        playRoundButton.hidden = false
-        playRoundButton.userInteractionEnabled = true
-    }
-    func hideButton() {
-        playRoundButton.hidden = true
-        playRoundButton.userInteractionEnabled = false
-    }
     
     func startRound() {
+        guard (playerOneMoney <= 0 || playerTwoMoney <= 0) == false else {
+            return
+        }
         drawCardP1(cardViewP1)
         drawCardP2(cardViewP2)
+        
+        isBettingPhase = true
+        shiftChips()
         
         showCounter()
         showWallet()
@@ -548,13 +272,15 @@ class ViewController: UIViewController {
         
         chipsView.hidden = false
         placeBet.hidden = false
-        
-        //startAnimation()
+        clearBet.hidden = false
     }
     
-    // Draw cards
+    //      Draw cards
     
     func drawCardP1(player: UIView) {
+        guard war.playerOneCards.count > 0 else {
+            return
+        }
         war.playerOneCardsInPlay.append(war.playerOneCards[0])
         let activeP1 = war.playerOneCardsInPlay[0]
         war.playerOneCards.removeAtIndex(0)
@@ -565,11 +291,15 @@ class ViewController: UIViewController {
         activeP1.Back.image = war.playerOneCardsInPlay[0].backImage
         activeP1.Front.image = UIImage(named: String(activeP1.Name!))
         
+        player.userInteractionEnabled = true
         activeP1.ShowingFront = false
         player.addSubview(activeP1.Back)
     }
     
     func drawCardP2(player: UIView) {
+        guard war.playerTwoCards.count > 0 else {
+            return
+        }
         war.playerTwoCardsInPlay.append(war.playerTwoCards[0])
         let activeP2 = war.playerTwoCardsInPlay[0]
         war.playerTwoCards.removeAtIndex(0)
@@ -580,13 +310,18 @@ class ViewController: UIViewController {
         activeP2.Back.image = war.playerOneCardsInPlay[0].backImage
         activeP2.Front.image = UIImage(named: String(activeP2.Name!))
         
+        player.userInteractionEnabled = true
         activeP2.ShowingFront = false
         player.addSubview(activeP2.Back)
     }
     
-    // Draw War Cards
+    
+    //      Draw War Cards
     
     func drawWarCards() {
+        guard  war.playerOneCards.count >= 3 && war.playerTwoCards.count >= 3 else {
+            return
+        }
         let cardViewP1Array: Array = [cardViewP1War1, cardViewP1War2, cardViewP1War3]
         let cardViewP2Array: Array = [cardViewP2War1, cardViewP2War2, cardViewP2War3]
         
@@ -625,35 +360,8 @@ class ViewController: UIViewController {
         startWar()
     }
     
-    // MARK: Flip and Tap Gestures
     
-    func warTapGest1() {
-        let tapWarP1 = UITapGestureRecognizer(target: self, action: #selector (ViewController.tappedWarP1))
-        let tapWarP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedWarP2))
-        cardViewP1War1.userInteractionEnabled = true
-        cardViewP2War1.userInteractionEnabled = true
-        tapWarP1.numberOfTapsRequired = 1
-        tapWarP2.numberOfTapsRequired = 1
-        cardViewP1War1.addGestureRecognizer(tapWarP1)
-        cardViewP2War1.addGestureRecognizer(tapWarP2)
-    }
-    func warTapGest2() {
-        let tapWarP1 = UITapGestureRecognizer(target: self, action: #selector (ViewController.tappedWarP1))
-        let tapWarP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedWarP2))
-        tapWarP1.numberOfTapsRequired = 1
-        tapWarP2.numberOfTapsRequired = 1
-        cardViewP1War2.addGestureRecognizer(tapWarP1)
-        cardViewP2War2.addGestureRecognizer(tapWarP2)
-    }
-    func warTapGest3() {
-        let tapWarP1 = UITapGestureRecognizer(target: self, action: #selector (ViewController.tappedWarP1))
-        let tapWarP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedWarP2))
-        tapWarP1.numberOfTapsRequired = 1
-        tapWarP2.numberOfTapsRequired = 1
-        cardViewP1War3.addGestureRecognizer(tapWarP1)
-        cardViewP2War3.addGestureRecognizer(tapWarP2)
-    }
-    
+    // MARK: Flip
     // Flip Functions
     
     func tappedP1() {
@@ -667,7 +375,7 @@ class ViewController: UIViewController {
             war.playerOneCardsInPlay[0].ShowingFront = false
             
         } else {
-            
+            cardViewP1.userInteractionEnabled = false
             UIView.transitionFromView(war.playerOneCardsInPlay[0].Back, toView: war.playerOneCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
                 finished in
                 self.war.playerOneCardsInPlay[0].ShowingFront = true
@@ -689,7 +397,7 @@ class ViewController: UIViewController {
             war.playerTwoCardsInPlay[0].ShowingFront = false
             
         } else {
-            
+            cardViewP2.userInteractionEnabled = false
             UIView.transitionFromView(war.playerTwoCardsInPlay[0].Back, toView: war.playerTwoCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
                 finished in
                 self.war.playerTwoCardsInPlay[0].ShowingFront = true
@@ -712,6 +420,14 @@ class ViewController: UIViewController {
             
         } else {
             
+            if (playerOneWinCounter + playerTwoWinCounter) == 0 {
+                cardViewP1War1.userInteractionEnabled = false
+            } else if (playerOneWinCounter + playerTwoWinCounter) == 1 {
+                cardViewP1War2.userInteractionEnabled = false
+            } else if (playerOneWinCounter + playerTwoWinCounter) == 2 {
+                cardViewP1War3.userInteractionEnabled = false
+            }
+            
             UIView.transitionFromView(war.playerOneCardsInPlay[0].Back, toView: war.playerOneCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
                 finished in
                 self.war.playerOneCardsInPlay[0].ShowingFront = true
@@ -732,6 +448,14 @@ class ViewController: UIViewController {
             war.playerTwoCardsInPlay[0].ShowingFront = false
             
         } else {
+            
+            if (playerOneWinCounter + playerTwoWinCounter) == 0 {
+                cardViewP2War1.userInteractionEnabled = false
+            } else if (playerOneWinCounter + playerTwoWinCounter) == 1 {
+                cardViewP2War2.userInteractionEnabled = false
+            } else if (playerOneWinCounter + playerTwoWinCounter) == 2 {
+                cardViewP2War3.userInteractionEnabled = false
+            }
             
             UIView.transitionFromView(war.playerTwoCardsInPlay[0].Back, toView: war.playerTwoCardsInPlay[0].Front, duration: 0.5, options: UIViewAnimationOptions.TransitionFlipFromLeft, completion: {
                 finished in
@@ -783,6 +507,8 @@ class ViewController: UIViewController {
             }, completion: {
                 finished in
                 self.war.normalWinP1AppendP2()
+                roundWinner(&playerOneMoney)
+                self.updateWallet()
                 self.updateCounter()
                 self.cardViewP2Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
@@ -810,6 +536,8 @@ class ViewController: UIViewController {
             }, completion: {
                 finished in
                 self.war.normalWinP2AppendP1()
+                roundWinner(&playerTwoMoney)
+                self.updateWallet()
                 self.updateCounter()
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
                 self.view.layoutIfNeeded()
@@ -824,7 +552,6 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                //self.war.playerTwoCardsInPlay[0].Front.removeFromSuperview()
                 self.war.normalWinP2AppendP2()
                 self.updateCounter()
                 self.cardViewP2Constraint.constant = -self.view.bounds.height
@@ -984,6 +711,10 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
+                self.view.layoutIfNeeded()
+                self.setWarViews()
+                self.view.setNeedsLayout()
+                self.drawWarCards()
                 if self.sFX == false {
                     self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
                     self.sounds.playAVPlayer()
@@ -995,10 +726,6 @@ class ViewController: UIViewController {
             self.view.layoutIfNeeded()
             }, completion: {
                 finished in
-                self.view.layoutIfNeeded()
-                self.setWarViews()
-                self.view.setNeedsLayout()
-                self.drawWarCards()
                 if self.sFX == false {
                     self.sounds.readFileIntoAVPlayer("cardSlide", volume: 1)
                     self.sounds.playAVPlayer()
@@ -1035,7 +762,6 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 }, completion: {
                     finished in
-                    self.cardViewP1War1.userInteractionEnabled = false
                     self.cardViewP1War2.userInteractionEnabled = true
                     self.war.appendStorageP1()
                     self.updateStorageCounter()
@@ -1051,7 +777,6 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 }, completion: {
                     finished in
-                    self.cardViewP2War1.userInteractionEnabled = false
                     self.cardViewP2War2.userInteractionEnabled = true
                     self.war.appendStorageP2()
                     self.updateStorageCounter()
@@ -1070,7 +795,6 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 }, completion: {
                     finished in
-                    self.cardViewP1War2.userInteractionEnabled = false
                     self.cardViewP1War3.userInteractionEnabled = true
                     self.war.appendStorageP1()
                     self.updateStorageCounter()
@@ -1086,7 +810,6 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 }, completion: {
                     finished in
-                    self.cardViewP2War2.userInteractionEnabled = false
                     self.cardViewP2War3.userInteractionEnabled = true
                     self.war.appendStorageP2()
                     self.updateStorageCounter()
@@ -1105,7 +828,6 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 }, completion: {
                     finished in
-                    self.cardViewP1War3.userInteractionEnabled = false
                     self.war.appendStorageP1()
                     self.updateStorageCounter()
                     if self.sFX == false {
@@ -1120,7 +842,6 @@ class ViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 }, completion: {
                     finished in
-                    self.cardViewP2War3.userInteractionEnabled = false
                     self.war.appendStorageP2()
                     self.updateStorageCounter()
                     self.warWinner()
@@ -1139,6 +860,8 @@ class ViewController: UIViewController {
             }, completion: {
                 finished in
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
+                roundWinner(&playerOneMoney)
+                self.updateWallet()
                 self.view.layoutIfNeeded()
         })
         UIView.animateWithDuration(1, delay: 0, options: [.CurveEaseOut], animations: {
@@ -1217,7 +940,6 @@ class ViewController: UIViewController {
         })
     }
     func warWinP2Timer() {
-        
         _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.warWinP2), userInfo: nil, repeats: false)
     }
     func warWinP2() {
@@ -1232,6 +954,8 @@ class ViewController: UIViewController {
             }, completion: {
                 finished in
                 self.cardViewP1Constraint.constant = -self.view.bounds.height
+                roundWinner(&playerTwoMoney)
+                self.updateWallet()
                 self.view.layoutIfNeeded()
         })
         UIView.animateWithDuration(1, delay: 0.1, options: [.CurveEaseOut], animations: {
@@ -1314,5 +1038,432 @@ class ViewController: UIViewController {
             backgroundImageView.image = newImage!
         }
     }
+    
+    
+    // MARK: Properties
+    // Card Views
+    
+    @IBOutlet weak var cardViewP1: UIView!
+    @IBOutlet weak var cardViewP1War1: UIView!
+    @IBOutlet weak var cardViewP1War2: UIView!
+    @IBOutlet weak var cardViewP1War3: UIView!
+    
+    @IBOutlet weak var cardViewP2: UIView!
+    @IBOutlet weak var cardViewP2War1: UIView!
+    @IBOutlet weak var cardViewP2War2: UIView!
+    @IBOutlet weak var cardViewP2War3: UIView!
+    
+    @IBOutlet weak var cardViewP1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1Height: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War1Height: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War2Height: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War3Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War3Height: NSLayoutConstraint!
+    
+    @IBOutlet weak var cardViewP2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2Height: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War1Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War1Height: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War2Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War2Height: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War3Constraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War3Height: NSLayoutConstraint!
+    
+    @IBOutlet weak var cardViewP1X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War1X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War2X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP1War3X: NSLayoutConstraint!
+    
+    @IBOutlet weak var cardViewP2X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War1X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War2X: NSLayoutConstraint!
+    @IBOutlet weak var cardViewP2War3X: NSLayoutConstraint!
+    
+    
+    // Chips
+    
+    @IBOutlet weak var chipsView: Chips!
+    @IBOutlet weak var chipsViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewY: NSLayoutConstraint!
+    @IBOutlet weak var chipsViewX: NSLayoutConstraint!
+    
+    
+    // Misc. UI
+    
+    @IBOutlet weak var playRoundButton: UIButton!
+    @IBOutlet weak var playRoundButtonWidth: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1: UILabel!
+    @IBOutlet weak var notifyP1X: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Y: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Height: NSLayoutConstraint!
+    @IBOutlet weak var notifyP1Width: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2: UILabel!
+    @IBOutlet weak var notifyP2X: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2Y: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2Height: NSLayoutConstraint!
+    @IBOutlet weak var notifyP2Width: NSLayoutConstraint!
+    @IBOutlet weak var playerOneHeight: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var placeBet: UIButton!
+    @IBOutlet weak var placeBetWidth: NSLayoutConstraint!
+    @IBOutlet weak var placeBetX: NSLayoutConstraint!
+    @IBOutlet weak var placeBetY: NSLayoutConstraint!
+    @IBOutlet weak var clearBet: UIButton!
+    @IBOutlet weak var clearBetWidth: NSLayoutConstraint!
+    @IBOutlet weak var clearBetX: NSLayoutConstraint!
+    @IBOutlet weak var clearBetY: NSLayoutConstraint!
+    
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var playerOneCounter: UILabel!
+    @IBOutlet weak var playerTwoCounter: UILabel!
+    @IBOutlet weak var playerOneCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerOneWallet: UILabel!
+    @IBOutlet weak var playerTwoWallet: UILabel!
+    @IBOutlet weak var playerOneWalletWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoWalletWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerOneStorageCounter: UILabel!
+    @IBOutlet weak var playerTwoStorageCounter: UILabel!
+    @IBOutlet weak var playerOneStorageCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoStorageCounterWidth: NSLayoutConstraint!
+    @IBOutlet weak var playerOneStorageY: NSLayoutConstraint!
+    @IBOutlet weak var playerTwoStorageY: NSLayoutConstraint!
+    
+    
+    // MARK: Cards
+    
+    func setCardViews() {
+        cardViewP1Constraint.constant = -view.bounds.height
+        cardViewP2Constraint.constant = -view.bounds.height
+        
+        cardViewP1Height.constant = view.bounds.height/4
+        cardViewP1War1Height.constant = view.bounds.height/4
+        cardViewP1War2Height.constant = view.bounds.height/4
+        cardViewP1War3Height.constant = view.bounds.height/4
+        
+        cardViewP2Height.constant = view.bounds.height/4
+        cardViewP2War1Height.constant = view.bounds.height/4
+        cardViewP2War2Height.constant = view.bounds.height/4
+        cardViewP2War3Height.constant = view.bounds.height/4
+    }
+    func setWarViews() {
+        cardViewP1War1Constraint.constant = -view.bounds.height
+        cardViewP1War2Constraint.constant = -view.bounds.height
+        cardViewP1War3Constraint.constant = -view.bounds.height
+        
+        cardViewP2War1Constraint.constant = -view.bounds.height
+        cardViewP2War2Constraint.constant = -view.bounds.height
+        cardViewP2War3Constraint.constant = -view.bounds.height
+        
+        cardViewP1War1X.constant = 25
+        cardViewP1War2X.constant = 40
+        cardViewP1War3X.constant = 55
+        
+        cardViewP2War1X.constant = -25
+        cardViewP2War2X.constant = -40
+        cardViewP2War3X.constant = -55
+    }
+    func rotateForP2() {
+        // Rotate player 2 counter
+        playerTwoCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+        playerTwoStorageCounter.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+        playerTwoWallet.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+        
+        // Rotate player 2 card views
+        cardViewP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+        cardViewP2War1.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+        cardViewP2War2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+        cardViewP2War3.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+    }
+    
+    
+    //MARK: Tap Gestures Recognizers
+    
+    func setTapGest() {
+        let tapP1 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedP1))
+        let tapP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedP2))
+        tapP1.numberOfTapsRequired = 1
+        tapP2.numberOfTapsRequired = 1
+        cardViewP1.addGestureRecognizer(tapP1)
+        cardViewP2.addGestureRecognizer(tapP2)
+    }
+    func warTapGest1() {
+        let tapWarP1 = UITapGestureRecognizer(target: self, action: #selector (ViewController.tappedWarP1))
+        let tapWarP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedWarP2))
+        cardViewP1War1.userInteractionEnabled = true
+        cardViewP2War1.userInteractionEnabled = true
+        tapWarP1.numberOfTapsRequired = 1
+        tapWarP2.numberOfTapsRequired = 1
+        cardViewP1War1.addGestureRecognizer(tapWarP1)
+        cardViewP2War1.addGestureRecognizer(tapWarP2)
+    }
+    func warTapGest2() {
+        let tapWarP1 = UITapGestureRecognizer(target: self, action: #selector (ViewController.tappedWarP1))
+        let tapWarP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedWarP2))
+        tapWarP1.numberOfTapsRequired = 1
+        tapWarP2.numberOfTapsRequired = 1
+        cardViewP1War2.addGestureRecognizer(tapWarP1)
+        cardViewP2War2.addGestureRecognizer(tapWarP2)
+    }
+    func warTapGest3() {
+        let tapWarP1 = UITapGestureRecognizer(target: self, action: #selector (ViewController.tappedWarP1))
+        let tapWarP2 = UITapGestureRecognizer(target: self, action: #selector(ViewController.tappedWarP2))
+        tapWarP1.numberOfTapsRequired = 1
+        tapWarP2.numberOfTapsRequired = 1
+        cardViewP1War3.addGestureRecognizer(tapWarP1)
+        cardViewP2War3.addGestureRecognizer(tapWarP2)
+    }
+    
+    
+    // MARK: Buttons
+    
+    func setPlayRoundButton() {
+        playRoundButtonWidth.constant = view.bounds.width/3
+        playRoundButton.titleLabel?.minimumScaleFactor = 0.05
+        playRoundButton.titleLabel?.numberOfLines = 1
+        playRoundButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        playRoundButton.titleLabel?.textAlignment = NSTextAlignment.Center
+        playRoundButton.titleLabel?.baselineAdjustment = UIBaselineAdjustment.AlignCenters
+        playRoundButton.setTitle("DEAL", forState: UIControlState.Normal)
+    }
+    func setBetButton() {
+        placeBetWidth.constant = view.bounds.width/3.5
+        placeBet.titleLabel?.minimumScaleFactor = 0.05
+        placeBet.titleLabel?.numberOfLines = 1
+        placeBet.titleLabel?.adjustsFontSizeToFitWidth = true
+        placeBet.titleLabel?.textAlignment = NSTextAlignment.Center
+        placeBet.titleLabel?.baselineAdjustment = UIBaselineAdjustment.AlignCenters
+    }
+    func setClearButton() {
+        clearBetWidth.constant = view.bounds.width/3.5
+        clearBet.titleLabel?.minimumScaleFactor = 0.05
+        clearBet.titleLabel?.numberOfLines = 1
+        clearBet.titleLabel?.adjustsFontSizeToFitWidth = true
+        clearBet.titleLabel?.textAlignment = NSTextAlignment.Center
+        clearBet.titleLabel?.baselineAdjustment = UIBaselineAdjustment.AlignCenters
+    }
+    func showButton() {
+        playRoundButton.hidden = false
+        playRoundButton.userInteractionEnabled = true
+    }
+    func hideButton() {
+        playRoundButton.hidden = true
+        playRoundButton.userInteractionEnabled = false
+    }
+    
+    
+    // MARK: Counters
+    
+    func setCounters() {
+        playerOneStorageY.constant = (view.bounds.height/4) + (cardViewP1.bounds.height/2) - 30
+        playerTwoStorageY.constant = (view.bounds.height/4) + (cardViewP2.bounds.height/2) - 30
+        playerOneStorageCounterWidth.constant = cardViewP1.bounds.width
+        playerTwoStorageCounterWidth.constant = cardViewP2.frame.width
+        
+        playerOneCounterWidth.constant = cardViewP1.frame.width
+        playerTwoCounterWidth.constant = cardViewP2.frame.width
+        
+        playerOneWalletWidth.constant = cardViewP1.frame.width
+        playerTwoWalletWidth.constant = cardViewP2.frame.width
+        
+        playerOneHeight.constant = playerOneCounter.frame.height
+        playerTwoHeight.constant = playerTwoCounter.frame.height
+    }
+    
+    
+    //      Deck Counters
+    
+    func hideCounter() {
+        playerOneCounter.hidden = true
+        playerTwoCounter.hidden = true
+    }
+    func showCounter() {
+        playerOneCounter.hidden = false
+        playerTwoCounter.hidden = false
+    }
+    func updateCounter() {
+        war.totalCounter()
+        playerOneCounter.text = String(war.playerOneCards.count)
+        playerTwoCounter.text = String(war.playerTwoCards.count)
+    }
+    
+    
+    //      Wallet Counters
+    
+    func hideWallet() {
+        playerOneWallet.hidden = true
+        playerTwoWallet.hidden = true
+    }
+    func showWallet() {
+        playerOneWallet.hidden = false
+        playerTwoWallet.hidden = false
+    }
+    func updateWallet() {
+        if isBettingPhase == true {
+            playerOneWallet.text = "$" + String(playerOneMoney-totalBet)
+            playerTwoWallet.text = "$" + String(playerTwoMoney-totalBet)
+        } else {
+            playerOneWallet.text = "$" + String(playerOneMoney)
+            playerTwoWallet.text = "$" + String(playerTwoMoney)
+        }
+    }
+    
+    
+    //      Storage Counters
+    
+    func hideStorageCounter() {
+        playerOneStorageCounter.hidden = true
+        playerTwoStorageCounter.hidden = true
+    }
+    
+    func showStorageCounter() {
+        playerOneStorageCounter.hidden = false
+        playerTwoStorageCounter.hidden = false
+    }
+    
+    func updateStorageCounter() {
+        playerOneStorageCounter.text = String(war.playerOneStorage.count)
+        playerTwoStorageCounter.text = String(war.playerTwoStorage.count)
+    }
+    
+    
+    // MARK: Overlay and Notifications
+    
+    func setOverlay() {
+        overlay.backgroundColor = UIColor.blackColor()
+        overlay.layer.zPosition = 998
+        overlay.alpha = 0.0
+        overlay.frame = CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height)
+        overlay.userInteractionEnabled = false
+        
+        view.addSubview(overlay)
+    }
+    func setNotifications() {
+        notifyP1Width.constant = view.bounds.width
+        notifyP2Width.constant = view.bounds.width
+        notifyP1Height.constant = view.frame.height/6
+        notifyP2Height.constant = view.frame.height/6
+        notifyP1X.constant = -view.bounds.width
+        notifyP2X.constant = -view.bounds.width
+        notifyP1Y.constant = view.bounds.height/12
+        notifyP2Y.constant = -view.bounds.height/12
+        notifyP1.layer.zPosition = 999
+        notifyP2.layer.zPosition = 999
+        notifyP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+    }
+    func showOverlay() {
+        view.layoutIfNeeded()
+        UIView.animateWithDuration(0.25, delay: 0, options: [], animations: {
+            self.overlay.alpha = 0.5
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.swipeIn()
+        })
+    }
+    func hideOverlay() {
+        view.layoutIfNeeded()
+        UIView.animateWithDuration(0.25, delay: 0, options: [], animations: {
+            self.overlay.alpha = 0.0
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                if (self.playerOneWin == true) {
+                    self.normalWinP1Timer()
+                } else if (self.playerOneWin == false) {
+                    self.normalWinP2Timer()
+                }
+        })
+    }
+    func swipeIn() {
+        view.layoutIfNeeded()
+        UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseOut], animations: {
+            self.notifyP1X.constant = 0
+            self.notifyP2X.constant = 0
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.swipeOut()
+        })
+    }
+    func swipeOut() {
+        view.layoutIfNeeded()
+        UIView.animateWithDuration(0.75, delay: 0, options: [.CurveEaseIn], animations: {
+            self.notifyP1X.constant = self.view.bounds.width
+            self.notifyP2X.constant = self.view.bounds.width
+            self.view.layoutIfNeeded()
+            }, completion: {
+                finished in
+                self.hideOverlay()
+                self.notifyP1X.constant = -self.view.bounds.width
+                self.notifyP2X.constant = -self.view.bounds.width
+        })
+    }
+    
+    
+    // MARK: Chips
+    
+    func setChips() {
+        let tapGest = UITapGestureRecognizer(target: self, action: #selector (ViewController.updateChips))
+        tapGest.cancelsTouchesInView = false
+        
+        chipsViewWidth.constant = view.bounds.width/1.1
+        
+        chipsView.addGestureRecognizer(tapGest)
+    }
+    func shiftChips() {
+        if isEven == true {
+            chipsViewY.constant = -view.bounds.height/6
+            placeBetY.constant = -view.bounds.height/3.5
+            clearBetY.constant = -view.bounds.height/2.9
+            chipsView.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+            placeBet.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+            clearBet.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
+            totalBet = 0
+            selectedChips = []
+        } else {
+            chipsViewY.constant = view.bounds.height/6
+            placeBetY.constant = view.bounds.height/3.5
+            clearBetY.constant = view.bounds.height/2.9
+            chipsView.transform = CGAffineTransformMakeRotation(0)
+            placeBet.transform = CGAffineTransformMakeRotation(0)
+            clearBet.transform = CGAffineTransformMakeRotation(0)
+            totalBet = 0
+            selectedChips = []
+        }
+    }
+    func updateChips() {
+        updateWallet()
+        if selectedChips.isEmpty {
+            placeBet.enabled = false
+            clearBet.enabled = false
+            placeBet.alpha = 0.5
+            clearBet.alpha = 0.5
+            placeBet.setTitle("BET", forState: .Normal)
+        } else {
+            placeBet.enabled = true
+            clearBet.enabled = true
+            placeBet.alpha = 1.0
+            clearBet.alpha = 1.0
+            placeBet.setTitle("BET " + String(totalBet), forState: .Normal)
+        }
+    }
+    
+    
+    // MARK: Miscellaneous
+    
+    func resetGlobals() {
+        playerOneMoney = startingWallet
+        playerTwoMoney = startingWallet
+        selectedChips = []
+        touchedChip = nil
+        totalBet = 0
+        isSolo = false
+        isEven = false
+        isBettingPhase = true
+        roundCount = 1
+    }
 }
-

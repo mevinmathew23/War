@@ -31,9 +31,6 @@ class MainMenu: UIViewController {
         } else {
             audio.avPlayer.volume = Settings().defaults.floatForKey("Volume")
         }
-        
-        
-
             }
 
     override func didReceiveMemoryWarning() {

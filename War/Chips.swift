@@ -8,7 +8,14 @@
 
 import UIKit
 
-var selectedChip: Int? = nil
+let viewController = ViewController()
+var selectedChips = [Int]()
+var touchedChip: Int? = nil
+var totalBet: Int = 0
+var isSolo: Bool! = false
+var isEven: Bool! = false
+var isBettingPhase: Bool! = true
+var roundCount = 1
 
 func translate(index: Int) -> Int {
     switch index {
@@ -27,37 +34,23 @@ func translate(index: Int) -> Int {
     }
 }
 
-class Chips: UIView {
+func betSum() {
+    totalBet = 0
+    for chips in selectedChips {
+        totalBet += chips
+    }
+}
 
+class Chips: UIView {
+    
     // MARK: Properties
-//    var selectedChip: Int? = nil {
-//        didSet {
-//            setNeedsLayout()
-//        }
-//    }
-//    
+    
     var chipButtons = [UIButton]()
     
     let spacing = 0
     let chipCount = 5
-    let isHighlighted: Bool = false
-//
-//    func translate(index: Int) -> Int {
-//        switch index {
-//        case 0:
-//            return 5
-//        case 1:
-//            return 10
-//        case 2:
-//            return 20
-//        case 3:
-//            return 50
-//        case 4:
-//            return 100
-//        default:
-//            return 0
-//        }
-//    }
+    var isHighlighted: Bool = false
+
     
     // MARK: Initialization
     required init?(coder aDecoder: NSCoder) {
@@ -65,18 +58,14 @@ class Chips: UIView {
         
         for x in 0..<chipCount {
             let button = UIButton()
-
+            
             var chipImages = [UIImage(named: "bet5"), UIImage(named: "bet10"), UIImage(named: "bet20"), UIImage(named: "bet50"), UIImage(named: "bet100")]
             
             chipImages[x]?.description
             
             button.setImage(chipImages[x], forState: .Normal)
-//            button.setImage(chipImages[x], forState: .Selected)
-//            button.setImage(chipImages[x], forState: .Disabled)
-//            button.setImage(chipImages[x], forState: [.Highlighted, .Selected])
+
             
-            
-            // button.backgroundColor = UIColor.cyanColor()
             button.adjustsImageWhenHighlighted = true
             button.adjustsImageWhenDisabled = true
             button.showsTouchWhenHighlighted = true
@@ -108,30 +97,49 @@ class Chips: UIView {
     // MARK: Button Action
     func chipButtonTapped(button: UIButton) {
         
-        selectedChip = chipButtons.indexOf(button)!
+        touchedChip = chipButtons.indexOf(button)!
+        selectedChips.append(translate(chipButtons.indexOf(button)!))
         
         print("Button has been tapped!")
-        print(String(selectedChip))
+        for chips in selectedChips {
+            print(String(chips))
+        }
         
         updateButtonSelectionStates()
     }
     func updateButtonSelectionStates() {
+        betSum()
         for (index, button) in chipButtons.enumerate() {
-            // If the index of a button is less than the rating, that buton should be selected.
-            button.enabled = playerOneMoney > translate(index)
             
-            button.selected = index == selectedChip
+            if isSolo == false {
+                button.enabled = whoBets(roundCount) >= translate(index) && totalBet <= whoBets(roundCount) - translate(index)
+            } else {
+                button.enabled = playerOneMoney > translate(index)
+            }
+            
+            button.selected = index == touchedChip
         }
         dispatch_async(dispatch_get_main_queue(), {
             self.setNeedsLayout()
-            });
+        });
         
         func chipButtonTapped(button: UIButton) {
-            selectedChip = chipButtons.indexOf(button)!
-            print(String(selectedChip))
+            touchedChip = chipButtons.indexOf(button)!
+            selectedChips.append(translate(chipButtons.indexOf(button)!))
             
             updateButtonSelectionStates()
         }
     }
     
+    func whoBets(round: Int) -> Int {
+        if round % 2 == 0 {
+            //print("Round is even, player 2 bets")
+            isEven = true
+            return playerTwoMoney
+        } else {
+            //print("Round is odd, player 1 bets")
+            isEven = false
+            return playerOneMoney
+        }
+    }
 }
