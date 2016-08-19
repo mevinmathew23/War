@@ -72,9 +72,6 @@ class ViewController: UIViewController {
         
         self.view.setNeedsLayout()
     }
-    override func viewDidAppear(animated: Bool) {
-        
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -116,7 +113,6 @@ class ViewController: UIViewController {
     func evaluate() {
         
         if war.playerOneCardsInPlay[0].Value > war.playerTwoCardsInPlay[0].Value {
-            //normalWinP1()
             playerOneWin = true
             notifyP1.text = "BLUE WINS ROUND " + String(roundCount)
             notifyP2.text = "BLUE WINS ROUND " + String(roundCount)
@@ -129,7 +125,6 @@ class ViewController: UIViewController {
             print("P1 wins this round")
         }
         else if war.playerOneCardsInPlay[0].Value < war.playerTwoCardsInPlay[0].Value {
-            //normalWinP2()
             playerOneWin = false
             notifyP1.text = "RED WINS ROUND " + String(roundCount)
             notifyP2.text = "RED WINS ROUND " + String(roundCount)
@@ -157,7 +152,6 @@ class ViewController: UIViewController {
             print("No winner yet...")
             startRound()
         }
-        
     }
     
     
@@ -467,6 +461,7 @@ class ViewController: UIViewController {
         }
     }
     
+    
     // MARK: Card Animations
     
     func startAnimation() {
@@ -481,7 +476,6 @@ class ViewController: UIViewController {
     }
     
     func normalWinP1Timer() {
-        
         _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(ViewController.normalWinP1), userInfo: nil, repeats: false)
     }
     
@@ -517,7 +511,6 @@ class ViewController: UIViewController {
                     self.sounds.playAVPlayer()
                 }
         })
-        
     }
     
     func normalWinP2Timer() {
@@ -1030,15 +1023,6 @@ class ViewController: UIViewController {
         })
     }
     
-    func changeBackground() {
-        let newImage = settings.loadImageFromPath(settings.backgroundPath)
-        if newImage == nil {
-            backgroundImageView.image = UIImage(named: "backgroundPSI")!
-        } else {
-            backgroundImageView.image = newImage!
-        }
-    }
-    
     
     // MARK: Properties
     // Card Views
@@ -1465,5 +1449,14 @@ class ViewController: UIViewController {
         isEven = false
         isBettingPhase = true
         roundCount = 1
+    }
+    
+    func changeBackground() {
+        let newImage = settings.loadImageFromPath(settings.backgroundPath)
+        if newImage == nil {
+            backgroundImageView.image = UIImage(named: "backgroundPSI")!
+        } else {
+            backgroundImageView.image = newImage!
+        }
     }
 }
