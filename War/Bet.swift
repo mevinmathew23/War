@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// Globals
 let startingWallet = 1000
 var playerOneMoney = startingWallet
 var playerTwoMoney = startingWallet
