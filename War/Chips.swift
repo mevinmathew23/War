@@ -17,23 +17,6 @@ var isEven: Bool! = false
 var isBettingPhase: Bool! = true
 var roundCount = 1
 
-func translate(index: Int) -> Int {
-    switch index {
-    case 0:
-        return 5
-    case 1:
-        return 10
-    case 2:
-        return 20
-    case 3:
-        return 50
-    case 4:
-        return 100
-    default:
-        return 0
-    }
-}
-
 func betSum() {
     totalBet = 0
     for chips in selectedChips {
@@ -50,6 +33,23 @@ class Chips: UIView {
     let spacing = 0
     let chipCount = 5
     var isHighlighted: Bool = false
+    
+    func translate(index: Int) -> Int {
+        switch index {
+        case 0:
+            return 5
+        case 1:
+            return 10
+        case 2:
+            return 20
+        case 3:
+            return 50
+        case 4:
+            return 100
+        default:
+            return 0
+        }
+    }
 
     
     // MARK: Initialization
@@ -114,7 +114,7 @@ class Chips: UIView {
             if isSolo == false {
                 button.enabled = whoBets(roundCount) >= translate(index) && totalBet <= whoBets(roundCount) - translate(index)
             } else {
-                button.enabled = playerOneMoney > translate(index)
+                button.enabled = playerOneMoney >= translate(index) && totalBet <= playerOneMoney - translate(index)
             }
             
             button.selected = index == touchedChip

@@ -38,11 +38,10 @@ class OnePlayerVC: UIViewController {
         setCardViews()
         setWarViews()
         setChips()
-        setNotifications()
         setPlayRoundButton()
-        setBetButton()
-        setClearButton()
+        setNotifications()
         setTapGest()
+        setOverlay()
         
         rotateForP2()
         disableP2()
@@ -54,6 +53,8 @@ class OnePlayerVC: UIViewController {
         chipsView.hidden = true
         placeBet.hidden = true
         clearBet.hidden = true
+        playerOneHeight.constant = 0
+        playerTwoHeight.constant = 0
         
         changeBackground()
         resetGlobals()
@@ -67,13 +68,13 @@ class OnePlayerVC: UIViewController {
         war.deckOfCards.shuffle()
         war.deal()
         
-        // Rely on new card sizes
-        setOverlay()
-        setCounters()
-        
         self.view.setNeedsLayout()
     }
-    
+    override func viewDidAppear(animated: Bool) {
+        setCounters()
+        setBetButton()
+        setClearButton()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,6 +87,7 @@ class OnePlayerVC: UIViewController {
     @IBAction func playRoundTapped(sender: UIButton) {
         startRound()
         hideButton()
+        setBars()
     }
     @IBAction func placeBets(sender: AnyObject) {
         bet(totalBet)
@@ -94,6 +96,10 @@ class OnePlayerVC: UIViewController {
         placeBet.hidden = true
         clearBet.hidden = true
         updateWallet()
+        
+        drawCardP1(cardViewP1)
+        drawCardP2(cardViewP2)
+        updateCounter()
         
         startAnimation()
     }
@@ -248,19 +254,16 @@ class OnePlayerVC: UIViewController {
         guard (playerOneMoney <= 0 || playerTwoMoney <= 0) == false else {
             return
         }
-        drawCardP1(cardViewP1)
-        drawCardP2(cardViewP2)
         
         isBettingPhase = true
+        totalBet = 0
+        selectedChips = []
         
         showCounter()
         showWallet()
         updateCounter()
         updateWallet()
         updateChips()
-        
-        totalBet = 0
-        selectedChips = []
         
         chipsView.hidden = false
         placeBet.hidden = false
@@ -1117,6 +1120,7 @@ class OnePlayerVC: UIViewController {
         cardViewP2War1Height.constant = view.bounds.height/4
         cardViewP2War2Height.constant = view.bounds.height/4
         cardViewP2War3Height.constant = view.bounds.height/4
+        
     }
     func setWarViews() {
         cardViewP1War1Constraint.constant = -view.bounds.height
@@ -1220,16 +1224,16 @@ class OnePlayerVC: UIViewController {
         playerOneStorageCounterWidth.constant = cardViewP1.frame.width
         playerTwoStorageCounterWidth.constant = cardViewP2.frame.width
         
-        playerOneCounterWidth.constant = cardViewP1.frame.width
-        playerTwoCounterWidth.constant = cardViewP2.frame.width
+        playerOneCounterWidth.constant = cardViewP1.frame.width/1.5
+        playerTwoCounterWidth.constant = cardViewP2.frame.width/1.5
         
-        playerOneWalletWidth.constant = cardViewP1.frame.width
-        playerTwoWalletWidth.constant = cardViewP2.frame.width
-        
+        playerOneWalletWidth.constant = cardViewP1.frame.width/1.5
+        playerTwoWalletWidth.constant = cardViewP2.frame.width/1.5
+    }
+    func setBars() {
         playerOneHeight.constant = playerOneCounter.frame.height
         playerTwoHeight.constant = playerTwoCounter.frame.height
     }
-    
     
     //      Deck Counters
     
@@ -1362,9 +1366,9 @@ class OnePlayerVC: UIViewController {
         tapGest.cancelsTouchesInView = false
         
         chipsViewWidth.constant = view.bounds.width/1.1
-        chipsViewY.constant = view.bounds.height/6
-        placeBetY.constant = view.bounds.height/3.5
-        clearBetY.constant = view.bounds.height/2.9
+        chipsViewY.constant = view.bounds.height/8
+        placeBetY.constant = view.bounds.height/4
+        clearBetY.constant = view.bounds.height/3
         
         chipsView.addGestureRecognizer(tapGest)
     }

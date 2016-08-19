@@ -40,9 +40,8 @@ class ViewController: UIViewController {
         setChips()
         setNotifications()
         setPlayRoundButton()
-        setBetButton()
-        setClearButton()
         setTapGest()
+        setOverlay()
         
         rotateForP2()
         
@@ -53,6 +52,8 @@ class ViewController: UIViewController {
         chipsView.hidden = true
         placeBet.hidden = true
         clearBet.hidden = true
+        playerOneHeight.constant = 0
+        playerTwoHeight.constant = 0
         
         changeBackground()
         resetGlobals()
@@ -66,11 +67,12 @@ class ViewController: UIViewController {
         war.deckOfCards.shuffle()
         war.deal()
         
-        // Rely on new card sizes
-        setOverlay()
-        setCounters()
-        
         self.view.setNeedsLayout()
+    }
+    override func viewDidAppear(animated: Bool) {
+        setCounters()
+        setBetButton()
+        setClearButton()
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,6 +87,8 @@ class ViewController: UIViewController {
     @IBAction func playRoundTapped(sender: UIButton) {
         startRound()
         hideButton()
+        
+        setBars()
     }
     @IBAction func placeBets(sender: AnyObject) {
         bet(totalBet)
@@ -93,6 +97,10 @@ class ViewController: UIViewController {
         placeBet.hidden = true
         clearBet.hidden = true
         updateWallet()
+        
+        drawCardP1(cardViewP1)
+        drawCardP2(cardViewP2)
+        updateCounter()
         
         startAnimation()
     }
@@ -252,8 +260,6 @@ class ViewController: UIViewController {
         guard (playerOneMoney <= 0 || playerTwoMoney <= 0) == false else {
             return
         }
-        drawCardP1(cardViewP1)
-        drawCardP2(cardViewP2)
         
         isBettingPhase = true
         shiftChips()
@@ -1247,12 +1253,13 @@ class ViewController: UIViewController {
         playerOneStorageCounterWidth.constant = cardViewP1.bounds.width
         playerTwoStorageCounterWidth.constant = cardViewP2.frame.width
         
-        playerOneCounterWidth.constant = cardViewP1.frame.width
-        playerTwoCounterWidth.constant = cardViewP2.frame.width
+        playerOneCounterWidth.constant = cardViewP1.frame.width/1.5
+        playerTwoCounterWidth.constant = cardViewP2.frame.width/1.5
         
-        playerOneWalletWidth.constant = cardViewP1.frame.width
-        playerTwoWalletWidth.constant = cardViewP2.frame.width
-        
+        playerOneWalletWidth.constant = cardViewP1.frame.width/1.5
+        playerTwoWalletWidth.constant = cardViewP2.frame.width/1.5
+    }
+    func setBars() {
         playerOneHeight.constant = playerOneCounter.frame.height
         playerTwoHeight.constant = playerTwoCounter.frame.height
     }
@@ -1401,8 +1408,8 @@ class ViewController: UIViewController {
     func shiftChips() {
         if isEven == true {
             chipsViewY.constant = -view.bounds.height/6
-            placeBetY.constant = -view.bounds.height/3.5
-            clearBetY.constant = -view.bounds.height/2.9
+            placeBetY.constant = -view.bounds.height/4
+            clearBetY.constant = -view.bounds.height/3.2
             chipsView.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
             placeBet.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
             clearBet.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
