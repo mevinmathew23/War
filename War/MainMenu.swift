@@ -24,6 +24,8 @@ class MainMenu: UIViewController {
         audio.toggleAVPlayer()
         audio.loopAVPlayer()
         
+        self.navigationController?.navigationBarHidden = true
+        
         let mute = Settings().defaults.boolForKey("Mute")
         
         if mute == true {
@@ -52,5 +54,8 @@ class MainMenu: UIViewController {
     @IBOutlet weak var twoPlayer: UIButton!
     @IBOutlet weak var settings: UIButton!
     @IBOutlet weak var about: UIButton!
+    
+    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
 }

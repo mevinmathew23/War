@@ -40,6 +40,16 @@ class OnePlayerVC: UIViewController {
         
         changeBackground()
         
+        self.navigationController?.navigationBarHidden = true
+
+        
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.revealViewController().rearViewRevealWidth = view.bounds.width / 1.5
+        }
+        
         // Rotate player 2 card views
         cardViewP2.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
         cardViewP2War1.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI))
@@ -111,6 +121,10 @@ class OnePlayerVC: UIViewController {
     }
     
     // MARK: Actions
+    
+    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    
     // Button Click Action
     
     @IBAction func playRoundTapped(sender: UIButton) {
