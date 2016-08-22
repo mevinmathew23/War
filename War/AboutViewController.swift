@@ -37,6 +37,9 @@ class AboutViewController: UIViewController {
     @IBOutlet weak var aboutTextView: UITextView!
     
     
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    
+    
     // Mark: Actions
     @IBAction func pressBack(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)

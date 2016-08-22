@@ -82,6 +82,10 @@ class OnePlayerVC: UIViewController {
     
     
     // MARK: Actions
+    
+    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+    
     // Button Click Action
     
     @IBAction func playRoundTapped(sender: UIButton) {

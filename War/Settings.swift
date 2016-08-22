@@ -42,6 +42,9 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBarHidden = true
+
+        
         let volume = defaults.floatForKey("Volume")
         let brightness = defaults.floatForKey("Brightness")
         let mute = defaults.boolForKey("Mute")
@@ -84,6 +87,9 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var soundFX: UISwitch!
+    
+    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     
     var changeCard: Bool? = nil
@@ -194,6 +200,7 @@ class Settings: UITableViewController, UIImagePickerControllerDelegate, UINaviga
     
     @IBAction func pressDone(sender: UIBarButtonItem) {
         setDefaults()
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     
