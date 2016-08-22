@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     let audio = Audio()
     let sounds = Sounds()
     
+    
     // War counters
     var playerOneWinCounter = 0
     var playerTwoWinCounter = 0
@@ -30,10 +31,14 @@ class ViewController: UIViewController {
     }
     
     
+    
+    
     // MARK: viewDidLoad()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SlideMenu().selectedGameMode = "Two Player"
         
         setCardViews()
         setWarViews()

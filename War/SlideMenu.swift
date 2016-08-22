@@ -1,3 +1,4 @@
+
 //
 //  SlideMenu.swift
 //  War
@@ -9,9 +10,12 @@
 import UIKit
 
 class SlideMenu: UIViewController {
+    
+    var selectedGameMode = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateMenuTitle(selectedGameMode)
 
        containerWidth.constant = view.bounds.width / 1.5
     }
@@ -24,6 +28,11 @@ class SlideMenu: UIViewController {
     
     //Mark: Properties
     @IBOutlet weak var containerWidth: NSLayoutConstraint!
+    @IBOutlet weak var menuTitle: UILabel!
+    
+    func updateMenuTitle(gameMode: String) {
+        menuTitle.text = gameMode + "Menu"
+    }
     
     
 
