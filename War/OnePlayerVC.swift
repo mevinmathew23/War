@@ -38,7 +38,9 @@ class OnePlayerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SlideMenu().selectedGameMode = "OnePlayer"
+        selectedGameMode = "OnePlayer"
+//        let viewController = SlideMenu()
+//        _ = viewController.view
         
         hideCounter()
         hideStorageCounter()
@@ -618,7 +620,7 @@ class OnePlayerVC: UIViewController {
     }
     
     func normalWinP1Timer() {
-        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(OnePlayerVC.normalWinP1), userInfo: nil, repeats: false)
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: #selector(normalWinP1), userInfo: nil, repeats: false)
     }
     
     func normalWinP1() {

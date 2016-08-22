@@ -9,17 +9,18 @@
 
 import UIKit
 
+var selectedGameMode = ""
+
 class SlideMenu: UIViewController {
     
-    var selectedGameMode = ""
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateMenuTitle(selectedGameMode)
-
-       containerWidth.constant = view.bounds.width / 1.5
+        updateMenuTitle()
+        timer()
+        
+        containerWidth.constant = view.bounds.width / 1.5
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -30,10 +31,11 @@ class SlideMenu: UIViewController {
     @IBOutlet weak var containerWidth: NSLayoutConstraint!
     @IBOutlet weak var menuTitle: UILabel!
     
-    func updateMenuTitle(gameMode: String) {
-        menuTitle.text = gameMode + "Menu"
+    func updateMenuTitle() {
+        menuTitle.text = selectedGameMode + "Menu"
     }
     
-    
-
+    func timer() {
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(updateMenuTitle), userInfo: nil, repeats: true)
     }
+}

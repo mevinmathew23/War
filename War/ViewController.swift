@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        SlideMenu().selectedGameMode = "Two Player"
+        selectedGameMode = "Two Player"
         
         setCardViews()
         setWarViews()
