@@ -21,6 +21,9 @@
 		B7C60D3A1D19B76B00E18A36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C60D381D19B76B00E18A36 /* Main.storyboard */; };
 		B7C60D3C1D19B76B00E18A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7C60D3B1D19B76B00E18A36 /* Assets.xcassets */; };
 		B7C60D3F1D19B76B00E18A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C60D3D1D19B76B00E18A36 /* LaunchScreen.storyboard */; };
+		FB83F60F1D67532300D3AC7C /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB83F60E1D67532300D3AC7C /* Game.storyboard */; };
+		FB83F6141D67589900D3AC7C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB83F6131D67589900D3AC7C /* SWRevealViewController.m */; };
+		FB83F6161D676AD700D3AC7C /* SlideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB83F6151D676AD700D3AC7C /* SlideMenu.swift */; };
 		FBA0A7321D4A83B800C191FA /* OnePlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0A7301D4A83B800C191FA /* OnePlayer.storyboard */; };
 		FBA0A7341D4A83C300C191FA /* OnePlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */; };
 		FBA0A7671D58D97700C191FA /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0A7661D58D97700C191FA /* About.storyboard */; };
@@ -37,7 +40,6 @@
 		B71DC19B1D2C36330040F476 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		B71DC19D1D2C366F0040F476 /* Shuffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shuffle.swift; sourceTree = "<group>"; };
 		B71DC19F1D2C369E0040F476 /* War.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = War.swift; sourceTree = "<group>"; };
-		B7481B471D5E5467000F16DF /* Chips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chips.swift; sourceTree = "<group>"; };
 		B759C8981D357514007AB0EF /* Bet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bet.swift; sourceTree = "<group>"; };
 		B76524631D3D2C5700AC042D /* Main Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main Menu.storyboard"; sourceTree = "<group>"; };
 		B76524891D47A8F800AC042D /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -50,6 +52,11 @@
 		B7C60D3B1D19B76B00E18A36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7C60D3E1D19B76B00E18A36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B7C60D401D19B76B00E18A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB83F60E1D67532300D3AC7C /* Game.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
+		FB83F6111D67589800D3AC7C /* War-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "War-Bridging-Header.h"; sourceTree = "<group>"; };
+		FB83F6121D67589900D3AC7C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		FB83F6131D67589900D3AC7C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		FB83F6151D676AD700D3AC7C /* SlideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenu.swift; sourceTree = "<group>"; };
 		FBA0A7311D4A83B800C191FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OnePlayer.storyboard; sourceTree = "<group>"; };
 		FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnePlayerVC.swift; sourceTree = "<group>"; };
 		FBA0A7661D58D97700C191FA /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
@@ -94,6 +101,7 @@
 		B7C60D331D19B76B00E18A36 /* War */ = {
 			isa = PBXGroup;
 			children = (
+				FB83F6101D67588300D3AC7C /* SWRevealViewController */,
 				FBA0A7681D58D98300C191FA /* About */,
 				FBA0A7361D4A871000C191FA /* Main Menu */,
 				FBA0A7371D4A871D00C191FA /* 2 Player */,
@@ -110,8 +118,20 @@
 				B71DC19F1D2C369E0040F476 /* War.swift */,
 				FBA0A7711D625BA500C191FA /* Sounds.swift */,
 				FBA0A76B1D5A17E100C191FA /* Audio.swift */,
+				FB83F60E1D67532300D3AC7C /* Game.storyboard */,
+				FB83F6151D676AD700D3AC7C /* SlideMenu.swift */,
 			);
 			path = War;
+			sourceTree = "<group>";
+		};
+		FB83F6101D67588300D3AC7C /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FB83F6121D67589900D3AC7C /* SWRevealViewController.h */,
+				FB83F6131D67589900D3AC7C /* SWRevealViewController.m */,
+				FB83F6111D67589800D3AC7C /* War-Bridging-Header.h */,
+			);
+			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
 		FBA0A7361D4A871000C191FA /* Main Menu */ = {
@@ -249,6 +269,7 @@
 				B7C60D3F1D19B76B00E18A36 /* LaunchScreen.storyboard in Resources */,
 				FBA0A7321D4A83B800C191FA /* OnePlayer.storyboard in Resources */,
 				FBA0A7671D58D97700C191FA /* About.storyboard in Resources */,
+				FB83F60F1D67532300D3AC7C /* Game.storyboard in Resources */,
 				FBA1A4A41D4A61CA009FC751 /* HockeySDKResources.bundle in Resources */,
 				B76524641D3D2C5700AC042D /* Main Menu.storyboard in Resources */,
 				B765248A1D47A8F800AC042D /* Settings.storyboard in Resources */,
@@ -281,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBA0A76E1D5A2C1A00C191FA /* MainMenu.swift in Sources */,
+				FB83F6161D676AD700D3AC7C /* SlideMenu.swift in Sources */,
 				B7C60D371D19B76B00E18A36 /* ViewController.swift in Sources */,
 				B71DC19E1D2C366F0040F476 /* Shuffle.swift in Sources */,
 				FBA0A76C1D5A17E100C191FA /* Audio.swift in Sources */,
@@ -291,6 +313,7 @@
 				B71DC19C1D2C36330040F476 /* Card.swift in Sources */,
 				B71DC1A01D2C369E0040F476 /* War.swift in Sources */,
 				B7B5F69F1D5A4CC400DE3D73 /* Animations.swift in Sources */,
+				FB83F6141D67589900D3AC7C /* SWRevealViewController.m in Sources */,
 				B7C60D351D19B76B00E18A36 /* AppDelegate.swift in Sources */,
 				FBA0A7721D625BA500C191FA /* Sounds.swift in Sources */,
 				B759C8991D357514007AB0EF /* Bet.swift in Sources */,
@@ -417,6 +440,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -428,6 +452,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.psi.war;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "War/War-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -435,6 +461,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -446,6 +473,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.psi.war;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "War/War-Bridging-Header.h";
 			};
 			name = Release;
 		};
