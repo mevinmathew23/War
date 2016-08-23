@@ -21,7 +21,6 @@
 		B7C60D3A1D19B76B00E18A36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C60D381D19B76B00E18A36 /* Main.storyboard */; };
 		B7C60D3C1D19B76B00E18A36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7C60D3B1D19B76B00E18A36 /* Assets.xcassets */; };
 		B7C60D3F1D19B76B00E18A36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C60D3D1D19B76B00E18A36 /* LaunchScreen.storyboard */; };
-		FB83F6161D676AD700D3AC7C /* SlideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB83F6151D676AD700D3AC7C /* SlideMenu.swift */; };
 		FBA0A7321D4A83B800C191FA /* OnePlayer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0A7301D4A83B800C191FA /* OnePlayer.storyboard */; };
 		FBA0A7341D4A83C300C191FA /* OnePlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */; };
 		FBA0A7671D58D97700C191FA /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0A7661D58D97700C191FA /* About.storyboard */; };
@@ -50,7 +49,6 @@
 		B7C60D3B1D19B76B00E18A36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7C60D3E1D19B76B00E18A36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B7C60D401D19B76B00E18A36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB83F6151D676AD700D3AC7C /* SlideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenu.swift; sourceTree = "<group>"; };
 		FBA0A7311D4A83B800C191FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/OnePlayer.storyboard; sourceTree = "<group>"; };
 		FBA0A7331D4A83C300C191FA /* OnePlayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnePlayerVC.swift; sourceTree = "<group>"; };
 		FBA0A7661D58D97700C191FA /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				B71DC19F1D2C369E0040F476 /* War.swift */,
 				FBA0A7711D625BA500C191FA /* Sounds.swift */,
 				FBA0A76B1D5A17E100C191FA /* Audio.swift */,
-				FB83F6151D676AD700D3AC7C /* SlideMenu.swift */,
 			);
 			path = War;
 			sourceTree = "<group>";
@@ -283,7 +280,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBA0A76E1D5A2C1A00C191FA /* MainMenu.swift in Sources */,
-				FB83F6161D676AD700D3AC7C /* SlideMenu.swift in Sources */,
 				B7C60D371D19B76B00E18A36 /* ViewController.swift in Sources */,
 				B71DC19E1D2C366F0040F476 /* Shuffle.swift in Sources */,
 				FBA0A76C1D5A17E100C191FA /* Audio.swift in Sources */,
