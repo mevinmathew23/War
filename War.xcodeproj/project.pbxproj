@@ -32,8 +32,6 @@
 		FBA0A76E1D5A2C1A00C191FA /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A76D1D5A2C1A00C191FA /* MainMenu.swift */; };
 		FBA0A7701D621E0400C191FA /* Chips.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A76F1D621E0400C191FA /* Chips.swift */; };
 		FBA0A7721D625BA500C191FA /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0A7711D625BA500C191FA /* Sounds.swift */; };
-		FBA1A4A31D4A61CA009FC751 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA1A4A01D4A61CA009FC751 /* HockeySDK.framework */; };
-		FBA1A4A41D4A61CA009FC751 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FBA1A4A21D4A61CA009FC751 /* HockeySDKResources.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,8 +63,6 @@
 		FBA0A76D1D5A2C1A00C191FA /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		FBA0A76F1D621E0400C191FA /* Chips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chips.swift; sourceTree = "<group>"; };
 		FBA0A7711D625BA500C191FA /* Sounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
-		FBA1A4A01D4A61CA009FC751 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
-		FBA1A4A21D4A61CA009FC751 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +70,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBA1A4A31D4A61CA009FC751 /* HockeySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,28 +175,9 @@
 			name = About;
 			sourceTree = "<group>";
 		};
-		FBA1A49F1D4A61CA009FC751 /* HockeySDK.embeddedframework */ = {
-			isa = PBXGroup;
-			children = (
-				FBA1A4A01D4A61CA009FC751 /* HockeySDK.framework */,
-				FBA1A4A11D4A61CA009FC751 /* Resources */,
-			);
-			name = HockeySDK.embeddedframework;
-			path = "HockeySDK-iOS/HockeySDK.embeddedframework";
-			sourceTree = "<group>";
-		};
-		FBA1A4A11D4A61CA009FC751 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				FBA1A4A21D4A61CA009FC751 /* HockeySDKResources.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		FBA1A4A51D4A61CE009FC751 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FBA1A49F1D4A61CA009FC751 /* HockeySDK.embeddedframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -269,7 +245,6 @@
 				FBA0A7321D4A83B800C191FA /* OnePlayer.storyboard in Resources */,
 				FBA0A7671D58D97700C191FA /* About.storyboard in Resources */,
 				FB83F60F1D67532300D3AC7C /* Game.storyboard in Resources */,
-				FBA1A4A41D4A61CA009FC751 /* HockeySDKResources.bundle in Resources */,
 				B76524641D3D2C5700AC042D /* Main Menu.storyboard in Resources */,
 				B765248A1D47A8F800AC042D /* Settings.storyboard in Resources */,
 				B7C60D3C1D19B76B00E18A36 /* Assets.xcassets in Resources */,
